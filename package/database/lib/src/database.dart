@@ -1,7 +1,10 @@
 import 'dart:developer';
 
 import 'package:drift/drift.dart';
+// ignore: deprecated_member_use
+import 'package:drift/web.dart';
 import 'package:drift_flutter/drift_flutter.dart';
+import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:path_provider/path_provider.dart';
 
 part 'database.g.dart';
@@ -27,10 +30,16 @@ final class Database extends _$Database {
   @override
   int get schemaVersion => 1;
 
-  static QueryExecutor _openConnection() => driftDatabase(
-    name: 'udevs_initial_project.db',
-    native: const DriftNativeOptions(databaseDirectory: getApplicationSupportDirectory),
-  );
+  static QueryExecutor _openConnection() {
+    if (kIsWeb) {
+      return WebDatabase.withStorage(DriftWebStorage.indexedDb('quizlymarket_db'));
+    }
+
+    return driftDatabase(
+      name: 'udevs_initial_project.db',
+      native: const DriftNativeOptions(databaseDirectory: getApplicationSupportDirectory),
+    );
+  }
 
   Future<void> resetDatabase() async {
     try {

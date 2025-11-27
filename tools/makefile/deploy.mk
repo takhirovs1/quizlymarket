@@ -72,3 +72,8 @@ ipa-prod: pre-build ## Build iOS IPA (production config)
 .PHONY: publish
 publish: ## Publish the app to TestFlight
 	@dart run tools/dart/test_flight_publisher.dart
+
+.PHONY: web
+web: ## Build Flutter web release and deploy to Firebase hosting
+	@flutter build web --release
+	@firebase deploy --only hosting

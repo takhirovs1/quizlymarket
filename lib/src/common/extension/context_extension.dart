@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:local_source/local_source.dart';
 
 import '../../feature/settings/bloc/settings_bloc.dart';
-import '../../feature/settings/screen/settings_scope.dart';
 import '../dependencies/model/app_metadata.dart';
 import '../dependencies/model/dependencies.dart';
 import '../dependencies/widget/dependencies_scope.dart';
@@ -37,13 +36,21 @@ extension BuildContextX on BuildContext {
   LocalSource get localSource => dependencies.localeSource;
   AppMetadata get appMetadata => dependencies.metadata;
 
-  void setLocale(Locale localization) => SettingsScope.of(
-    this,
-  ).add(SettingsEvent.updateSettings(settings: SettingsScope.settingsOf(this).copyWith(localization: localization)));
+  void setLocale(Locale localization) {
+    final settingsBloc = dependencies.settingsBloc;
+    final currentSettings = settingsBloc.state.settings;
+    settingsBloc.add(
+      SettingsEvent.updateSettings(settings: currentSettings.copyWith(localization: localization)),
+    );
+  }
 
-  void setThemeMode(ThemeMode themeMode) => SettingsScope.of(
-    this,
-  ).add(SettingsEvent.updateSettings(settings: SettingsScope.settingsOf(this).copyWith(themeMode: themeMode)));
+  void setThemeMode(ThemeMode themeMode) {
+    final settingsBloc = dependencies.settingsBloc;
+    final currentSettings = settingsBloc.state.settings;
+    settingsBloc.add(
+      SettingsEvent.updateSettings(settings: currentSettings.copyWith(themeMode: themeMode)),
+    );
+  }
 }
 
 /// [SizeX]

@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:device_info_plus/device_info_plus.dart';
+import 'package:flutter/foundation.dart' show kIsWeb;
 
 import '../constant/gen/assets.gen.dart';
 import 'screen_util.dart';
@@ -13,6 +14,10 @@ sealed class Helpers {
   const Helpers._();
 
   static Future<({String path, double scale})?> getPlatformSpecificLogo() async {
+    if (kIsWeb) {
+      return (path: Assets.images.placeholder.path, scale: 1.0);
+    }
+
     if (Platform.isIOS) {
       return (path: Assets.images.placeholder.path, scale: 360 / ScreenUtil.size.width);
       // return (path: Assets.vectors.tvrIcon1440.path, scale: 360 / ScreenUtil.size.width);
