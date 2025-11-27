@@ -99,7 +99,7 @@ flutter:
 
 
   assets:
-    - assets/vectors/
+    # - assets/vectors/
     - assets/images/
     - config/
 

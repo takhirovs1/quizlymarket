@@ -1,5 +1,6 @@
 import 'dart:io' show Platform;
 import 'dart:ui' show Locale;
+import 'dart:ui' as ui;
 
 import 'package:flutter/material.dart' show immutable, ThemeMode;
 import 'package:flutter/rendering.dart';

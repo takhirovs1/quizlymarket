@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'dart:collection';
 import 'dart:developer';
-import 'dart:io' as io;
 
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:database/database.dart';
