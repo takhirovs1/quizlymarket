@@ -2,6 +2,7 @@ import 'package:elixir/elixir.dart';
 import 'package:flutter/material.dart';
 
 import '../../feature/home/presentation/screen/home_screen.dart';
+import '../../feature/main/presentation/screen/main_screen.dart';
 import '../../feature/settings/screen/settings_screen.dart';
 import 'custom_material_route.dart';
 
@@ -18,6 +19,13 @@ sealed class AppPage extends ElixirPage {
 
   @override
   String toString() => '/$name${arguments.isEmpty ? '' : '~$arguments'}';
+}
+
+final class MainPage extends AppPage {
+  const MainPage() : super(child: const MainScreen(), name: 'main');
+
+  @override
+  Set<String> get tags => {'main'};
 }
 
 final class HomePage extends AppPage {

@@ -149,7 +149,7 @@ abstract class AppLocalizations {
   /// No description provided for @title.
   ///
   /// In en, this message translates to:
-  /// **'Declarative Navigation'**
+  /// **'Quizly Market'**
   String get title;
 }
 

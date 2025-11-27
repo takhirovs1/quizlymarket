@@ -82,7 +82,7 @@ Map<String, _InitializationStep> get _initializationSteps => <String, _Initializ
                 'Api-Version': '1.0',
                 'Accept': 'application/json',
                 'Charset': 'utf-8',
-                'App-OS': io.Platform.operatingSystem,
+                'App-OS': platform.operatingSystem.name,
               },
               connectTimeout: timeout,
               receiveTimeout: timeout,

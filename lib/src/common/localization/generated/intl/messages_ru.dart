@@ -40,7 +40,10 @@ class MessageLookup extends MessageLookupByLibrary {
     "noInternetConnectionDescription": MessageLookupByLibrary.simpleMessage(
       "Пожалуйста, проверьте ваше интернет соединение и попробуйте снова.",
     ),
+    "pressBackAgainToExit": MessageLookupByLibrary.simpleMessage(
+      "Нажмите еще раз, чтобы выйти",
+    ),
     "refresh": MessageLookupByLibrary.simpleMessage("Обновить"),
-    "title": MessageLookupByLibrary.simpleMessage("Declarative Navigation"),
+    "title": MessageLookupByLibrary.simpleMessage("Quizly Market"),
   };
 }

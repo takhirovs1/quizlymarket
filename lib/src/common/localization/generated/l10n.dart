@@ -142,11 +142,16 @@ class GeneratedLocalization {
     );
   }
 
-  /// `Declarative Navigation`
+  /// `Quizly Market`
   String get title {
+    return Intl.message('Quizly Market', name: 'title', desc: '', args: []);
+  }
+
+  /// `Нажмите еще раз, чтобы выйти`
+  String get pressBackAgainToExit {
     return Intl.message(
-      'Declarative Navigation',
-      name: 'title',
+      'Нажмите еще раз, чтобы выйти',
+      name: 'pressBackAgainToExit',
       desc: '',
       args: [],
     );
