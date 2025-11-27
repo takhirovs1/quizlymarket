@@ -15,12 +15,15 @@ class _CartScreenState extends CartState {
   Widget build(BuildContext context) =>  Scaffold(
      appBar: AppBar(
       title: Text('Cart', style: context.textTheme.nunitoW500s24.copyWith(color: context.color.primary)),
+      toolbarHeight: 100,
       centerTitle: true,
       backgroundColor: context.color.transparent,
     ),
     body: const SafeArea(
       child: Column(
+        crossAxisAlignment: .start,
         children: [
+          
           Text('Card'),
         ],
       ),
