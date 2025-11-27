@@ -10,9 +10,9 @@ import '../state/settings_state.dart';
 /// {@endtemplate}
 class SettingsScreen extends StatefulWidget {
   /// {@macro settings_screen}
-  const SettingsScreen({required this.data, super.key});
+  const SettingsScreen({ this.data, super.key});
 
-  final String data;
+  final String? data;
 
   /// The state from the closest instance of this class
   /// that encloses the given context, if any.

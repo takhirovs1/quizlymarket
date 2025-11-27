@@ -40,20 +40,6 @@
     }
   </style>
   <script src="https://telegram.org/js/telegram-web-app.js"></script>
-  <script>
-    (function () {
-      const setupTelegramShell = () => {
-        const webApp = window.Telegram && window.Telegram.WebApp;
-        if (!webApp) return;
-
-        webApp.disableVerticalSwipes?.();
-        webApp.expand();
-        webApp.ready();
-      };
-
-      window.addEventListener('flutter-first-frame', setupTelegramShell);
-    })();
-  </script>
 </head>
 <body>
   <script src="flutter_bootstrap.js" async></script>

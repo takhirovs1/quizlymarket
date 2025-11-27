@@ -42,7 +42,8 @@ base mixin SettingsDataSourceMixin on PreferenceDao implements SettingsDataSourc
   Locale get localization {
     final locale = readFromCache<String>(_localizationKey);
 
-    final defaultLocale = switch (ui.PlatformDispatcher.instance.locale.languageCode) {
+    final platformLocale = PlatformDispatcher.instance.locale;
+    final defaultLocale = switch (platformLocale.languageCode.toLowerCase()) {
       'ru' => 'ru',
       _ => 'ru',
     };

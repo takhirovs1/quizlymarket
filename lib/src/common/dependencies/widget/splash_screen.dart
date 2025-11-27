@@ -47,7 +47,7 @@ class _SplashScreenState extends SplashController {
                 ),
                 child: Transform.scale(
                   scale: widget.logo?.scale ?? 1,
-                  child: SvgPicture(AssetBytesLoader(widget.logo?.path ?? '')),
+                  child: _buildLogo(),
                 ),
               ),
             ),
@@ -71,6 +71,23 @@ abstract class SplashController extends State<SplashScreen> with SingleTickerPro
   late Animation<double> animation;
   late Animation<Color?> colorAnimation;
   late Animation<double> opacityAnimation;
+
+  Widget _buildLogo() {
+    final logoPath = widget.logo?.path;
+    if (logoPath == null || logoPath.isEmpty) return const SizedBox.shrink();
+
+    final normalizedPath = logoPath.toLowerCase();
+
+    if (normalizedPath.endsWith('.vec')) {
+      return SvgPicture(AssetBytesLoader(logoPath));
+    }
+
+    if (normalizedPath.endsWith('.svg')) {
+      return SvgPicture.asset(logoPath);
+    }
+
+    return Image.asset(logoPath);
+  }
 
   void _providePreciseHapticFeedback() {
     if (controller.value > 0.2 && !_vibrated) {

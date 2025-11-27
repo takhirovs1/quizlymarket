@@ -9,5 +9,7 @@
   "appConfigurationCancel": "Cancel",
   "appConfigurationReset": "Reset",
   "appConfigurationResetDescription": "Reset your app settings to default.",
-  "title": "Declarative Navigation"
+  "title": "Quizly Market",
+
+"pressBackAgainToExit": "Press back again to exit"
 }

@@ -9,5 +9,7 @@
   "appConfigurationCancel": "Отмена",
   "appConfigurationReset": "Сбросить",
   "appConfigurationResetDescription": "Сбросьте ваши настройки приложения на defaults.",
-  "title": "Declarative Navigation"
+  "title": "Quizly Market",
+  
+"pressBackAgainToExit": "Нажмите еще раз, чтобы выйти"
 }
