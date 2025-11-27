@@ -62,7 +62,7 @@ ThemeData _appLightTheme(String fontFamily) => ThemeData(
       fontWeight: FontWeight.w600,
       fontSize: 16,
       color: Colors.black,
-      fontFamily: FontFamily.workSans,
+      fontFamily: FontFamily.nunito,
     ),
   ),
   bottomSheetTheme: const BottomSheetThemeData(dragHandleColor: Colors.white, dragHandleSize: Size(40, 4)),

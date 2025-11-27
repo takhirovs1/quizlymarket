@@ -11,6 +11,6 @@
 class FontFamily {
   FontFamily._();
 
-  /// Font family: WorkSans
-  static const String workSans = 'WorkSans';
+  /// Font family: Nunito
+  static const String nunito = 'Nunito';
 }

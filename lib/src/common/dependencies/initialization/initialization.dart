@@ -99,6 +99,7 @@ Future<void> _catchExceptions() async {
         details.exception,
         details.stack ?? StackTrace.current,
         hint: 'FLUTTER ERROR\r\n$details',
+        
       ).ignore();
 
       sourceFlutterError?.call(details);

@@ -29,13 +29,7 @@ abstract class MainState extends State<MainScreen> {
   Future<void> onItemTapped(int index) async {
     bottomNavigationAnimated = false;
     setState(() {});
-    if (!kIsWeb) {
-      if (Platform.isIOS) {
-        await HapticFeedback.selectionClick();
-      } else if (await Vibration.hasVibrator()) {
-        await Vibration.vibrate(duration: 30, amplitude: 100);
-      }
-    }
+    await _triggerNavigationHaptics();
     final newTab = MainTabsEnum.values[index];
 
     if (currentTab != newTab) _switchTab(newTab);
@@ -75,6 +69,27 @@ abstract class MainState extends State<MainScreen> {
     super.initState();
     currentTab = widget.initialTab ?? MainTabsEnum.home;
     pageController = PageController(initialPage: currentTab.index);
+  }
+
+  Future<void> _triggerNavigationHaptics() async {
+    if (kIsWeb) return;
+
+    try {
+      await HapticFeedback.selectionClick();
+    } on Object catch (_) {}
+
+    if (Platform.isIOS) return;
+
+    try {
+      final hasVibrator = await Vibration.hasVibrator();
+      if (hasVibrator) {
+        await Vibration.vibrate(duration: 25, amplitude: 90);
+      } else {
+        await HapticFeedback.lightImpact();
+      }
+    } on Object catch (_) {
+      await HapticFeedback.lightImpact();
+    }
   }
 
   @override
