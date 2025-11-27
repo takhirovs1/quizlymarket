@@ -17,11 +17,11 @@ class _HomeScreenState extends HomeState {
   Widget build(BuildContext context) => Scaffold(
       backgroundColor: context.color.background,
       appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(64),
+        preferredSize: const Size.fromHeight(106),
         child: SafeArea(
           bottom: false,
           child: Container(
-            height: 64,
+            height: 106,
             alignment: Alignment.center,
             padding: const EdgeInsets.symmetric(horizontal: 16),
             child: FittedBox(

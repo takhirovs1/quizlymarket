@@ -154,7 +154,10 @@ final class ThemeTextStyles extends ThemeExtension<ThemeTextStyles> {
   static const Color _darkThemeTextStyleColor = Colors.white;
   static const String _fontFamily = FontFamily.nunito;
 
-  TextStyle _sf(TextStyle style) => style.copyWith(fontFamily: FontFamily.sFPro);
+  TextStyle _sf(TextStyle style) => style.copyWith(
+        fontFamily: FontFamily.sFPro,
+        fontStyle: FontStyle.normal,
+      );
 
   static const ThemeTextStyles light = ThemeTextStyles(
     nunitoW300s10: TextStyle(

@@ -33,65 +33,15 @@
   <title>quizlymarket</title>
   <link rel="manifest" href="manifest.json">
   <style>
-      html, body {
-        height: 100%;
-        width: 100%;
-        margin: 0;
-        padding: 0;
-        background-color: #ffffff;
-        overscroll-behavior: contain;
-        -webkit-overflow-scrolling: touch;
-      }
+    html, body {
+      height: 100%;
+      margin: 0;
+      background-color: #ffffff;
+    }
   </style>
   <script src="https://telegram.org/js/telegram-web-app.js"></script>
 </head>
 <body>
   <script src="flutter_bootstrap.js" async></script>
-  <script>
-    (function () {
-      function initTelegramWebApp() {
-        if (!window.Telegram || !window.Telegram.WebApp) return;
-
-        const webApp = window.Telegram.WebApp;
-
-        try {
-          webApp.ready();
-        } catch (e) {
-          console.error('Telegram WebApp.ready error', e);
-        }
-
-        try {
-          if (typeof webApp.expand === 'function') {
-            webApp.expand();
-          }
-        } catch (e) {
-          console.error('Telegram WebApp.expand error', e);
-        }
-
-        try {
-          if (typeof webApp.enableClosingConfirmation === 'function') {
-            webApp.enableClosingConfirmation();
-          }
-        } catch (e) {
-          console.error('Telegram WebApp.enableClosingConfirmation error', e);
-        }
-      }
-
-      if (document.readyState === 'complete' || document.readyState === 'interactive') {
-        initTelegramWebApp();
-      } else {
-        window.addEventListener('DOMContentLoaded', initTelegramWebApp);
-      }
-
-      // Prevent swipe-down from propagating to Telegram container so the sheet doesn't collapse
-      document.addEventListener(
-        'touchmove',
-        function (event) {
-          event.stopPropagation();
-        },
-        { passive: true }
-      );
-    })();
-  </script>
 </body>
 </html>

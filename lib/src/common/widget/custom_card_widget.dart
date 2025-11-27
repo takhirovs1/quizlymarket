@@ -112,7 +112,7 @@ class _CustomCardWidgetState extends State<CustomCardWidget> {
                   ),
                   onPressed: () {},
                   child: Text(
-                    'Sotib olish',
+  widget.buttonText,                    
                     style: context.textTheme.sfProW500s14.copyWith(
                       color: context.color.white,
                     ),
