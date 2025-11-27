@@ -1,0 +1,5 @@
+dependency_overrides:
+  database:
+    path: package/database
+  local_source:
+    path: package/local_source

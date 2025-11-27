@@ -1,0 +1,13 @@
+{
+  "@@locale": "ru",
+  "noInternetConnection": "Нет интернет соединения",
+  "noInternetConnectionDescription": "Пожалуйста, проверьте ваше интернет соединение и попробуйте снова.",
+  "refresh": "Обновить",
+  "appConfiguration": "Настройка приложения",
+  "appConfigurationDescription": "Настройте ваши настройки приложения здесь.",
+  "appConfigurationSave": "Сохранить",
+  "appConfigurationCancel": "Отмена",
+  "appConfigurationReset": "Сбросить",
+  "appConfigurationResetDescription": "Сбросьте ваши настройки приложения на defaults.",
+  "title": "Declarative Navigation"
+}

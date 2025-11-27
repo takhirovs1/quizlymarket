@@ -1,0 +1,13 @@
+{
+  "@@locale": "en",
+  "noInternetConnection": "No internet connection",
+  "noInternetConnectionDescription": "Please check your internet connection and try again.",
+  "refresh": "Refresh",
+  "appConfiguration": "App Configuration",
+  "appConfigurationDescription": "Configure your app settings here.",
+  "appConfigurationSave": "Save",
+  "appConfigurationCancel": "Cancel",
+  "appConfigurationReset": "Reset",
+  "appConfigurationResetDescription": "Reset your app settings to default.",
+  "title": "Declarative Navigation"
+}

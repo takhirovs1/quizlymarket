@@ -1,0 +1,44 @@
+name: infinity_energy_mobile
+packages:
+  - "."
+  - "package/**"
+# Define scripts (commands) you can run in your workspace
+scripts:
+  # Bootstraps the workspace: installs dependencies and links packages
+  bootstrap:
+    description: "Install dependencies & link packages for all packages"
+    run: melos bootstrap --no-default-excludes
+
+  # Analyze all Dart/Flutter code
+  analyze:
+    description: "Run static analysis for all packages"
+    run: dart analyze .
+
+  # Clean build artifacts for all packages
+  clean:
+    description: "Run 'flutter clean' in every package"
+    run: melos exec -- flutter clean
+
+  # Format Dart code consistently
+  format:
+    description: "Format all Dart code to 120 columns"
+    run: dart format -l 120 .
+
+  # Build command for production
+  build:
+    description: "Build release artifacts"
+    run: melos run build
+
+  # Bump versions across packages following conventional commits
+  version:
+    description: "Bump versions & generate CHANGELOG.md"
+    run: melos version --conventional-commits --yes
+
+  # Generate code
+  gen:
+    description: "Generate code"
+    run: dart run build_runner build --delete-conflicting-outputs --release
+
+  fluttergen:
+    description: "Generate assets with flutter_gen"
+    run: dart pub global activate flutter_gen && fluttergen -c pubspec.yaml

@@ -1,0 +1,4 @@
+{
+  "ENVIRONMENT": "staging",
+  "API_BASE_URL": "https://httpbin.org"
+}

@@ -1,0 +1,174 @@
+name: quizlymarket
+description: "A new Flutter project."
+# The following line prevents the package from being accidentally published to
+# pub.dev using `flutter pub publish`. This is preferred for private packages.
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.10.1
+
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  flutter_localizations:
+    sdk: flutter
+
+  # local package
+  local_source:
+    path: package/local_source/
+  database:
+    path: package/database/
+
+  # annotation
+  meta: ^1.17.0
+
+  # utility
+  intl: ^0.20.2
+  collection: ^1.19.1
+  async: ^2.13.0
+  path: ^1.9.1
+  path_provider: ^2.1.5
+  platform_info: ^5.0.0
+  device_info_plus: ^12.2.0
+  url_launcher: ^6.3.2
+  connectivity_plus: ^7.0.0
+  permission_handler: ^12.0.1
+
+  # networking
+  dio_retry_plus: ^2.0.8
+  thunder: ^0.2.3
+
+  # routing
+  elixir:
+    git:
+      url: https://github.com/Miracle-Blue/elixir
+
+   # state management
+  flutter_bloc: ^9.1.1
+  equatable: ^2.0.7
+
+   # firebase
+  firebase_core: ^4.2.1
+  firebase_crashlytics: ^5.0.5
+  firebase_messaging: ^16.0.4
+  firebase_remote_config: ^6.1.2
+  firebase_analytics: ^12.0.4
+
+    # notifications
+  flutter_local_notifications: ^19.5.0
+
+  # UI and widgets
+  shimmer: ^3.0.0
+  flutter_svg: ^2.2.3
+  cached_network_image: ^3.4.1
+  share_plus: ^12.0.1
+  skeletonizer: ^2.1.0+1
+
+  cupertino_icons: ^1.0.8
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+   # code generation
+  build_runner: ^2.10.4
+  pubspec_generator: ^5.0.0
+  flutter_gen_runner: ^5.12.0
+  # dart run flutter_launcher_icons -f flutter_launcher_icons.yaml
+  flutter_launcher_icons: ^0.14.4
+  # dart run flutter_native_splash:create --path=flutter_native_splash.yaml
+  flutter_native_splash: ^2.4.7
+  vector_graphics_compiler: ^1.1.19
+
+  # project management
+  melos: ^7.3.0
+
+  # linting
+  flutter_lints: ^6.0.0
+
+
+
+# The following section is specific to Flutter packages.
+flutter:
+  generate: true
+  uses-material-design: true
+
+
+  assets:
+    - assets/vectors/
+    - assets/images/
+    - config/
+
+  fonts:
+    - family: WorkSans
+      fonts:
+        - asset: assets/fonts/work_sans/WorkSans-Black.ttf
+          weight: 900
+        - asset: assets/fonts/work_sans/WorkSans-BlackItalic.ttf
+          weight: 900
+          style: italic
+        - asset: assets/fonts/work_sans/WorkSans-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/work_sans/WorkSans-BoldItalic.ttf
+          weight: 700
+          style: italic
+        - asset: assets/fonts/work_sans/WorkSans-ExtraBold.ttf
+          weight: 800
+        - asset: assets/fonts/work_sans/WorkSans-ExtraBoldItalic.ttf
+          weight: 800
+          style: italic
+        - asset: assets/fonts/work_sans/WorkSans-ExtraLight.ttf
+          weight: 200
+        - asset: assets/fonts/work_sans/WorkSans-ExtraLightItalic.ttf
+          weight: 200
+          style: italic
+        - asset: assets/fonts/work_sans/WorkSans-Italic.ttf
+          style: italic
+        - asset: assets/fonts/work_sans/WorkSans-Light.ttf
+          weight: 300
+        - asset: assets/fonts/work_sans/WorkSans-LightItalic.ttf
+          weight: 300
+          style: italic
+        - asset: assets/fonts/work_sans/WorkSans-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/work_sans/WorkSans-MediumItalic.ttf
+          weight: 500
+          style: italic
+        - asset: assets/fonts/work_sans/WorkSans-Regular.ttf
+        - asset: assets/fonts/work_sans/WorkSans-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/work_sans/WorkSans-SemiBoldItalic.ttf
+          weight: 600
+          style: italic
+        - asset: assets/fonts/work_sans/WorkSans-Thin.ttf
+          weight: 100
+        - asset: assets/fonts/work_sans/WorkSans-ThinItalic.ttf
+          weight: 100
+          style: italic
+
+
+flutter_intl:
+  enabled: true
+  class_name: GeneratedLocalization
+  main_locale: ru
+  arb_dir: lib/src/common/localization
+  output_dir: lib/src/common/localization/generated
+  use_deferred_loading: false
+  line_length: 120
+
+flutter_gen:
+  output: lib/src/common/constant/gen
+  line_length: 120
+
+  integrations:
+    flutter_svg: true
+
+melos:
+  scripts:
+    fluttergen:
+      description: "Run build_runner & FlutterGen code generation"
+      run: dart run build_runner build --delete-conflicting-outputs
