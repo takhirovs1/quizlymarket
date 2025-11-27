@@ -59,8 +59,8 @@ Map<String, _InitializationStep> get _initializationSteps => <String, _Initializ
   'App Initial Settings': (dependencies) {
     final localization = dependencies.localeSource.localization;
     final theme = dependencies.localeSource.theme == ThemeMode.light
-        ? AppThemeData.light(FontFamily.workSans)
-        : AppThemeData.dark(FontFamily.workSans);
+        ? AppThemeData.light(FontFamily.nunito)
+        : AppThemeData.dark(FontFamily.nunito);
     final hapticsEnabled = dependencies.localeSource.hapticsEnabled;
 
     dependencies.settingsBloc = SettingsBloc(

@@ -93,7 +93,7 @@ class CustomNotification extends StatefulWidget {
       builder: (context) => CustomNotification(
         message: message,
         backgroundColor: backgroundColor ?? const Color(0xFF17B26A),
-        textStyle: textStyle ?? context.textTheme.workSansW400s14.copyWith(color: context.color.white),
+        textStyle: textStyle ?? context.textTheme.nunitoW400s14.copyWith(color: context.color.white),
         duration: duration ?? const Duration(seconds: 3),
         icon: icon,
         radius: radius ?? const BorderRadius.all(Radius.circular(64)),

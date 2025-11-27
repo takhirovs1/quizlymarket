@@ -35,8 +35,8 @@ final class SettingsRepositoryImpl implements ISettingsRepository {
     return AppSettings(
       localization: localization,
       appTheme: switch (themeMode == ThemeMode.light) {
-        true => AppThemeData.light(FontFamily.workSans),
-        false => AppThemeData.dark(FontFamily.workSans),
+        true => AppThemeData.light(FontFamily.nunito),
+        false => AppThemeData.dark(FontFamily.nunito),
       },
       hapticsEnabled: hapticsEnabled,
     );

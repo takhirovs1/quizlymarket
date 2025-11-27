@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../../common/constant/gen/assets.gen.dart';
 import '../../../../common/extension/context_extension.dart';
 
-import '../../../card/presentation/screen/card_screen.dart';
+import '../../../cart/presentation/screen/cart_screen.dart';
 import '../../../home/presentation/screen/home_screen.dart';
 
 import '../../../settings/screen/settings_screen.dart';
@@ -38,7 +38,7 @@ class _MainScreenState extends MainState {
         physics: const NeverScrollableScrollPhysics(),
         children: const <Widget>[
           HomeScreen(),
-          CardScreen(),
+          CartScreen(),
           SettingsScreen(),
         
         ],
@@ -68,7 +68,7 @@ class _MainScreenState extends MainState {
                           SizedBox(
                             width: 25,
                             child: Center(
-                              child: i.svg(colorFilter: ColorFilter.mode(context.color.onSurface, BlendMode.srcATop)),
+                              child: i.svg(colorFilter: ColorFilter.mode(context.color.primary, BlendMode.srcATop)),
                             ),
                           ),
                           Positioned(
@@ -81,7 +81,7 @@ class _MainScreenState extends MainState {
                                 margin: EdgeInsets.only(left: bottomNavigationAnimated ? 0 : 11),
                                 height: 3,
                                 decoration: BoxDecoration(
-                                  color: context.color.black,
+                                  color: context.color.primary,
                                   borderRadius: const BorderRadius.all(Radius.circular(10)),
                                 ),
                               ),

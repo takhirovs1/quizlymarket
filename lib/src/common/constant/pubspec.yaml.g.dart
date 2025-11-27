@@ -126,10 +126,10 @@ sealed class Pubspec {
     11,
     27,
     9,
-    4,
-    40,
-    772,
-    728,
+    33,
+    51,
+    811,
+    438,
   );
 
   /// Name
@@ -532,7 +532,7 @@ sealed class Pubspec {
         r'config/',
       ],
       'fonts': <Object>[
-        r'{family: WorkSans, fonts: [{asset: assets/fonts/work_sans/WorkSans-Black.ttf, weight: 900}, {asset: assets/fonts/work_sans/WorkSans-BlackItalic.ttf, weight: 900, style: italic}, {asset: assets/fonts/work_sans/WorkSans-Bold.ttf, weight: 700}, {asset: assets/fonts/work_sans/WorkSans-BoldItalic.ttf, weight: 700, style: italic}, {asset: assets/fonts/work_sans/WorkSans-ExtraBold.ttf, weight: 800}, {asset: assets/fonts/work_sans/WorkSans-ExtraBoldItalic.ttf, weight: 800, style: italic}, {asset: assets/fonts/work_sans/WorkSans-ExtraLight.ttf, weight: 200}, {asset: assets/fonts/work_sans/WorkSans-ExtraLightItalic.ttf, weight: 200, style: italic}, {asset: assets/fonts/work_sans/WorkSans-Italic.ttf, style: italic}, {asset: assets/fonts/work_sans/WorkSans-Light.ttf, weight: 300}, {asset: assets/fonts/work_sans/WorkSans-LightItalic.ttf, weight: 300, style: italic}, {asset: assets/fonts/work_sans/WorkSans-Medium.ttf, weight: 500}, {asset: assets/fonts/work_sans/WorkSans-MediumItalic.ttf, weight: 500, style: italic}, {asset: assets/fonts/work_sans/WorkSans-Regular.ttf}, {asset: assets/fonts/work_sans/WorkSans-SemiBold.ttf, weight: 600}, {asset: assets/fonts/work_sans/WorkSans-SemiBoldItalic.ttf, weight: 600, style: italic}, {asset: assets/fonts/work_sans/WorkSans-Thin.ttf, weight: 100}, {asset: assets/fonts/work_sans/WorkSans-ThinItalic.ttf, weight: 100, style: italic}]}',
+        r'{family: Nunito, fonts: [{asset: assets/fonts/work_sans/Nunito-Black.ttf, weight: 900}, {asset: assets/fonts/work_sans/Nunito-BlackItalic.ttf, weight: 900, style: italic}, {asset: assets/fonts/work_sans/Nunito-Bold.ttf, weight: 700}, {asset: assets/fonts/work_sans/Nunito-BoldItalic.ttf, weight: 700, style: italic}, {asset: assets/fonts/work_sans/Nunito-ExtraBold.ttf, weight: 800}, {asset: assets/fonts/work_sans/Nunito-ExtraBoldItalic.ttf, weight: 800, style: italic}, {asset: assets/fonts/work_sans/Nunito-ExtraLight.ttf, weight: 200}, {asset: assets/fonts/work_sans/Nunito-ExtraLightItalic.ttf, weight: 200, style: italic}, {asset: assets/fonts/work_sans/Nunito-Italic.ttf, style: italic}, {asset: assets/fonts/work_sans/Nunito-Light.ttf, weight: 300}, {asset: assets/fonts/work_sans/Nunito-LightItalic.ttf, weight: 300, style: italic}, {asset: assets/fonts/work_sans/Nunito-Medium.ttf, weight: 500}, {asset: assets/fonts/work_sans/Nunito-MediumItalic.ttf, weight: 500, style: italic}, {asset: assets/fonts/work_sans/Nunito-Regular.ttf}, {asset: assets/fonts/work_sans/Nunito-SemiBold.ttf, weight: 600}, {asset: assets/fonts/work_sans/Nunito-SemiBoldItalic.ttf, weight: 600, style: italic}]}',
       ],
     },
     'flutter_intl': <String, Object>{

@@ -52,7 +52,7 @@ class _NetworkConnectionAppState extends State<NetworkConnectionApp> {
                 /// No internet text
                 Text(
                   context.l10n.noInternetConnection,
-                  style: context.textTheme.workSansW500s24,
+                  style: context.textTheme.nunitoW500s24,
                   textAlign: TextAlign.center,
                 ),
 
@@ -61,7 +61,7 @@ class _NetworkConnectionAppState extends State<NetworkConnectionApp> {
                   padding: const EdgeInsets.symmetric(horizontal: 40),
                   child: Text(
                     context.l10n.noInternetConnectionDescription,
-                    style: context.textTheme.workSansW400s16,
+                    style: context.textTheme.nunitoW400s16,
                     textAlign: TextAlign.center,
                   ),
                 ),
@@ -77,7 +77,7 @@ class _NetworkConnectionAppState extends State<NetworkConnectionApp> {
                       Dimension.wBox4,
                       Text(
                         context.l10n.refresh,
-                        style: context.textTheme.workSansW500s16.copyWith(color: context.color.white),
+                        style: context.textTheme.nunitoW500s16.copyWith(color: context.color.white),
                       ),
                     ],
                   ),

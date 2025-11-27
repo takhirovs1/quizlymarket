@@ -27,8 +27,8 @@ class _SplashScreenState extends SplashController {
   @override
   Widget build(BuildContext context) {
     final theme = View.of(context).platformDispatcher.platformBrightness == Brightness.light
-        ? AppThemeData.light(FontFamily.workSans)
-        : AppThemeData.dark(FontFamily.workSans);
+        ? AppThemeData.light(FontFamily.nunito)
+        : AppThemeData.dark(FontFamily.nunito);
 
     return Material(
       color: theme.appColors.white,
