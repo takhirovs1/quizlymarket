@@ -1,6 +1,7 @@
 import 'dart:async';
-import 'dart:io';
+import 'dart:io' show Platform;
 
+import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:vibration/vibration.dart';
@@ -28,10 +29,10 @@ abstract class MainState extends State<MainScreen> {
   Future<void> onItemTapped(int index) async {
     bottomNavigationAnimated = false;
     setState(() {});
-    if (Platform.isIOS) {
-      await HapticFeedback.selectionClick();
-    } else {
-      if (await Vibration.hasVibrator()) {
+    if (!kIsWeb) {
+      if (Platform.isIOS) {
+        await HapticFeedback.selectionClick();
+      } else if (await Vibration.hasVibrator()) {
         await Vibration.vibrate(duration: 30, amplitude: 100);
       }
     }
@@ -72,8 +73,8 @@ abstract class MainState extends State<MainScreen> {
   @override
   void initState() {
     super.initState();
-    pageController = PageController();
     currentTab = widget.initialTab ?? MainTabsEnum.home;
+    pageController = PageController(initialPage: currentTab.index);
   }
 
   @override

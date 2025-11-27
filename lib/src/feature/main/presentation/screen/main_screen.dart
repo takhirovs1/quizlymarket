@@ -60,7 +60,7 @@ class _MainScreenState extends MainState {
                     NavigationDestination(
                       icon: SizedBox(
                         width: 25,
-                        child: i.svg(colorFilter:  ColorFilter.mode(context.color.black, BlendMode.srcATop)),
+                        child: i.svg(colorFilter: const ColorFilter.mode(Color(0xFFBBBFD0), BlendMode.srcATop)),
                       ),
                       selectedIcon: Stack(
                         clipBehavior: Clip.none,
@@ -68,7 +68,7 @@ class _MainScreenState extends MainState {
                           SizedBox(
                             width: 25,
                             child: Center(
-                              child: i.svg(colorFilter: ColorFilter.mode(context.color.black, BlendMode.srcATop)),
+                              child: i.svg(colorFilter: ColorFilter.mode(context.color.onSurface, BlendMode.srcATop)),
                             ),
                           ),
                           Positioned(
@@ -83,7 +83,7 @@ class _MainScreenState extends MainState {
                                 decoration: BoxDecoration(
                                   color: context.color.black,
                                   borderRadius: const BorderRadius.all(Radius.circular(10)),
-                                ), 
+                                ),
                               ),
                             ),
                           ),
