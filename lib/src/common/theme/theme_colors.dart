@@ -26,6 +26,7 @@ final class ThemeColors extends ThemeExtension<ThemeColors> {
     required this.overlay,
     required this.transparent,
     required this.black,
+    required this.gray,
   });
 
   final Color primary;
@@ -51,6 +52,7 @@ final class ThemeColors extends ThemeExtension<ThemeColors> {
   final Color overlay;
   final Color transparent;
   final Color black;
+  final Color gray;
 
   static const ThemeColors light = ThemeColors(
     primary: Color(0xFF3772FF),
@@ -76,6 +78,7 @@ final class ThemeColors extends ThemeExtension<ThemeColors> {
     overlay: Color(0xAA0C1527),
     transparent: Colors.transparent,
     black: Colors.black,
+    gray: Color(0xFF808080),
   );
 
   static const ThemeColors dark = ThemeColors(
@@ -102,6 +105,7 @@ final class ThemeColors extends ThemeExtension<ThemeColors> {
     overlay: Color(0xCC040812),
     transparent: Colors.transparent,
     black: Colors.black,
+    gray: Color(0xFF808080),
   );
 
   @override
@@ -129,6 +133,7 @@ final class ThemeColors extends ThemeExtension<ThemeColors> {
     Color? overlay,
     Color? transparent,
     Color? black,
+    Color? gray,
   }) =>
       ThemeColors(
         primary: primary ?? this.primary,
@@ -154,6 +159,7 @@ final class ThemeColors extends ThemeExtension<ThemeColors> {
         overlay: overlay ?? this.overlay,
         transparent: transparent ?? this.transparent,
         black: black ?? this.black,
+        gray: gray ?? this.gray,
       );
 
   @override
@@ -183,5 +189,6 @@ final class ThemeColors extends ThemeExtension<ThemeColors> {
           overlay: Color.lerp(overlay, other.overlay, t)!,
           transparent: Color.lerp(transparent, other.transparent, t)!,
           black: Color.lerp(black, other.black, t)!,
+          gray: Color.lerp(gray, other.gray, t)!,
         );
 }

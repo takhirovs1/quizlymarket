@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 import '../../../../common/extension/context_extension.dart';
+import '../../../../common/util/dimension.dart';
+import '../../../../common/widget/custom_card_widget.dart';
 import '../state/home_state.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -12,37 +14,41 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends HomeState {
   @override
-  Widget build(BuildContext context) {
-    final titleStyle = context.textTheme.nunitoW600s20.copyWith(color: context.color.primary);
-
-    return Scaffold(
-      // backgroundColor: context.color.background,
+  Widget build(BuildContext context) => Scaffold(
+      backgroundColor: context.color.background,
       appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(kToolbarHeight),
+        preferredSize: const Size.fromHeight(64),
         child: SafeArea(
           bottom: false,
-          child: AppBar(
-            automaticallyImplyLeading: false,
-            elevation: 0,
-            backgroundColor: Colors.transparent,
-            centerTitle: true,
-            titleSpacing: 0,
-            title: FittedBox(
+          child: Container(
+            height: 64,
+            alignment: Alignment.center,
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: FittedBox(
               fit: BoxFit.scaleDown,
-              child: Text('QuizlyMarket', style: titleStyle),
+              child: Text(
+                'QuizlyMarket',
+                style: context.textTheme.nunitoW600s24.copyWith(color: context.color.primary),
+              ),
             ),
           ),
         ),
       ),
-      body: const SafeArea(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text('Home'),
-          ],
+      body:  SafeArea(
+        child:ListView.separated(
+          itemBuilder: (context, index) =>  CustomCardWidget(
+            subject: 'Akademik koʻnikmalar',
+            university: 'Alfraganus',
+            direction: 'Iqtisodiyot sirtqi 2-kurs 2-semistr',
+            testCount: 10,
+            year: '2025-2026',
+            price: 10000,
+            buttonText: 'Sotib olish',
+            onPressed: () {},
+          ),
+          separatorBuilder: (context, index) => Dimension.hBox12,
+          itemCount: 10,
         ),
       ),
     );
-  }
 }

@@ -109,9 +109,52 @@ final class ThemeTextStyles extends ThemeExtension<ThemeTextStyles> {
   final TextStyle nunitoW500s30;
   final TextStyle nunitoW600s30;
 
+  TextStyle get sfProW300s10 => _sf(nunitoW300s10);
+  TextStyle get sfProW400s10 => _sf(nunitoW400s10);
+  TextStyle get sfProW500s10 => _sf(nunitoW500s10);
+  TextStyle get sfProW600s10 => _sf(nunitoW600s10);
+  TextStyle get sfProW300s12 => _sf(nunitoW300s12);
+  TextStyle get sfProW400s12 => _sf(nunitoW400s12);
+  TextStyle get sfProW500s12 => _sf(nunitoW500s12);
+  TextStyle get sfProW600s12 => _sf(nunitoW600s12);
+  TextStyle get sfProW300s14 => _sf(nunitoW300s14);
+  TextStyle get sfProW400s14 => _sf(nunitoW400s14);
+  TextStyle get sfProW500s14 => _sf(nunitoW500s14);
+  TextStyle get sfProW600s14 => _sf(nunitoW600s14);
+  TextStyle get sfProW300s16 => _sf(nunitoW300s16);
+  TextStyle get sfProW400s16 => _sf(nunitoW400s16);
+  TextStyle get sfProW500s16 => _sf(nunitoW500s16);
+  TextStyle get sfProW600s16 => _sf(nunitoW600s16);
+  TextStyle get sfProW300s18 => _sf(nunitoW300s18);
+  TextStyle get sfProW400s18 => _sf(nunitoW400s18);
+  TextStyle get sfProW500s18 => _sf(nunitoW500s18);
+  TextStyle get sfProW600s18 => _sf(nunitoW600s18);
+  TextStyle get sfProW300s20 => _sf(nunitoW300s20);
+  TextStyle get sfProW400s20 => _sf(nunitoW400s20);
+  TextStyle get sfProW500s20 => _sf(nunitoW500s20);
+  TextStyle get sfProW600s20 => _sf(nunitoW600s20);
+  TextStyle get sfProW300s22 => _sf(nunitoW300s22);
+  TextStyle get sfProW400s22 => _sf(nunitoW400s22);
+  TextStyle get sfProW500s22 => _sf(nunitoW500s22);
+  TextStyle get sfProW600s22 => _sf(nunitoW600s22);
+  TextStyle get sfProW300s24 => _sf(nunitoW300s24);
+  TextStyle get sfProW400s24 => _sf(nunitoW400s24);
+  TextStyle get sfProW500s24 => _sf(nunitoW500s24);
+  TextStyle get sfProW600s24 => _sf(nunitoW600s24);
+  TextStyle get sfProW300s26 => _sf(nunitoW300s26);
+  TextStyle get sfProW400s26 => _sf(nunitoW400s26);
+  TextStyle get sfProW500s26 => _sf(nunitoW500s26);
+  TextStyle get sfProW600s26 => _sf(nunitoW600s26);
+  TextStyle get sfProW300s30 => _sf(nunitoW300s30);
+  TextStyle get sfProW400s30 => _sf(nunitoW400s30);
+  TextStyle get sfProW500s30 => _sf(nunitoW500s30);
+  TextStyle get sfProW600s30 => _sf(nunitoW600s30);
+
   static const Color _lightThemeTextStyleColor = Colors.black;
   static const Color _darkThemeTextStyleColor = Colors.white;
   static const String _fontFamily = FontFamily.nunito;
+
+  TextStyle _sf(TextStyle style) => style.copyWith(fontFamily: FontFamily.sFPro);
 
   static const ThemeTextStyles light = ThemeTextStyles(
     nunitoW300s10: TextStyle(
