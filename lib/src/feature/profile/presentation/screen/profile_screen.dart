@@ -37,7 +37,7 @@ class _ProfileScreenState extends ProfileState {
                 children: [
                   Dimension.hBox64,
                   ProfileHeader(
-                    photoUrl: profileData.photoUrl ?? '',
+                    photoUrl: profilePhotoUrl,
                     fullName: profileData.fullName,
                     id: profileData.id.toString(),
                     username: profileData.username ?? '',
