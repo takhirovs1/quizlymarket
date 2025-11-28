@@ -96,6 +96,8 @@ class _ProfileScreenState extends ProfileState {
                       isLogout: true,
                     ),
                   ),
+
+                  Text(profileData.photoUrl.toString()),
                 ],
               ),
             ),
