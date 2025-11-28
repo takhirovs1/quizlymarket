@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
@@ -24,7 +26,8 @@ abstract class ProfileState extends State<ProfileScreen> {
     profileData = telegramUser != null
         ? ProfileUserData.fromTelegram(telegramUser)
         : const ProfileUserData.mock();
-  }
+    log('userPhotoUrl: ${profileData.photoUrl}');
+      }
 
   @override
   void didChangeDependencies() {

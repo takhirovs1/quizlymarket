@@ -16,11 +16,11 @@ class ProfileUserData {
   });
 
   const ProfileUserData.mock()
-    : id = 7282825856,
+    : id = 123456,
       firstName = 'Takhirov',
       lastName = null,
       username = 'takhirovs',
-      photoUrl = 'https://media.nngroup.com/media/people/photos/Kathryn_1.jpg.1200x1200_q75_autocrop_crop-smart_upscale.jpg',
+      photoUrl = 'https://farm4.staticflickr.com/3049/2327691528_f060ee2d1f.jpg',
       languageCode = 'uz',
       balance = 300000,
       isPremium = true,
