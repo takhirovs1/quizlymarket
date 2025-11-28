@@ -1,8 +1,8 @@
-import 'package:elixir/elixir.dart';
 import 'package:flutter/material.dart';
 
 import '../../../common/constant/gen/assets.gen.dart';
 import '../../../common/extension/context_extension.dart';
+import '../../../common/router/route.dart';
 import '../../../common/util/dimension.dart';
 
 class OnboardingScreen extends StatelessWidget {
@@ -32,8 +32,8 @@ class OnboardingScreen extends StatelessWidget {
           ElevatedButton(
             style: const ButtonStyle(padding: WidgetStatePropertyAll(Dimension.pV16)),
             onPressed: () {
-              context.localSource.setOnboardingCompleted(true);
-              context.elixir.pop();
+              // context.localSource.setOnboardingCompleted(true);
+              context.pushReplacement(const MainPage());
             },
             child: Text(
               'Start'.toUpperCase(),

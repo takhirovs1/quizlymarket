@@ -80,13 +80,15 @@ extension NavigatorX on BuildContext {
   }
 
   void pushReplacement(ElixirPage page) {
+    print('pushReplacement: ${page.name}');
     elixir.change((state) {
+      print('state: $state');
       if (state.isNotEmpty && state.last.name == page.name) return state;
 
-      final newState = List<ElixirPage>.from(state);
+      var newState = List<ElixirPage>.from(state);
+      newState = List<ElixirPage>.from(newState.toSet())..add(page);
+      print('pushReplacement: ${page}');
 
-      if (newState.isNotEmpty) newState.clear();
-      newState.add(page);
       return newState;
     });
   }

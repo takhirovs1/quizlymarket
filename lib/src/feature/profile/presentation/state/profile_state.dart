@@ -8,6 +8,7 @@ import 'package:telegram_web_app/telegram_web_app.dart';
 import '../../../../common/constant/urls.dart';
 import '../../../../common/extension/context_extension.dart';
 import '../../../../common/model/language_option.dart';
+import '../../../../common/router/route.dart';
 import '../../../../common/util/dimension.dart';
 import '../../../../common/widget/custom_bottom_sheet.dart';
 import '../../../../common/widget/custom_tile.dart';
@@ -65,31 +66,25 @@ abstract class ProfileState extends State<ProfileScreen> {
     barrierDismissible: true,
     builder: (ctx) => CupertinoAlertDialog(
       title: Text(context.l10n.signOut),
-      content: Padding(
-        padding: Dimension.pTop8,
-        child: Text(context.l10n.logoutConfirmMessage),
-      ),
+      content: Padding(padding: Dimension.pTop8, child: Text(context.l10n.logoutConfirmMessage)),
       actions: [
         CupertinoDialogAction(
-          onPressed: () => context.pop(),
+          onPressed: () => Navigator.pop(context),
           child: Text(
             context.l10n.logoutCancel,
-            style: context.textTheme.nunitoW600s16.copyWith(
-              color: context.color.primary,
-            ),
+            style: context.textTheme.nunitoW600s16.copyWith(color: context.color.primary),
           ),
         ),
         CupertinoDialogAction(
           isDestructiveAction: true,
           onPressed: () {
-            // context.localSource.clearAll().then((_) => context.go(Routes.auth));
-            context.pop();
+            context.localSource.clearAll();
+            Navigator.pop(context);
+            context.push(SettingsPage(data: 'seeeeeeeeeeeeeee'));
           },
           child: Text(
             context.l10n.logoutConfirm,
-            style: context.textTheme.nunitoW400s16.copyWith(
-              color: context.color.error,
-            ),
+            style: context.textTheme.nunitoW400s16.copyWith(color: context.color.error),
           ),
         ),
       ],
@@ -122,9 +117,7 @@ abstract class ProfileState extends State<ProfileScreen> {
               children: [
                 for (final (index, option) in languages.indexed) ...[
                   CustomTileChanger(
-                    trailing: currentLocale == option.code
-                        ? const Icon(Icons.check)
-                        : null,
+                    trailing: currentLocale == option.code ? const Icon(Icons.check) : null,
                     title: option.label,
                     onTap: () => _changeLocale(option.code),
                   ),
