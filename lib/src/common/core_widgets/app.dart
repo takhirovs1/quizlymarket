@@ -24,36 +24,32 @@ class _AppState extends State<App> with RouteStateMixin {
   final GlobalKey<State<StatefulWidget>> _preserveKey = GlobalKey<State<StatefulWidget>>();
 
   @override
-  Widget build(BuildContext context) {
-    final settingsBloc = context.dependencies.settingsBloc;
+  Widget build(BuildContext context) => BlocBuilder<SettingsBloc, SettingsState>(
+    bloc: context.dependencies.settingsBloc,
+    builder: (context, state) => MaterialApp(
+      key: _preserveKey,
+      debugShowCheckedModeBanner: false,
+      restorationScopeId: 'material_app',
+      onGenerateTitle: (context) => context.l10n.title,
 
-    return BlocBuilder<SettingsBloc, SettingsState>(
-      bloc: settingsBloc,
-      builder: (context, state) => MaterialApp(
-        key: _preserveKey,
-        debugShowCheckedModeBanner: false,
-        restorationScopeId: 'material_app',
-        onGenerateTitle: (context) => context.l10n.title,
+      /// Locale
+      supportedLocales: Localization.supportedLocales,
+      localizationsDelegates: Localization.delegates,
+      locale: state.settings.localization,
 
-        /// Locale
-        supportedLocales: Localization.supportedLocales,
-        localizationsDelegates: Localization.delegates,
-        locale: state.settings.localization,
-
-        /// Theme
-        theme: state.settings.appTheme,
-        builder: (context, _) => MediaQuery(
-          data: MediaQuery.of(context).copyWith(textScaler: .noScaling),
-          child: KeyboardDismiss(
-            child: Thunder(
-              dio: context.dependencies.dio.all,
-              color: context.color.success,
-              enabled: true,
-              child: Elixir.controlled(controller: ValueNotifier(initialPages), guards: guards),
-            ),
+      /// Theme
+      theme: state.settings.appTheme,
+      builder: (context, _) => MediaQuery(
+        data: MediaQuery.of(context).copyWith(textScaler: .noScaling),
+        child: KeyboardDismiss(
+          child: Thunder(
+            dio: context.dependencies.dio.all,
+            color: context.color.success,
+            enabled: true,
+            child: Elixir.controlled(controller: ValueNotifier(initialPages), guards: guards),
           ),
         ),
       ),
-    );
-  }
+    ),
+  );
 }
