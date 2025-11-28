@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:telegram_web_app/telegram_web_app.dart';
 
 import '../../../../common/constant/gen/assets.gen.dart';
 import '../../../../common/extension/context_extension.dart';
@@ -33,15 +34,13 @@ class _MainScreenState extends MainState {
     canPop: canPop,
     onPopInvokedWithResult: onPopInvokedWithResult,
     child: Scaffold(
-      body: PageView(
-        controller: pageController,
-        physics: const NeverScrollableScrollPhysics(),
-        children: const <Widget>[
-          HomeScreen(),
-          CartScreen(),
-          ProfileScreen(),
-        
-        ],
+      body: Padding(
+        padding: EdgeInsets.only(top: TelegramWebApp.instance.safeAreaInset.top.toDouble()),
+        child: PageView(
+          controller: pageController,
+          physics: const NeverScrollableScrollPhysics(),
+          children: const <Widget>[HomeScreen(), CartScreen(), ProfileScreen()],
+        ),
       ),
       // In your MainScreen build (bottomNavigationBar):
       bottomNavigationBar: bottomNavBarEnabled

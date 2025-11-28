@@ -1,4 +1,6 @@
 {
   "ENVIRONMENT": "staging",
-  "API_BASE_URL": "https://httpbin.org"
+  "API_BASE_URL": "https://httpbin.org",
+  "SUPABASE_URL": "https://brysjgavqllpjppbaint.supabase.co",
+  "SUPABASE_ANON_KEY": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJyeXNqZ2F2cWxscGpwcGJhaW50Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjQyNDEyNDEsImV4cCI6MjA3OTgxNzI0MX0.Jk2rbcevZh6O5EZoEg6LFKBXS8zSY96SMiQP5jancGE"
 }
