@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart' show DeviceOrientation;
 
 import 'src/common/core_widgets/app.dart';
 import 'src/common/dependencies/initialization/initialization.dart';
@@ -22,18 +21,13 @@ void main([List<String>? args]) => runZonedGuarded<Future<void>>(() async {
         ));
     final logo = await Helpers.getPlatformSpecificLogo();
 
+
     runApp(
       DependenciesScope(
         initialization: $initializeApp(
           binding: binding,
-          onProgress: (progress, message) => initializationProgress.value = (
-            progress: progress,
-            message: message,
-          ),
-          orientations: [
-            DeviceOrientation.portraitUp,
-            DeviceOrientation.portraitDown,
-          ],
+          onProgress: (progress, message) => initializationProgress.value = (progress: progress, message: message),
+          orientations: [.portraitUp, .portraitDown],
         ),
         splashScreen: SplashScreen(
           logo: logo,

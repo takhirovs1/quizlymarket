@@ -25,16 +25,16 @@ class CachedImageView extends StatelessWidget {
   @override
   Widget build(BuildContext context) => ClipRRect(
     borderRadius: borderRadius ?? Dimension.rAll4,
-    clipBehavior: Clip.hardEdge,
+    clipBehavior: .hardEdge,
     child: CachedNetworkImage(
       imageUrl: imageUrl,
-      alignment: Alignment.center,
-      fit: BoxFit.cover,
+      alignment: .center,
+      fit: .cover,
       height: height,
       width: width,
       progressIndicatorBuilder: (context, url, downloadProgress) => ShimmerWidget(
         borderRadius: Dimension.rAll4,
-        child: SizedBox(width: double.infinity, height: height),
+        child: SizedBox(width: .infinity, height: height),
       ),
       errorWidget: (context, url, error) =>
           errorWidget ??

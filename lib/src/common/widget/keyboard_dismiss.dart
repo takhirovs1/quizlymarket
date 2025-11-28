@@ -54,7 +54,7 @@ class KeyboardDismiss extends StatelessWidget {
     this.child,
     this.behavior,
     this.gestures = const <GestureType>[GestureType.onTap],
-    this.dragStartBehavior = DragStartBehavior.start,
+    this.dragStartBehavior = .start,
     this.excludeFromSemantics = false,
   });
 

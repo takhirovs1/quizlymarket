@@ -11,7 +11,7 @@ enum HapticFeedbackType { light, medium, heavy, selectionClick, vibrate }
 final class HapticsService {
   factory HapticsService() => _instance;
   HapticsService._internal();
-  static final HapticsService _instance = HapticsService._internal();
+  static final HapticsService _instance = ._internal();
 
   bool _isEnabled = true;
 
@@ -39,11 +39,11 @@ final class HapticsService {
     }
 
     return switch (type) {
-      HapticFeedbackType.light => HapticFeedback.lightImpact().ignore(),
-      HapticFeedbackType.medium => HapticFeedback.mediumImpact().ignore(),
-      HapticFeedbackType.heavy => HapticFeedback.heavyImpact().ignore(),
-      HapticFeedbackType.selectionClick => HapticFeedback.selectionClick().ignore(),
-      HapticFeedbackType.vibrate => HapticFeedback.vibrate().ignore(),
+      .light => HapticFeedback.lightImpact().ignore(),
+      .medium => HapticFeedback.mediumImpact().ignore(),
+      .heavy => HapticFeedback.heavyImpact().ignore(),
+      .selectionClick => HapticFeedback.selectionClick().ignore(),
+      .vibrate => HapticFeedback.vibrate().ignore(),
     };
   }
 

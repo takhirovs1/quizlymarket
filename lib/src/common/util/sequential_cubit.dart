@@ -47,7 +47,7 @@ abstract class SequentialCubit<S extends Object> extends Cubit<S> {
         }
 
         runZonedGuarded<void>(() async {
-          await Future<void>.delayed(Duration.zero);
+          await Future<void>.delayed(.zero);
 
           if (isClosed) return;
           R? result;

@@ -46,7 +46,7 @@ sealed class NotificationService {
       'high_importance_channel',
       'High Importance Notifications',
       description: 'This channel is used for important notifications.',
-      importance: Importance.high,
+      importance: .high,
     );
 
     flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
@@ -80,9 +80,9 @@ sealed class NotificationService {
                 channelDescription: channel.description,
                 styleInformation: BigTextStyleInformation(body ?? '', contentTitle: title),
                 icon: '@mipmap/ic_launcher',
-                priority: Priority.high,
-                importance: Importance.high,
-                visibility: NotificationVisibility.public,
+                priority: .high,
+                importance: .high,
+                visibility: .public,
               ),
               iOS: const DarwinNotificationDetails(
                 presentAlert: true,

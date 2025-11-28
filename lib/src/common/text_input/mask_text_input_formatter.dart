@@ -12,7 +12,7 @@ class MaskedInputFormatter extends TextInputFormatter {
 
     return TextEditingValue(
       text: maskedText,
-      selection: TextSelection.collapsed(offset: maskedText.length),
+      selection: .collapsed(offset: maskedText.length),
     );
   }
 

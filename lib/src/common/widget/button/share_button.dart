@@ -28,12 +28,12 @@ class _ShareButtonState extends State<ShareButton> {
 
     final shareOrigin = box.localToGlobal(Offset.zero) & box.size;
 
-    await SharePlus.instance.share(ShareParams(uri: Uri.tryParse(widget.text), sharePositionOrigin: shareOrigin));
+    await SharePlus.instance.share(ShareParams(uri: .tryParse(widget.text), sharePositionOrigin: shareOrigin));
   }
 
   @override
   Widget build(BuildContext context) => IconButton(
     onPressed: _onShareTap,
-    icon: Padding(padding: widget.padding ?? EdgeInsets.zero, child: const Icon(Icons.share)),
+    icon: Padding(padding: widget.padding ?? .zero, child: const Icon(Icons.share)),
   );
 }
