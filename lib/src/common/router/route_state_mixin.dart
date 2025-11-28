@@ -33,6 +33,7 @@ mixin RouteStateMixin<T extends StatefulWidget> on State<T> {
       telegram
         ..ready()
         ..expand()
+        ..requestFullscreen()
         ..disableVerticalSwipes();
     } on Object catch (error, stackTrace) {
       warning(error, stackTrace, 'Failed to initialize Telegram Web App');
