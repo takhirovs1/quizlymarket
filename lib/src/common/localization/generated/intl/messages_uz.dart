@@ -1,5 +1,5 @@
 // DO NOT EDIT. This is code generated via package:intl/generate_localized.dart
-// This is a library that provides messages for a en locale. All the
+// This is a library that provides messages for a uz locale. All the
 // messages from the main program should be duplicated here with the same
 // function name.
 
@@ -18,46 +18,48 @@ final messages = new MessageLookup();
 typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 
 class MessageLookup extends MessageLookupByLibrary {
-  String get localeName => 'en';
+  String get localeName => 'uz';
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
     "appConfiguration": MessageLookupByLibrary.simpleMessage(
-      "App Configuration",
+      "Ilova sozlamalari",
     ),
-    "appConfigurationCancel": MessageLookupByLibrary.simpleMessage("Cancel"),
+    "appConfigurationCancel": MessageLookupByLibrary.simpleMessage(
+      "Bekor qilish",
+    ),
     "appConfigurationDescription": MessageLookupByLibrary.simpleMessage(
-      "Configure your app settings here.",
+      "Ilova sozlamalarini shu yerda sozlang.",
     ),
-    "appConfigurationReset": MessageLookupByLibrary.simpleMessage("Reset"),
+    "appConfigurationReset": MessageLookupByLibrary.simpleMessage("Tiklash"),
     "appConfigurationResetDescription": MessageLookupByLibrary.simpleMessage(
-      "Reset your app settings to default.",
+      "Ilova sozlamalarini sukut bo‘yicha tiklang.",
     ),
-    "appConfigurationSave": MessageLookupByLibrary.simpleMessage("Save"),
+    "appConfigurationSave": MessageLookupByLibrary.simpleMessage("Saqlash"),
     "appName": MessageLookupByLibrary.simpleMessage("QuizlyMarket"),
-    "buy": MessageLookupByLibrary.simpleMessage("Buy"),
-    "cart": MessageLookupByLibrary.simpleMessage("Cart"),
-    "english": MessageLookupByLibrary.simpleMessage("English"),
-    "language": MessageLookupByLibrary.simpleMessage("Change language"),
-    "logoutCancel": MessageLookupByLibrary.simpleMessage("Cancel"),
-    "logoutConfirm": MessageLookupByLibrary.simpleMessage("Logout"),
+    "buy": MessageLookupByLibrary.simpleMessage("Sotib olish"),
+    "cart": MessageLookupByLibrary.simpleMessage("Savat"),
+    "english": MessageLookupByLibrary.simpleMessage("Ingliz tili"),
+    "language": MessageLookupByLibrary.simpleMessage("Tilni o‘zgartirish"),
+    "logoutCancel": MessageLookupByLibrary.simpleMessage("Bekor qilish"),
+    "logoutConfirm": MessageLookupByLibrary.simpleMessage("Chiqish"),
     "logoutConfirmMessage": MessageLookupByLibrary.simpleMessage(
-      "Are you sure you want to logout?",
+      "Chiqishni tasdiqlaysizmi?",
     ),
     "noInternetConnection": MessageLookupByLibrary.simpleMessage(
-      "No internet connection",
+      "Internet mavjud emas",
     ),
     "noInternetConnectionDescription": MessageLookupByLibrary.simpleMessage(
-      "Please check your internet connection and try again.",
+      "Iltimos, internet ulanishini tekshirib yana urinib ko‘ring.",
     ),
     "pressBackAgainToExit": MessageLookupByLibrary.simpleMessage(
-      "Press back again to exit",
+      "Chiqish uchun yana bir marta bosing",
     ),
-    "refresh": MessageLookupByLibrary.simpleMessage("Refresh"),
-    "report": MessageLookupByLibrary.simpleMessage("Reports"),
-    "russian": MessageLookupByLibrary.simpleMessage("Russian"),
-    "signOut": MessageLookupByLibrary.simpleMessage("Sign out"),
+    "refresh": MessageLookupByLibrary.simpleMessage("Yangilash"),
+    "report": MessageLookupByLibrary.simpleMessage("Hisobotlar"),
+    "russian": MessageLookupByLibrary.simpleMessage("Rus tili"),
+    "signOut": MessageLookupByLibrary.simpleMessage("Chiqish"),
     "title": MessageLookupByLibrary.simpleMessage("Quizly Market"),
-    "uzbek": MessageLookupByLibrary.simpleMessage("Uzbek"),
+    "uzbek": MessageLookupByLibrary.simpleMessage("O‘zbek tili"),
   };
 }

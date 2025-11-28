@@ -6,7 +6,7 @@ import '../../../../common/extension/context_extension.dart';
 import '../../../cart/presentation/screen/cart_screen.dart';
 import '../../../home/presentation/screen/home_screen.dart';
 
-import '../../../settings/screen/settings_screen.dart';
+import '../../../profile/presentation/screen/profile_screen.dart';
 import '../../data/model/main_tabs_enum.dart';
 import '../state/main_state.dart';
 
@@ -39,7 +39,7 @@ class _MainScreenState extends MainState {
         children: const <Widget>[
           HomeScreen(),
           CartScreen(),
-          SettingsScreen(),
+          ProfileScreen(),
         
         ],
       ),

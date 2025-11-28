@@ -11,5 +11,17 @@
   "appConfigurationResetDescription": "Reset your app settings to default.",
   "title": "Quizly Market",
 
-"pressBackAgainToExit": "Press back again to exit"
+"pressBackAgainToExit": "Press back again to exit",
+"language": "Change language",
+"english": "English",
+"russian": "Russian",
+"uzbek": "Uzbek",
+"report": "Reports",
+"signOut": "Sign out",
+"logoutConfirmMessage": "Are you sure you want to logout?",
+"logoutConfirm": "Logout",
+"logoutCancel": "Cancel",
+"buy": "Buy",
+"appName": "QuizlyMarket",
+"cart": "Cart"
 }

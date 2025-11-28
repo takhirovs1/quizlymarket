@@ -21,17 +21,17 @@ class _CartScreenState extends CartState {
           bottom: false,
           child: SizedBox(
             height: context.height * 0.1,
-            child: Center(child: Text('Cart', style: context.textTheme.nunitoW600s24.copyWith(color: context.color.primary))),
+            child: Center(child: Text(context.l10n.cart, style: context.textTheme.nunitoW600s24.copyWith(color: context.color.primary))),
           ),
         ),
       ),
    
-    body: const SafeArea(
+    body:  SafeArea(
       child: Column(
         crossAxisAlignment: .start,
         children: [
           
-          Text('Card'),
+          Text(context.l10n.cart),
         ],
       ),
     ),

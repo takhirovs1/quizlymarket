@@ -5,7 +5,7 @@ import 'package:elixir/elixir.dart';
 import 'package:flutter/material.dart';
 import 'package:local_source/local_source.dart';
 
-import '../../feature/settings/bloc/settings_bloc.dart';
+import '../../feature/profile/presentation/bloc/settings_bloc.dart';
 import '../dependencies/model/app_metadata.dart';
 import '../dependencies/model/dependencies.dart';
 import '../dependencies/widget/dependencies_scope.dart';

@@ -25,7 +25,7 @@ class _HomeScreenState extends HomeState {
           height:  context.height * 0.1,
           child: Center(
             child: Text(
-              'QuizlyMarket',
+              context.l10n.appName,
               style: context.textTheme.nunitoW600s24.copyWith(
                 color: context.color.primary,
               ),
@@ -40,10 +40,10 @@ class _HomeScreenState extends HomeState {
           subject: 'Akademik koʻnikmalar',
           university: 'Alfraganus',
           direction: 'Iqtisodiyot sirtqi 2-kurs 2-semistr',
-          testCount: 10,
+          testCount: 100,
           year: '2025-2026',
           price: 10000,
-          buttonText: 'Sotib olish',
+          buttonText:context.l10n.buy,
           onPressed: () {},
         ),
         separatorBuilder: (context, index) => Dimension.hBox12,

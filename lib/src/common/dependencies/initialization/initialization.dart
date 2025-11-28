@@ -9,10 +9,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:local_source/local_source.dart';
 import 'package:platform_info/platform_info.dart';
+import '../../../feature/profile/data/models/app_settings.dart';
 
-import '../../../feature/settings/bloc/settings_bloc.dart';
-import '../../../feature/settings/data/settings_repository.dart';
-import '../../../feature/settings/models/app_settings.dart';
+import '../../../feature/profile/data/repository/profile_repository.dart';
+import '../../../feature/profile/presentation/bloc/settings_bloc.dart';
 import '../../constant/config.dart';
 import '../../constant/gen/fonts.gen.dart';
 import '../../constant/pubspec.yaml.g.dart';
