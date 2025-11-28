@@ -16,11 +16,11 @@ class _CartScreenState extends CartState {
 
      backgroundColor: context.color.background,
       appBar: PreferredSize(
-        preferredSize:  Size.fromHeight(context.height * 0.1),
+        preferredSize:  Size.fromHeight(context.height * 0.12),
         child: SafeArea(
           bottom: false,
           child: SizedBox(
-            height: context.height * 0.1,
+            height: context.height * 0.12,
             child: Center(child: Text(context.l10n.cart, style: context.textTheme.nunitoW600s24.copyWith(color: context.color.primary))),
           ),
         ),
