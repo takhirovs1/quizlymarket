@@ -3,8 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:thunder/thunder.dart';
 
-import '../../feature/settings/bloc/settings_bloc.dart';
-import '../constant/config.dart';
+import '../../feature/profile/presentation/bloc/settings_bloc.dart';
 import '../extension/context_extension.dart';
 import '../localization/localization.dart';
 import '../router/route_state_mixin.dart';
@@ -49,7 +48,7 @@ class _AppState extends State<App> with RouteStateMixin {
             child: Thunder(
               dio: context.dependencies.dio.all,
               color: context.color.success,
-              enabled: Config.current().thunderEnabled,
+              enabled: true,
               child: Elixir.controlled(controller: ValueNotifier(initialPages), guards: guards),
             ),
           ),

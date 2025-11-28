@@ -1,9 +1,9 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meta/meta.dart';
 
-import '../../../common/util/error_handler.dart';
-import '../data/settings_repository.dart';
-import '../models/app_settings.dart';
+import '../../../../common/util/error_handler.dart';
+import '../../data/models/app_settings.dart';
+import '../../data/repository/profile_repository.dart';
 
 /// {@template app_settings_bloc}
 /// A [Bloc] that handles [AppSettings].

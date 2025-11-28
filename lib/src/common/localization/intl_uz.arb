@@ -1,0 +1,27 @@
+{
+  "@@locale": "uz",
+  "noInternetConnection": "Internet mavjud emas",
+  "noInternetConnectionDescription": "Iltimos, internet ulanishini tekshirib yana urinib ko‘ring.",
+  "refresh": "Yangilash",
+  "appConfiguration": "Ilova sozlamalari",
+  "appConfigurationDescription": "Ilova sozlamalarini shu yerda sozlang.",
+  "appConfigurationSave": "Saqlash",
+  "appConfigurationCancel": "Bekor qilish",
+  "appConfigurationReset": "Tiklash",
+  "appConfigurationResetDescription": "Ilova sozlamalarini sukut bo‘yicha tiklang.",
+  "title": "Quizly Market",
+  "pressBackAgainToExit": "Chiqish uchun yana bir marta bosing",
+  "language": "Tilni o‘zgartirish",
+  "english": "Ingliz tili",
+  "russian": "Rus tili",
+  "uzbek": "O‘zbek tili",
+  "report": "Hisobotlar",
+  "signOut": "Chiqish",
+  "logoutConfirmMessage": "Chiqishni tasdiqlaysizmi?",
+  "logoutConfirm": "Chiqish",
+  "logoutCancel": "Bekor qilish",
+  "buy": "Sotib olish",
+  "appName": "QuizlyMarket",
+  "cart": "Savat"
+}
+

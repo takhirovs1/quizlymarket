@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:local_source/local_source.dart';
 
-import '../../../common/constant/gen/fonts.gen.dart';
-import '../../../common/theme/theme_data.dart';
+import '../../../../common/constant/gen/fonts.gen.dart';
+import '../../../../common/theme/theme_data.dart';
 import '../models/app_settings.dart';
 
 /// {@template app_settings_repository}
