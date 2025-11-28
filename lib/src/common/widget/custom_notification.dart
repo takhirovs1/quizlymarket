@@ -96,7 +96,7 @@ class CustomNotification extends StatefulWidget {
         textStyle: textStyle ?? context.textTheme.nunitoW400s14.copyWith(color: context.color.white),
         duration: duration ?? const Duration(seconds: 3),
         icon: icon,
-        radius: radius ?? const BorderRadius.all(Radius.circular(64)),
+        radius: radius ?? const .all(.circular(64)),
         padding: padding,
         testMode: testMode,
         onNotificationTap: onNotificationTap,
@@ -177,18 +177,18 @@ class _CustomNotificationState extends State<CustomNotification> with SingleTick
                     ],
                   ),
                   child: Padding(
-                    padding: widget.padding ?? const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
+                    padding: widget.padding ?? const .symmetric(vertical: 12, horizontal: 16),
                     child: switch (widget.icon == null) {
                       true => Text(
                         widget.message,
                         style: widget.textStyle,
                         softWrap: true,
-                        textAlign: TextAlign.center,
-                        overflow: TextOverflow.ellipsis,
+                        textAlign: .center,
+                        overflow: .ellipsis,
                         maxLines: 2,
                       ),
                       false => Row(
-                        mainAxisSize: MainAxisSize.min,
+                        mainAxisSize: .min,
                         children: <Widget>[
                           widget.icon ?? const SizedBox.shrink(),
 
@@ -197,9 +197,9 @@ class _CustomNotificationState extends State<CustomNotification> with SingleTick
                           Text(
                             widget.message,
                             style: widget.textStyle,
-                            textAlign: TextAlign.center,
+                            textAlign: .center,
                             softWrap: true,
-                            overflow: TextOverflow.ellipsis,
+                            overflow: .ellipsis,
                             maxLines: 2,
                           ),
                         ],

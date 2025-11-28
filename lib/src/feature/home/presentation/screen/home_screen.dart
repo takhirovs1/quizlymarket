@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 import '../../../../common/extension/context_extension.dart';
@@ -22,14 +21,9 @@ class _HomeScreenState extends HomeState {
       child: SafeArea(
         bottom: false,
         child: SizedBox(
-          height:  context.height * 0.1,
+          height: context.height * 0.1,
           child: Center(
-            child: Text(
-              'QuizlyMarket',
-              style: context.textTheme.nunitoW600s24.copyWith(
-                color: context.color.primary,
-              ),
-            ),
+            child: Text('QuizlyMarket', style: context.textTheme.nunitoW600s24.copyWith(color: context.color.primary)),
           ),
         ),
       ),

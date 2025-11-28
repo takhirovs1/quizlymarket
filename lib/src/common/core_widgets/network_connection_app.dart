@@ -32,16 +32,14 @@ class _NetworkConnectionAppState extends State<NetworkConnectionApp> {
   Widget build(BuildContext context) => StreamBuilder(
     stream: connectivity.onConnectivityChanged,
     builder: (context, snapshot) => switch (snapshot.data) {
-      final List<ConnectivityResult> a
-          when a.any((e) => e == ConnectivityResult.mobile || e == ConnectivityResult.wifi) =>
-        widget.child,
+      final List<ConnectivityResult> a when a.any((e) => e == .mobile || e == .wifi) => widget.child,
       null => Scaffold(backgroundColor: context.color.white),
       _ => Scaffold(
         backgroundColor: context.color.white,
         body: SafeArea(
           child: Center(
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: .center,
               children: [
                 ClipRRect(
                   borderRadius: Dimension.rAll32,
@@ -50,19 +48,15 @@ class _NetworkConnectionAppState extends State<NetworkConnectionApp> {
                 Dimension.hBox12,
 
                 /// No internet text
-                Text(
-                  context.l10n.noInternetConnection,
-                  style: context.textTheme.nunitoW500s24,
-                  textAlign: TextAlign.center,
-                ),
+                Text(context.l10n.noInternetConnection, style: context.textTheme.nunitoW500s24, textAlign: .center),
 
                 /// No internet description text
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 40),
+                  padding: const .symmetric(horizontal: 40),
                   child: Text(
                     context.l10n.noInternetConnectionDescription,
                     style: context.textTheme.nunitoW400s16,
-                    textAlign: TextAlign.center,
+                    textAlign: .center,
                   ),
                 ),
                 Dimension.hBox20,
@@ -70,8 +64,8 @@ class _NetworkConnectionAppState extends State<NetworkConnectionApp> {
                 GestureDetector(
                   onTap: connectivity.checkConnectivity,
                   child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisSize: .min,
+                    mainAxisAlignment: .center,
                     children: [
                       Icon(Icons.refresh_outlined, color: context.color.white),
                       Dimension.wBox4,

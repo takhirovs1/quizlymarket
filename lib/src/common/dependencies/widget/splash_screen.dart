@@ -26,31 +26,18 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends SplashController {
   @override
   Widget build(BuildContext context) {
-    final theme = View.of(context).platformDispatcher.platformBrightness == Brightness.light
+    final theme = View.of(context).platformDispatcher.platformBrightness == .light
         ? AppThemeData.light(FontFamily.nunito)
         : AppThemeData.dark(FontFamily.nunito);
 
     return Material(
       color: theme.appColors.white,
       child: Directionality(
-        textDirection: TextDirection.ltr,
-        child: AnimatedBuilder(
-          animation: controller,
-          builder: (context, child) => Scaffold(
-            backgroundColor: colorAnimation.value,
-            body: Center(
-              child: AnimatedBuilder(
-                animation: animation,
-                builder: (context, child) => Opacity(
-                  opacity: opacityAnimation.value,
-                  child: Transform.scale(key: const Key('splash_screen_logo'), scale: animation.value, child: child),
-                ),
-                child: Transform.scale(
-                  scale: widget.logo?.scale ?? 1,
-                  child: _buildLogo(),
-                ),
-              ),
-            ),
+        textDirection: .ltr,
+        child: Scaffold(
+          backgroundColor: const Color(0xff1C58F2),
+          body: Center(
+            child: Transform.scale(scale: widget.logo?.scale ?? 1, child: _buildLogo()),
           ),
         ),
       ),
@@ -68,8 +55,6 @@ abstract class SplashController extends State<SplashScreen> with SingleTickerPro
   bool _vibrated = false;
 
   late AnimationController controller;
-  late Animation<double> animation;
-  late Animation<Color?> colorAnimation;
   late Animation<double> opacityAnimation;
 
   Widget _buildLogo() {
@@ -110,12 +95,6 @@ abstract class SplashController extends State<SplashScreen> with SingleTickerPro
     widget.progress.addListener(_onAppInitializedListener);
 
     controller = AnimationController(vsync: this, duration: const Duration(milliseconds: 2000));
-    animation = Tween<double>(begin: 1, end: 15).animate(CurvedAnimation(parent: controller, curve: Curves.easeIn));
-
-    colorAnimation = ColorTween(
-      begin: Colors.blueAccent,
-      end: Colors.transparent,
-    ).animate(CurvedAnimation(parent: controller, curve: Curves.easeIn));
 
     opacityAnimation = Tween<double>(
       begin: 1,

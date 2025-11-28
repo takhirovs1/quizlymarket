@@ -52,20 +52,20 @@ Map<String, _InitializationStep> get _initializationSteps => <String, _Initializ
   ),
   'Database': (dependencies) async => dependencies
     ..database = Database()
-    ..localeSource = await LocalSource.instance,
+    ..localeSource = await .instance,
   'Observers': (_) {
     // Bloc.observer = const BlocLogger();
   },
   'App Initial Settings': (dependencies) {
     final localization = dependencies.localeSource.localization;
-    final theme = dependencies.localeSource.theme == ThemeMode.light
+    final theme = dependencies.localeSource.theme == .light
         ? AppThemeData.light(FontFamily.nunito)
         : AppThemeData.dark(FontFamily.nunito);
     final hapticsEnabled = dependencies.localeSource.hapticsEnabled;
 
     dependencies.settingsBloc = SettingsBloc(
       settingsRepository: SettingsRepositoryImpl(localSource: dependencies.localeSource),
-      initialState: SettingsState.idle(
+      initialState: .idle(
         settings: AppSettings(localization: localization, appTheme: theme, hapticsEnabled: hapticsEnabled),
       ),
     );
@@ -87,7 +87,7 @@ Map<String, _InitializationStep> get _initializationSteps => <String, _Initializ
               connectTimeout: timeout,
               receiveTimeout: timeout,
               sendTimeout: timeout,
-              responseType: ResponseType.json,
+              responseType: .json,
             ),
           )
           ..interceptors.addAll(

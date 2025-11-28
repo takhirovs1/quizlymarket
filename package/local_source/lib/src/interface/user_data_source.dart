@@ -17,6 +17,9 @@ abstract interface class UserDataSource {
   Future<void> setRefreshToken(String refreshToken);
 
   bool get isUserAuthenticated;
+
+  bool get onboardingCompleted;
+  Future<void> setOnboardingCompleted(bool completed);
 }
 
 /// {@template user_data_source_mixin}
@@ -27,6 +30,7 @@ base mixin UserDataSourceMixin on PreferenceDao implements UserDataSource {
   PreferenceEntry<String> get _userIdKey => stringEntry(key: 'user.id');
   PreferenceEntry<String> get _accessTokenKey => stringEntry(key: 'user.access_token');
   PreferenceEntry<String> get _refreshTokenKey => stringEntry(key: 'user.refresh_key');
+  PreferenceEntry<bool> get _onboardingCompletedKey => boolEntry(key: 'user.onboarding_completed');
 
   /// --- Getters --- ///
   @override
@@ -41,6 +45,9 @@ base mixin UserDataSourceMixin on PreferenceDao implements UserDataSource {
 
   @override
   String get refreshToken => readCachedOrDecrypted(_refreshTokenKey);
+
+  @override
+  bool get onboardingCompleted => readFromCache<bool>(_onboardingCompletedKey) ?? false;
 
   /// --- Setters --- ///
   /// Encrypted values using [SecureStorage]
@@ -60,5 +67,11 @@ base mixin UserDataSourceMixin on PreferenceDao implements UserDataSource {
   Future<void> setRefreshToken(String refreshToken) async {
     cache[_refreshTokenKey.key] = refreshToken;
     await SecureStorage.setUsingEncryption(refreshToken, entry: _refreshTokenKey);
+  }
+
+  @override
+  Future<void> setOnboardingCompleted(bool completed) async {
+    cache[_onboardingCompletedKey.key] = completed;
+    await _onboardingCompletedKey.set(completed);
   }
 }

@@ -35,10 +35,7 @@ class _CustomCardWidgetState extends State<CustomCardWidget> {
   Widget build(BuildContext context) => Padding(
     padding: Dimension.pH16,
     child: DecoratedBox(
-      decoration: const BoxDecoration(
-        color: Color(0x14747480),
-        borderRadius: Dimension.rAll16,
-      ),
+      decoration: const BoxDecoration(color: Color(0x14747480), borderRadius: Dimension.rAll16),
       child: Padding(
         padding: Dimension.pAll16,
         child: Column(
@@ -60,9 +57,7 @@ class _CustomCardWidgetState extends State<CustomCardWidget> {
                 ),
                 Text(
                   widget.university,
-                  style: context.textTheme.sfProW500s16.copyWith(
-                    color: context.color.gray,
-                  ),
+                  style: context.textTheme.sfProW500s16.copyWith(color: context.color.gray),
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                 ),
@@ -70,30 +65,21 @@ class _CustomCardWidgetState extends State<CustomCardWidget> {
             ),
             Text(
               widget.direction,
-              style: context.textTheme.sfProW500s16.copyWith(
-                color: context.color.gray,
-              ),
+              style: context.textTheme.sfProW500s16.copyWith(color: context.color.gray),
               maxLines: 2,
-              overflow: TextOverflow.ellipsis,
+              overflow: .ellipsis,
             ),
             Row(
               spacing: 10,
               children: [
                 Text(
                   '${widget.testCount} ta savol',
-                  style: context.textTheme.sfProW400s14.copyWith(
-                    color: context.color.gray,
-                  ),
+                  style: context.textTheme.sfProW400s14.copyWith(color: context.color.gray),
                   maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
+                  overflow: .ellipsis,
                 ),
                 Text('|', style: TextStyle(color: context.color.gray)),
-                Text(
-                  '2025-2026 yil',
-                  style: context.textTheme.sfProW400s14.copyWith(
-                    color: context.color.gray,
-                  ),
-                ),
+                Text('2025-2026 yil', style: context.textTheme.sfProW400s14.copyWith(color: context.color.gray)),
               ],
             ),
             Row(
@@ -104,20 +90,15 @@ class _CustomCardWidgetState extends State<CustomCardWidget> {
                     widget.price?.toUZSString() ?? '',
                     style: context.textTheme.sfProW600s14.copyWith(
                       color: context.color.primary,
-                      fontStyle: FontStyle.normal,
+                      fontStyle: .normal,
                     ),
                   ),
                 FilledButton(
-                  style: FilledButton.styleFrom(
-                    padding: Dimension.pH12V8,
-                    backgroundColor: context.color.primary,
-                  ),
+                  style: FilledButton.styleFrom(padding: Dimension.pH12V8, backgroundColor: context.color.primary),
                   onPressed: () {},
                   child: Text(
                     widget.buttonText,
-                    style: context.textTheme.sfProW500s14.copyWith(
-                      color: context.color.white,
-                    ),
+                    style: context.textTheme.sfProW500s14.copyWith(color: context.color.white),
                   ),
                 ),
               ],

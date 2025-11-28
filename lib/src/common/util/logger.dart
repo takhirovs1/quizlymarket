@@ -35,7 +35,7 @@ void Function(Object? message, [StackTrace? stackTrace, String? reason]) _logAll
       /// log message - simple
       final buffer = StringBuffer('[${coloredPrefix.call(_timeFormat(DateTime.now()))}] ')
         ..write('${'${reason ?? message}'.ellipsisOrSpace(80)} | ')
-        ..write(_getLastLocation(location: _getFileLocation(stackTrace: stackTrace ?? StackTrace.current)));
+        ..write(_getLastLocation(location: _getFileLocation(stackTrace: stackTrace ?? .current)));
 
       developer.log(
         buffer.toString(),

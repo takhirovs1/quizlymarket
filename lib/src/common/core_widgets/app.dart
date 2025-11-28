@@ -44,7 +44,7 @@ class _AppState extends State<App> with RouteStateMixin {
         /// Theme
         theme: state.settings.appTheme,
         builder: (context, _) => MediaQuery(
-          data: MediaQuery.of(context).copyWith(textScaler: TextScaler.noScaling),
+          data: MediaQuery.of(context).copyWith(textScaler: .noScaling),
           child: KeyboardDismiss(
             child: Thunder(
               dio: context.dependencies.dio.all,

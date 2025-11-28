@@ -36,12 +36,7 @@ class _MainScreenState extends MainState {
       body: PageView(
         controller: pageController,
         physics: const NeverScrollableScrollPhysics(),
-        children: const <Widget>[
-          HomeScreen(),
-          CartScreen(),
-          SettingsScreen(),
-        
-        ],
+        children: const <Widget>[HomeScreen(), CartScreen(), SettingsScreen()],
       ),
       // In your MainScreen build (bottomNavigationBar):
       bottomNavigationBar: bottomNavBarEnabled
@@ -52,24 +47,15 @@ class _MainScreenState extends MainState {
                 elevation: 10,
                 backgroundColor: context.color.white,
                 destinations: [
-                  for (final i in [
-                    Assets.icons.home,
-                    Assets.icons.cart,
-                    Assets.icons.profile,
-                  ])
+                  for (final i in [Assets.icons.home, Assets.icons.cart, Assets.icons.profile])
                     NavigationDestination(
-                      icon: SizedBox(
-                        width: 25,
-                        child: i.svg(colorFilter: const ColorFilter.mode(Color(0xFFBBBFD0), BlendMode.srcATop)),
-                      ),
+                      icon: SizedBox(width: 25, child: i.svg(colorFilter: const .mode(Color(0xFFBBBFD0), .srcATop))),
                       selectedIcon: Stack(
-                        clipBehavior: Clip.none,
+                        clipBehavior: .none,
                         children: [
                           SizedBox(
                             width: 25,
-                            child: Center(
-                              child: i.svg(colorFilter: ColorFilter.mode(context.color.primary, BlendMode.srcATop)),
-                            ),
+                            child: Center(child: i.svg(colorFilter: .mode(context.color.primary, .srcATop))),
                           ),
                           Positioned(
                             bottom: 15,
@@ -78,11 +64,11 @@ class _MainScreenState extends MainState {
                               child: AnimatedContainer(
                                 duration: const Duration(milliseconds: 250),
                                 width: bottomNavigationAnimated ? 22 : 0,
-                                margin: EdgeInsets.only(left: bottomNavigationAnimated ? 0 : 11),
+                                margin: .only(left: bottomNavigationAnimated ? 0 : 11),
                                 height: 3,
                                 decoration: BoxDecoration(
                                   color: context.color.primary,
-                                  borderRadius: const BorderRadius.all(Radius.circular(10)),
+                                  borderRadius: const .all(.circular(10)),
                                 ),
                               ),
                             ),

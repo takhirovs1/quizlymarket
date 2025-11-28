@@ -6,12 +6,12 @@ enum Status {
   success,
   error;
 
-  bool get isInitial => this == Status.initial;
-  bool get isLoading => this == Status.loading;
-  bool get isSearching => this == Status.searching;
-  bool get isLoadingMore => this == Status.loadingMore;
-  bool get isSuccess => this == Status.success;
-  bool get isError => this == Status.error;
+  bool get isInitial => this == .initial;
+  bool get isLoading => this == .loading;
+  bool get isSearching => this == .searching;
+  bool get isLoadingMore => this == .loadingMore;
+  bool get isSuccess => this == .success;
+  bool get isError => this == .error;
 
   T map<T>({
     required T Function() onInitial,

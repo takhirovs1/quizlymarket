@@ -1,8 +1,11 @@
+import 'dart:developer';
+
 import 'package:elixir/elixir.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
 import 'package:telegram_web_app/telegram_web_app.dart';
 
+import '../extension/context_extension.dart';
 import '../util/logger.dart';
 import 'route.dart';
 
@@ -14,10 +17,12 @@ mixin RouteStateMixin<T extends StatefulWidget> on State<T> {
   @override
   void initState() {
     super.initState();
-    initialPages = [const MainPage()];
+    final currentPage = !context.localSource.onboardingCompleted ? const OnboardingPage() : const MainPage();
+    log('onboardingCompleted: ${context.localSource.onboardingCompleted}');
+    initialPages = [currentPage];
 
     guards = [
-      (context, state) => state.length > 1 ? state : [const MainPage()],
+      (context, state) => state.length > 1 ? state : [currentPage],
     ];
 
     WidgetsBinding.instance.addPostFrameCallback((_) => _initializeTelegramWebApp());

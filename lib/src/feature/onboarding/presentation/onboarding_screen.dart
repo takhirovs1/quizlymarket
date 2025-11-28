@@ -1,0 +1,54 @@
+import 'package:elixir/elixir.dart';
+import 'package:flutter/material.dart';
+
+import '../../../common/constant/gen/assets.gen.dart';
+import '../../../common/extension/context_extension.dart';
+import '../../../common/util/dimension.dart';
+
+class OnboardingScreen extends StatelessWidget {
+  const OnboardingScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) => Scaffold(
+    backgroundColor: context.color.primary,
+    body: Padding(
+      padding: Dimension.pH32,
+      child: Column(
+        crossAxisAlignment: .stretch,
+        children: [
+          Expanded(
+            child: Column(
+              mainAxisAlignment: .center,
+              children: [
+                Text(
+                  'QuizlyMarket',
+                  style: context.textTheme.sfProW500s30.copyWith(fontSize: 50, color: context.color.white),
+                ),
+                Dimension.hBox64,
+                Assets.images.logoPng.image(),
+              ],
+            ),
+          ),
+          ElevatedButton(
+            style: const ButtonStyle(padding: WidgetStatePropertyAll(Dimension.pV16)),
+            onPressed: () {
+              context.localSource.setOnboardingCompleted(true);
+              context.elixir.pop();
+            },
+            child: Text(
+              'Start'.toUpperCase(),
+              style: context.textTheme.nunitoW500s20.copyWith(fontWeight: .w900, color: context.color.primary),
+            ),
+          ),
+          Dimension.hBox20,
+          Text(
+            'Copyright © 2025 FlutterBro',
+            style: context.textTheme.sfProW400s12.copyWith(fontWeight: .w900, color: context.color.white),
+            textAlign: .center,
+          ),
+          Dimension.hBox24,
+        ],
+      ),
+    ),
+  );
+}

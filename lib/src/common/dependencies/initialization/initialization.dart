@@ -7,7 +7,6 @@ import 'package:database/database.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:local_source/local_source.dart';
 import 'package:platform_info/platform_info.dart';
 
 import '../../../feature/settings/bloc/settings_bloc.dart';
@@ -50,8 +49,8 @@ Future<Dependencies> $initializeApp({
     SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(systemNavigationBarColor: Colors.transparent));
 
     await Future.wait<void>([
-      SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: [SystemUiOverlay.bottom, SystemUiOverlay.top]),
-      SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge),
+      SystemChrome.setEnabledSystemUIMode(.manual, overlays: [.bottom, .top]),
+      SystemChrome.setEnabledSystemUIMode(.edgeToEdge),
 
       if (orientations != null) SystemChrome.setPreferredOrientations(orientations),
     ]);
@@ -99,8 +98,7 @@ Future<void> _catchExceptions() async {
         details.exception,
         details.stack ?? StackTrace.current,
         hint: 'FLUTTER ERROR\r\n$details',
-        
-      ).ignore();
+      );
 
       sourceFlutterError?.call(details);
     };
