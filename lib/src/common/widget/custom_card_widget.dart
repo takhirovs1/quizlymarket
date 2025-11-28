@@ -53,6 +53,7 @@ class _CustomCardWidgetState extends State<CustomCardWidget> {
                   widget.subject,
                   style: context.textTheme.sfProW600s16.copyWith(
                     color: context.color.black,
+                    fontStyle: FontStyle.normal,
                   ),
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
@@ -103,6 +104,7 @@ class _CustomCardWidgetState extends State<CustomCardWidget> {
                     widget.price?.toUZSString() ?? '',
                     style: context.textTheme.sfProW600s14.copyWith(
                       color: context.color.primary,
+                      fontStyle: FontStyle.normal,
                     ),
                   ),
                 FilledButton(
@@ -112,7 +114,7 @@ class _CustomCardWidgetState extends State<CustomCardWidget> {
                   ),
                   onPressed: () {},
                   child: Text(
-  widget.buttonText,                    
+                    widget.buttonText,
                     style: context.textTheme.sfProW500s14.copyWith(
                       color: context.color.white,
                     ),

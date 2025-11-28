@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 
 import '../../../../common/extension/context_extension.dart';
@@ -15,40 +16,39 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends HomeState {
   @override
   Widget build(BuildContext context) => Scaffold(
-      backgroundColor: context.color.background,
-      appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(106),
-        child: SafeArea(
-          bottom: false,
-          child: Container(
-            height: 106,
-            alignment: Alignment.center,
-            padding: const EdgeInsets.symmetric(horizontal: 16),
-            child: FittedBox(
-              fit: BoxFit.scaleDown,
-              child: Text(
-                'QuizlyMarket',
-                style: context.textTheme.nunitoW600s24.copyWith(color: context.color.primary),
+    backgroundColor: context.color.background,
+    appBar: PreferredSize(
+      preferredSize: Size.fromHeight(context.height * 0.1),
+      child: SafeArea(
+        bottom: false,
+        child: SizedBox(
+          height:  context.height * 0.1,
+          child: Center(
+            child: Text(
+              'QuizlyMarket',
+              style: context.textTheme.nunitoW600s24.copyWith(
+                color: context.color.primary,
               ),
             ),
           ),
         ),
       ),
-      body:  SafeArea(
-        child:ListView.separated(
-          itemBuilder: (context, index) =>  CustomCardWidget(
-            subject: 'Akademik koʻnikmalar',
-            university: 'Alfraganus',
-            direction: 'Iqtisodiyot sirtqi 2-kurs 2-semistr',
-            testCount: 10,
-            year: '2025-2026',
-            price: 10000,
-            buttonText: 'Sotib olish',
-            onPressed: () {},
-          ),
-          separatorBuilder: (context, index) => Dimension.hBox12,
-          itemCount: 10,
+    ),
+    body: SafeArea(
+      child: ListView.separated(
+        itemBuilder: (context, index) => CustomCardWidget(
+          subject: 'Akademik koʻnikmalar',
+          university: 'Alfraganus',
+          direction: 'Iqtisodiyot sirtqi 2-kurs 2-semistr',
+          testCount: 10,
+          year: '2025-2026',
+          price: 10000,
+          buttonText: 'Sotib olish',
+          onPressed: () {},
         ),
+        separatorBuilder: (context, index) => Dimension.hBox12,
+        itemCount: 10,
       ),
-    );
+    ),
+  );
 }
