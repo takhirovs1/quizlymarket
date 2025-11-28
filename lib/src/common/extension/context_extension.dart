@@ -1,11 +1,9 @@
 import 'dart:io';
-import 'dart:ui';
 
 import 'package:elixir/elixir.dart';
 import 'package:flutter/material.dart';
 import 'package:local_source/local_source.dart';
 
-import '../../feature/profile/presentation/bloc/settings_bloc.dart';
 import '../dependencies/model/app_metadata.dart';
 import '../dependencies/model/dependencies.dart';
 import '../dependencies/widget/dependencies_scope.dart';
@@ -21,13 +19,13 @@ extension BuildContextX on BuildContext {
 
   ColorScheme get colorScheme => theme.colorScheme;
 
-  bool get isDarkMode => theme.brightness == Brightness.dark;
+  bool get isDarkMode => theme.brightness == .dark;
 
   ThemeColors get color => theme.extension<ThemeColors>()!;
 
   ThemeTextStyles get textTheme => theme.extension<ThemeTextStyles>()!;
 
-  Localization get l10n => Localization.of(this);
+  Localization get l10n => .of(this);
 
   Dependencies get dependencies => DependenciesScope.of(this);
   RepositoryContainer get repository => dependencies.repository;
@@ -39,17 +37,13 @@ extension BuildContextX on BuildContext {
   void setLocale(Locale localization) {
     final settingsBloc = dependencies.settingsBloc;
     final currentSettings = settingsBloc.state.settings;
-    settingsBloc.add(
-      SettingsEvent.updateSettings(settings: currentSettings.copyWith(localization: localization)),
-    );
+    settingsBloc.add(.updateSettings(settings: currentSettings.copyWith(localization: localization)));
   }
 
   void setThemeMode(ThemeMode themeMode) {
     final settingsBloc = dependencies.settingsBloc;
     final currentSettings = settingsBloc.state.settings;
-    settingsBloc.add(
-      SettingsEvent.updateSettings(settings: currentSettings.copyWith(themeMode: themeMode)),
-    );
+    settingsBloc.add(.updateSettings(settings: currentSettings.copyWith(themeMode: themeMode)));
   }
 }
 
@@ -107,7 +101,7 @@ extension CustomDialogX on BuildContext {
     barrierColor: Colors.black26,
     barrierDismissible: barrierDismissible,
     transitionBuilder: (ctx, anim1, anim2, child) => BackdropFilter(
-      filter: ImageFilter.blur(sigmaX: 10 * anim1.value, sigmaY: 10 * anim1.value),
+      filter: .blur(sigmaX: 10 * anim1.value, sigmaY: 10 * anim1.value),
       child: FadeTransition(opacity: anim1, child: child),
     ),
   );
@@ -124,7 +118,7 @@ extension CustomDialogX on BuildContext {
           child: CircularProgressIndicator(
             backgroundColor: Colors.black12,
             color: context.color.success,
-            strokeCap: StrokeCap.round,
+            strokeCap: .round,
           ),
         ),
       ),

@@ -15,4 +15,3 @@ extension IntExtension on int {
     return '$formatted UZS';
   }
 }
-

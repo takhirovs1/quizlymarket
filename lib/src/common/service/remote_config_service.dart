@@ -11,13 +11,11 @@ import '../extension/context_extension.dart';
 sealed class RemoteConfigService {
   const RemoteConfigService._();
 
-  static FirebaseRemoteConfig remoteConfig = FirebaseRemoteConfig.instance;
+  static FirebaseRemoteConfig remoteConfig = .instance;
 
   static Future<(AppUpdate, String, String)> isCallCheckAppVersion(BuildContext context) async {
     try {
-      await remoteConfig.setConfigSettings(
-        RemoteConfigSettings(fetchTimeout: Duration.zero, minimumFetchInterval: Duration.zero),
-      );
+      await remoteConfig.setConfigSettings(RemoteConfigSettings(fetchTimeout: .zero, minimumFetchInterval: .zero));
 
       await remoteConfig.fetchAndActivate();
 
@@ -42,7 +40,7 @@ sealed class RemoteConfigService {
 
   static (AppUpdate, String, String) isNotLastVersion(String appVersion, RemoteConfigValue? employeeVersion) {
     if (employeeVersion == null) {
-      return (AppUpdate.none, '', '');
+      return (.none, '', '');
     }
 
     final appVersionApp = const JsonDecoder().cast<String, Map<String, Object?>>().convert(employeeVersion.asString());
@@ -52,14 +50,14 @@ sealed class RemoteConfigService {
     final package = appVersion.replaceAll('.', '').toVersion;
 
     if (package < employee && isForce) {
-      return (AppUpdate.forceUpdate, appVersion, version);
+      return (.forceUpdate, appVersion, version);
     }
 
     if (package < employee && !isForce) {
-      return (AppUpdate.softUpdate, appVersion, version);
+      return (.softUpdate, appVersion, version);
     }
 
-    return (AppUpdate.none, '', '');
+    return (.none, '', '');
   }
 }
 

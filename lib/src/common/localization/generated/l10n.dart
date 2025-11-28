@@ -28,9 +28,7 @@ class GeneratedLocalization {
   static const AppLocalizationDelegate delegate = AppLocalizationDelegate();
 
   static Future<GeneratedLocalization> load(Locale locale) {
-    final name = (locale.countryCode?.isEmpty ?? false)
-        ? locale.languageCode
-        : locale.toString();
+    final name = (locale.countryCode?.isEmpty ?? false) ? locale.languageCode : locale.toString();
     final localeName = Intl.canonicalizedLocale(name);
     return initializeMessages(localeName).then((_) {
       Intl.defaultLocale = localeName;
@@ -51,20 +49,12 @@ class GeneratedLocalization {
   }
 
   static GeneratedLocalization? maybeOf(BuildContext context) {
-    return Localizations.of<GeneratedLocalization>(
-      context,
-      GeneratedLocalization,
-    );
+    return Localizations.of<GeneratedLocalization>(context, GeneratedLocalization);
   }
 
   /// `Нет интернет соединения`
   String get noInternetConnection {
-    return Intl.message(
-      'Нет интернет соединения',
-      name: 'noInternetConnection',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Нет интернет соединения', name: 'noInternetConnection', desc: '', args: []);
   }
 
   /// `Пожалуйста, проверьте ваше интернет соединение и попробуйте снова.`
@@ -84,12 +74,7 @@ class GeneratedLocalization {
 
   /// `Настройка приложения`
   String get appConfiguration {
-    return Intl.message(
-      'Настройка приложения',
-      name: 'appConfiguration',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Настройка приложения', name: 'appConfiguration', desc: '', args: []);
   }
 
   /// `Настройте ваши настройки приложения здесь.`
@@ -104,32 +89,17 @@ class GeneratedLocalization {
 
   /// `Сохранить`
   String get appConfigurationSave {
-    return Intl.message(
-      'Сохранить',
-      name: 'appConfigurationSave',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Сохранить', name: 'appConfigurationSave', desc: '', args: []);
   }
 
   /// `Отмена`
   String get appConfigurationCancel {
-    return Intl.message(
-      'Отмена',
-      name: 'appConfigurationCancel',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Отмена', name: 'appConfigurationCancel', desc: '', args: []);
   }
 
   /// `Сбросить`
   String get appConfigurationReset {
-    return Intl.message(
-      'Сбросить',
-      name: 'appConfigurationReset',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Сбросить', name: 'appConfigurationReset', desc: '', args: []);
   }
 
   /// `Сбросьте ваши настройки приложения на defaults.`
@@ -238,8 +208,7 @@ class AppLocalizationDelegate
   @override
   bool isSupported(Locale locale) => _isSupported(locale);
   @override
-  Future<GeneratedLocalization> load(Locale locale) =>
-      GeneratedLocalization.load(locale);
+  Future<GeneratedLocalization> load(Locale locale) => GeneratedLocalization.load(locale);
   @override
   bool shouldReload(AppLocalizationDelegate old) => false;
 

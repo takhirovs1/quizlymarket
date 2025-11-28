@@ -25,39 +25,20 @@ enum MainTabsEnum implements Comparable<MainTabsEnum> {
   bool get isProfileTab => this == profile;
 
   /// Pattern matching
-  T map<T>({
-    required T Function() home,
-    required T Function() catalog,
-    required T Function() profile,
-  }) => switch (this) {
-    MainTabsEnum.home => home(),
-    MainTabsEnum.catalog => catalog(),
-    MainTabsEnum.profile => profile(),
-  };
+  T map<T>({required T Function() home, required T Function() catalog, required T Function() profile}) =>
+      switch (this) {
+        .home => home(),
+        .catalog => catalog(),
+        .profile => profile(),
+      };
 
   /// Pattern matching
-  T maybeMap<T>({
-    required T Function() orElse,
-    T Function()? home,
-    T Function()? catalog,
-    T Function()? profile,
-  }) => map<T>(
-    home: home ?? orElse,
-    catalog: catalog ?? orElse,
-    profile: profile ?? orElse,
-  );
+  T maybeMap<T>({required T Function() orElse, T Function()? home, T Function()? catalog, T Function()? profile}) =>
+      map<T>(home: home ?? orElse, catalog: catalog ?? orElse, profile: profile ?? orElse);
 
   /// Pattern matching
-  T? maybeMapOrNull<T>({
-    T Function()? home,
-    T Function()? catalog,
-    T Function()? profile,
-  }) => maybeMap<T?>(
-    orElse: () => null,
-    home: home,
-    catalog: catalog,
-    profile: profile,
-  );
+  T? maybeMapOrNull<T>({T Function()? home, T Function()? catalog, T Function()? profile}) =>
+      maybeMap<T?>(orElse: () => null, home: home, catalog: catalog, profile: profile);
 
   @override
   int compareTo(MainTabsEnum other) => index.compareTo(other.index);

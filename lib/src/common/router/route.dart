@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import '../../feature/home/presentation/screen/home_screen.dart';
 import '../../feature/main/presentation/screen/main_screen.dart';
+import '../../feature/onboarding/presentation/onboarding_screen.dart';
 import '../../feature/profile/presentation/screen/profile_screen.dart';
 import 'custom_material_route.dart';
 
@@ -26,6 +27,13 @@ final class MainPage extends AppPage {
 
   @override
   Set<String> get tags => {'main'};
+}
+
+final class OnboardingPage extends AppPage {
+  const OnboardingPage() : super(child: const OnboardingScreen(), name: 'onboarding');
+
+  @override
+  Set<String> get tags => {'onboarding'};
 }
 
 final class HomePage extends AppPage {

@@ -22,13 +22,13 @@ const Color _kModalBarrierColor = CupertinoDynamicColor.withBrightness(
 const Duration _kModalPopupTransitionDuration = Duration(milliseconds: 335);
 
 // Offset from offscreen to the right to fully on screen.
-final Animatable<Offset> _kRightMiddleTween = Tween<Offset>(begin: const Offset(1, 0), end: Offset.zero);
+final Animatable<Offset> _kRightMiddleTween = Tween<Offset>(begin: const Offset(1, 0), end: .zero);
 
 // Offset from fully on screen to 1/3 offscreen to the left.
-final Animatable<Offset> _kMiddleLeftTween = Tween<Offset>(begin: Offset.zero, end: const Offset(-1.0 / 3.0, 0));
+final Animatable<Offset> _kMiddleLeftTween = Tween<Offset>(begin: .zero, end: const Offset(-1.0 / 3.0, 0));
 
 // Offset from offscreen below to fully on screen.
-final Animatable<Offset> _kBottomUpTween = Tween<Offset>(begin: const Offset(0, 1), end: Offset.zero);
+final Animatable<Offset> _kBottomUpTween = Tween<Offset>(begin: const Offset(0, 1), end: .zero);
 
 // Custom decoration from no shadow to page shadow mimicking iOS page
 // transitions using gradients.
@@ -155,7 +155,7 @@ mixin CupertinoRouteTransitionMixin<T> on PageRoute<T> {
     }
     // If attempts to dismiss this route might be vetoed such as in a page
     // with forms, then do not allow the user to dismiss the route with a swipe.
-    if (route.popDisposition == RoutePopDisposition.doNotPop) {
+    if (route.popDisposition == .doNotPop) {
       return false;
     }
     // Fullscreen dialogs aren't dismissible by back swipe.
@@ -163,13 +163,13 @@ mixin CupertinoRouteTransitionMixin<T> on PageRoute<T> {
       return false;
     }
     // If we're in an animation already, we cannot be manually swiped.
-    if (route.animation!.status != AnimationStatus.completed) {
+    if (route.animation!.status != .completed) {
       return false;
     }
     // If we're being popped into, we also cannot be swiped until the pop above
     // it completes. This translates to our secondary animation being
     // dismissed.
-    if (route.secondaryAnimation!.status != AnimationStatus.dismissed) {
+    if (route.secondaryAnimation!.status != .dismissed) {
       return false;
     }
     // If we're in a gesture already, we cannot start another.
@@ -449,9 +449,9 @@ class _CupertinoBackGestureDetectorState<T> extends State<_CupertinoBackGestureD
 
   double _convertToLogical(double value) {
     switch (Directionality.of(context)) {
-      case TextDirection.rtl:
+      case .rtl:
         return -value;
-      case TextDirection.ltr:
+      case .ltr:
         return value;
     }
   }
@@ -467,7 +467,7 @@ class _CupertinoBackGestureDetectorState<T> extends State<_CupertinoBackGestureD
     assert(debugCheckHasDirectionality(context), 'Must have a Directionality');
     // For devices with notches, the drag area needs to be larger on the side
     // that has the notch.
-    var dragAreaWidth = Directionality.of(context) == TextDirection.ltr
+    var dragAreaWidth = Directionality.of(context) == .ltr
         ? MediaQuery.of(context).padding.left
         : MediaQuery.of(context).padding.right;
     dragAreaWidth = max(dragAreaWidth, _backGestureWidth);
@@ -480,7 +480,7 @@ class _CupertinoBackGestureDetectorState<T> extends State<_CupertinoBackGestureD
           width: dragAreaWidth,
           top: 0,
           bottom: 0,
-          child: Listener(onPointerDown: _handlePointerDown, behavior: HitTestBehavior.translucent),
+          child: Listener(onPointerDown: _handlePointerDown, behavior: .translucent),
         ),
       ],
     );
@@ -608,23 +608,23 @@ class _CupertinoEdgeShadowDecoration extends Decoration {
     if (a == null && b == null) {
       return null;
     }
-    return _CupertinoEdgeShadowDecoration(edgeGradient: LinearGradient.lerp(a?.edgeGradient, b?.edgeGradient, t));
+    return _CupertinoEdgeShadowDecoration(edgeGradient: .lerp(a?.edgeGradient, b?.edgeGradient, t));
   }
 
   @override
   _CupertinoEdgeShadowDecoration lerpFrom(Decoration? a, double t) {
     if (a is _CupertinoEdgeShadowDecoration) {
-      return _CupertinoEdgeShadowDecoration.lerp(a, this, t)!;
+      return .lerp(a, this, t)!;
     }
-    return _CupertinoEdgeShadowDecoration.lerp(null, this, t)!;
+    return .lerp(null, this, t)!;
   }
 
   @override
   _CupertinoEdgeShadowDecoration lerpTo(Decoration? b, double t) {
     if (b is _CupertinoEdgeShadowDecoration) {
-      return _CupertinoEdgeShadowDecoration.lerp(this, b, t)!;
+      return .lerp(this, b, t)!;
     }
-    return _CupertinoEdgeShadowDecoration.lerp(this, null, t)!;
+    return .lerp(this, null, t)!;
   }
 
   @override
@@ -736,7 +736,7 @@ class _CupertinoModalPopupRoute<T> extends PopupRoute<T> {
   @override
   Widget buildPage(BuildContext context, Animation<double> animation, Animation<double> secondaryAnimation) =>
       CupertinoUserInterfaceLevel(
-        data: CupertinoUserInterfaceLevelData.elevated,
+        data: .elevated,
         child: Builder(builder: builder),
       );
 
@@ -785,7 +785,7 @@ Widget _buildCupertinoDialogTransitions(
   Widget child,
 ) {
   final fadeAnimation = CurvedAnimation(parent: animation, curve: Curves.easeInOut);
-  if (animation.status == AnimationStatus.reverse) {
+  if (animation.status == .reverse) {
     return FadeTransition(opacity: fadeAnimation, child: child);
   }
   return FadeTransition(

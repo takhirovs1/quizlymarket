@@ -21,7 +21,7 @@ sealed class Dimension {
     const BoxShadow(
       blurRadius: 0,
       spreadRadius: 0,
-      blurStyle: BlurStyle.normal,
+      blurStyle: .normal,
       offset: Offset(0, -1),
       color: Color.fromARGB(63, 255, 255, 255),
     ),
@@ -29,7 +29,7 @@ sealed class Dimension {
       blurRadius: 0,
       spreadRadius: 0,
       offset: Offset(0, 1),
-      blurStyle: BlurStyle.normal,
+      blurStyle: .normal,
       color: Color.fromARGB(63, 0, 0, 0),
     ),
   ];
@@ -249,13 +249,13 @@ sealed class Dimension {
 
   // Platform-specific Padding
   static EdgeInsets pV16Top16Bottom32iOSx16Android = _kIsIos ? pH16Top16Bottom32 : pAll16;
-  static EdgeInsets pTop16Bottom32iOSx16Android = _kIsIos ? const EdgeInsets.only(top: 16, bottom: 32) : pV16;
+  static EdgeInsets pTop16Bottom32iOSx16Android = _kIsIos ? const .only(top: 16, bottom: 32) : pV16;
 
   static EdgeInsets pH16Top16BottomViewInsets(BuildContext context) =>
-      EdgeInsets.fromLTRB(16, 16, 16, MediaQuery.viewInsetsOf(context).bottom + (_kIsIos ? 32 : 16));
+      .fromLTRB(16, 16, 16, MediaQuery.viewInsetsOf(context).bottom + (_kIsIos ? 32 : 16));
 
   static EdgeInsets pH16Top0BottomViewInsets(BuildContext context) =>
-      EdgeInsets.fromLTRB(16, 0, 16, MediaQuery.viewInsetsOf(context).bottom);
+      .fromLTRB(16, 0, 16, MediaQuery.viewInsetsOf(context).bottom);
 
   // Vertical Spacings
   static const hBox2 = SizedBox(height: 2);
@@ -299,39 +299,39 @@ sealed class Dimension {
 
   // Border Radius
   static const rAll0 = BorderRadius.zero;
-  static const rAll2 = BorderRadius.all(Radius.circular(2));
-  static const rAll4 = BorderRadius.all(Radius.circular(4));
-  static const rAll6 = BorderRadius.all(Radius.circular(6));
-  static const rAll8 = BorderRadius.all(Radius.circular(8));
-  static const rAll10 = BorderRadius.all(Radius.circular(10));
-  static const rAll12 = BorderRadius.all(Radius.circular(12));
-  static const rAll18 = BorderRadius.all(Radius.circular(18));
-  static const rAll16 = BorderRadius.all(Radius.circular(16));
-  static const rAll20 = BorderRadius.all(Radius.circular(20));
-  static const rAll24 = BorderRadius.all(Radius.circular(24));
-  static const rAll26 = BorderRadius.all(Radius.circular(26));
-  static const rAll28 = BorderRadius.all(Radius.circular(28));
-  static const rAll32 = BorderRadius.all(Radius.circular(32));
-  static const rAll36 = BorderRadius.all(Radius.circular(36));
-  static const rAll40 = BorderRadius.all(Radius.circular(40));
-  static const rAll44 = BorderRadius.all(Radius.circular(44));
-  static const rAll48 = BorderRadius.all(Radius.circular(48));
-  static const rAll56 = BorderRadius.all(Radius.circular(56));
-  static const rAll64 = BorderRadius.all(Radius.circular(64));
+  static const rAll2 = BorderRadius.all(.circular(2));
+  static const rAll4 = BorderRadius.all(.circular(4));
+  static const rAll6 = BorderRadius.all(.circular(6));
+  static const rAll8 = BorderRadius.all(.circular(8));
+  static const rAll10 = BorderRadius.all(.circular(10));
+  static const rAll12 = BorderRadius.all(.circular(12));
+  static const rAll18 = BorderRadius.all(.circular(18));
+  static const rAll16 = BorderRadius.all(.circular(16));
+  static const rAll20 = BorderRadius.all(.circular(20));
+  static const rAll24 = BorderRadius.all(.circular(24));
+  static const rAll26 = BorderRadius.all(.circular(26));
+  static const rAll28 = BorderRadius.all(.circular(28));
+  static const rAll32 = BorderRadius.all(.circular(32));
+  static const rAll36 = BorderRadius.all(.circular(36));
+  static const rAll40 = BorderRadius.all(.circular(40));
+  static const rAll44 = BorderRadius.all(.circular(44));
+  static const rAll48 = BorderRadius.all(.circular(48));
+  static const rAll56 = BorderRadius.all(.circular(56));
+  static const rAll64 = BorderRadius.all(.circular(64));
 
   // Specific Border Radius
-  static const rLeft4 = BorderRadius.only(topLeft: Radius.circular(4), bottomLeft: Radius.circular(4));
-  static const rTop2 = BorderRadius.only(topLeft: Radius.circular(2), topRight: Radius.circular(2));
-  static const rTop4 = BorderRadius.only(topLeft: Radius.circular(4), topRight: Radius.circular(4));
-  static const rTop8 = BorderRadius.only(topLeft: Radius.circular(8), topRight: Radius.circular(8));
-  static const rTop10 = BorderRadius.vertical(top: Radius.circular(10));
-  static const rTop12 = BorderRadius.only(topLeft: Radius.circular(12), topRight: Radius.circular(12));
-  static const rTop16 = BorderRadius.only(topLeft: Radius.circular(16), topRight: Radius.circular(16));
-  static const rTop24 = BorderRadius.only(topLeft: Radius.circular(24), topRight: Radius.circular(24));
-  static const rRight4 = BorderRadius.only(topRight: Radius.circular(4), bottomRight: Radius.circular(4));
-  static const rRight8 = BorderRadius.only(topRight: Radius.circular(8), bottomRight: Radius.circular(8));
-  static const rLeft8 = BorderRadius.only(topLeft: Radius.circular(8), bottomLeft: Radius.circular(8));
-  static const rRight24 = BorderRadius.only(topRight: Radius.circular(24), bottomRight: Radius.circular(24));
-  static const rBottom8 = BorderRadius.only(bottomLeft: Radius.circular(8), bottomRight: Radius.circular(8));
-  static const rBottom16 = BorderRadius.only(bottomLeft: Radius.circular(16), bottomRight: Radius.circular(16));
+  static const rLeft4 = BorderRadius.only(topLeft: .circular(4), bottomLeft: .circular(4));
+  static const rTop2 = BorderRadius.only(topLeft: .circular(2), topRight: .circular(2));
+  static const rTop4 = BorderRadius.only(topLeft: .circular(4), topRight: .circular(4));
+  static const rTop8 = BorderRadius.only(topLeft: .circular(8), topRight: .circular(8));
+  static const rTop10 = BorderRadius.vertical(top: .circular(10));
+  static const rTop12 = BorderRadius.only(topLeft: .circular(12), topRight: .circular(12));
+  static const rTop16 = BorderRadius.only(topLeft: .circular(16), topRight: .circular(16));
+  static const rTop24 = BorderRadius.only(topLeft: .circular(24), topRight: .circular(24));
+  static const rRight4 = BorderRadius.only(topRight: .circular(4), bottomRight: .circular(4));
+  static const rRight8 = BorderRadius.only(topRight: .circular(8), bottomRight: .circular(8));
+  static const rLeft8 = BorderRadius.only(topLeft: .circular(8), bottomLeft: .circular(8));
+  static const rRight24 = BorderRadius.only(topRight: .circular(24), bottomRight: .circular(24));
+  static const rBottom8 = BorderRadius.only(bottomLeft: .circular(8), bottomRight: .circular(8));
+  static const rBottom16 = BorderRadius.only(bottomLeft: .circular(16), bottomRight: .circular(16));
 }
