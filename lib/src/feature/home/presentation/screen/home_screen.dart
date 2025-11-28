@@ -18,11 +18,11 @@ class _HomeScreenState extends HomeState {
   Widget build(BuildContext context) => Scaffold(
     backgroundColor: context.color.background,
     appBar: PreferredSize(
-      preferredSize: Size.fromHeight(context.height * 0.1),
+      preferredSize: Size.fromHeight(context.height * 0.12),
       child: SafeArea(
         bottom: false,
         child: SizedBox(
-          height:  context.height * 0.1,
+          height:  context.height * 0.12,
           child: Center(
             child: Text(
               context.l10n.appName,

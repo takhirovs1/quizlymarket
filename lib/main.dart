@@ -15,17 +15,30 @@ void main([List<String>? args]) => runZonedGuarded<Future<void>>(() async {
   Future<void> _launchApp() async {
     final binding = WidgetsFlutterBinding.ensureInitialized();
 
-    final initializationProgress = ValueNotifier<({int progress, String message})>((progress: 0, message: ''));
+    final initializationProgress =
+        ValueNotifier<({int progress, String message})>((
+          progress: 0,
+          message: '',
+        ));
     final logo = await Helpers.getPlatformSpecificLogo();
-  
+
     runApp(
       DependenciesScope(
         initialization: $initializeApp(
           binding: binding,
-          onProgress: (progress, message) => initializationProgress.value = (progress: progress, message: message),
-          orientations: [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown],
+          onProgress: (progress, message) => initializationProgress.value = (
+            progress: progress,
+            message: message,
+          ),
+          orientations: [
+            DeviceOrientation.portraitUp,
+            DeviceOrientation.portraitDown,
+          ],
         ),
-        splashScreen: SplashScreen(logo: logo, progress: initializationProgress),
+        splashScreen: SplashScreen(
+          logo: logo,
+          progress: initializationProgress,
+        ),
         child: const App(),
       ),
     );
