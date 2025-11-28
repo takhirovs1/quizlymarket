@@ -151,11 +151,14 @@ abstract class ProfileState extends State<ProfileScreen> {
   }
 
   Future<void> _loadUserProfilePhoto() async {
-    // if (!isTelegramUser) return;
+    log('isTelegramUser: $isTelegramUser');
+    if (!isTelegramUser) return;
 
-    final url = await getUserProfileUrl(7282825856);
-    if (!mounted || url == null || url.isEmpty) return;
+    final url = await getUserProfileUrl(profileData.id);
     log('url: $url');
+    if (!mounted || url == null || url.isEmpty) return;
+    
+
     setState(() {
       _profilePhotoUrl = url;
     });
@@ -163,7 +166,6 @@ abstract class ProfileState extends State<ProfileScreen> {
 
   Future<String?> getUserProfileUrl(int userId) async {
     try {
-      // 1) Get user's profile photos (take the very first one)
       final response = await context.dios.dio.get<Map<String, dynamic>>(
         '${Urls.telegramBotUrl}/getUserProfilePhotos',
         queryParameters: <String, dynamic>{

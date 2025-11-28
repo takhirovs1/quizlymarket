@@ -34,16 +34,16 @@ class _ProfileScreenState extends ProfileState {
           children: [
             Flexible(
               child: ListView(
-                
                 padding: Dimension.pAll16,
                 children: [
                   Dimension.hBox64,
-                  ProfileHeader(
-                    photoUrl: profilePhotoUrl,
-                    fullName: profileData.fullName,
-                    id: profileData.id.toString(),
-                    username: profileData.username ?? '',
-                  ),
+                  // ProfileHeader(
+                  //   photoUrl: profilePhotoUrl,
+                  //   fullName: profileData.fullName,
+                  //   id: profileData.id.toString(),
+                  //   username: profileData.username ?? '',
+                  // ),
+                  Image.network(profilePhotoUrl),
                   Dimension.hBox16,
                   BankCardWidget(
                     fullName: profileData.fullName,
