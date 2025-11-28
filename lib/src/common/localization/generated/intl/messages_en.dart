@@ -28,12 +28,28 @@ class MessageLookup extends MessageLookupByLibrary {
     "appConfigurationReset": MessageLookupByLibrary.simpleMessage("Reset"),
     "appConfigurationResetDescription": MessageLookupByLibrary.simpleMessage("Reset your app settings to default."),
     "appConfigurationSave": MessageLookupByLibrary.simpleMessage("Save"),
-    "noInternetConnection": MessageLookupByLibrary.simpleMessage("No internet connection"),
+    "appName": MessageLookupByLibrary.simpleMessage("QuizlyMarket"),
+    "buy": MessageLookupByLibrary.simpleMessage("Buy"),
+    "cart": MessageLookupByLibrary.simpleMessage("Cart"),
+    "english": MessageLookupByLibrary.simpleMessage("English"),
+    "language": MessageLookupByLibrary.simpleMessage("Change language"),
+    "logoutCancel": MessageLookupByLibrary.simpleMessage("Cancel"),
+    "logoutConfirm": MessageLookupByLibrary.simpleMessage("Logout"),
+    "logoutConfirmMessage": MessageLookupByLibrary.simpleMessage(
+      "Are you sure you want to logout?",
+    ),
+    "noInternetConnection": MessageLookupByLibrary.simpleMessage(
+      "No internet connection",
+    ),
     "noInternetConnectionDescription": MessageLookupByLibrary.simpleMessage(
       "Please check your internet connection and try again.",
     ),
     "pressBackAgainToExit": MessageLookupByLibrary.simpleMessage("Press back again to exit"),
     "refresh": MessageLookupByLibrary.simpleMessage("Refresh"),
+    "report": MessageLookupByLibrary.simpleMessage("Reports"),
+    "russian": MessageLookupByLibrary.simpleMessage("Russian"),
+    "signOut": MessageLookupByLibrary.simpleMessage("Sign out"),
     "title": MessageLookupByLibrary.simpleMessage("Quizly Market"),
+    "uzbek": MessageLookupByLibrary.simpleMessage("Uzbek"),
   };
 }

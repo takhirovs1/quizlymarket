@@ -5,7 +5,7 @@ import 'package:equatable/equatable.dart';
 import 'package:local_source/local_source.dart';
 import 'package:meta/meta.dart';
 
-import '../../../feature/settings/bloc/settings_bloc.dart';
+import '../../../feature/profile/presentation/bloc/settings_bloc.dart';
 import 'app_metadata.dart';
 
 /// {@template dependencies}

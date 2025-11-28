@@ -119,15 +119,90 @@ class GeneratedLocalization {
 
   /// `Нажмите еще раз, чтобы выйти`
   String get pressBackAgainToExit {
-    return Intl.message('Нажмите еще раз, чтобы выйти', name: 'pressBackAgainToExit', desc: '', args: []);
+    return Intl.message(
+      'Нажмите еще раз, чтобы выйти',
+      name: 'pressBackAgainToExit',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Изменить язык`
+  String get language {
+    return Intl.message('Изменить язык', name: 'language', desc: '', args: []);
+  }
+
+  /// `Английский`
+  String get english {
+    return Intl.message('Английский', name: 'english', desc: '', args: []);
+  }
+
+  /// `Русский`
+  String get russian {
+    return Intl.message('Русский', name: 'russian', desc: '', args: []);
+  }
+
+  /// `Узбекский`
+  String get uzbek {
+    return Intl.message('Узбекский', name: 'uzbek', desc: '', args: []);
+  }
+
+  /// `Отчеты`
+  String get report {
+    return Intl.message('Отчеты', name: 'report', desc: '', args: []);
+  }
+
+  /// `Выход`
+  String get signOut {
+    return Intl.message('Выход', name: 'signOut', desc: '', args: []);
+  }
+
+  /// `Вы уверены, что хотите выйти?`
+  String get logoutConfirmMessage {
+    return Intl.message(
+      'Вы уверены, что хотите выйти?',
+      name: 'logoutConfirmMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Выход`
+  String get logoutConfirm {
+    return Intl.message('Выход', name: 'logoutConfirm', desc: '', args: []);
+  }
+
+  /// `Отмена`
+  String get logoutCancel {
+    return Intl.message('Отмена', name: 'logoutCancel', desc: '', args: []);
+  }
+
+  /// `Купить`
+  String get buy {
+    return Intl.message('Купить', name: 'buy', desc: '', args: []);
+  }
+
+  /// `QuizlyMarket`
+  String get appName {
+    return Intl.message('QuizlyMarket', name: 'appName', desc: '', args: []);
+  }
+
+  /// `Корзина`
+  String get cart {
+    return Intl.message('Корзина', name: 'cart', desc: '', args: []);
   }
 }
 
-class AppLocalizationDelegate extends LocalizationsDelegate<GeneratedLocalization> {
+class AppLocalizationDelegate
+    extends LocalizationsDelegate<GeneratedLocalization> {
   const AppLocalizationDelegate();
 
   List<Locale> get supportedLocales {
-    return const <Locale>[Locale.fromSubtags(languageCode: 'ru'), Locale.fromSubtags(languageCode: 'en')];
+    return const <Locale>[
+      Locale.fromSubtags(languageCode: 'ru'),
+      Locale.fromSubtags(languageCode: 'en'),
+      Locale.fromSubtags(languageCode: 'uz'),
+    ];
   }
 
   @override

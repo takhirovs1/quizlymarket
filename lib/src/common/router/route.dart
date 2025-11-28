@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import '../../feature/home/presentation/screen/home_screen.dart';
 import '../../feature/main/presentation/screen/main_screen.dart';
+import '../../feature/profile/presentation/screen/profile_screen.dart';
 import '../../feature/onboarding/presentation/onboarding_screen.dart';
 import '../../feature/settings/screen/settings_screen.dart';
 import 'custom_material_route.dart';
@@ -46,8 +47,8 @@ final class HomePage extends AppPage {
 final class SettingsPage extends AppPage {
   SettingsPage({required final String data})
     : super(
-        child: SettingsScreen(data: data),
-        name: 'settings',
+        child: ProfileScreen(data: data),
+        name: 'settings', 
       );
 
   @override
