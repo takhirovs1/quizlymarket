@@ -1,10 +1,13 @@
+import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
+import 'package:telegram_web_app/telegram_web_app.dart';
 import 'package:thunder/thunder.dart';
 
 import '../../feature/profile/presentation/state/settings_scope.dart';
 import '../extension/context_extension.dart';
 import '../localization/localization.dart';
 import '../router/app_router.dart';
+import '../util/logger.dart';
 import '../widget/keyboard_dismiss.dart';
 
 /// {@template app}
@@ -26,6 +29,12 @@ class App extends StatefulWidget {
 }
 
 class _AppState extends State<App> {
+  @override
+  void initState() {
+    super.initState();
+    _configureTelegramShell();
+  }
+
   @override
   Widget build(BuildContext context) => MaterialApp.router(
     debugShowCheckedModeBanner: false,
@@ -57,4 +66,23 @@ class _AppState extends State<App> {
       ),
     ),
   );
+
+  void _configureTelegramShell() {
+    if (!kIsWeb) return;
+
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      try {
+        final telegram = TelegramWebApp.instance;
+        if (!telegram.isSupported) return;
+
+        telegram
+          ..ready()
+          ..expand()
+          ..disableVerticalSwipes()
+          ..requestFullscreen();
+      } on Object catch (error, stackTrace) {
+        warning(error, stackTrace, 'Telegram Web App configuration failed');
+      }
+    });
+  }
 }

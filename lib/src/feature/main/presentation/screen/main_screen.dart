@@ -1,93 +1,83 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../../common/constant/gen/assets.gen.dart';
 import '../../../../common/extension/context_extension.dart';
-
-import '../../../cart/presentation/screen/cart_screen.dart';
-import '../../../home/presentation/screen/home_screen.dart';
-
-import '../../../profile/presentation/screen/profile_screen.dart';
-import '../../data/model/main_tabs_enum.dart';
+import '../../../../common/util/dimension.dart';
 import '../state/main_state.dart';
 
-/// {@template main_screen}
-/// MainScreen widget.
-/// {@endtemplate}
 class MainScreen extends StatefulWidget {
-  /// {@macro main_screen}
-  const MainScreen({super.key, this.initialTab});
+  const MainScreen({required this.navigationShell, super.key});
 
-  /// Initial tab to display when the screen is first loaded
-  final MainTabsEnum? initialTab;
-
-  static _MainScreenState? maybeOf(BuildContext context) => context.findAncestorStateOfType<_MainScreenState>();
+  final StatefulNavigationShell navigationShell;
 
   @override
   State<MainScreen> createState() => _MainScreenState();
 }
 
-/// State for widget MainScreen.
 class _MainScreenState extends MainState {
   @override
   Widget build(BuildContext context) => PopScope(
-    canPop: canPop,
-    onPopInvokedWithResult: onPopInvokedWithResult,
+    canPop: false,
     child: Scaffold(
-      body: PageView(
-        controller: pageController,
-        physics: const NeverScrollableScrollPhysics(),
-        children: const <Widget>[
-          HomeScreen(),
-          CartScreen(),
-          ProfileScreen(),
-        
+      body: widget.navigationShell,
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: widget.navigationShell.currentIndex,
+        onTap: onItemTapped,
+        enableFeedback: true,
+        type: BottomNavigationBarType.fixed,
+        backgroundColor: context.color.background,
+        selectedItemColor: context.color.primary,
+        unselectedItemColor: context.color.gray,
+        showSelectedLabels: false,
+        showUnselectedLabels: false,
+        elevation: 10,
+        items: [
+          _buildBottomItem(Assets.icons.home),
+          _buildBottomItem(Assets.icons.cart),
+          _buildBottomItem(Assets.icons.profile),
         ],
       ),
-      // In your MainScreen build (bottomNavigationBar):
-      bottomNavigationBar: bottomNavBarEnabled
-          ? Theme(
-              data: context.theme.copyWith(splashFactory: NoSplash.splashFactory),
-              child: NavigationBar(
-                indicatorColor: Colors.transparent,
-                elevation: 10,
-                backgroundColor: context.color.white,
-                destinations: [
-                  for (final i in [Assets.icons.home, Assets.icons.cart, Assets.icons.profile])
-                    NavigationDestination(
-                      icon: SizedBox(width: 25, child: i.svg(colorFilter: const .mode(Color(0xFFBBBFD0), .srcATop))),
-                      selectedIcon: Stack(
-                        clipBehavior: .none,
-                        children: [
-                          SizedBox(
-                            width: 25,
-                            child: Center(child: i.svg(colorFilter: .mode(context.color.primary, .srcATop))),
-                          ),
-                          Positioned(
-                            bottom: 15,
-                            left: 1.5,
-                            child: Center(
-                              child: AnimatedContainer(
-                                duration: const Duration(milliseconds: 250),
-                                width: bottomNavigationAnimated ? 22 : 0,
-                                margin: .only(left: bottomNavigationAnimated ? 0 : 11),
-                                height: 3,
-                                decoration: BoxDecoration(
-                                  color: context.color.primary,
-                                  borderRadius: const .all(.circular(10)),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                      label: '',
-                    ),
-                ],
-                selectedIndex: currentTab.index,
-                onDestinationSelected: onItemTapped,
-              ),
-            )
-          : null,
+    ),
+  );
+
+  BottomNavigationBarItem _buildBottomItem(SvgGenImage icon) =>
+      BottomNavigationBarItem(
+        icon: _buildIcon(icon, isSelected: false),
+        activeIcon: _buildSelectedIcon(icon),
+        label: '',
+      );
+
+  Widget _buildSelectedIcon(SvgGenImage icon) => Column(
+    children: [
+      _buildIcon(icon, isSelected: true),
+      Dimension.hBox4,
+      Center(
+        child: AnimatedContainer(
+          duration: const Duration(milliseconds: 250),
+          width: bottomNavigationAnimated ? 22 : 0,
+          margin: EdgeInsets.only(left: bottomNavigationAnimated ? 0 : 11),
+          height: 3,
+          decoration: BoxDecoration(
+            color: context.color.black,
+            borderRadius: const BorderRadius.all(Radius.circular(10)),
+          ),
+        ),
+      ),
+    ],
+  );
+
+  Widget _buildIcon(SvgGenImage icon, {required bool isSelected}) => SizedBox(
+    width: 25,
+    child: Center(
+      child: icon.svg(
+        width: 25,
+        height: 25,
+        colorFilter: ColorFilter.mode(
+          isSelected ? context.color.black : const Color(0xffBBBFD0),
+          BlendMode.srcATop,
+        ),
+      ),
     ),
   );
 }

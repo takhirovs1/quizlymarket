@@ -125,11 +125,11 @@ sealed class Pubspec {
     2025,
     11,
     29,
-    12,
-    3,
-    53,
-    29,
-    822,
+    13,
+    7,
+    39,
+    858,
+    437,
   );
 
   /// Name
@@ -432,11 +432,8 @@ sealed class Pubspec {
     'permission_handler': r'^12.0.1',
     'dio_retry_plus': r'^2.0.8',
     'thunder': r'^0.2.3',
-    'elixir': <String, Object>{
-      'git': <String, Object>{
-        'url': r'https://github.com/Miracle-Blue/elixir',
-      },
-    },
+    'supabase_flutter': r'^2.10.3',
+    'go_router': r'^17.0.0',
     'flutter_bloc': r'^9.1.1',
     'equatable': r'^2.0.7',
     'firebase_core': r'^4.2.1',

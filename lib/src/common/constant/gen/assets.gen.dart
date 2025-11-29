@@ -89,14 +89,29 @@ class $AssetsLottieGen {
   /// File path: assets/lottie/laptop.lottie
   String get laptop => 'assets/lottie/laptop.lottie';
 
+  /// File path: assets/lottie/money.json
+  String get moneyJson => 'assets/lottie/money.json';
+
   /// File path: assets/lottie/money.lottie
-  String get money => 'assets/lottie/money.lottie';
+  String get moneyLottie => 'assets/lottie/money.lottie';
 
   /// File path: assets/lottie/timer.lottie
   String get timer => 'assets/lottie/timer.lottie';
 
   /// List of all assets
-  List<String> get values => [book, circleStarCopy, circleStar, diamond, error, error2, iPhone, laptop, money, timer];
+  List<String> get values => [
+    book,
+    circleStarCopy,
+    circleStar,
+    diamond,
+    error,
+    error2,
+    iPhone,
+    laptop,
+    moneyJson,
+    moneyLottie,
+    timer,
+  ];
 }
 
 class $AssetsVectorsGen {

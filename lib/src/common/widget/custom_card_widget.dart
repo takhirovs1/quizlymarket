@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 
+import '../constant/gen/assets.gen.dart';
 import '../extension/context_extension.dart';
 import '../extension/int_extension.dart';
 import '../util/dimension.dart';
@@ -10,9 +12,9 @@ class CustomCardWidget extends StatefulWidget {
     required this.university,
     required this.direction,
     required this.testCount,
-    required this.year,
     required this.buttonText,
     required this.onPressed,
+    required this.studyYears,
     this.price,
     super.key,
   });
@@ -24,10 +26,10 @@ class CustomCardWidget extends StatefulWidget {
   final String university;
   final String direction;
   final int testCount;
-  final String year;
   final int? price;
   final String buttonText;
   final VoidCallback onPressed;
+  final String studyYears;
 }
 
 class _CustomCardWidgetState extends State<CustomCardWidget> {
@@ -35,7 +37,10 @@ class _CustomCardWidgetState extends State<CustomCardWidget> {
   Widget build(BuildContext context) => Padding(
     padding: Dimension.pH16,
     child: DecoratedBox(
-      decoration: const BoxDecoration(color: Color(0x14747480), borderRadius: Dimension.rAll16),
+      decoration: const BoxDecoration(
+        color: Color(0x14747480),
+        borderRadius: Dimension.rAll16,
+      ),
       child: Padding(
         padding: Dimension.pAll16,
         child: Column(
@@ -46,18 +51,32 @@ class _CustomCardWidgetState extends State<CustomCardWidget> {
               mainAxisAlignment: .spaceBetween,
               crossAxisAlignment: .start,
               children: [
-                Text(
-                  widget.subject,
-                  style: context.textTheme.sfProW500s16.copyWith(
-                    color: context.color.black,
-              fontWeight: FontWeight.w700,
-                  ),
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
+                Row(
+                  spacing: 4,
+                  children: [
+                    Lottie.asset(
+                     'assets/lottie/book.json',
+                      width: 24,
+                      height: 24,
+                      repeat: false,
+                    ),
+                    Text(
+                      widget.subject,
+                      style: context.textTheme.sfProW500s16.copyWith(
+                        color: context.color.black,
+                        fontWeight: FontWeight.w700,
+                      ),
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ],
                 ),
+
                 Text(
                   widget.university,
-                  style: context.textTheme.sfProW500s16.copyWith(color: context.color.gray),
+                  style: context.textTheme.sfProW500s16.copyWith(
+                    color: context.color.gray,
+                  ),
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                 ),
@@ -65,7 +84,9 @@ class _CustomCardWidgetState extends State<CustomCardWidget> {
             ),
             Text(
               widget.direction,
-              style: context.textTheme.sfProW500s16.copyWith(color: context.color.gray),
+              style: context.textTheme.sfProW500s16.copyWith(
+                color: context.color.gray,
+              ),
               maxLines: 2,
               overflow: .ellipsis,
             ),
@@ -74,31 +95,56 @@ class _CustomCardWidgetState extends State<CustomCardWidget> {
               children: [
                 Text(
                   '${widget.testCount} ta savol',
-                  style: context.textTheme.sfProW400s14.copyWith(color: context.color.gray),
+                  style: context.textTheme.sfProW400s14.copyWith(
+                    color: context.color.gray,
+                  ),
                   maxLines: 1,
                   overflow: .ellipsis,
                 ),
                 Text('|', style: TextStyle(color: context.color.gray)),
-                Text('2025-2026 yil', style: context.textTheme.sfProW400s14.copyWith(color: context.color.gray)),
+                Text(
+                  widget.studyYears,
+                  style: context.textTheme.sfProW400s14.copyWith(
+                    color: context.color.gray,
+                  ),
+                ),
               ],
             ),
             Row(
               mainAxisAlignment: .spaceBetween,
               children: [
                 if (widget.price != null)
-                  Text(
-                    widget.price?.toUZSString() ?? '',
-                    style: context.textTheme.sfProW500s14.copyWith(
-                      color: context.color.primary,
-                      fontStyle: .normal,
-                    ),
+                  Row(
+                    spacing: 4,
+                    children: [
+                      Lottie.asset(
+                             Assets.lottie.moneyJson,
+                        width: 24,
+                        height: 24,
+                        repeat: false,
+                      ),
+                      Text(
+                        widget.price?.toUZSString() ?? '',
+                        style: context.textTheme.sfProW500s14.copyWith(
+                          color: context.color.primary,
+                          fontStyle: .normal,
+                          fontWeight: .w700,
+                        ),
+                      ),
+                    ],
                   ),
+
                 FilledButton(
-                  style: FilledButton.styleFrom(padding: Dimension.pH12V8, backgroundColor: context.color.primary),
-                  onPressed: () {},
+                  style: FilledButton.styleFrom(
+                    padding: Dimension.pH12V8,
+                    backgroundColor: context.color.primary,
+                  ),
+                  onPressed: widget.onPressed,
                   child: Text(
                     widget.buttonText,
-                    style: context.textTheme.sfProW500s14.copyWith(color: context.color.white),
+                    style: context.textTheme.sfProW500s14.copyWith(
+                      color: context.color.white,
+                    ),
                   ),
                 ),
               ],

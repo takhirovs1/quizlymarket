@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-
 import '../../feature/cart/presentation/screen/cart_screen.dart';
 import '../../feature/home/presentation/screen/home_screen.dart';
 import '../../feature/main/presentation/screen/main_screen.dart';
@@ -10,8 +9,9 @@ import '../../feature/profile/presentation/screen/profile_screen.dart';
 import 'route_arguments.dart';
 
 final rootNavigatorKey = GlobalKey<NavigatorState>();
+
 GoRouter router = GoRouter(
-  initialLocation: Routes.main,
+  initialLocation: Routes.onboarding,
   navigatorKey: rootNavigatorKey,
   debugLogDiagnostics: true,
   routes: [
@@ -21,29 +21,42 @@ GoRouter router = GoRouter(
       parentNavigatorKey: rootNavigatorKey,
       builder: (context, state) => const OnboardingScreen(),
     ),
-    GoRoute(
-      path: Routes.main,
-      name: Routes.main,
+    StatefulShellRoute.indexedStack(
       parentNavigatorKey: rootNavigatorKey,
-      builder: (context, state) => const MainScreen(),
-    ),
-    GoRoute(
-      path: Routes.cart,
-      name: Routes.cart,
-      parentNavigatorKey: rootNavigatorKey,
-      builder: (context, state) => const CartScreen(),
-    ),
-    GoRoute(
-      path: Routes.profile,
-      name: Routes.profile,
-      parentNavigatorKey: rootNavigatorKey,
-      builder: (context, state) => const ProfileScreen(),
-    ),
-    GoRoute(
-      path: Routes.home,
-      name: Routes.home,
-      parentNavigatorKey: rootNavigatorKey,
-      builder: (context, state) => const HomeScreen(),
+      builder: (context, state, navigationShell) =>
+          MainScreen(key: state.pageKey, navigationShell: navigationShell),
+      branches: [
+        StatefulShellBranch(
+          initialLocation: Routes.home,
+          routes: [
+            GoRoute(
+              path: Routes.home,
+              name: Routes.home,
+              builder: (context, state) => const HomeScreen(),
+            ),
+          ],
+        ),
+        StatefulShellBranch(
+          initialLocation: Routes.cart,
+          routes: [
+            GoRoute(
+              path: Routes.cart,
+              name: Routes.cart,
+              builder: (context, state) => const CartScreen(),
+            ),
+          ],
+        ),
+        StatefulShellBranch(
+          initialLocation: Routes.profile,
+          routes: [
+            GoRoute(
+              path: Routes.profile,
+              name: Routes.profile,
+              builder: (context, state) => const ProfileScreen(),
+            ),
+          ],
+        ),
+      ],
     ),
   ],
 );

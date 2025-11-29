@@ -23,7 +23,7 @@ class OnboardingScreen extends StatelessWidget {
               children: [
                 Text(
                   'QuizlyMarket',
-                  style: context.textTheme.sfProW500s30.copyWith(fontSize: 50, color: context.color.white),
+                  style: context.textTheme.nunitoW500s10.copyWith(fontSize: 50, color: context.color.white),
                 ),
                 Dimension.hBox64,
                 Assets.images.logoPng.image(),
@@ -32,9 +32,10 @@ class OnboardingScreen extends StatelessWidget {
           ),
           ElevatedButton(
             style: const ButtonStyle(padding: WidgetStatePropertyAll(Dimension.pV16)),
-            onPressed: () {
-              // context.localSource.setOnboardingCompleted(true);
-              context.pushReplacement(Routes.main);
+            onPressed: () async {
+              await context.localSource.setOnboardingCompleted(true);
+              if (!context.mounted) return;
+              context.pushReplacement(Routes.home);
             },
             child: Text(
               'Start'.toUpperCase(),
@@ -44,7 +45,7 @@ class OnboardingScreen extends StatelessWidget {
           Dimension.hBox20,
           Text(
             'Copyright © 2025 FlutterBro',
-            style: context.textTheme.sfProW400s12.copyWith(fontWeight: .w900, color: context.color.white),
+            style: context.textTheme.nunitoW600s12.copyWith(fontWeight: .w900, color: context.color.white),
             textAlign: .center,
           ),
           Dimension.hBox24,

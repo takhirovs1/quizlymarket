@@ -40,7 +40,7 @@ class _HomeScreenState extends HomeState {
           university: 'Alfraganus',
           direction: 'Iqtisodiyot sirtqi 2-kurs 2-semistr',
           testCount: 100,
-          year: '2025-2026',
+          studyYears: '2025-2026',
           price: 10000,
           buttonText:context.l10n.buy,
           onPressed: () {},
