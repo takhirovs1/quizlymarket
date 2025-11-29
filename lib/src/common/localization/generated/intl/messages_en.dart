@@ -22,11 +22,17 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-    "appConfiguration": MessageLookupByLibrary.simpleMessage("App Configuration"),
+    "appConfiguration": MessageLookupByLibrary.simpleMessage(
+      "App Configuration",
+    ),
     "appConfigurationCancel": MessageLookupByLibrary.simpleMessage("Cancel"),
-    "appConfigurationDescription": MessageLookupByLibrary.simpleMessage("Configure your app settings here."),
+    "appConfigurationDescription": MessageLookupByLibrary.simpleMessage(
+      "Configure your app settings here.",
+    ),
     "appConfigurationReset": MessageLookupByLibrary.simpleMessage("Reset"),
-    "appConfigurationResetDescription": MessageLookupByLibrary.simpleMessage("Reset your app settings to default."),
+    "appConfigurationResetDescription": MessageLookupByLibrary.simpleMessage(
+      "Reset your app settings to default.",
+    ),
     "appConfigurationSave": MessageLookupByLibrary.simpleMessage("Save"),
     "appName": MessageLookupByLibrary.simpleMessage("QuizlyMarket"),
     "buy": MessageLookupByLibrary.simpleMessage("Buy"),
@@ -44,7 +50,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "noInternetConnectionDescription": MessageLookupByLibrary.simpleMessage(
       "Please check your internet connection and try again.",
     ),
-    "pressBackAgainToExit": MessageLookupByLibrary.simpleMessage("Press back again to exit"),
+    "pressBackAgainToExit": MessageLookupByLibrary.simpleMessage(
+      "Press back again to exit",
+    ),
     "refresh": MessageLookupByLibrary.simpleMessage("Refresh"),
     "report": MessageLookupByLibrary.simpleMessage("Reports"),
     "russian": MessageLookupByLibrary.simpleMessage("Russian"),

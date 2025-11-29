@@ -62,6 +62,43 @@ class $AssetsImagesGen {
   List<AssetGenImage> get values => [logo, logoPng, placeholder];
 }
 
+class $AssetsLottieGen {
+  const $AssetsLottieGen();
+
+  /// File path: assets/lottie/book.lottie
+  String get book => 'assets/lottie/book.lottie';
+
+  /// File path: assets/lottie/circle_star copy.lottie
+  String get circleStarCopy => 'assets/lottie/circle_star copy.lottie';
+
+  /// File path: assets/lottie/circle_star.lottie
+  String get circleStar => 'assets/lottie/circle_star.lottie';
+
+  /// File path: assets/lottie/diamond.lottie
+  String get diamond => 'assets/lottie/diamond.lottie';
+
+  /// File path: assets/lottie/error.lottie
+  String get error => 'assets/lottie/error.lottie';
+
+  /// File path: assets/lottie/error_2.lottie
+  String get error2 => 'assets/lottie/error_2.lottie';
+
+  /// File path: assets/lottie/iPhone.lottie
+  String get iPhone => 'assets/lottie/iPhone.lottie';
+
+  /// File path: assets/lottie/laptop.lottie
+  String get laptop => 'assets/lottie/laptop.lottie';
+
+  /// File path: assets/lottie/money.lottie
+  String get money => 'assets/lottie/money.lottie';
+
+  /// File path: assets/lottie/timer.lottie
+  String get timer => 'assets/lottie/timer.lottie';
+
+  /// List of all assets
+  List<String> get values => [book, circleStarCopy, circleStar, diamond, error, error2, iPhone, laptop, money, timer];
+}
+
 class $AssetsVectorsGen {
   const $AssetsVectorsGen();
 
@@ -83,6 +120,7 @@ class Assets {
 
   static const $AssetsIconsGen icons = $AssetsIconsGen();
   static const $AssetsImagesGen images = $AssetsImagesGen();
+  static const $AssetsLottieGen lottie = $AssetsLottieGen();
   static const $AssetsVectorsGen vectors = $AssetsVectorsGen();
   static const $ConfigGen config = $ConfigGen();
 }

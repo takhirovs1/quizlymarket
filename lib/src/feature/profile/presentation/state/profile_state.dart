@@ -210,5 +210,6 @@ abstract class ProfileState extends State<ProfileScreen> {
     } on Object {
       return null;
     }
+
   }
 }

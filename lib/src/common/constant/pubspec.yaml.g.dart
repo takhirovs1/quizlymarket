@@ -124,12 +124,12 @@ sealed class Pubspec {
   static final DateTime timestamp = DateTime.utc(
     2025,
     11,
-    27,
-    11,
-    13,
-    34,
-    823,
-    712,
+    29,
+    12,
+    3,
+    53,
+    29,
+    822,
   );
 
   /// Name
@@ -450,9 +450,11 @@ sealed class Pubspec {
     'cached_network_image': r'^3.4.1',
     'share_plus': r'^12.0.1',
     'skeletonizer': r'^2.1.0+1',
+    'lottie': r'^3.3.2',
     'telegram_web_app': r'^0.3.3',
     'cupertino_icons': r'^1.0.8',
     'vibration': r'^3.1.4',
+    'vibration_web': r'^1.6.8',
   };
 
   /// Developer dependencies
@@ -529,6 +531,7 @@ sealed class Pubspec {
         r'assets/vectors/',
         r'assets/icons/',
         r'assets/images/',
+        r'assets/lottie/',
         r'config/',
       ],
       'fonts': <Object>[

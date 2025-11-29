@@ -1,8 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:lottie/lottie.dart';
 import 'package:meta/meta.dart';
 
+import '../../../../common/constant/gen/assets.gen.dart';
 import '../../../../common/extension/context_extension.dart';
 import '../../../../common/util/dimension.dart';
 import '../../../../common/widget/custom_tile.dart';
@@ -34,9 +36,9 @@ class _ProfileScreenState extends ProfileState {
           children: [
             Flexible(
               child: ListView(
-                
                 padding: Dimension.pAll16,
                 children: [
+                  // Lottie.asset(Assets.lottie.book),
                   Dimension.hBox64,
                   ProfileHeader(
                     photoUrl: profilePhotoUrl,
