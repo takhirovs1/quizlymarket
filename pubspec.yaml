@@ -41,6 +41,7 @@ dependencies:
   # networking
   dio_retry_plus: ^2.0.8
   thunder: ^0.2.3
+  supabase_flutter: ^2.10.3
 
   # routing
   elixir:

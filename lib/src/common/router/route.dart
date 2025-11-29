@@ -26,21 +26,21 @@ final class MainPage extends AppPage {
   const MainPage() : super(child: const MainScreen(), name: 'main');
 
   @override
-  Set<String> get tags => {'main'};
+  Set<String> get tags => {'/main'};
 }
 
 final class OnboardingPage extends AppPage {
   const OnboardingPage() : super(child: const OnboardingScreen(), name: 'onboarding');
 
   @override
-  Set<String> get tags => {'onboarding'};
+  Set<String> get tags => {'/onboarding'};
 }
 
 final class HomePage extends AppPage {
   const HomePage() : super(child: const HomeScreen(), name: 'home');
 
   @override
-  Set<String> get tags => {'home'};
+  Set<String> get tags => {'/home'};
 }
 
 final class SettingsPage extends AppPage {
@@ -54,5 +54,5 @@ final class SettingsPage extends AppPage {
   Route<void> createRoute(BuildContext context) => CustomMaterialRoute(page: this);
 
   @override
-  Set<String> get tags => {'settings'};
+  Set<String> get tags => {'/settings'};
 }
