@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../common/constant/gen/assets.gen.dart';
 import '../../../common/extension/context_extension.dart';
-import '../../../common/router/route.dart';
+import '../../../common/router/route_arguments.dart';
 import '../../../common/util/dimension.dart';
 
 class OnboardingScreen extends StatelessWidget {
@@ -33,7 +34,7 @@ class OnboardingScreen extends StatelessWidget {
             style: const ButtonStyle(padding: WidgetStatePropertyAll(Dimension.pV16)),
             onPressed: () {
               // context.localSource.setOnboardingCompleted(true);
-              context.pushReplacement(const MainPage());
+              context.pushReplacement(Routes.main);
             },
             child: Text(
               'Start'.toUpperCase(),

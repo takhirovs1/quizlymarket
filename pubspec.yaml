@@ -44,9 +44,7 @@ dependencies:
   supabase_flutter: ^2.10.3
 
   # routing
-  elixir:
-    git:
-      url: https://github.com/Miracle-Blue/elixir
+  go_router: ^17.0.0
 
    # state management
   flutter_bloc: ^9.1.1

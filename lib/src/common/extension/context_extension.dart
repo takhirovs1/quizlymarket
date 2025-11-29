@@ -1,7 +1,7 @@
 import 'dart:io';
 
-import 'package:elixir/elixir.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:local_source/local_source.dart';
 
 import '../dependencies/model/app_metadata.dart';
@@ -10,7 +10,6 @@ import '../dependencies/widget/dependencies_scope.dart';
 import '../localization/localization.dart';
 import '../theme/theme_colors.dart';
 import '../theme/theme_text_style.dart';
-import '../util/logger.dart';
 import '../widget/custom_notification.dart';
 
 /// [BuildContextX]
@@ -66,31 +65,13 @@ extension SizeX on BuildContext {
 extension NavigatorX on BuildContext {
   bool get canPop => Navigator.canPop(this);
 
-  void pop() => elixir.pop();
-
-  void push(ElixirPage page) {
-    elixir.change((state) {
-      if (state.isNotEmpty && state.last.name == page.name) {
-        warning('[NavigatorX] push canceled: trying to push same page "${page.name}"');
-        return state;
-      }
-      final newState = List<ElixirPage>.from(state)..add(page);
-      return newState;
-    });
+  void popRoute() {
+    if (canPop) GoRouter.of(this).pop();
   }
 
-  void pushReplacement(ElixirPage page) {
-    print('pushReplacement: ${page.name}');
-    elixir.change((state) {
-      print('state: $state');
-      if (state.isNotEmpty && state.last.name == page.name) return state;
-
-      var newState = List<ElixirPage>.from(state);
-      newState = List<ElixirPage>.from(newState.toSet())..add(page);
-      print('pushReplacement: ${page}');
-
-      return newState;
-    });
+  void popAllDialogs() {
+    // Close all dialogs by popping until we reach the main screen
+    while (canPop) GoRouter.of(this).pop();
   }
 }
 
