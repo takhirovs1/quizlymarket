@@ -221,6 +221,36 @@ class GeneratedLocalization {
   String get cart {
     return Intl.message('Корзина', name: 'cart', desc: '', args: []);
   }
+
+  /// `Тест приобретен`
+  String get testPurchased {
+    return Intl.message(
+      'Тест приобретен',
+      name: 'testPurchased',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Вы можете начать тест, настроенный под вас.`
+  String get personalizedTestDescription {
+    return Intl.message(
+      'Вы можете начать тест, настроенный под вас.',
+      name: 'personalizedTestDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Перейти к тесту`
+  String get enterTest {
+    return Intl.message(
+      'Перейти к тесту',
+      name: 'enterTest',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate

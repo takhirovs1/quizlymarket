@@ -38,6 +38,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "buy": MessageLookupByLibrary.simpleMessage("Купить"),
     "cart": MessageLookupByLibrary.simpleMessage("Корзина"),
     "english": MessageLookupByLibrary.simpleMessage("Английский"),
+    "enterTest": MessageLookupByLibrary.simpleMessage("Перейти к тесту"),
     "language": MessageLookupByLibrary.simpleMessage("Изменить язык"),
     "logoutCancel": MessageLookupByLibrary.simpleMessage("Отмена"),
     "logoutConfirm": MessageLookupByLibrary.simpleMessage("Выход"),
@@ -50,6 +51,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "noInternetConnectionDescription": MessageLookupByLibrary.simpleMessage(
       "Пожалуйста, проверьте ваше интернет соединение и попробуйте снова.",
     ),
+    "personalizedTestDescription": MessageLookupByLibrary.simpleMessage(
+      "Вы можете начать тест, настроенный под вас.",
+    ),
     "pressBackAgainToExit": MessageLookupByLibrary.simpleMessage(
       "Нажмите еще раз, чтобы выйти",
     ),
@@ -57,6 +61,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "report": MessageLookupByLibrary.simpleMessage("Отчеты"),
     "russian": MessageLookupByLibrary.simpleMessage("Русский"),
     "signOut": MessageLookupByLibrary.simpleMessage("Выход"),
+    "testPurchased": MessageLookupByLibrary.simpleMessage("Тест приобретен"),
     "title": MessageLookupByLibrary.simpleMessage("Quizly Market"),
     "uzbek": MessageLookupByLibrary.simpleMessage("Узбекский"),
   };
