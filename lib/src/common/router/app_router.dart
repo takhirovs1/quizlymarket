@@ -6,14 +6,51 @@ import '../../feature/home/presentation/screen/home_screen.dart';
 import '../../feature/main/presentation/screen/main_screen.dart';
 import '../../feature/onboarding/presentation/onboarding_screen.dart';
 import '../../feature/profile/presentation/screen/profile_screen.dart';
+import '../extension/context_extension.dart';
 import 'route_arguments.dart';
 
 final rootNavigatorKey = GlobalKey<NavigatorState>();
 
 GoRouter router = GoRouter(
-  initialLocation: Routes.onboarding,
   navigatorKey: rootNavigatorKey,
   debugLogDiagnostics: true,
+  initialLocation: '/',
+  redirect: (context, state) {
+    final isOnboardingCompleted = context.localSource.onboardingCompleted;
+
+    // Hozirgi URL path (query va hash'larsiz)
+    final rawLocation = state.uri.path; // masalan: "/", "/home", "/onboarding"
+
+    // Agar path umuman "/" bilan boshlanmasa (g'alati holat) — onboarding/home ga yuboramiz
+    if (!rawLocation.startsWith('/')) {
+      return isOnboardingCompleted ? Routes.home : Routes.onboarding;
+    }
+
+    // Agar path aynan "/" bo'lsa — onboarding flag bo'yicha tanlaymiz
+    if (rawLocation == '/' || rawLocation.isEmpty) {
+      return isOnboardingCompleted ? Routes.home : Routes.onboarding;
+    }
+
+    // matchedLocation bo'sh bo'lsa ham rawLocation'dan foydalanamiz
+    final loc = state.matchedLocation.isEmpty
+        ? rawLocation
+        : state.matchedLocation;
+
+    final goingToOnboarding = loc == Routes.onboarding;
+
+    // Onboarding tugamagan bo'lsa va boshqa ekranga ketayotgan bo'lsa => /onboarding
+    if (!isOnboardingCompleted && !goingToOnboarding) {
+      return Routes.onboarding;
+    }
+
+    // Onboarding tugagan bo'lsa va user /onboarding ga ketayotgan bo'lsa => /home
+    if (isOnboardingCompleted && goingToOnboarding) {
+      return Routes.home;
+    }
+
+    // Aks holda redirect yo'q
+    return null;
+  },
   routes: [
     GoRoute(
       path: Routes.onboarding,

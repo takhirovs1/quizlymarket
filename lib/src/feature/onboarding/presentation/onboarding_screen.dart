@@ -23,7 +23,10 @@ class OnboardingScreen extends StatelessWidget {
               children: [
                 Text(
                   'QuizlyMarket',
-                  style: context.textTheme.nunitoW500s10.copyWith(fontSize: 50, color: context.color.white),
+                  style: context.textTheme.nunitoW500s10.copyWith(
+                    fontSize: 50,
+                    color: context.color.white,
+                  ),
                 ),
                 Dimension.hBox64,
                 Assets.images.logoPng.image(),
@@ -31,21 +34,29 @@ class OnboardingScreen extends StatelessWidget {
             ),
           ),
           ElevatedButton(
-            style: const ButtonStyle(padding: WidgetStatePropertyAll(Dimension.pV16)),
+            style: const ButtonStyle(
+              padding: WidgetStatePropertyAll(Dimension.pV16),
+            ),
             onPressed: () async {
-              await context.localSource.setOnboardingCompleted(true);
+              // await context.localSource.setOnboardingCompleted(true);
               if (!context.mounted) return;
-              context.pushReplacement(Routes.home);
+              context.go(Routes.home); // yoki goNamed bo‘lsa name bilan
             },
             child: Text(
               'Start'.toUpperCase(),
-              style: context.textTheme.nunitoW500s20.copyWith(fontWeight: .w900, color: context.color.primary),
+              style: context.textTheme.nunitoW500s20.copyWith(
+                fontWeight: .w900,
+                color: context.color.primary,
+              ),
             ),
           ),
           Dimension.hBox20,
           Text(
             'Copyright © 2025 FlutterBro',
-            style: context.textTheme.nunitoW600s12.copyWith(fontWeight: .w900, color: context.color.white),
+            style: context.textTheme.nunitoW600s12.copyWith(
+              fontWeight: .w900,
+              color: context.color.white,
+            ),
             textAlign: .center,
           ),
           Dimension.hBox24,
