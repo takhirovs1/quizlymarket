@@ -23,5 +23,8 @@
 "logoutCancel": "Cancel",
 "buy": "Buy",
 "appName": "QuizlyMarket",
-"cart": "Cart"
+"cart": "Cart",
+"testPurchased": "Test purchased",
+"personalizedTestDescription": "You can start the test customized for you.",
+"enterTest": "Enter test"
 }

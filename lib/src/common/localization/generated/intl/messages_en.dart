@@ -38,6 +38,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "buy": MessageLookupByLibrary.simpleMessage("Buy"),
     "cart": MessageLookupByLibrary.simpleMessage("Cart"),
     "english": MessageLookupByLibrary.simpleMessage("English"),
+    "enterTest": MessageLookupByLibrary.simpleMessage("Enter test"),
     "language": MessageLookupByLibrary.simpleMessage("Change language"),
     "logoutCancel": MessageLookupByLibrary.simpleMessage("Cancel"),
     "logoutConfirm": MessageLookupByLibrary.simpleMessage("Logout"),
@@ -50,6 +51,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "noInternetConnectionDescription": MessageLookupByLibrary.simpleMessage(
       "Please check your internet connection and try again.",
     ),
+    "personalizedTestDescription": MessageLookupByLibrary.simpleMessage(
+      "You can start the test customized for you.",
+    ),
     "pressBackAgainToExit": MessageLookupByLibrary.simpleMessage(
       "Press back again to exit",
     ),
@@ -57,6 +61,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "report": MessageLookupByLibrary.simpleMessage("Reports"),
     "russian": MessageLookupByLibrary.simpleMessage("Russian"),
     "signOut": MessageLookupByLibrary.simpleMessage("Sign out"),
+    "testPurchased": MessageLookupByLibrary.simpleMessage("Test purchased"),
     "title": MessageLookupByLibrary.simpleMessage("Quizly Market"),
     "uzbek": MessageLookupByLibrary.simpleMessage("Uzbek"),
   };

@@ -118,7 +118,7 @@ class _CustomCardWidgetState extends State<CustomCardWidget> {
                     spacing: 4,
                     children: [
                       Lottie.asset(
-                             Assets.lottie.moneyJson,
+                             Assets.lottie.money,
                         width: 24,
                         height: 24,
                         repeat: false,
@@ -147,6 +147,7 @@ class _CustomCardWidgetState extends State<CustomCardWidget> {
                     ),
                   ),
                 ),
+              
               ],
             ),
           ],

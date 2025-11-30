@@ -49,6 +49,9 @@ class $AssetsIconsGen {
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
+  /// File path: assets/images/background_image.png
+  AssetGenImage get backgroundImage => const AssetGenImage('assets/images/background_image.png');
+
   /// File path: assets/images/logo.png
   AssetGenImage get logo => const AssetGenImage('assets/images/logo.png');
 
@@ -58,60 +61,45 @@ class $AssetsImagesGen {
   /// File path: assets/images/placeholder.jpg
   AssetGenImage get placeholder => const AssetGenImage('assets/images/placeholder.jpg');
 
+  /// File path: assets/images/robot.png
+  AssetGenImage get robot => const AssetGenImage('assets/images/robot.png');
+
   /// List of all assets
-  List<AssetGenImage> get values => [logo, logoPng, placeholder];
+  List<AssetGenImage> get values => [backgroundImage, logo, logoPng, placeholder, robot];
 }
 
 class $AssetsLottieGen {
   const $AssetsLottieGen();
 
-  /// File path: assets/lottie/book.lottie
-  String get book => 'assets/lottie/book.lottie';
+  /// File path: assets/lottie/book.json
+  String get book => 'assets/lottie/book.json';
 
-  /// File path: assets/lottie/circle_star copy.lottie
-  String get circleStarCopy => 'assets/lottie/circle_star copy.lottie';
+  /// File path: assets/lottie/circle_star.json
+  String get circleStar => 'assets/lottie/circle_star.json';
 
-  /// File path: assets/lottie/circle_star.lottie
-  String get circleStar => 'assets/lottie/circle_star.lottie';
+  /// File path: assets/lottie/diamond.json
+  String get diamond => 'assets/lottie/diamond.json';
 
-  /// File path: assets/lottie/diamond.lottie
-  String get diamond => 'assets/lottie/diamond.lottie';
+  /// File path: assets/lottie/error.json
+  String get error => 'assets/lottie/error.json';
 
-  /// File path: assets/lottie/error.lottie
-  String get error => 'assets/lottie/error.lottie';
+  /// File path: assets/lottie/error2.json
+  String get error2 => 'assets/lottie/error2.json';
 
-  /// File path: assets/lottie/error_2.lottie
-  String get error2 => 'assets/lottie/error_2.lottie';
-
-  /// File path: assets/lottie/iPhone.lottie
-  String get iPhone => 'assets/lottie/iPhone.lottie';
-
-  /// File path: assets/lottie/laptop.lottie
-  String get laptop => 'assets/lottie/laptop.lottie';
+  /// File path: assets/lottie/laptop.json
+  String get laptop => 'assets/lottie/laptop.json';
 
   /// File path: assets/lottie/money.json
-  String get moneyJson => 'assets/lottie/money.json';
+  String get money => 'assets/lottie/money.json';
 
-  /// File path: assets/lottie/money.lottie
-  String get moneyLottie => 'assets/lottie/money.lottie';
+  /// File path: assets/lottie/phone.json
+  String get phone => 'assets/lottie/phone.json';
 
-  /// File path: assets/lottie/timer.lottie
-  String get timer => 'assets/lottie/timer.lottie';
+  /// File path: assets/lottie/timer.json
+  String get timer => 'assets/lottie/timer.json';
 
   /// List of all assets
-  List<String> get values => [
-    book,
-    circleStarCopy,
-    circleStar,
-    diamond,
-    error,
-    error2,
-    iPhone,
-    laptop,
-    moneyJson,
-    moneyLottie,
-    timer,
-  ];
+  List<String> get values => [book, circleStar, diamond, error, error2, laptop, money, phone, timer];
 }
 
 class $AssetsVectorsGen {
