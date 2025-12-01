@@ -82,18 +82,16 @@
 
   const parseUser = (raw) => tryJson(raw) ?? tryBase64Json(raw);
 
-  const mockUser =
-    parseUser(params.get('tgUser')) ??
-    parseUser(readStorage('tgDebugUser')) ??
-    {
-      id: 999_000_001,
-      first_name: 'Debug',
-      last_name: 'User',
-      username: 'debug_user',
-      language_code: 'en',
+  const mockUser = parseUser(params.get("tgUser")) ??
+    parseUser(readStorage("tgDebugUser")) ?? {
+      id: 5651631418,
+      first_name: "Debug",
+      last_name: "User",
+      username: "debug_user",
+      language_code: "en",
       is_premium: true,
       allows_write_to_pm: true,
-      photo_url: 'https://placehold.co/96x96',
+      photo_url: "https://placehold.co/96x96",
     };
 
   writeStorage('tgDebugUser', JSON.stringify(mockUser));
