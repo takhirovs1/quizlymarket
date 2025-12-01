@@ -21,13 +21,11 @@ class _HomeScreenState extends HomeState {
       child: SafeArea(
         bottom: false,
         child: SizedBox(
-          height:  context.height * 0.12,
+          height: context.height * 0.12,
           child: Center(
             child: Text(
               context.l10n.appName,
-              style: context.textTheme.nunitoW600s24.copyWith(
-                color: context.color.primary,
-              ),
+              style: context.textTheme.nunitoW600s24.copyWith(color: context.color.primary),
             ),
           ),
         ),
@@ -42,7 +40,7 @@ class _HomeScreenState extends HomeState {
           testCount: 100,
           studyYears: '2025-2026',
           price: 10000,
-          buttonText:context.l10n.buy,
+          buttonText: context.l10n.buy,
           onPressed: () {},
         ),
         separatorBuilder: (context, index) => Dimension.hBox12,

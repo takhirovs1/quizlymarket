@@ -1,15 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-import 'package:telegram_web_app/telegram_web_app.dart';
 
 import '../../../../common/constant/gen/assets.gen.dart';
 import '../../../../common/extension/context_extension.dart';
 import '../../../../common/util/dimension.dart';
-import '../../data/model/main_tabs_enum.dart';
-import '../state/main_state.dart';
 import '../../../cart/presentation/screen/cart_screen.dart';
 import '../../../home/presentation/screen/home_screen.dart';
 import '../../../profile/presentation/screen/profile_screen.dart';
+import '../../data/model/main_tabs_enum.dart';
+import '../state/main_state.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({this.initialTab = MainTabsEnum.home, super.key});
@@ -26,11 +24,7 @@ class _MainScreenState extends MainState {
   @override
   void initState() {
     super.initState();
-    _pages = const [
-      HomeScreen(),
-      CartScreen(),
-      ProfileScreen(),
-    ];
+    _pages = const [HomeScreen(), CartScreen(), ProfileScreen()];
   }
 
   @override
@@ -38,14 +32,7 @@ class _MainScreenState extends MainState {
     canPop: false,
     onPopInvokedWithResult: onPopInvokedWithResult,
     child: Scaffold(
-      body: Padding(
-        padding: EdgeInsets.only(top: TelegramWebApp.instance.safeAreaInset.top.toDouble()),
-        child: widget.navigationShell,
-      ),
-      body: IndexedStack(
-        index: currentTab.index,
-        children: _pages,
-      ),
+      body: IndexedStack(index: currentTab.index, children: _pages),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: currentTab.index,
         onTap: onItemTapped,
