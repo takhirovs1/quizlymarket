@@ -5,6 +5,15 @@ import 'package:meta/meta.dart';
 /// Config for app.
 @immutable
 final class Config {
+  const Config._({
+    required this.environment,
+    required this.apiBaseUrl,
+    required this.isInitializationDone,
+    required this.thunderEnabled,
+    required this.octopusToolsEnabled,
+    required this.supabaseUrl,
+    required this.supabaseAnonKey,
+  });
   // --- INITIALIZATION --- //
   factory Config._initialize({
     String environment = const String.fromEnvironment('ENVIRONMENT', defaultValue: 'development'),
@@ -12,6 +21,8 @@ final class Config {
     bool isInitializationDone = false,
     bool thunderEnabled = false,
     bool octopusToolsEnabled = false,
+    String supabaseUrl = const String.fromEnvironment('SUPABASE_URL', defaultValue: ''),
+    String supabaseAnonKey = const String.fromEnvironment('SUPABASE_ANON_KEY', defaultValue: ''),
   }) {
     final config = Config._(
       environment: EnvironmentFlavor.from(environment),
@@ -19,6 +30,8 @@ final class Config {
       isInitializationDone: isInitializationDone,
       thunderEnabled: thunderEnabled,
       octopusToolsEnabled: octopusToolsEnabled,
+      supabaseUrl: supabaseUrl,
+      supabaseAnonKey: supabaseAnonKey,
     );
 
     _currentConfig = config;
@@ -32,6 +45,8 @@ final class Config {
     bool? isInitializationDone,
     bool? thunderEnabled,
     bool? octopusToolsEnabled,
+    String? supabaseUrl,
+    String? supabaseAnonKey,
   }) {
     final config = Config._(
       environment: environment ?? (_currentConfig?.environment ?? EnvironmentFlavor.development),
@@ -39,6 +54,8 @@ final class Config {
       isInitializationDone: isInitializationDone ?? (_currentConfig?.isInitializationDone ?? false),
       thunderEnabled: thunderEnabled ?? (_currentConfig?.thunderEnabled ?? false),
       octopusToolsEnabled: octopusToolsEnabled ?? (_currentConfig?.octopusToolsEnabled ?? false),
+      supabaseUrl: supabaseUrl ?? (_currentConfig?.supabaseUrl ?? ''),
+      supabaseAnonKey: supabaseAnonKey ?? (_currentConfig?.supabaseAnonKey ?? ''),
     );
 
     log('Config.copyWith: $config', name: 'Config');
@@ -48,15 +65,8 @@ final class Config {
     return config;
   }
 
-  factory Config.current() => _currentConfig ?? Config._initialize();
-
-  const Config._({
-    required this.environment,
-    required this.apiBaseUrl,
-    required this.isInitializationDone,
-    required this.thunderEnabled,
-    required this.octopusToolsEnabled,
-  });
+  // ignore: prefer_constructors_over_static_methods
+  static Config get current => _currentConfig ?? Config._initialize();
 
   static Config? _currentConfig;
   // --- *END INITIALIZATION* --- //
@@ -76,6 +86,10 @@ final class Config {
   // --- INITIALIZATION CHECK --- //
   final bool isInitializationDone;
 
+  // --- SUPABASE --- //
+  final String supabaseUrl;
+  final String supabaseAnonKey;
+
   // --- EQUALITY & TO STRING --- //
   @override
   bool operator ==(Object other) {
@@ -84,7 +98,9 @@ final class Config {
           apiBaseUrl == other.apiBaseUrl &&
           thunderEnabled == other.thunderEnabled &&
           octopusToolsEnabled == other.octopusToolsEnabled &&
-          isInitializationDone == other.isInitializationDone;
+          isInitializationDone == other.isInitializationDone &&
+          supabaseUrl == other.supabaseUrl &&
+          supabaseAnonKey == other.supabaseAnonKey;
     }
     return false;
   }
@@ -95,11 +111,13 @@ final class Config {
       apiBaseUrl.hashCode ^
       thunderEnabled.hashCode ^
       octopusToolsEnabled.hashCode ^
-      isInitializationDone.hashCode;
+      isInitializationDone.hashCode ^
+      supabaseUrl.hashCode ^
+      supabaseAnonKey.hashCode;
 
   @override
   String toString() =>
-      '''Config(environment: $environment, apiBaseUrl: $apiBaseUrl, thunderEnabled: $thunderEnabled, octopusToolsEnabled: $octopusToolsEnabled,isInitializationDone: $isInitializationDone)''';
+      '''Config(environment: $environment, apiBaseUrl: $apiBaseUrl, thunderEnabled: $thunderEnabled, octopusToolsEnabled: $octopusToolsEnabled,isInitializationDone: $isInitializationDone, supabaseUrl: $supabaseUrl, supabaseAnonKey: $supabaseAnonKey)''';
 }
 
 /// Environment flavor.

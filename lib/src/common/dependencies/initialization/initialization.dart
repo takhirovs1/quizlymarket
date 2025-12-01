@@ -8,7 +8,6 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:platform_info/platform_info.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
 import '../../../feature/profile/data/models/app_settings.dart';
 
 import '../../../feature/profile/data/repository/profile_repository.dart';
@@ -16,6 +15,7 @@ import '../../../feature/profile/presentation/bloc/settings_bloc.dart';
 import '../../constant/config.dart';
 import '../../constant/gen/fonts.gen.dart';
 import '../../constant/pubspec.yaml.g.dart';
+import '../../service/supabase_service.dart';
 import '../../theme/theme_data.dart';
 import '../../util/error_util.dart';
 import '../../util/http_log_interceptor.dart';

@@ -1,9 +1,7 @@
 part of 'initialization.dart';
 
 /// Initializes the app and returns a [Dependencies] object
-Future<Dependencies> $initializeDependencies({
-  void Function(int progress, String message)? onProgress,
-}) async {
+Future<Dependencies> $initializeDependencies({void Function(int progress, String message)? onProgress}) async {
   final dependencies = Dependencies();
   final totalSteps = _initializationSteps.length;
   var currentStep = 1;
@@ -14,58 +12,46 @@ Future<Dependencies> $initializeDependencies({
 
       final percent = (currentStep * 100 ~/ totalSteps).clamp(0, 100);
       onProgress?.call(percent, step.key);
-      info(
-        'Initialization | $currentStep/$totalSteps ($percent%) | "${step.key}"',
-      );
+      info('Initialization | $currentStep/$totalSteps ($percent%) | "${step.key}"');
 
       currentStep++;
     } on Object catch (error, stackTrace) {
       severe('Initialization failed at step "${step.key}": $error', stackTrace);
 
-      Error.throwWithStackTrace(
-        'Initialization failed at step "${step.key}": $error',
-        stackTrace,
-      );
+      Error.throwWithStackTrace('Initialization failed at step "${step.key}": $error', stackTrace);
     }
   }
 
   return dependencies;
 }
 
-typedef _InitializationStep =
-    FutureOr<void> Function(Dependencies dependencies);
+typedef _InitializationStep = FutureOr<void> Function(Dependencies dependencies);
 
-Map<String, _InitializationStep>
-get _initializationSteps => <String, _InitializationStep>{
+Map<String, _InitializationStep> get _initializationSteps => <String, _InitializationStep>{
   'Platform pre-initialization': (_) async {
-    await Supabase.initialize(
-      url: 'https://brysjgavqllpjppbaint.supabase.co',
-      anonKey:
-          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJyeXNqZ2F2cWxscGpwcGJhaW50Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjQyNDEyNDEsImV4cCI6MjA3OTgxNzI0MX0.Jk2rbcevZh6O5EZoEg6LFKBXS8zSY96SMiQP5jancGE',
-    );
+    await SupabaseService.initialize();
 
     /// TODO: Initialize firebase
   },
-  'Creating app metadata': (dependencies) =>
-      dependencies.metadata = AppMetadata(
-        environment: Config.current().environment.value,
-        isWeb: platform.type.js,
-        isRelease: platform.buildMode.release,
-        appName: Pubspec.name,
-        appVersion: Pubspec.version.canonical,
-        appVersionMajor: Pubspec.version.major,
-        appVersionMinor: Pubspec.version.minor,
-        appVersionPatch: Pubspec.version.patch,
-        appBuildTimestamp: Pubspec.version.build.isNotEmpty
-            ? (int.tryParse(Pubspec.version.build.firstOrNull ?? '-1') ?? -1)
-            : -1,
-        operatingSystem: platform.operatingSystem.name,
-        processorsCount: platform.numberOfProcessors,
-        appLaunchedTimestamp: DateTime.now(),
-        locale: platform.locale,
-        deviceVersion: platform.version,
-        deviceScreenSize: ScreenUtil.screenSize().representation,
-      ),
+  'Creating app metadata': (dependencies) => dependencies.metadata = AppMetadata(
+    environment: Config.current.environment.value,
+    isWeb: platform.type.js,
+    isRelease: platform.buildMode.release,
+    appName: Pubspec.name,
+    appVersion: Pubspec.version.canonical,
+    appVersionMajor: Pubspec.version.major,
+    appVersionMinor: Pubspec.version.minor,
+    appVersionPatch: Pubspec.version.patch,
+    appBuildTimestamp: Pubspec.version.build.isNotEmpty
+        ? (int.tryParse(Pubspec.version.build.firstOrNull ?? '-1') ?? -1)
+        : -1,
+    operatingSystem: platform.operatingSystem.name,
+    processorsCount: platform.numberOfProcessors,
+    appLaunchedTimestamp: DateTime.now(),
+    locale: platform.locale,
+    deviceVersion: platform.version,
+    deviceScreenSize: ScreenUtil.screenSize().representation,
+  ),
   'Database': (dependencies) async => dependencies
     ..database = Database()
     ..localeSource = await .instance,
@@ -80,15 +66,9 @@ get _initializationSteps => <String, _InitializationStep>{
     final hapticsEnabled = dependencies.localeSource.hapticsEnabled;
 
     dependencies.settingsBloc = SettingsBloc(
-      settingsRepository: SettingsRepositoryImpl(
-        localSource: dependencies.localeSource,
-      ),
+      settingsRepository: SettingsRepositoryImpl(localSource: dependencies.localeSource),
       initialState: .idle(
-        settings: AppSettings(
-          localization: localization,
-          appTheme: theme,
-          hapticsEnabled: hapticsEnabled,
-        ),
+        settings: AppSettings(localization: localization, appTheme: theme, hapticsEnabled: hapticsEnabled),
       ),
     );
   },
@@ -99,7 +79,7 @@ get _initializationSteps => <String, _InitializationStep>{
     final dio =
         Dio(
             BaseOptions(
-              baseUrl: Config.current().apiBaseUrl,
+              baseUrl: Config.current.apiBaseUrl,
               headers: <String, String>{
                 'Api-Version': '1.0',
                 'Accept': 'application/json',
@@ -117,18 +97,15 @@ get _initializationSteps => <String, _InitializationStep>{
               const HttpLogInterceptor(),
 
               /// The reason for adding it for only production env, because we have [Thunder] disabled in production
-              if (Config.current().environment.isProduction)
-                const TelegramBotInterceptor(),
+              if (Config.current.environment.isProduction) const TelegramBotInterceptor(),
 
               /// Refresh token && image type interceptor
               InterceptorsWrapper(
                 onRequest: (options, handler) {
                   options.headers.addAll(<String, String>{
-                    'Application-Language':
-                        dependencies.localeSource.localization.languageCode,
+                    'Application-Language': dependencies.localeSource.localization.languageCode,
                     if (dependencies.localeSource.accessToken.isNotEmpty)
-                      'Authorization':
-                          'Bearer ${dependencies.localeSource.accessToken}',
+                      'Authorization': 'Bearer ${dependencies.localeSource.accessToken}',
                   });
 
                   handler.next(options);
@@ -140,7 +117,6 @@ get _initializationSteps => <String, _InitializationStep>{
     dependencies.dio = DioContainer(dio: dio);
   },
 
-  'Repositories': (dependencies) =>
-      dependencies.repository = const RepositoryContainer(),
+  'Repositories': (dependencies) => dependencies.repository = const RepositoryContainer(),
   'Blocs': (dependencies) => dependencies.bloc = const BlocContainer(),
 };

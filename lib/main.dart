@@ -12,7 +12,7 @@ import 'src/feature/profile/presentation/state/settings_scope.dart';
 
 @pragma('vm:entry-point')
 void main([List<String>? args]) => runZonedGuarded<Future<void>>(() async {
-  Future<void> _launchApp() async {
+  Future<void> launchApp() async {
     final binding = WidgetsFlutterBinding.ensureInitialized();
 
     final initializationProgress =
@@ -41,5 +41,5 @@ void main([List<String>? args]) => runZonedGuarded<Future<void>>(() async {
     );
   }
 
-  await _launchApp();
+  await launchApp();
 }, severe);

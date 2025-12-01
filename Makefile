@@ -1,4 +1,4 @@
- p.PHONY: help
+.PHONY: help
 help: # Script description and usage through `make` or `make help` commands
 	$(MAKE) -C ./tools/makefile/ -f deploy.mk help-deploy
 	$(MAKE) -C ./tools/makefile/ -f fire.mk help-fire

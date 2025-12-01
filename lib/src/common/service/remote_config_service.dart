@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'dart:io';
 
 import 'package:firebase_remote_config/firebase_remote_config.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import '../extension/context_extension.dart';
@@ -14,6 +15,8 @@ sealed class RemoteConfigService {
   static FirebaseRemoteConfig remoteConfig = .instance;
 
   static Future<(AppUpdate, String, String)> isCallCheckAppVersion(BuildContext context) async {
+    if (kIsWeb) return (AppUpdate.none, '', '');
+
     try {
       await remoteConfig.setConfigSettings(RemoteConfigSettings(fetchTimeout: .zero, minimumFetchInterval: .zero));
 

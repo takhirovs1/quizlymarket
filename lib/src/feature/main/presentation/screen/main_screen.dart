@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:telegram_web_app/telegram_web_app.dart';
 
 import '../../../../common/constant/gen/assets.gen.dart';
 import '../../../../common/extension/context_extension.dart';
@@ -36,6 +38,10 @@ class _MainScreenState extends MainState {
     canPop: false,
     onPopInvokedWithResult: onPopInvokedWithResult,
     child: Scaffold(
+      body: Padding(
+        padding: EdgeInsets.only(top: TelegramWebApp.instance.safeAreaInset.top.toDouble()),
+        child: widget.navigationShell,
+      ),
       body: IndexedStack(
         index: currentTab.index,
         children: _pages,
@@ -60,12 +66,11 @@ class _MainScreenState extends MainState {
     ),
   );
 
-  BottomNavigationBarItem _buildBottomItem(SvgGenImage icon) =>
-      BottomNavigationBarItem(
-        icon: _buildIcon(icon, isSelected: false),
-        activeIcon: _buildSelectedIcon(icon),
-        label: '',
-      );
+  BottomNavigationBarItem _buildBottomItem(SvgGenImage icon) => BottomNavigationBarItem(
+    icon: _buildIcon(icon, isSelected: false),
+    activeIcon: _buildSelectedIcon(icon),
+    label: '',
+  );
 
   Widget _buildSelectedIcon(SvgGenImage icon) => Column(
     children: [
@@ -92,10 +97,7 @@ class _MainScreenState extends MainState {
       child: icon.svg(
         width: 25,
         height: 25,
-        colorFilter: ColorFilter.mode(
-          isSelected ? context.color.black : const Color(0xffBBBFD0),
-          BlendMode.srcATop,
-        ),
+        colorFilter: ColorFilter.mode(isSelected ? context.color.black : const Color(0xffBBBFD0), BlendMode.srcATop),
       ),
     ),
   );
