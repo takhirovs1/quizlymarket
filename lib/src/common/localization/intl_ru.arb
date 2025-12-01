@@ -26,5 +26,8 @@
 "cart": "Корзина",
 "testPurchased": "Тест приобретен",
 "personalizedTestDescription": "Вы можете начать тест, настроенный под вас.",
-"enterTest": "Перейти к тесту"
+"enterTest": "Перейти к тесту",
+"cancel": "Отмена",
+"testPurchasedDescription": "Вы можете начать тест, настроенный под вас.",
+"testPurchasedTitle": "Тест приобретен!"
 }

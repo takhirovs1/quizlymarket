@@ -251,6 +251,31 @@ class GeneratedLocalization {
       args: [],
     );
   }
+
+  /// `Отмена`
+  String get cancel {
+    return Intl.message('Отмена', name: 'cancel', desc: '', args: []);
+  }
+
+  /// `Вы можете начать тест, настроенный под вас.`
+  String get testPurchasedDescription {
+    return Intl.message(
+      'Вы можете начать тест, настроенный под вас.',
+      name: 'testPurchasedDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Тест приобретен!`
+  String get testPurchasedTitle {
+    return Intl.message(
+      'Тест приобретен!',
+      name: 'testPurchasedTitle',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate

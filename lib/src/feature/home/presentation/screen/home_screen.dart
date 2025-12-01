@@ -41,7 +41,7 @@ class _HomeScreenState extends HomeState {
           studyYears: '2025-2026',
           price: 10000,
           buttonText: context.l10n.buy,
-          onPressed: () {},
+          onPressed: onBuyButtonPressed,
         ),
         separatorBuilder: (context, index) => Dimension.hBox12,
         itemCount: 10,

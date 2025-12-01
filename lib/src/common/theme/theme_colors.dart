@@ -27,9 +27,11 @@ final class ThemeColors extends ThemeExtension<ThemeColors> {
     required this.transparent,
     required this.black,
     required this.gray,
+    required this.primaryLight,
   });
 
   final Color primary;
+  final Color primaryLight;
   final Color onPrimary;
   final Color primaryContainer;
   final Color onPrimaryContainer;
@@ -55,6 +57,7 @@ final class ThemeColors extends ThemeExtension<ThemeColors> {
   final Color gray;
 
   static const ThemeColors light = ThemeColors(
+    primaryLight: Color(0xFF007AFF),
     primary: Color(0xFF3772FF),
     onPrimary: Colors.white,
     primaryContainer: Color(0xFF5DAAFF),
@@ -82,6 +85,7 @@ final class ThemeColors extends ThemeExtension<ThemeColors> {
   );
 
   static const ThemeColors dark = ThemeColors(
+    primaryLight: Color(0xFF007AFF),
     primary: Color(0xFFA6C4FF),
     onPrimary: Color(0xFF08142C),
     primaryContainer: Color(0xFF21407E),
@@ -134,6 +138,7 @@ final class ThemeColors extends ThemeExtension<ThemeColors> {
     Color? transparent,
     Color? black,
     Color? gray,
+    Color? primaryLight,
   }) => ThemeColors(
     primary: primary ?? this.primary,
     onPrimary: onPrimary ?? this.onPrimary,
@@ -159,12 +164,14 @@ final class ThemeColors extends ThemeExtension<ThemeColors> {
     transparent: transparent ?? this.transparent,
     black: black ?? this.black,
     gray: gray ?? this.gray,
+    primaryLight: primaryLight ?? this.primaryLight,
   );
 
   @override
   ThemeExtension<ThemeColors> lerp(ThemeExtension<ThemeColors>? other, double t) => other is! ThemeColors
       ? this
       : ThemeColors(
+          primaryLight: .lerp(primaryLight, other.primaryLight, t)!,
           primary: .lerp(primary, other.primary, t)!,
           onPrimary: .lerp(onPrimary, other.onPrimary, t)!,
           primaryContainer: .lerp(primaryContainer, other.primaryContainer, t)!,

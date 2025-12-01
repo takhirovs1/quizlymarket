@@ -36,6 +36,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "appConfigurationSave": MessageLookupByLibrary.simpleMessage("Save"),
     "appName": MessageLookupByLibrary.simpleMessage("QuizlyMarket"),
     "buy": MessageLookupByLibrary.simpleMessage("Buy"),
+    "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
     "cart": MessageLookupByLibrary.simpleMessage("Cart"),
     "english": MessageLookupByLibrary.simpleMessage("English"),
     "enterTest": MessageLookupByLibrary.simpleMessage("Enter test"),
@@ -62,6 +63,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "russian": MessageLookupByLibrary.simpleMessage("Russian"),
     "signOut": MessageLookupByLibrary.simpleMessage("Sign out"),
     "testPurchased": MessageLookupByLibrary.simpleMessage("Test purchased"),
+    "testPurchasedDescription": MessageLookupByLibrary.simpleMessage(
+      "You can start the test customized for you.",
+    ),
+    "testPurchasedTitle": MessageLookupByLibrary.simpleMessage(
+      "Test purchased!",
+    ),
     "title": MessageLookupByLibrary.simpleMessage("Quizly Market"),
     "uzbek": MessageLookupByLibrary.simpleMessage("Uzbek"),
   };

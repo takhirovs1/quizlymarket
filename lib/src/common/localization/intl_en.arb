@@ -26,5 +26,8 @@
 "cart": "Cart",
 "testPurchased": "Test purchased",
 "personalizedTestDescription": "You can start the test customized for you.",
-"enterTest": "Enter test"
+"enterTest": "Enter test",
+"cancel": "Cancel",
+"testPurchasedDescription": "You can start the test customized for you.",
+"testPurchasedTitle": "Test purchased!"
 }

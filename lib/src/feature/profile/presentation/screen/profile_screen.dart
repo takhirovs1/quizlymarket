@@ -16,6 +16,7 @@ class ProfileScreen extends StatefulWidget {
   final String? data;
 
   @internal
+  // ignore: library_private_types_in_public_api
   static _ProfileScreenState? maybeOf(BuildContext context) =>
       context.findAncestorStateOfType<_ProfileScreenState>();
 
