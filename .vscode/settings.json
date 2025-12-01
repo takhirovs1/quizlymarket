@@ -1,4 +1,12 @@
 {
+    "[dart]": {
+    "editor.formatOnSave": true,
+    "editor.formatOnType": true,
+    "editor.rulers": [
+      120
+    ]
+  },
+  "dart.lineLength": 120,
     "cSpell.words": [
         "Alfraganus",
         "dios",

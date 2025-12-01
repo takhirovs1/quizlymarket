@@ -7,6 +7,7 @@ import '../../feature/profile/presentation/state/settings_scope.dart';
 import '../extension/context_extension.dart';
 import '../localization/localization.dart';
 import '../router/app_router.dart';
+import '../router/route_arguments.dart';
 import '../util/logger.dart';
 import '../widget/keyboard_dismiss.dart';
 
@@ -33,31 +34,37 @@ class _AppState extends State<App> {
   }
 
   @override
-  Widget build(BuildContext context) => MaterialApp.router(
-    debugShowCheckedModeBanner: false,
-    title: 'Quizly Market',
-    restorationScopeId: 'material_app',
-    onGenerateTitle: (context) => context.l10n.title,
-    routerConfig: router,
-    supportedLocales: Localization.supportedLocales,
-    localizationsDelegates: Localization.delegates,
-    locale: SettingsScope.settingsOf(context).localization,
-    theme: SettingsScope.settingsOf(context).appTheme,
-    builder: (context, child) => MediaQuery(
-      data: MediaQuery.of(context).copyWith(textScaler: TextScaler.noScaling),
-      child: KeyboardDismiss(
-        child: ValueListenableBuilder<bool>(
-          valueListenable: App.thunderEnabledNotifier,
-          builder: (context, thunderEnabled, _) => Thunder(
-            dio: context.dependencies.dio.all,
-            color: context.color.success,
-            enabled: true,
-            child: child ?? const SizedBox.shrink(),
+  Widget build(BuildContext context) {
+    final initialRoute = context.localSource.onboardingCompleted ? Routes.home : Routes.onboarding;
+
+    return MaterialApp(
+      navigatorKey: rootNavigatorKey,
+      debugShowCheckedModeBanner: false,
+      title: 'Quizly Market',
+      restorationScopeId: 'material_app',
+      onGenerateTitle: (context) => context.l10n.title,
+      initialRoute: initialRoute,
+      onGenerateRoute: onGenerateRoute,
+      supportedLocales: Localization.supportedLocales,
+      localizationsDelegates: Localization.delegates,
+      locale: SettingsScope.settingsOf(context).localization,
+      theme: SettingsScope.settingsOf(context).appTheme,
+      builder: (context, child) => MediaQuery(
+        data: MediaQuery.of(context).copyWith(textScaler: TextScaler.noScaling),
+        child: KeyboardDismiss(
+          child: ValueListenableBuilder<bool>(
+            valueListenable: App.thunderEnabledNotifier,
+            builder: (context, thunderEnabled, _) => Thunder(
+              dio: context.dependencies.dio.all,
+              color: context.color.success,
+              enabled: true,
+              child: child ?? const SizedBox.shrink(),
+            ),
           ),
         ),
       ),
-    ),
-  );
+    );
+  }
 
   void _configureTelegramShell() {
     if (!kIsWeb) return;

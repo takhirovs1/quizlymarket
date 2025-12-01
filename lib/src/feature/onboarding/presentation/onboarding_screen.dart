@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 
 import '../../../common/constant/gen/assets.gen.dart';
 import '../../../common/extension/context_extension.dart';
@@ -34,8 +33,10 @@ class OnboardingScreen extends StatelessWidget {
             style: const ButtonStyle(padding: WidgetStatePropertyAll(Dimension.pV16)),
             onPressed: () async {
               // await context.localSource.setOnboardingCompleted(true);
+              // if (!context.mounted) return;
+              await context.localSource.setOnboardingCompleted(true);
               if (!context.mounted) return;
-              context.go(Routes.home); // yoki goNamed bo‘lsa name bilan
+              await Navigator.of(context).pushNamedAndRemoveUntil(Routes.home, (route) => false);
             },
             child: Text(
               'Start'.toUpperCase(),

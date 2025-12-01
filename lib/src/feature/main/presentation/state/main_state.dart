@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
+import 'package:flutter/services.dart';
 
 import '../../../../common/extension/context_extension.dart';
 import '../../data/model/main_tabs_enum.dart';
@@ -24,27 +24,38 @@ abstract class MainState extends State<MainScreen> {
   // Bottom navigation bar item tapped
   Future<void> onItemTapped(int index) async {
     bottomNavigationAnimated = false;
-    setState(() {});
+    if (mounted) setState(() {});
     final newTab = MainTabsEnum.values[index];
 
     if (currentTab != newTab) _switchTab(newTab);
     await Future<void>.delayed(const Duration(milliseconds: 50));
     bottomNavigationAnimated = true;
-    setState(() {});
+    if (mounted) setState(() {});
   }
 
   // Change tab
   void _switchTab(MainTabsEnum newTab) {
     if (!mounted || currentTab == newTab) return;
-    widget.navigationShell.goBranch(newTab.index);
-
     setState(() => currentTab = newTab);
   }
 
-  Future<void> onPopInvokedWithResult(bool didPop, Object? result) async {
-    if (currentTab != MainTabsEnum.home) return _switchTab(MainTabsEnum.home);
+  void onPopInvokedWithResult(bool didPop, Object? result) {
+    if (didPop) return;
 
-    if (_canExitApp) return context.pop();
+    if (currentTab != MainTabsEnum.home) {
+      _switchTab(MainTabsEnum.home);
+      return;
+    }
+
+    if (_canExitApp) {
+      final navigator = Navigator.of(context);
+      if (navigator.canPop()) {
+        navigator.pop();
+      } else {
+        SystemNavigator.pop();
+      }
+      return;
+    }
 
     _canExitApp = true;
 
@@ -62,11 +73,7 @@ abstract class MainState extends State<MainScreen> {
   @override
   void initState() {
     super.initState();
-    currentTab = widget.navigationShell.currentIndex == 0
-        ? MainTabsEnum.home
-        : widget.navigationShell.currentIndex == 1
-        ? MainTabsEnum.cart
-        : MainTabsEnum.profile;
+    currentTab = widget.initialTab;
   }
 
   @override

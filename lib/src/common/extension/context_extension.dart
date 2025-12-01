@@ -1,7 +1,6 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:local_source/local_source.dart';
 
 import '../dependencies/model/app_metadata.dart';
@@ -65,13 +64,15 @@ extension SizeX on BuildContext {
 extension NavigatorX on BuildContext {
   bool get canPop => Navigator.canPop(this);
 
+  void pop<T extends Object?>([T? result]) => Navigator.of(this).pop<T>(result);
+
   void popRoute() {
-    if (canPop) GoRouter.of(this).pop();
+    if (canPop) pop();
   }
 
   void popAllDialogs() {
     // Close all dialogs by popping until we reach the main screen
-    while (canPop) GoRouter.of(this).pop();
+    while (canPop) pop();
   }
 }
 
