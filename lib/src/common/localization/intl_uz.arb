@@ -25,6 +25,9 @@
   "cart": "Savat",
   "testPurchased": "Test sotib olindi",
   "personalizedTestDescription": "Testni o‘zingizga moslab boshlashingiz mumkin.",
-  "enterTest": "Testga kirish"
+  "enterTest": "Testga kirish",
+  "cancel": "Bekor qilish",
+  "testPurchasedDescription": "Testni o‘zingizga moslab boshlashingiz mumkin.",
+  "testPurchasedTitle": "Test sotib olindi!"
 }
 

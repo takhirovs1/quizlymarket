@@ -29,11 +29,9 @@ class OnboardingScreen extends StatelessWidget {
               ],
             ),
           ),
-          ElevatedButton(
-            style: const ButtonStyle(padding: WidgetStatePropertyAll(Dimension.pV16)),
+          FilledButton(
+            style: FilledButton.styleFrom(backgroundColor: context.color.white, padding: Dimension.pV16),
             onPressed: () async {
-              // await context.localSource.setOnboardingCompleted(true);
-              // if (!context.mounted) return;
               await context.localSource.setOnboardingCompleted(true);
               if (!context.mounted) return;
               await Navigator.of(context).pushNamedAndRemoveUntil(Routes.home, (route) => false);

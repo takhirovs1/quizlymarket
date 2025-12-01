@@ -38,6 +38,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "appConfigurationSave": MessageLookupByLibrary.simpleMessage("Saqlash"),
     "appName": MessageLookupByLibrary.simpleMessage("QuizlyMarket"),
     "buy": MessageLookupByLibrary.simpleMessage("Sotib olish"),
+    "cancel": MessageLookupByLibrary.simpleMessage("Bekor qilish"),
     "cart": MessageLookupByLibrary.simpleMessage("Savat"),
     "english": MessageLookupByLibrary.simpleMessage("Ingliz tili"),
     "enterTest": MessageLookupByLibrary.simpleMessage("Testga kirish"),
@@ -64,6 +65,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "russian": MessageLookupByLibrary.simpleMessage("Rus tili"),
     "signOut": MessageLookupByLibrary.simpleMessage("Chiqish"),
     "testPurchased": MessageLookupByLibrary.simpleMessage("Test sotib olindi"),
+    "testPurchasedDescription": MessageLookupByLibrary.simpleMessage(
+      "Testni o‘zingizga moslab boshlashingiz mumkin.",
+    ),
+    "testPurchasedTitle": MessageLookupByLibrary.simpleMessage(
+      "Test sotib olindi!",
+    ),
     "title": MessageLookupByLibrary.simpleMessage("Quizly Market"),
     "uzbek": MessageLookupByLibrary.simpleMessage("O‘zbek tili"),
   };
