@@ -94,6 +94,7 @@ sealed class Dimension {
   static const pH12V4 = EdgeInsets.symmetric(vertical: 4, horizontal: 12);
   static const pH12V8 = EdgeInsets.symmetric(vertical: 8, horizontal: 12);
   static const pH12V16 = EdgeInsets.symmetric(vertical: 16, horizontal: 12);
+  static const pH32V14 = EdgeInsets.symmetric(vertical: 14, horizontal: 32);
   static const pV4Left12Right4 = EdgeInsets.only(top: 4, bottom: 4, left: 12, right: 4);
 
   static const pH8V10 = EdgeInsets.symmetric(vertical: 10, horizontal: 8);

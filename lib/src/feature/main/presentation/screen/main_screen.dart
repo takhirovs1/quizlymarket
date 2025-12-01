@@ -1,39 +1,84 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:telegram_web_app/telegram_web_app.dart';
 
 import '../../../../common/constant/gen/assets.gen.dart';
 import '../../../../common/extension/context_extension.dart';
-
-import '../../../cart/presentation/screen/cart_screen.dart';
-import '../../../home/presentation/screen/home_screen.dart';
-
-import '../../../profile/presentation/screen/profile_screen.dart';
-import '../../data/model/main_tabs_enum.dart';
+import '../../../../common/util/dimension.dart';
 import '../state/main_state.dart';
 
-/// {@template main_screen}
-/// MainScreen widget.
-/// {@endtemplate}
 class MainScreen extends StatefulWidget {
-  /// {@macro main_screen}
-  const MainScreen({super.key, this.initialTab});
+  const MainScreen({required this.navigationShell, super.key});
 
-  /// Initial tab to display when the screen is first loaded
-  final MainTabsEnum? initialTab;
-
-  static _MainScreenState? maybeOf(BuildContext context) => context.findAncestorStateOfType<_MainScreenState>();
+  final StatefulNavigationShell navigationShell;
 
   @override
   State<MainScreen> createState() => _MainScreenState();
 }
 
-/// State for widget MainScreen.
 class _MainScreenState extends MainState {
   @override
   Widget build(BuildContext context) => PopScope(
-    canPop: canPop,
-    onPopInvokedWithResult: onPopInvokedWithResult,
+    canPop: false,
     child: Scaffold(
+      body: widget.navigationShell,
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: widget.navigationShell.currentIndex,
+        onTap: onItemTapped,
+        enableFeedback: true,
+        type: BottomNavigationBarType.fixed,
+        backgroundColor: context.color.background,
+        selectedItemColor: context.color.primary,
+        unselectedItemColor: context.color.gray,
+        showSelectedLabels: false,
+        showUnselectedLabels: false,
+        elevation: 10,
+        items: [
+          _buildBottomItem(Assets.icons.home),
+          _buildBottomItem(Assets.icons.cart),
+          _buildBottomItem(Assets.icons.profile),
+        ],
+      ),
+    ),
+  );
+
+  BottomNavigationBarItem _buildBottomItem(SvgGenImage icon) =>
+      BottomNavigationBarItem(
+        icon: _buildIcon(icon, isSelected: false),
+        activeIcon: _buildSelectedIcon(icon),
+        label: '',
+      );
+
+  Widget _buildSelectedIcon(SvgGenImage icon) => Column(
+    children: [
+      _buildIcon(icon, isSelected: true),
+      Dimension.hBox4,
+      Center(
+        child: AnimatedContainer(
+          duration: const Duration(milliseconds: 250),
+          width: bottomNavigationAnimated ? 22 : 0,
+          margin: EdgeInsets.only(left: bottomNavigationAnimated ? 0 : 11),
+          height: 3,
+          decoration: BoxDecoration(
+            color: context.color.black,
+            borderRadius: const BorderRadius.all(Radius.circular(10)),
+          ),
+        ),
+      ),
+    ],
+  );
+
+  Widget _buildIcon(SvgGenImage icon, {required bool isSelected}) => SizedBox(
+    width: 25,
+    child: Center(
+      child: icon.svg(
+        width: 25,
+        height: 25,
+        colorFilter: ColorFilter.mode(
+          isSelected ? context.color.black : const Color(0xffBBBFD0),
+          BlendMode.srcATop,
+        ),
+      ),
       body: Padding(
         padding: EdgeInsets.only(top: TelegramWebApp.instance.safeAreaInset.top.toDouble()),
         child: PageView(

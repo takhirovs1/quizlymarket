@@ -36,5 +36,53 @@ class AppLocalizationsEn extends AppLocalizations {
   String get appConfigurationResetDescription => 'Reset your app settings to default.';
 
   @override
-  String get title => 'Declarative Navigation';
+  String get title => 'Quizly Market';
+
+  @override
+  String get pressBackAgainToExit => 'Press back again to exit';
+
+  @override
+  String get language => 'Change language';
+
+  @override
+  String get english => 'English';
+
+  @override
+  String get russian => 'Russian';
+
+  @override
+  String get uzbek => 'Uzbek';
+
+  @override
+  String get report => 'Reports';
+
+  @override
+  String get signOut => 'Sign out';
+
+  @override
+  String get logoutConfirmMessage => 'Are you sure you want to logout?';
+
+  @override
+  String get logoutConfirm => 'Logout';
+
+  @override
+  String get logoutCancel => 'Cancel';
+
+  @override
+  String get buy => 'Buy';
+
+  @override
+  String get appName => 'QuizlyMarket';
+
+  @override
+  String get cart => 'Cart';
+
+  @override
+  String get testPurchased => 'Test purchased';
+
+  @override
+  String get personalizedTestDescription => 'You can start the test customized for you.';
+
+  @override
+  String get enterTest => 'Enter test';
 }

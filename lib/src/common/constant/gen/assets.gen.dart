@@ -49,6 +49,9 @@ class $AssetsIconsGen {
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
+  /// File path: assets/images/background_image.png
+  AssetGenImage get backgroundImage => const AssetGenImage('assets/images/background_image.png');
+
   /// File path: assets/images/logo.png
   AssetGenImage get logo => const AssetGenImage('assets/images/logo.png');
 
@@ -58,8 +61,45 @@ class $AssetsImagesGen {
   /// File path: assets/images/placeholder.jpg
   AssetGenImage get placeholder => const AssetGenImage('assets/images/placeholder.jpg');
 
+  /// File path: assets/images/robot.png
+  AssetGenImage get robot => const AssetGenImage('assets/images/robot.png');
+
   /// List of all assets
-  List<AssetGenImage> get values => [logo, logoPng, placeholder];
+  List<AssetGenImage> get values => [backgroundImage, logo, logoPng, placeholder, robot];
+}
+
+class $AssetsLottieGen {
+  const $AssetsLottieGen();
+
+  /// File path: assets/lottie/book.json
+  String get book => 'assets/lottie/book.json';
+
+  /// File path: assets/lottie/circle_star.json
+  String get circleStar => 'assets/lottie/circle_star.json';
+
+  /// File path: assets/lottie/diamond.json
+  String get diamond => 'assets/lottie/diamond.json';
+
+  /// File path: assets/lottie/error.json
+  String get error => 'assets/lottie/error.json';
+
+  /// File path: assets/lottie/error2.json
+  String get error2 => 'assets/lottie/error2.json';
+
+  /// File path: assets/lottie/laptop.json
+  String get laptop => 'assets/lottie/laptop.json';
+
+  /// File path: assets/lottie/money.json
+  String get money => 'assets/lottie/money.json';
+
+  /// File path: assets/lottie/phone.json
+  String get phone => 'assets/lottie/phone.json';
+
+  /// File path: assets/lottie/timer.json
+  String get timer => 'assets/lottie/timer.json';
+
+  /// List of all assets
+  List<String> get values => [book, circleStar, diamond, error, error2, laptop, money, phone, timer];
 }
 
 class $AssetsVectorsGen {
@@ -83,6 +123,7 @@ class Assets {
 
   static const $AssetsIconsGen icons = $AssetsIconsGen();
   static const $AssetsImagesGen images = $AssetsImagesGen();
+  static const $AssetsLottieGen lottie = $AssetsLottieGen();
   static const $AssetsVectorsGen vectors = $AssetsVectorsGen();
   static const $ConfigGen config = $ConfigGen();
 }

@@ -22,6 +22,9 @@
   "logoutCancel": "Bekor qilish",
   "buy": "Sotib olish",
   "appName": "QuizlyMarket",
-  "cart": "Savat"
+  "cart": "Savat",
+  "testPurchased": "Test sotib olindi",
+  "personalizedTestDescription": "Testni o‘zingizga moslab boshlashingiz mumkin.",
+  "enterTest": "Testga kirish"
 }
 

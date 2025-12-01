@@ -7,6 +7,7 @@ import 'package:intl/intl.dart' as intl;
 
 import 'app_localizations_en.dart';
 import 'app_localizations_ru.dart';
+import 'app_localizations_uz.dart';
 
 // ignore_for_file: type=lint
 
@@ -90,7 +91,11 @@ abstract class AppLocalizations {
   ];
 
   /// A list of this localizations delegate's supported locales.
-  static const List<Locale> supportedLocales = <Locale>[Locale('en'), Locale('ru')];
+  static const List<Locale> supportedLocales = <Locale>[
+    Locale('en'),
+    Locale('ru'),
+    Locale('uz')
+  ];
 
   /// No description provided for @noInternetConnection.
   ///
@@ -151,6 +156,102 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Quizly Market'**
   String get title;
+
+  /// No description provided for @pressBackAgainToExit.
+  ///
+  /// In en, this message translates to:
+  /// **'Press back again to exit'**
+  String get pressBackAgainToExit;
+
+  /// No description provided for @language.
+  ///
+  /// In en, this message translates to:
+  /// **'Change language'**
+  String get language;
+
+  /// No description provided for @english.
+  ///
+  /// In en, this message translates to:
+  /// **'English'**
+  String get english;
+
+  /// No description provided for @russian.
+  ///
+  /// In en, this message translates to:
+  /// **'Russian'**
+  String get russian;
+
+  /// No description provided for @uzbek.
+  ///
+  /// In en, this message translates to:
+  /// **'Uzbek'**
+  String get uzbek;
+
+  /// No description provided for @report.
+  ///
+  /// In en, this message translates to:
+  /// **'Reports'**
+  String get report;
+
+  /// No description provided for @signOut.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign out'**
+  String get signOut;
+
+  /// No description provided for @logoutConfirmMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Are you sure you want to logout?'**
+  String get logoutConfirmMessage;
+
+  /// No description provided for @logoutConfirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Logout'**
+  String get logoutConfirm;
+
+  /// No description provided for @logoutCancel.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel'**
+  String get logoutCancel;
+
+  /// No description provided for @buy.
+  ///
+  /// In en, this message translates to:
+  /// **'Buy'**
+  String get buy;
+
+  /// No description provided for @appName.
+  ///
+  /// In en, this message translates to:
+  /// **'QuizlyMarket'**
+  String get appName;
+
+  /// No description provided for @cart.
+  ///
+  /// In en, this message translates to:
+  /// **'Cart'**
+  String get cart;
+
+  /// No description provided for @testPurchased.
+  ///
+  /// In en, this message translates to:
+  /// **'Test purchased'**
+  String get testPurchased;
+
+  /// No description provided for @personalizedTestDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'You can start the test customized for you.'**
+  String get personalizedTestDescription;
+
+  /// No description provided for @enterTest.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter test'**
+  String get enterTest;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
@@ -162,25 +263,26 @@ class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> 
   }
 
   @override
-  bool isSupported(Locale locale) => <String>['en', 'ru'].contains(locale.languageCode);
+  bool isSupported(Locale locale) => <String>['en', 'ru', 'uz'].contains(locale.languageCode);
 
   @override
   bool shouldReload(_AppLocalizationsDelegate old) => false;
 }
 
 AppLocalizations lookupAppLocalizations(Locale locale) {
+
+
   // Lookup logic when only language code is specified.
   switch (locale.languageCode) {
-    case 'en':
-      return AppLocalizationsEn();
-    case 'ru':
-      return AppLocalizationsRu();
+    case 'en': return AppLocalizationsEn();
+    case 'ru': return AppLocalizationsRu();
+    case 'uz': return AppLocalizationsUz();
   }
 
   throw FlutterError(
     'AppLocalizations.delegate failed to load unsupported locale "$locale". This is likely '
     'an issue with the localizations generation tool. Please file an issue '
     'on GitHub with a reproducible sample app and the gen-l10n configuration '
-    'that was used.',
+    'that was used.'
   );
 }

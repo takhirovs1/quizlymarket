@@ -40,6 +40,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "buy": MessageLookupByLibrary.simpleMessage("Sotib olish"),
     "cart": MessageLookupByLibrary.simpleMessage("Savat"),
     "english": MessageLookupByLibrary.simpleMessage("Ingliz tili"),
+    "enterTest": MessageLookupByLibrary.simpleMessage("Testga kirish"),
     "language": MessageLookupByLibrary.simpleMessage("Tilni o‘zgartirish"),
     "logoutCancel": MessageLookupByLibrary.simpleMessage("Bekor qilish"),
     "logoutConfirm": MessageLookupByLibrary.simpleMessage("Chiqish"),
@@ -52,6 +53,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "noInternetConnectionDescription": MessageLookupByLibrary.simpleMessage(
       "Iltimos, internet ulanishini tekshirib yana urinib ko‘ring.",
     ),
+    "personalizedTestDescription": MessageLookupByLibrary.simpleMessage(
+      "Testni o‘zingizga moslab boshlashingiz mumkin.",
+    ),
     "pressBackAgainToExit": MessageLookupByLibrary.simpleMessage(
       "Chiqish uchun yana bir marta bosing",
     ),
@@ -59,6 +63,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "report": MessageLookupByLibrary.simpleMessage("Hisobotlar"),
     "russian": MessageLookupByLibrary.simpleMessage("Rus tili"),
     "signOut": MessageLookupByLibrary.simpleMessage("Chiqish"),
+    "testPurchased": MessageLookupByLibrary.simpleMessage("Test sotib olindi"),
     "title": MessageLookupByLibrary.simpleMessage("Quizly Market"),
     "uzbek": MessageLookupByLibrary.simpleMessage("O‘zbek tili"),
   };

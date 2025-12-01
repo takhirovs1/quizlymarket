@@ -37,7 +37,7 @@ class _SplashScreenState extends SplashController {
         child: Scaffold(
           backgroundColor: const Color(0xff1C58F2),
           body: Center(
-            child: Transform.scale(scale: widget.logo?.scale ?? 1, child: _buildLogo()),
+            child: Transform.scale(scale: widget.logo?.scale ?? .5, child: _buildLogo()),
           ),
         ),
       ),

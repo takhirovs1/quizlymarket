@@ -34,9 +34,10 @@ class _ProfileScreenState extends ProfileState {
           children: [
             Flexible(
               child: ListView(
-                
                 padding: Dimension.pAll16,
                 children: [
+                  // Lottie.asset(Assets.lottie.book),
+                  Dimension.hBox64,
                   ProfileHeader(
                     photoUrl: profileData.photoUrl ?? '',
                     fullName: profileData.fullName,

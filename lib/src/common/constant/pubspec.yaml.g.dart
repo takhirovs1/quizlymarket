@@ -124,12 +124,12 @@ sealed class Pubspec {
   static final DateTime timestamp = DateTime.utc(
     2025,
     11,
-    27,
-    11,
-    13,
-    34,
-    823,
-    712,
+    29,
+    18,
+    14,
+    51,
+    552,
+    918,
   );
 
   /// Name
@@ -432,11 +432,8 @@ sealed class Pubspec {
     'permission_handler': r'^12.0.1',
     'dio_retry_plus': r'^2.0.8',
     'thunder': r'^0.2.3',
-    'elixir': <String, Object>{
-      'git': <String, Object>{
-        'url': r'https://github.com/Miracle-Blue/elixir',
-      },
-    },
+    'supabase_flutter': r'^2.10.3',
+    'go_router': r'^17.0.0',
     'flutter_bloc': r'^9.1.1',
     'equatable': r'^2.0.7',
     'firebase_core': r'^4.2.1',
@@ -450,9 +447,11 @@ sealed class Pubspec {
     'cached_network_image': r'^3.4.1',
     'share_plus': r'^12.0.1',
     'skeletonizer': r'^2.1.0+1',
+    'lottie': r'^3.3.2',
     'telegram_web_app': r'^0.3.3',
     'cupertino_icons': r'^1.0.8',
     'vibration': r'^3.1.4',
+    'vibration_web': r'^1.6.8',
   };
 
   /// Developer dependencies
@@ -529,6 +528,7 @@ sealed class Pubspec {
         r'assets/vectors/',
         r'assets/icons/',
         r'assets/images/',
+        r'assets/lottie/',
         r'config/',
       ],
       'fonts': <Object>[

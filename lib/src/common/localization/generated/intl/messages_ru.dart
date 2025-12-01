@@ -22,9 +22,13 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-    "appConfiguration": MessageLookupByLibrary.simpleMessage("Настройка приложения"),
+    "appConfiguration": MessageLookupByLibrary.simpleMessage(
+      "Настройка приложения",
+    ),
     "appConfigurationCancel": MessageLookupByLibrary.simpleMessage("Отмена"),
-    "appConfigurationDescription": MessageLookupByLibrary.simpleMessage("Настройте ваши настройки приложения здесь."),
+    "appConfigurationDescription": MessageLookupByLibrary.simpleMessage(
+      "Настройте ваши настройки приложения здесь.",
+    ),
     "appConfigurationReset": MessageLookupByLibrary.simpleMessage("Сбросить"),
     "appConfigurationResetDescription": MessageLookupByLibrary.simpleMessage(
       "Сбросьте ваши настройки приложения на defaults.",
@@ -34,6 +38,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "buy": MessageLookupByLibrary.simpleMessage("Купить"),
     "cart": MessageLookupByLibrary.simpleMessage("Корзина"),
     "english": MessageLookupByLibrary.simpleMessage("Английский"),
+    "enterTest": MessageLookupByLibrary.simpleMessage("Перейти к тесту"),
     "language": MessageLookupByLibrary.simpleMessage("Изменить язык"),
     "logoutCancel": MessageLookupByLibrary.simpleMessage("Отмена"),
     "logoutConfirm": MessageLookupByLibrary.simpleMessage("Выход"),
@@ -46,11 +51,17 @@ class MessageLookup extends MessageLookupByLibrary {
     "noInternetConnectionDescription": MessageLookupByLibrary.simpleMessage(
       "Пожалуйста, проверьте ваше интернет соединение и попробуйте снова.",
     ),
-    "pressBackAgainToExit": MessageLookupByLibrary.simpleMessage("Нажмите еще раз, чтобы выйти"),
+    "personalizedTestDescription": MessageLookupByLibrary.simpleMessage(
+      "Вы можете начать тест, настроенный под вас.",
+    ),
+    "pressBackAgainToExit": MessageLookupByLibrary.simpleMessage(
+      "Нажмите еще раз, чтобы выйти",
+    ),
     "refresh": MessageLookupByLibrary.simpleMessage("Обновить"),
     "report": MessageLookupByLibrary.simpleMessage("Отчеты"),
     "russian": MessageLookupByLibrary.simpleMessage("Русский"),
     "signOut": MessageLookupByLibrary.simpleMessage("Выход"),
+    "testPurchased": MessageLookupByLibrary.simpleMessage("Тест приобретен"),
     "title": MessageLookupByLibrary.simpleMessage("Quizly Market"),
     "uzbek": MessageLookupByLibrary.simpleMessage("Узбекский"),
   };
