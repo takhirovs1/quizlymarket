@@ -1,7 +1,6 @@
 import 'dart:ui' show Locale, PlatformDispatcher;
 
 import 'package:flutter/material.dart' show immutable, ThemeMode;
-import 'package:flutter/rendering.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../local_source.dart';

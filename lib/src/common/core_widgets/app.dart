@@ -20,8 +20,6 @@ class App extends StatefulWidget {
 
   static final ValueNotifier<bool> thunderEnabledNotifier = ValueNotifier<bool>(false);
 
-  /// Accessing [_AppState]
-  static _AppState? maybeOf(BuildContext context) => context.findAncestorStateOfType<_AppState>();
   @override
   State<App> createState() => _AppState();
 }

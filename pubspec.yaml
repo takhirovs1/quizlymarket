@@ -72,6 +72,8 @@ dependencies:
   vibration: ^3.1.4
   vibration_web: ^1.6.8
   bloc: ^9.1.0
+  dio: ^5.9.0
+  vector_graphics: ^1.1.19
 
 dev_dependencies:
   flutter_test:

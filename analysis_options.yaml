@@ -69,6 +69,7 @@ analyzer:
     valid_regexps: error
     always_require_non_null_named_parameters: error
     avoid_positional_boolean_parameters: ignore
+    unintended_html_in_doc_comment: ignore
 
 linter:
   rules:

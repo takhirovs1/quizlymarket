@@ -87,8 +87,8 @@ class _AvatarImage extends StatelessWidget {
       imageWidget = CachedNetworkImage(
         imageUrl: normalizedUrl,
         fit: BoxFit.cover,
-        placeholder: (_, __) => _Placeholder(initials: fallbackText),
-        errorWidget: (_, __, ___) => _Placeholder(initials: fallbackText),
+        placeholder: (_, _) => _Placeholder(initials: fallbackText),
+        errorWidget: (_, _, _) => _Placeholder(initials: fallbackText),
       );
     }
 
