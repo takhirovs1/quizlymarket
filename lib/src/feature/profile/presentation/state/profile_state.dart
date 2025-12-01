@@ -3,7 +3,6 @@ import 'dart:developer';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:telegram_web_app/telegram_web_app.dart';
 
 import '../../../../common/extension/context_extension.dart';
@@ -67,7 +66,7 @@ abstract class ProfileState extends State<ProfileScreen> {
       ),
       actions: [
         CupertinoDialogAction(
-          onPressed: () => context.pop(),
+          onPressed: () => Navigator.of(context).pop(),
           child: Text(
             context.l10n.logoutCancel,
             style: context.textTheme.nunitoW600s16.copyWith(
@@ -79,7 +78,7 @@ abstract class ProfileState extends State<ProfileScreen> {
           isDestructiveAction: true,
           onPressed: () {
             // context.localSource.clearAll().then((_) => context.go(Routes.auth));
-            context.pop();
+            Navigator.of(context).pop();
           },
           child: Text(
             context.l10n.logoutConfirm,
@@ -136,13 +135,12 @@ abstract class ProfileState extends State<ProfileScreen> {
 
   void _changeLocale(String code) {
     if (currentLocale == code) {
-      context.pop();
+      Navigator.of(context).pop();
       return;
     }
 
     setState(() => currentLocale = code);
-    context
-      ..setLocale(Locale(code))
-      ..pop();
+    context.setLocale(Locale(code));
+    Navigator.of(context).pop();
   }
 }

@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:telegram_web_app/telegram_web_app.dart';
 
 import 'src/common/core_widgets/app.dart';
 import 'src/common/dependencies/initialization/initialization.dart';
