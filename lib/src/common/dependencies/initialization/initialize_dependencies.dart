@@ -29,7 +29,7 @@ typedef _InitializationStep = FutureOr<void> Function(Dependencies dependencies)
 
 Map<String, _InitializationStep> get _initializationSteps => <String, _InitializationStep>{
   'Platform pre-initialization': (_) async {
-    await SupabaseService.initialize();
+    // await SupabaseService.initialize();
 
     /// TODO: Initialize firebase
   },

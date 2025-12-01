@@ -32,12 +32,33 @@ class _MainScreenState extends MainState {
     canPop: false,
     onPopInvokedWithResult: onPopInvokedWithResult,
     child: Scaffold(
+      appBar: currentTab.isProfileTab
+          ? null
+          : AppBar(
+              backgroundColor: context.color.primary,
+              automaticallyImplyLeading: false,
+              scrolledUnderElevation: 0,
+              elevation: 0,
+              toolbarHeight: context.height * .10,
+              surfaceTintColor: Colors.transparent,
+              title: Column(
+                children: [
+                  SizedBox(height: context.height * .02),
+                  Center(
+                    child: Text(switch (currentTab.index) {
+                      1 => context.l10n.cart,
+                      _ => context.l10n.appName,
+                    }, style: context.textTheme.nunitoW600s24.copyWith(color: context.color.white)),
+                  ),
+                ],
+              ),
+            ),
       body: IndexedStack(index: currentTab.index, children: _pages),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: currentTab.index,
         onTap: onItemTapped,
         enableFeedback: true,
-        type: BottomNavigationBarType.fixed,
+        type: .fixed,
         backgroundColor: context.color.background,
         selectedItemColor: context.color.primary,
         unselectedItemColor: context.color.gray,
@@ -60,18 +81,18 @@ class _MainScreenState extends MainState {
   );
 
   Widget _buildSelectedIcon(SvgGenImage icon) => Column(
+    crossAxisAlignment: .center,
     children: [
       _buildIcon(icon, isSelected: true),
       Dimension.hBox4,
-      Center(
-        child: AnimatedContainer(
-          duration: const Duration(milliseconds: 250),
-          width: bottomNavigationAnimated ? 22 : 0,
-          margin: EdgeInsets.only(left: bottomNavigationAnimated ? 0 : 11),
-          height: 3,
-          decoration: BoxDecoration(
-            color: context.color.black,
-            borderRadius: const BorderRadius.all(Radius.circular(10)),
+      SizedBox(
+        width: 25,
+        child: Center(
+          child: AnimatedContainer(
+            duration: const Duration(milliseconds: 250),
+            width: bottomNavigationAnimated ? 22 : 0,
+            height: 3,
+            decoration: BoxDecoration(color: context.color.black, borderRadius: const .all(.circular(10))),
           ),
         ),
       ),
@@ -84,7 +105,7 @@ class _MainScreenState extends MainState {
       child: icon.svg(
         width: 25,
         height: 25,
-        colorFilter: ColorFilter.mode(isSelected ? context.color.black : const Color(0xffBBBFD0), BlendMode.srcATop),
+        colorFilter: .mode(isSelected ? context.color.black : const Color(0xffBBBFD0), .srcATop),
       ),
     ),
   );

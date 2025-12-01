@@ -15,7 +15,6 @@ import '../../../feature/profile/presentation/bloc/settings_bloc.dart';
 import '../../constant/config.dart';
 import '../../constant/gen/fonts.gen.dart';
 import '../../constant/pubspec.yaml.g.dart';
-import '../../service/supabase_service.dart';
 import '../../theme/theme_data.dart';
 import '../../util/error_util.dart';
 import '../../util/http_log_interceptor.dart';
@@ -46,8 +45,6 @@ Future<Dependencies> $initializeApp({
     if (deferFirstFrame) binding.deferFirstFrame();
 
     await _catchExceptions();
-
-    SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(systemNavigationBarColor: Colors.transparent));
 
     await Future.wait<void>([
       SystemChrome.setEnabledSystemUIMode(.manual, overlays: [.bottom, .top]),
@@ -95,11 +92,7 @@ Future<void> _catchExceptions() async {
 
     final sourceFlutterError = FlutterError.onError;
     FlutterError.onError = (final details) {
-      ErrorUtil.logError(
-        details.exception,
-        details.stack ?? StackTrace.current,
-        hint: 'FLUTTER ERROR\r\n$details',
-      );
+      ErrorUtil.logError(details.exception, details.stack ?? StackTrace.current, hint: 'FLUTTER ERROR\r\n$details');
 
       sourceFlutterError?.call(details);
     };

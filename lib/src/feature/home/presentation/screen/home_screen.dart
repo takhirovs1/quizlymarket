@@ -16,23 +16,9 @@ class _HomeScreenState extends HomeState {
   @override
   Widget build(BuildContext context) => Scaffold(
     backgroundColor: context.color.background,
-    appBar: PreferredSize(
-      preferredSize: Size.fromHeight(context.height * 0.12),
-      child: SafeArea(
-        bottom: false,
-        child: SizedBox(
-          height: context.height * 0.12,
-          child: Center(
-            child: Text(
-              context.l10n.appName,
-              style: context.textTheme.nunitoW600s24.copyWith(color: context.color.primary),
-            ),
-          ),
-        ),
-      ),
-    ),
     body: SafeArea(
       child: ListView.separated(
+        padding: Dimension.pTop16,
         itemBuilder: (context, index) => CustomCardWidget(
           subject: 'Akademik koʻnikmalar',
           university: 'Alfraganus',
