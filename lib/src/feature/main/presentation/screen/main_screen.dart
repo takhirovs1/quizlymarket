@@ -54,22 +54,26 @@ class _MainScreenState extends MainState {
               ),
             ),
       body: IndexedStack(index: currentTab.index, children: _pages),
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: currentTab.index,
-        onTap: onItemTapped,
-        enableFeedback: true,
-        type: .fixed,
-        backgroundColor: context.color.background,
-        selectedItemColor: context.color.primary,
-        unselectedItemColor: context.color.gray,
-        showSelectedLabels: false,
-        showUnselectedLabels: false,
-        elevation: 10,
-        items: [
-          _buildBottomItem(Assets.icons.home),
-          _buildBottomItem(Assets.icons.cart),
-          _buildBottomItem(Assets.icons.profile),
-        ],
+      bottomNavigationBar: Padding(
+        padding: Dimension.pBottom10,
+        child: BottomNavigationBar(
+          currentIndex: currentTab.index,
+          onTap: onItemTapped,
+          enableFeedback: true,
+
+          type: .fixed,
+          backgroundColor: context.color.background,
+          selectedItemColor: context.color.primary,
+          unselectedItemColor: context.color.gray,
+          showSelectedLabels: false,
+          showUnselectedLabels: false,
+          elevation: 0,
+          items: [
+            _buildBottomItem(Assets.icons.home),
+            _buildBottomItem(Assets.icons.cart),
+            _buildBottomItem(Assets.icons.profile),
+          ],
+        ),
       ),
     ),
   );
@@ -99,14 +103,19 @@ class _MainScreenState extends MainState {
     ],
   );
 
-  Widget _buildIcon(SvgGenImage icon, {required bool isSelected}) => SizedBox(
-    width: 25,
-    child: Center(
-      child: icon.svg(
+  Widget _buildIcon(SvgGenImage icon, {required bool isSelected}) => Column(
+    children: [
+      SizedBox(
         width: 25,
-        height: 25,
-        colorFilter: .mode(isSelected ? context.color.black : const Color(0xffBBBFD0), .srcATop),
+        child: Center(
+          child: icon.svg(
+            width: 25,
+            height: 25,
+            colorFilter: .mode(isSelected ? context.color.black : const Color(0xffBBBFD0), .srcATop),
+          ),
+        ),
       ),
-    ),
+      if (!isSelected) Dimension.hBox4,
+    ],
   );
 }

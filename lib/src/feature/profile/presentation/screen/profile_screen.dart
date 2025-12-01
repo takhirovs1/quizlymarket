@@ -99,7 +99,6 @@ class _ProfileScreenState extends ProfileState {
                     ),
                   ),
 
-                  Text(profileData.photoUrl.toString()),
                 ],
               ),
             ),

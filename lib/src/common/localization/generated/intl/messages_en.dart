@@ -22,53 +22,57 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-    "appConfiguration": MessageLookupByLibrary.simpleMessage(
-      "App Configuration",
-    ),
+    "allOfTimeTest": MessageLookupByLibrary.simpleMessage("Total test time:"),
+    "appConfiguration": MessageLookupByLibrary.simpleMessage("App Configuration"),
     "appConfigurationCancel": MessageLookupByLibrary.simpleMessage("Cancel"),
-    "appConfigurationDescription": MessageLookupByLibrary.simpleMessage(
-      "Configure your app settings here.",
-    ),
+    "appConfigurationDescription": MessageLookupByLibrary.simpleMessage("Configure your app settings here."),
     "appConfigurationReset": MessageLookupByLibrary.simpleMessage("Reset"),
-    "appConfigurationResetDescription": MessageLookupByLibrary.simpleMessage(
-      "Reset your app settings to default.",
-    ),
+    "appConfigurationResetDescription": MessageLookupByLibrary.simpleMessage("Reset your app settings to default."),
     "appConfigurationSave": MessageLookupByLibrary.simpleMessage("Save"),
     "appName": MessageLookupByLibrary.simpleMessage("QuizlyMarket"),
     "buy": MessageLookupByLibrary.simpleMessage("Buy"),
     "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
     "cart": MessageLookupByLibrary.simpleMessage("Cart"),
+    "changeQuestionOrAnswer": MessageLookupByLibrary.simpleMessage(
+      "Should the questions and answer variants be shuffled?",
+    ),
     "english": MessageLookupByLibrary.simpleMessage("English"),
     "enterTest": MessageLookupByLibrary.simpleMessage("Enter test"),
     "language": MessageLookupByLibrary.simpleMessage("Change language"),
     "logoutCancel": MessageLookupByLibrary.simpleMessage("Cancel"),
     "logoutConfirm": MessageLookupByLibrary.simpleMessage("Logout"),
-    "logoutConfirmMessage": MessageLookupByLibrary.simpleMessage(
-      "Are you sure you want to logout?",
-    ),
-    "noInternetConnection": MessageLookupByLibrary.simpleMessage(
-      "No internet connection",
-    ),
+    "logoutConfirmMessage": MessageLookupByLibrary.simpleMessage("Are you sure you want to logout?"),
+    "noInternetConnection": MessageLookupByLibrary.simpleMessage("No internet connection"),
     "noInternetConnectionDescription": MessageLookupByLibrary.simpleMessage(
       "Please check your internet connection and try again.",
     ),
-    "personalizedTestDescription": MessageLookupByLibrary.simpleMessage(
-      "You can start the test customized for you.",
-    ),
-    "pressBackAgainToExit": MessageLookupByLibrary.simpleMessage(
-      "Press back again to exit",
-    ),
+    "openTest": MessageLookupByLibrary.simpleMessage("Open test"),
+    "parameters": MessageLookupByLibrary.simpleMessage("Parameters:"),
+    "personalizedTestDescription": MessageLookupByLibrary.simpleMessage("You can start the test customized for you."),
+    "pressBackAgainToExit": MessageLookupByLibrary.simpleMessage("Press back again to exit"),
     "refresh": MessageLookupByLibrary.simpleMessage("Refresh"),
     "report": MessageLookupByLibrary.simpleMessage("Reports"),
     "russian": MessageLookupByLibrary.simpleMessage("Russian"),
+    "selectQuestionByRange": MessageLookupByLibrary.simpleMessage("Select questions by range:"),
+    "questionRangeHint": (count) => "25 questions will rotate out of ${count}.",
+    "shuffleAll": MessageLookupByLibrary.simpleMessage("Shuffle everything"),
+    "shuffleAnswers": MessageLookupByLibrary.simpleMessage("Answers only"),
+    "shuffleNone": MessageLookupByLibrary.simpleMessage("Do not shuffle"),
+    "shuffleQuestions": MessageLookupByLibrary.simpleMessage("Questions only"),
     "signOut": MessageLookupByLibrary.simpleMessage("Sign out"),
+    "startTest": MessageLookupByLibrary.simpleMessage("Start test"),
+    "test": MessageLookupByLibrary.simpleMessage("Test"),
+    "testModeCustom": MessageLookupByLibrary.simpleMessage("Custom"),
+    "testModeLabel": MessageLookupByLibrary.simpleMessage("Test mode:"),
+    "testModeQuestionTime": MessageLookupByLibrary.simpleMessage(
+      "How long should it take to answer each question on the test?",
+    ),
+    "testModeUniversity": MessageLookupByLibrary.simpleMessage("University"),
     "testPurchased": MessageLookupByLibrary.simpleMessage("Test purchased"),
-    "testPurchasedDescription": MessageLookupByLibrary.simpleMessage(
-      "You can start the test customized for you.",
-    ),
-    "testPurchasedTitle": MessageLookupByLibrary.simpleMessage(
-      "Test purchased!",
-    ),
+    "testPurchasedDescription": MessageLookupByLibrary.simpleMessage("You can start the test customized for you."),
+    "testPurchasedTitle": MessageLookupByLibrary.simpleMessage("Test purchased!"),
+    "testTotalTime30Min": MessageLookupByLibrary.simpleMessage("30 min"),
+    "testTotalTime1Hour": MessageLookupByLibrary.simpleMessage("1 hour"),
     "title": MessageLookupByLibrary.simpleMessage("Quizly Market"),
     "uzbek": MessageLookupByLibrary.simpleMessage("Uzbek"),
   };

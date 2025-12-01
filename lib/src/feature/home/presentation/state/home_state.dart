@@ -6,6 +6,7 @@ import 'package:telegram_web_app/telegram_web_app.dart';
 import '../../../../common/constant/gen/assets.gen.dart';
 import '../../../../common/extension/context_extension.dart';
 import '../../../../common/extension/int_extension.dart';
+import '../../../../common/router/route_arguments.dart';
 import '../../../../common/util/dimension.dart';
 import '../../../../common/util/logger.dart';
 import '../../../../common/widget/custom_bottom_sheet.dart';
@@ -45,7 +46,11 @@ abstract class HomeState extends State<HomeScreen> {
       ..showCustomDialog(
         dialog: CustomPrimaryDialog(
           description: context.l10n.testPurchasedDescription,
-          onPressed: () {},
+          onPressed: () {
+            context.pop();
+            Navigator.of(context).pushNamed(Routes.testInit);
+          },
+
           title: context.l10n.testPurchased,
           buttonText: context.l10n.enterTest,
         ),
@@ -58,6 +63,8 @@ abstract class HomeState extends State<HomeScreen> {
     isScrollControlled: true,
     backgroundColor: context.color.transparent,
     builder: (ctx) => CustomBottomSheet(
+      isScrollable: false,
+      maxChildSize: .5,
       bottomNavigationBar: CustomButton(
         onRightPressed: _onCanBuyButtonPressed,
         rightText: context.l10n.buy,

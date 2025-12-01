@@ -47,8 +47,8 @@ Future<Dependencies> $initializeApp({
     await _catchExceptions();
 
     await Future.wait<void>([
-      SystemChrome.setEnabledSystemUIMode(.manual, overlays: [.bottom, .top]),
-      SystemChrome.setEnabledSystemUIMode(.edgeToEdge),
+      SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: [SystemUiOverlay.bottom, SystemUiOverlay.top]),
+      SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge),
 
       if (orientations != null) SystemChrome.setPreferredOrientations(orientations),
     ]);

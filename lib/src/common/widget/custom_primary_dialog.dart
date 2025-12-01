@@ -41,7 +41,11 @@ class CustomPrimaryDialog extends StatelessWidget {
           style: context.textTheme.nunitoW600s24.copyWith(color: context.color.primary, fontWeight: FontWeight.w700),
         ),
 
-        Text(description, style: context.textTheme.nunitoW500s16.copyWith(color: context.color.black)),
+        Text(
+          description,
+          style: context.textTheme.nunitoW500s16.copyWith(color: context.color.black),
+          textAlign: TextAlign.center,
+        ),
 
         CustomButton(onRightPressed: onPressed, rightText: buttonText),
       ],
