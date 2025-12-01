@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:platform_info/platform_info.dart';
 import 'package:supabase_service/supabase_service.dart';
+import '../../../feature/auth/repository/supabase_repository.dart';
 import '../../../feature/profile/data/models/app_settings.dart';
 
 import '../../../feature/profile/data/repository/profile_repository.dart';

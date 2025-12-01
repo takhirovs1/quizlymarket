@@ -3,11 +3,20 @@ import 'dart:developer';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 class SupabaseService {
-  static Supabase? _supabase;
+  final Supabase? _supabase;
 
-  static Future<void> initialize({required String url, required String anonKey}) async {
-    _supabase = await Supabase.initialize(url: url, anonKey: anonKey);
-    log('Supabase Initialized with url: $url and anonKey: $anonKey', name: 'SupabaseService');
+  const SupabaseService(this._supabase);
+
+  static SupabaseService? _instance;
+  static SupabaseService get instance {
+    assert(_instance != null, 'SupabaseService not initialized');
+    return _instance!;
+  }
+
+  static Future<SupabaseService> initialize({required String url, required String anonKey}) async {
+    final supabase = await Supabase.initialize(url: url, anonKey: anonKey);
+    _instance = SupabaseService(supabase);
+    return _instance!;
   }
 
   Future<Map<String, Object?>> login({required String telegramID}) async {
@@ -21,8 +30,5 @@ class SupabaseService {
     return {};
   }
 
-  Future<void> dispose() async {
-    await _supabase?.dispose();
-    _supabase = null;
-  }
+  Future<void> dispose() async => await _supabase?.dispose();
 }

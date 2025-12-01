@@ -38,7 +38,7 @@ class _ProfileScreenState extends ProfileState {
                   // Lottie.asset(Assets.lottie.book),
                   Dimension.hBox64,
                   ProfileHeader(
-                    photoUrl: profileData.photoUrl ?? '',
+                    photoUrl: '',
                     fullName: profileData.fullName,
                     id: profileData.id.toString(),
                     username: profileData.username ?? '',
@@ -84,8 +84,6 @@ class _ProfileScreenState extends ProfileState {
                       isLogout: true,
                     ),
                   ),
-
-                  Text(profileData.photoUrl.toString()),
                 ],
               ),
             ),

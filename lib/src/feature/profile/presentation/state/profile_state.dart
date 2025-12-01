@@ -24,7 +24,6 @@ abstract class ProfileState extends State<ProfileScreen> {
     final telegramUser = _resolveTelegramUser();
     isTelegramUser = telegramUser != null;
     profileData = telegramUser != null ? ProfileUserData.fromTelegram(telegramUser) : const ProfileUserData.mock();
-    log('userPhotoUrl: ${profileData.photoUrl}');
   }
 
   @override
