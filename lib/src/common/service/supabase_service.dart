@@ -25,7 +25,7 @@ sealed class SupabaseService {
   }
 
   static Future<void> initialize() async {
-    if (telegramUser == null) throw Exception('Telegram user is null');
+    if (telegramUser == null) return;
     _supabase = await Supabase.initialize(url: Config.current.supabaseUrl, anonKey: Config.current.supabaseAnonKey);
     await login();
   }

@@ -20,54 +20,37 @@ class ProfileHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Column(
-        children: [
-          Center(
-            child: SizedBox(
-              height: 100,
-              width: 100,
-              child: DecoratedBox(
-                decoration: BoxDecoration(
-                  color: context.color.primaryContainer,
-                  shape: BoxShape.circle,
-                ),
-                child: _AvatarImage(
-                  photoUrl: photoUrl,
-                  fallbackText: _resolveInitials(),
-                ),
-              ),
-            ),
+    children: [
+      Center(
+        child: SizedBox(
+          height: 100,
+          width: 100,
+          child: DecoratedBox(
+            decoration: BoxDecoration(color: context.color.primaryContainer, shape: BoxShape.circle),
+            child: _AvatarImage(photoUrl: photoUrl, fallbackText: _resolveInitials()),
           ),
-          Center(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
+        ),
+      ),
+      Center(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Text(fullName, style: context.textTheme.nunitoW600s30.copyWith(color: context.color.primary)),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text(
-                  fullName,
-                  style: context.textTheme.nunitoW600s30.copyWith(
-                    color: context.color.primary,
-                  ),
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      'ID: $id',
-                      style: context.textTheme.nunitoW400s14,
-                    ),
-                    if (username.isNotEmpty) ...[
-                      const SizedBox(width: 10),
-                      Text(
-                        'User: @$username',
-                        style: context.textTheme.nunitoW400s14,
-                      ),
-                    ],
-                  ],
-                ),
+                Text('ID: $id', style: context.textTheme.nunitoW400s14),
+                if (username.isNotEmpty) ...[
+                  const SizedBox(width: 10),
+                  Text('User: @$username', style: context.textTheme.nunitoW400s14),
+                ],
               ],
             ),
-          ),
-        ],
-      );
+          ],
+        ),
+      ),
+    ],
+  );
 
   String _resolveInitials() {
     final trimmed = fullName.trim();
@@ -109,9 +92,7 @@ class _AvatarImage extends StatelessWidget {
       );
     }
 
-    return ClipOval(
-      child: SizedBox.expand(child: imageWidget),
-    );
+    return ClipOval(child: SizedBox.expand(child: imageWidget));
   }
 }
 
@@ -122,13 +103,8 @@ class _Placeholder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Container(
-        color: context.color.primary,
-        alignment: Alignment.center,
-        child: Text(
-          initials,
-          style: context.textTheme.nunitoW600s24.copyWith(
-            color: context.color.white,
-          ),
-        ),
-      );
+    color: context.color.primary,
+    alignment: Alignment.center,
+    child: Text(initials, style: context.textTheme.nunitoW600s24.copyWith(color: context.color.white)),
+  );
 }

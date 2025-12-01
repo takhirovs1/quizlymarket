@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:telegram_web_app/telegram_web_app.dart';
 
@@ -48,10 +47,7 @@ class ProfileUserData {
   final bool isMock;
 
   String get fullName {
-    final segments = <String>[
-      firstName,
-      if ((lastName ?? '').trim().isNotEmpty) lastName!.trim(),
-    ];
+    final segments = <String>[firstName, if ((lastName ?? '').trim().isNotEmpty) lastName!.trim()];
     final concatenated = segments.join(' ').trim();
     return concatenated.isEmpty ? firstName : concatenated;
   }

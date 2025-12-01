@@ -32,9 +32,7 @@ GoRouter router = GoRouter(
     }
 
     // matchedLocation bo'sh bo'lsa ham rawLocation'dan foydalanamiz
-    final loc = state.matchedLocation.isEmpty
-        ? rawLocation
-        : state.matchedLocation;
+    final loc = state.matchedLocation.isEmpty ? rawLocation : state.matchedLocation;
 
     final goingToOnboarding = loc == Routes.onboarding;
 
@@ -60,37 +58,20 @@ GoRouter router = GoRouter(
     ),
     StatefulShellRoute.indexedStack(
       parentNavigatorKey: rootNavigatorKey,
-      builder: (context, state, navigationShell) =>
-          MainScreen(key: state.pageKey, navigationShell: navigationShell),
+      builder: (context, state, navigationShell) => MainScreen(key: state.pageKey, navigationShell: navigationShell),
       branches: [
         StatefulShellBranch(
           initialLocation: Routes.home,
-          routes: [
-            GoRoute(
-              path: Routes.home,
-              name: Routes.home,
-              builder: (context, state) => const HomeScreen(),
-            ),
-          ],
+          routes: [GoRoute(path: Routes.home, name: Routes.home, builder: (context, state) => const HomeScreen())],
         ),
         StatefulShellBranch(
           initialLocation: Routes.cart,
-          routes: [
-            GoRoute(
-              path: Routes.cart,
-              name: Routes.cart,
-              builder: (context, state) => const CartScreen(),
-            ),
-          ],
+          routes: [GoRoute(path: Routes.cart, name: Routes.cart, builder: (context, state) => const CartScreen())],
         ),
         StatefulShellBranch(
           initialLocation: Routes.profile,
           routes: [
-            GoRoute(
-              path: Routes.profile,
-              name: Routes.profile,
-              builder: (context, state) => const ProfileScreen(),
-            ),
+            GoRoute(path: Routes.profile, name: Routes.profile, builder: (context, state) => const ProfileScreen()),
           ],
         ),
       ],

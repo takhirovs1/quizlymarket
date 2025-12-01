@@ -16,8 +16,7 @@ class ProfileScreen extends StatefulWidget {
   final String? data;
 
   @internal
-  static _ProfileScreenState? maybeOf(BuildContext context) =>
-      context.findAncestorStateOfType<_ProfileScreenState>();
+  static _ProfileScreenState? maybeOf(BuildContext context) => context.findAncestorStateOfType<_ProfileScreenState>();
 
   @override
   State<ProfileScreen> createState() => _ProfileScreenState();
@@ -53,15 +52,10 @@ class _ProfileScreenState extends ProfileState {
                   Dimension.hBox16,
                   Material(
                     color: context.color.white,
-                    shape: const RoundedRectangleBorder(
-                      borderRadius: Dimension.rAll10,
-                    ),
+                    shape: const RoundedRectangleBorder(borderRadius: Dimension.rAll10),
                     clipBehavior: Clip.antiAlias,
                     child: CustomTile(
-                      leading: Icon(
-                        CupertinoIcons.money_dollar,
-                        color: context.color.primary,
-                      ),
+                      leading: Icon(CupertinoIcons.money_dollar, color: context.color.primary),
                       title: context.l10n.report,
                       onTap: () {},
                     ),
@@ -69,15 +63,10 @@ class _ProfileScreenState extends ProfileState {
                   Dimension.hBox12,
                   Material(
                     color: context.color.white,
-                    shape: const RoundedRectangleBorder(
-                      borderRadius: Dimension.rAll10,
-                    ),
+                    shape: const RoundedRectangleBorder(borderRadius: Dimension.rAll10),
                     clipBehavior: Clip.antiAlias,
                     child: CustomTile(
-                      leading: Icon(
-                        CupertinoIcons.globe,
-                        color: context.color.primary,
-                      ),
+                      leading: Icon(CupertinoIcons.globe, color: context.color.primary),
                       title: context.l10n.language,
                       onTap: onTapLanguageChange,
                     ),
@@ -85,9 +74,7 @@ class _ProfileScreenState extends ProfileState {
                   Dimension.hBox12,
                   Material(
                     color: context.color.white,
-                    shape: const RoundedRectangleBorder(
-                      borderRadius: Dimension.rAll10,
-                    ),
+                    shape: const RoundedRectangleBorder(borderRadius: Dimension.rAll10),
                     clipBehavior: Clip.antiAlias,
                     child: CustomTile(
                       leading: Icon(Icons.logout, color: context.color.error),
@@ -104,12 +91,7 @@ class _ProfileScreenState extends ProfileState {
             ),
             Padding(
               padding: const EdgeInsets.only(bottom: 12),
-              child: Text(
-                formatVersion(),
-                style: context.textTheme.sfProW400s12.copyWith(
-                  color: context.color.gray,
-                ),
-              ),
+              child: Text(formatVersion(), style: context.textTheme.sfProW400s12.copyWith(color: context.color.gray)),
             ),
           ],
         ),

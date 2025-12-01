@@ -24,11 +24,9 @@ abstract class ProfileState extends State<ProfileScreen> {
     super.initState();
     final telegramUser = _resolveTelegramUser();
     isTelegramUser = telegramUser != null;
-    profileData = telegramUser != null
-        ? ProfileUserData.fromTelegram(telegramUser)
-        : const ProfileUserData.mock();
+    profileData = telegramUser != null ? ProfileUserData.fromTelegram(telegramUser) : const ProfileUserData.mock();
     log('userPhotoUrl: ${profileData.photoUrl}');
-      }
+  }
 
   @override
   void didChangeDependencies() {
@@ -61,18 +59,13 @@ abstract class ProfileState extends State<ProfileScreen> {
     barrierDismissible: true,
     builder: (ctx) => CupertinoAlertDialog(
       title: Text(context.l10n.signOut),
-      content: Padding(
-        padding: Dimension.pTop8,
-        child: Text(context.l10n.logoutConfirmMessage),
-      ),
+      content: Padding(padding: Dimension.pTop8, child: Text(context.l10n.logoutConfirmMessage)),
       actions: [
         CupertinoDialogAction(
           onPressed: () => context.pop(),
           child: Text(
             context.l10n.logoutCancel,
-            style: context.textTheme.nunitoW600s16.copyWith(
-              color: context.color.primary,
-            ),
+            style: context.textTheme.nunitoW600s16.copyWith(color: context.color.primary),
           ),
         ),
         CupertinoDialogAction(
@@ -83,9 +76,7 @@ abstract class ProfileState extends State<ProfileScreen> {
           },
           child: Text(
             context.l10n.logoutConfirm,
-            style: context.textTheme.nunitoW400s16.copyWith(
-              color: context.color.error,
-            ),
+            style: context.textTheme.nunitoW400s16.copyWith(color: context.color.error),
           ),
         ),
       ],
@@ -118,9 +109,7 @@ abstract class ProfileState extends State<ProfileScreen> {
               children: [
                 for (final (index, option) in languages.indexed) ...[
                   CustomTileChanger(
-                    trailing: currentLocale == option.code
-                        ? const Icon(Icons.check)
-                        : null,
+                    trailing: currentLocale == option.code ? const Icon(Icons.check) : null,
                     title: option.label,
                     onTap: () => _changeLocale(option.code),
                   ),

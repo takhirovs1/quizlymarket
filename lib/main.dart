@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:telegram_web_app/telegram_web_app.dart';
 
 import 'src/common/core_widgets/app.dart';
 import 'src/common/dependencies/initialization/initialization.dart';
@@ -16,27 +15,17 @@ void main([List<String>? args]) => runZonedGuarded<Future<void>>(() async {
   Future<void> launchApp() async {
     final binding = WidgetsFlutterBinding.ensureInitialized();
 
-    final initializationProgress =
-        ValueNotifier<({int progress, String message})>((
-          progress: 0,
-          message: '',
-        ));
+    final initializationProgress = ValueNotifier<({int progress, String message})>((progress: 0, message: ''));
     final logo = await Helpers.getPlatformSpecificLogo();
 
     runApp(
       DependenciesScope(
         initialization: $initializeApp(
           binding: binding,
-          onProgress: (progress, message) => initializationProgress.value = (
-            progress: progress,
-            message: message,
-          ),
+          onProgress: (progress, message) => initializationProgress.value = (progress: progress, message: message),
           orientations: [.portraitUp, .portraitDown],
         ),
-        splashScreen: SplashScreen(
-          logo: logo,
-          progress: initializationProgress,
-        ),
+        splashScreen: SplashScreen(logo: logo, progress: initializationProgress),
         child: const SettingsScope(child: App()),
       ),
     );

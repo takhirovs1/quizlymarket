@@ -6,8 +6,6 @@ import '../../../../common/extension/context_extension.dart';
 import '../../data/models/app_settings.dart';
 import '../bloc/settings_bloc.dart';
 
-
-
 /// {@template settings_scope}
 /// SettingsScope widget.
 /// {@endtemplate}

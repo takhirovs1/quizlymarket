@@ -49,10 +49,7 @@ abstract class MainState extends State<MainScreen> {
     _canExitApp = true;
 
     if (mounted && context.mounted) {
-      context.showNotification(
-        message: context.l10n.pressBackAgainToExit,
-        backgroundColor: context.color.success,
-      );
+      context.showNotification(message: context.l10n.pressBackAgainToExit, backgroundColor: context.color.success);
     }
 
     _exitTimer?.cancel();

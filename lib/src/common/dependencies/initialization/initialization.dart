@@ -95,11 +95,7 @@ Future<void> _catchExceptions() async {
 
     final sourceFlutterError = FlutterError.onError;
     FlutterError.onError = (final details) {
-      ErrorUtil.logError(
-        details.exception,
-        details.stack ?? StackTrace.current,
-        hint: 'FLUTTER ERROR\r\n$details',
-      );
+      ErrorUtil.logError(details.exception, details.stack ?? StackTrace.current, hint: 'FLUTTER ERROR\r\n$details');
 
       sourceFlutterError?.call(details);
     };

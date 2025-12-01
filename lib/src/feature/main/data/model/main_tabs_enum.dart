@@ -25,12 +25,11 @@ enum MainTabsEnum implements Comparable<MainTabsEnum> {
   bool get isProfileTab => this == profile;
 
   /// Pattern matching
-  T map<T>({required T Function() home, required T Function() cart, required T Function() profile}) =>
-      switch (this) {
-        .home => home(),
-        .cart => cart(),
-        .profile => profile(),
-      };
+  T map<T>({required T Function() home, required T Function() cart, required T Function() profile}) => switch (this) {
+    .home => home(),
+    .cart => cart(),
+    .profile => profile(),
+  };
 
   /// Pattern matching
   T maybeMap<T>({required T Function() orElse, T Function()? home, T Function()? cart, T Function()? profile}) =>

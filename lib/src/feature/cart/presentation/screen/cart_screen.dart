@@ -12,28 +12,26 @@ class CartScreen extends StatefulWidget {
 
 class _CartScreenState extends CartState {
   @override
-  Widget build(BuildContext context) =>  Scaffold(
-
-     backgroundColor: context.color.background,
-      appBar: PreferredSize(
-        preferredSize:  Size.fromHeight(context.height * 0.12),
-        child: SafeArea(
-          bottom: false,
-          child: SizedBox(
-            height: context.height * 0.12,
-            child: Center(child: Text(context.l10n.cart, style: context.textTheme.nunitoW600s24.copyWith(color: context.color.primary))),
+  Widget build(BuildContext context) => Scaffold(
+    backgroundColor: context.color.background,
+    appBar: PreferredSize(
+      preferredSize: Size.fromHeight(context.height * 0.12),
+      child: SafeArea(
+        bottom: false,
+        child: SizedBox(
+          height: context.height * 0.12,
+          child: Center(
+            child: Text(
+              context.l10n.cart,
+              style: context.textTheme.nunitoW600s24.copyWith(color: context.color.primary),
+            ),
           ),
         ),
       ),
-   
-    body:  SafeArea(
-      child: Column(
-        crossAxisAlignment: .start,
-        children: [
-          
-          Text(context.l10n.cart),
-        ],
-      ),
+    ),
+
+    body: SafeArea(
+      child: Column(crossAxisAlignment: .start, children: [Text(context.l10n.cart)]),
     ),
   );
 }

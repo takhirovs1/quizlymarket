@@ -74,6 +74,6 @@ publish: ## Publish the app to TestFlight
 	@dart run tools/dart/test_flight_publisher.dart
 
 .PHONY: web
-web: ## Build Flutter web release and deploy to Firebase hosting
-	@flutter build web --release
+web: pre-build ## Build Flutter web release and deploy to Firebase hosting
+	@flutter build web --release --dart-define-from-file=config/production.json --dart-define=config.platform=web
 	@firebase deploy --only hosting

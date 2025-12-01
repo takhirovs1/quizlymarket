@@ -17,13 +17,10 @@ class App extends StatefulWidget {
   /// {@macro app}
   const App({super.key});
 
-  static final ValueNotifier<bool> thunderEnabledNotifier = ValueNotifier<bool>(
-    false,
-  );
+  static final ValueNotifier<bool> thunderEnabledNotifier = ValueNotifier<bool>(false);
 
   /// Accessing [_AppState]
-  static _AppState? maybeOf(BuildContext context) =>
-      context.findAncestorStateOfType<_AppState>();
+  static _AppState? maybeOf(BuildContext context) => context.findAncestorStateOfType<_AppState>();
   @override
   State<App> createState() => _AppState();
 }
@@ -37,30 +34,30 @@ class _AppState extends State<App> {
 
   @override
   Widget build(BuildContext context) => MaterialApp.router(
-        debugShowCheckedModeBanner: false,
-        title: 'Quizly Market',
-        restorationScopeId: 'material_app',
-        onGenerateTitle: (context) => context.l10n.title,
-        routerConfig: router,
-        supportedLocales: Localization.supportedLocales,
-        localizationsDelegates: Localization.delegates,
-        locale: SettingsScope.settingsOf(context).localization,
-        theme: SettingsScope.settingsOf(context).appTheme,
-        builder: (context, child) => MediaQuery(
-          data: MediaQuery.of(context).copyWith(textScaler: TextScaler.noScaling),
-          child: KeyboardDismiss(
-            child: ValueListenableBuilder<bool>(
-              valueListenable: App.thunderEnabledNotifier,
-              builder: (context, thunderEnabled, _) => Thunder(
-                dio: context.dependencies.dio.all,
-                color: context.color.success,
-                enabled: true,
-                child: child ?? const SizedBox.shrink(),
-              ),
-            ),
+    debugShowCheckedModeBanner: false,
+    title: 'Quizly Market',
+    restorationScopeId: 'material_app',
+    onGenerateTitle: (context) => context.l10n.title,
+    routerConfig: router,
+    supportedLocales: Localization.supportedLocales,
+    localizationsDelegates: Localization.delegates,
+    locale: SettingsScope.settingsOf(context).localization,
+    theme: SettingsScope.settingsOf(context).appTheme,
+    builder: (context, child) => MediaQuery(
+      data: MediaQuery.of(context).copyWith(textScaler: TextScaler.noScaling),
+      child: KeyboardDismiss(
+        child: ValueListenableBuilder<bool>(
+          valueListenable: App.thunderEnabledNotifier,
+          builder: (context, thunderEnabled, _) => Thunder(
+            dio: context.dependencies.dio.all,
+            color: context.color.success,
+            enabled: true,
+            child: child ?? const SizedBox.shrink(),
           ),
         ),
-      );
+      ),
+    ),
+  );
 
   void _configureTelegramShell() {
     if (!kIsWeb) return;
