@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import '../../feature/main/data/model/main_tabs_enum.dart';
 import '../../feature/main/presentation/screen/main_screen.dart';
 import '../../feature/onboarding/presentation/onboarding_screen.dart';
+import '../../feature/test/presentation/screen/test_init_screen.dart';
+import '../extension/context_extension.dart';
 import 'route_arguments.dart';
 
 final GlobalKey<NavigatorState> rootNavigatorKey = GlobalKey<NavigatorState>();
@@ -10,12 +12,19 @@ final GlobalKey<NavigatorState> rootNavigatorKey = GlobalKey<NavigatorState>();
 Route<dynamic> onGenerateRoute(RouteSettings settings) {
   switch (settings.name) {
     case Routes.onboarding:
-      return _materialRoute(const OnboardingScreen(), settings);
+      {
+        if (!rootNavigatorKey.currentContext!.localSource.onboardingCompleted) {
+          return _materialRoute(const OnboardingScreen(), settings);
+        }
+        return _materialRoute(const MainScreen(initialTab: MainTabsEnum.home), settings);
+      }
     case Routes.home:
     case Routes.cart:
     case Routes.profile:
       final tab = _tabFromRoute(settings.name);
       return _materialRoute(MainScreen(initialTab: tab), settings);
+    case Routes.testInit:
+      return _materialRoute(const TestInitScreen(), settings);
     default:
       return _materialRoute(const OnboardingScreen(), settings);
   }

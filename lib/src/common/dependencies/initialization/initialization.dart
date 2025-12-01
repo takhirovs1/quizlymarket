@@ -48,11 +48,9 @@ Future<Dependencies> $initializeApp({
 
     await _catchExceptions();
 
-    SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(systemNavigationBarColor: Colors.transparent));
-
     await Future.wait<void>([
-      SystemChrome.setEnabledSystemUIMode(.manual, overlays: [.bottom, .top]),
-      SystemChrome.setEnabledSystemUIMode(.edgeToEdge),
+      SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: [SystemUiOverlay.bottom, SystemUiOverlay.top]),
+      SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge),
 
       if (orientations != null) SystemChrome.setPreferredOrientations(orientations),
     ]);

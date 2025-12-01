@@ -26,5 +26,35 @@
 "cart": "Cart",
 "testPurchased": "Test purchased",
 "personalizedTestDescription": "You can start the test customized for you.",
-"enterTest": "Enter test"
+"enterTest": "Enter test",
+"cancel": "Cancel",
+ "testPurchasedDescription": "You can start the test customized for you.",
+ "testPurchasedTitle": "Test purchased!",
+ "test": "Test",
+ "startTest": "Start test",
+ "parameters": "Parameters:",
+ "testModeLabel": "Test mode:",
+ "testModeCustom": "Custom",
+ "testModeUniversity": "University",
+"testModeQuestionTime": "How long should it take to answer each question on the test?",
+"openTest": "Open test",
+"changeQuestionOrAnswer" : "Should the questions and answer variants be shuffled?",
+"shuffleAll": "Shuffle everything",
+"shuffleNone": "Do not shuffle",
+"shuffleQuestions": "Questions only",
+"shuffleAnswers": "Answers only",
+"selectQuestionByRange" : "Select questions by range:",
+"allOfTimeTest": "Total test time:",
+"questionRangeHint": "25 questions will rotate out of {count}.",
+"@questionRangeHint": {
+  "placeholders": {
+    "count": {
+      "type": "int",
+      "example": 100
+    }
+  }
+},
+"testTotalTime30Min": "30 min",
+"testTotalTime1Hour": "1 hour"
 }
+

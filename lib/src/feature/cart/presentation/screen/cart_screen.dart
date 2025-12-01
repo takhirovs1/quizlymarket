@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 import '../../../../common/extension/context_extension.dart';
+import '../../../../common/util/dimension.dart';
+import '../../../../common/widget/custom_card_widget.dart';
 import '../state/card_state.dart';
 
 class CartScreen extends StatefulWidget {
@@ -14,24 +16,22 @@ class _CartScreenState extends CartState {
   @override
   Widget build(BuildContext context) => Scaffold(
     backgroundColor: context.color.background,
-    appBar: PreferredSize(
-      preferredSize: Size.fromHeight(context.height * 0.12),
-      child: SafeArea(
-        bottom: false,
-        child: SizedBox(
-          height: context.height * 0.12,
-          child: Center(
-            child: Text(
-              context.l10n.cart,
-              style: context.textTheme.nunitoW600s24.copyWith(color: context.color.primary),
-            ),
-          ),
-        ),
-      ),
-    ),
 
     body: SafeArea(
-      child: Column(crossAxisAlignment: .start, children: [Text(context.l10n.cart)]),
+      child: ListView.separated(
+        padding: Dimension.pTop16,
+        itemBuilder: (context, index) => CustomCardWidget(
+          subject: 'Akademik koʻnikmalar',
+          university: 'Alfraganus',
+          direction: 'Iqtisodiyot sirtqi 2-kurs 2-semistr',
+          testCount: 100,
+          studyYears: '2025-2026',
+          buttonText: context.l10n.openTest,
+          onPressed: onOpenTestScreen,
+        ),
+        separatorBuilder: (context, index) => Dimension.hBox12,
+        itemCount: 2,
+      ),
     ),
   );
 }

@@ -94,21 +94,19 @@ class _CustomCardWidgetState extends State<CustomCardWidget> {
             Row(
               mainAxisAlignment: .spaceBetween,
               children: [
-                if (widget.price != null)
-                  Row(
+                switch (widget.price != null) {
+                  true => Row(
                     spacing: 4,
                     children: [
                       Lottie.asset(Assets.lottie.money, width: 24, height: 24, repeat: false),
                       Text(
                         widget.price?.toUZSString() ?? '',
-                        style: context.textTheme.sfProW500s14.copyWith(
-                          color: context.color.primary,
-                          fontStyle: .normal,
-                          fontWeight: .w700,
-                        ),
+                        style: context.textTheme.sfProW500s14.copyWith(color: context.color.primary),
                       ),
                     ],
                   ),
+                  false => const SizedBox.shrink(),
+                },
 
                 FilledButton(
                   style: FilledButton.styleFrom(padding: Dimension.pH12V8, backgroundColor: context.color.primary),

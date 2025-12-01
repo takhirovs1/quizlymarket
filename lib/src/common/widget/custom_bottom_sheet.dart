@@ -10,11 +10,13 @@ class CustomBottomSheet extends StatelessWidget {
     super.key,
     this.maxChildSize = .9,
     this.isScrollable = true,
+    this.bottomNavigationBar,
   });
   final List<Widget> children;
   final double initialChildSize;
   final double maxChildSize;
   final bool isScrollable;
+  final Widget? bottomNavigationBar;
 
   @override
   Widget build(BuildContext context) => DraggableScrollableSheet(
@@ -23,29 +25,41 @@ class CustomBottomSheet extends StatelessWidget {
     maxChildSize: maxChildSize,
     expand: false,
 
-    builder: (ctx, scrollController) => Column(
-      children: [
-        Center(
-          child: Container(
-            width: 44,
-            height: 5,
-            margin: Dimension.pBottom8,
-            decoration: BoxDecoration(color: context.color.gray, borderRadius: BorderRadius.circular(100)),
+    builder: (ctx, scrollController) => Scaffold(
+      backgroundColor: context.color.transparent,
+      bottomNavigationBar: switch (bottomNavigationBar) {
+        null => null,
+        Widget widget => ColoredBox(
+          color: context.color.white,
+          child: SafeArea(
+            child: Padding(padding: Dimension.pAll16, child: widget),
           ),
         ),
-        Expanded(
-          child: DecoratedBox(
-            decoration: BoxDecoration(color: context.color.background, borderRadius: Dimension.rTop16),
-            child: ListView(
-              physics: isScrollable ? null : const NeverScrollableScrollPhysics(),
-              controller: scrollController,
-              padding: const EdgeInsets.fromLTRB(16, 8, 16, 16),
-
-              children: children,
+      },
+      body: Column(
+        children: [
+          Center(
+            child: Container(
+              width: 44,
+              height: 5,
+              margin: Dimension.pBottom8,
+              decoration: BoxDecoration(color: context.color.gray, borderRadius: BorderRadius.circular(100)),
             ),
           ),
-        ),
-      ],
+          Expanded(
+            child: DecoratedBox(
+              decoration: BoxDecoration(color: context.color.background, borderRadius: Dimension.rTop16),
+              child: ListView(
+                physics: isScrollable ? null : const NeverScrollableScrollPhysics(),
+                controller: scrollController,
+                padding: const EdgeInsets.fromLTRB(16, 8, 16, 16),
+
+                children: children,
+              ),
+            ),
+          ),
+        ],
+      ),
     ),
   );
 }

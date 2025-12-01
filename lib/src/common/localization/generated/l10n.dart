@@ -28,9 +28,7 @@ class GeneratedLocalization {
   static const AppLocalizationDelegate delegate = AppLocalizationDelegate();
 
   static Future<GeneratedLocalization> load(Locale locale) {
-    final name = (locale.countryCode?.isEmpty ?? false)
-        ? locale.languageCode
-        : locale.toString();
+    final name = (locale.countryCode?.isEmpty ?? false) ? locale.languageCode : locale.toString();
     final localeName = Intl.canonicalizedLocale(name);
     return initializeMessages(localeName).then((_) {
       Intl.defaultLocale = localeName;
@@ -51,20 +49,12 @@ class GeneratedLocalization {
   }
 
   static GeneratedLocalization? maybeOf(BuildContext context) {
-    return Localizations.of<GeneratedLocalization>(
-      context,
-      GeneratedLocalization,
-    );
+    return Localizations.of<GeneratedLocalization>(context, GeneratedLocalization);
   }
 
   /// `Нет интернет соединения`
   String get noInternetConnection {
-    return Intl.message(
-      'Нет интернет соединения',
-      name: 'noInternetConnection',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Нет интернет соединения', name: 'noInternetConnection', desc: '', args: []);
   }
 
   /// `Пожалуйста, проверьте ваше интернет соединение и попробуйте снова.`
@@ -84,12 +74,7 @@ class GeneratedLocalization {
 
   /// `Настройка приложения`
   String get appConfiguration {
-    return Intl.message(
-      'Настройка приложения',
-      name: 'appConfiguration',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Настройка приложения', name: 'appConfiguration', desc: '', args: []);
   }
 
   /// `Настройте ваши настройки приложения здесь.`
@@ -104,32 +89,17 @@ class GeneratedLocalization {
 
   /// `Сохранить`
   String get appConfigurationSave {
-    return Intl.message(
-      'Сохранить',
-      name: 'appConfigurationSave',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Сохранить', name: 'appConfigurationSave', desc: '', args: []);
   }
 
   /// `Отмена`
   String get appConfigurationCancel {
-    return Intl.message(
-      'Отмена',
-      name: 'appConfigurationCancel',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Отмена', name: 'appConfigurationCancel', desc: '', args: []);
   }
 
   /// `Сбросить`
   String get appConfigurationReset {
-    return Intl.message(
-      'Сбросить',
-      name: 'appConfigurationReset',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Сбросить', name: 'appConfigurationReset', desc: '', args: []);
   }
 
   /// `Сбросьте ваши настройки приложения на defaults.`
@@ -149,12 +119,7 @@ class GeneratedLocalization {
 
   /// `Нажмите еще раз, чтобы выйти`
   String get pressBackAgainToExit {
-    return Intl.message(
-      'Нажмите еще раз, чтобы выйти',
-      name: 'pressBackAgainToExit',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Нажмите еще раз, чтобы выйти', name: 'pressBackAgainToExit', desc: '', args: []);
   }
 
   /// `Изменить язык`
@@ -189,12 +154,7 @@ class GeneratedLocalization {
 
   /// `Вы уверены, что хотите выйти?`
   String get logoutConfirmMessage {
-    return Intl.message(
-      'Вы уверены, что хотите выйти?',
-      name: 'logoutConfirmMessage',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Вы уверены, что хотите выйти?', name: 'logoutConfirmMessage', desc: '', args: []);
   }
 
   /// `Выход`
@@ -224,12 +184,7 @@ class GeneratedLocalization {
 
   /// `Тест приобретен`
   String get testPurchased {
-    return Intl.message(
-      'Тест приобретен',
-      name: 'testPurchased',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Тест приобретен', name: 'testPurchased', desc: '', args: []);
   }
 
   /// `Вы можете начать тест, настроенный под вас.`
@@ -244,17 +199,131 @@ class GeneratedLocalization {
 
   /// `Перейти к тесту`
   String get enterTest {
+    return Intl.message('Перейти к тесту', name: 'enterTest', desc: '', args: []);
+  }
+
+  /// `Отмена`
+  String get cancel {
+    return Intl.message('Отмена', name: 'cancel', desc: '', args: []);
+  }
+
+  /// `Вы можете начать тест, настроенный под вас.`
+  String get testPurchasedDescription {
     return Intl.message(
-      'Перейти к тесту',
-      name: 'enterTest',
+      'Вы можете начать тест, настроенный под вас.',
+      name: 'testPurchasedDescription',
       desc: '',
       args: [],
     );
   }
+
+  /// `Тест приобретен!`
+  String get testPurchasedTitle {
+    return Intl.message('Тест приобретен!', name: 'testPurchasedTitle', desc: '', args: []);
+  }
+
+  /// `Тест`
+  String get test {
+    return Intl.message('Тест', name: 'test', desc: '', args: []);
+  }
+
+  /// `Начать тест`
+  String get startTest {
+    return Intl.message('Начать тест', name: 'startTest', desc: '', args: []);
+  }
+
+  /// `Параметры:`
+  String get parameters {
+    return Intl.message('Параметры:', name: 'parameters', desc: '', args: []);
+  }
+
+  /// `Режим теста:`
+  String get testModeLabel {
+    return Intl.message('Режим теста:', name: 'testModeLabel', desc: '', args: []);
+  }
+
+  /// `Индивидуальный`
+  String get testModeCustom {
+    return Intl.message('Индивидуальный', name: 'testModeCustom', desc: '', args: []);
+  }
+
+  /// `Университет`
+  String get testModeUniversity {
+    return Intl.message('Университет', name: 'testModeUniversity', desc: '', args: []);
+  }
+
+  /// `Сколько времени должно занять ответ на каждый вопрос теста?`
+  String get testModeQuestionTime {
+    return Intl.message(
+      'Сколько времени должно занять ответ на каждый вопрос теста?',
+      name: 'testModeQuestionTime',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Открыть тест`
+  String get openTest {
+    return Intl.message('Открыть тест', name: 'openTest', desc: '', args: []);
+  }
+
+  /// `Следует ли перемешать вопросы и варианты ответов?`
+  String get changeQuestionOrAnswer {
+    return Intl.message(
+      'Следует ли перемешать вопросы и варианты ответов?',
+      name: 'changeQuestionOrAnswer',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Перемешать всё`
+  String get shuffleAll {
+    return Intl.message('Перемешать всё', name: 'shuffleAll', desc: '', args: []);
+  }
+
+  /// `Не перемешивать`
+  String get shuffleNone {
+    return Intl.message('Не перемешивать', name: 'shuffleNone', desc: '', args: []);
+  }
+
+  /// `Только вопросы`
+  String get shuffleQuestions {
+    return Intl.message('Только вопросы', name: 'shuffleQuestions', desc: '', args: []);
+  }
+
+  /// `Только ответы`
+  String get shuffleAnswers {
+    return Intl.message('Только ответы', name: 'shuffleAnswers', desc: '', args: []);
+  }
+
+  /// `Выберите вопросы по диапазону:`
+  String get selectQuestionByRange {
+    return Intl.message('Выберите вопросы по диапазону:', name: 'selectQuestionByRange', desc: '', args: []);
+  }
+
+  /// `Total test time:`
+  String get allOfTimeTest {
+    return Intl.message('Общее время теста:', name: 'allOfTimeTest', desc: '', args: []);
+  }
+
+  /// `30 min`
+  String get testTotalTime30Min {
+    return Intl.message('30 минут', name: 'testTotalTime30Min', desc: '', args: []);
+  }
+
+  /// `1 hour`
+  String get testTotalTime1Hour {
+    return Intl.message('1 час', name: 'testTotalTime1Hour', desc: '', args: []);
+  }
+
+  /// `25 questions will rotate out of {count}.`
+  String questionRangeHint(int count) {
+    return Intl.message('25 questions will rotate out of $count.', name: 'questionRangeHint', desc: '', args: [count]);
+  }
 }
 
-class AppLocalizationDelegate
-    extends LocalizationsDelegate<GeneratedLocalization> {
+class AppLocalizationDelegate extends LocalizationsDelegate<GeneratedLocalization> {
   const AppLocalizationDelegate();
 
   List<Locale> get supportedLocales {
@@ -268,8 +337,7 @@ class AppLocalizationDelegate
   @override
   bool isSupported(Locale locale) => _isSupported(locale);
   @override
-  Future<GeneratedLocalization> load(Locale locale) =>
-      GeneratedLocalization.load(locale);
+  Future<GeneratedLocalization> load(Locale locale) => GeneratedLocalization.load(locale);
   @override
   bool shouldReload(AppLocalizationDelegate old) => false;
 

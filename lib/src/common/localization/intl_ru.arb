@@ -26,5 +26,34 @@
 "cart": "Корзина",
 "testPurchased": "Тест приобретен",
 "personalizedTestDescription": "Вы можете начать тест, настроенный под вас.",
-"enterTest": "Перейти к тесту"
+"enterTest": "Перейти к тесту",
+"cancel": "Отмена",
+"testPurchasedDescription": "Вы можете начать тест, настроенный под вас.",
+"testPurchasedTitle": "Тест приобретен!",
+"test": "Тест",
+"startTest": "Начать тест",
+"parameters": "Параметры:",
+"testModeLabel": "Режим теста:",
+"testModeCustom": "Индивидуальный",
+"testModeUniversity": "Университет",
+"testModeQuestionTime": "Сколько времени должно занять ответ на каждый вопрос теста?",
+"openTest": "Открыть тест",
+"changeQuestionOrAnswer" : "Следует ли перемешать вопросы и варианты ответов?",
+"shuffleAll": "Перемешать всё",
+"shuffleNone": "Не перемешивать",
+"shuffleQuestions": "Только вопросы",
+"shuffleAnswers": "Только ответы",
+"selectQuestionByRange" : "Выберите вопросы по диапазону:",
+"allOfTimeTest": "Общее время теста:",
+"questionRangeHint": "Из {count} вопросов 25 будут перемешиваться.",
+"@questionRangeHint": {
+  "placeholders": {
+    "count": {
+      "type": "int",
+      "example": 100
+    }
+  }
+},
+"testTotalTime30Min": "30 минут",
+"testTotalTime1Hour": "1 час"
 }
