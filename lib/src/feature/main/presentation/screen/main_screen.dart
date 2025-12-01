@@ -21,7 +21,10 @@ class _MainScreenState extends MainState {
   Widget build(BuildContext context) => PopScope(
     canPop: false,
     child: Scaffold(
-      body: widget.navigationShell,
+      body: Padding(
+        padding: EdgeInsets.only(top: TelegramWebApp.instance.safeAreaInset.top.toDouble()),
+        child: widget.navigationShell,
+      ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: widget.navigationShell.currentIndex,
         onTap: onItemTapped,
@@ -42,12 +45,11 @@ class _MainScreenState extends MainState {
     ),
   );
 
-  BottomNavigationBarItem _buildBottomItem(SvgGenImage icon) =>
-      BottomNavigationBarItem(
-        icon: _buildIcon(icon, isSelected: false),
-        activeIcon: _buildSelectedIcon(icon),
-        label: '',
-      );
+  BottomNavigationBarItem _buildBottomItem(SvgGenImage icon) => BottomNavigationBarItem(
+    icon: _buildIcon(icon, isSelected: false),
+    activeIcon: _buildSelectedIcon(icon),
+    label: '',
+  );
 
   Widget _buildSelectedIcon(SvgGenImage icon) => Column(
     children: [
@@ -74,64 +76,8 @@ class _MainScreenState extends MainState {
       child: icon.svg(
         width: 25,
         height: 25,
-        colorFilter: ColorFilter.mode(
-          isSelected ? context.color.black : const Color(0xffBBBFD0),
-          BlendMode.srcATop,
-        ),
+        colorFilter: ColorFilter.mode(isSelected ? context.color.black : const Color(0xffBBBFD0), BlendMode.srcATop),
       ),
-      body: Padding(
-        padding: EdgeInsets.only(top: TelegramWebApp.instance.safeAreaInset.top.toDouble()),
-        child: PageView(
-          controller: pageController,
-          physics: const NeverScrollableScrollPhysics(),
-          children: const <Widget>[HomeScreen(), CartScreen(), ProfileScreen()],
-        ),
-      ),
-      // In your MainScreen build (bottomNavigationBar):
-      bottomNavigationBar: bottomNavBarEnabled
-          ? Theme(
-              data: context.theme.copyWith(splashFactory: NoSplash.splashFactory),
-              child: NavigationBar(
-                indicatorColor: Colors.transparent,
-                elevation: 10,
-                backgroundColor: context.color.white,
-                destinations: [
-                  for (final i in [Assets.icons.home, Assets.icons.cart, Assets.icons.profile])
-                    NavigationDestination(
-                      icon: SizedBox(width: 25, child: i.svg(colorFilter: const .mode(Color(0xFFBBBFD0), .srcATop))),
-                      selectedIcon: Stack(
-                        clipBehavior: .none,
-                        children: [
-                          SizedBox(
-                            width: 25,
-                            child: Center(child: i.svg(colorFilter: .mode(context.color.primary, .srcATop))),
-                          ),
-                          Positioned(
-                            bottom: 15,
-                            left: 1.5,
-                            child: Center(
-                              child: AnimatedContainer(
-                                duration: const Duration(milliseconds: 250),
-                                width: bottomNavigationAnimated ? 22 : 0,
-                                margin: .only(left: bottomNavigationAnimated ? 0 : 11),
-                                height: 3,
-                                decoration: BoxDecoration(
-                                  color: context.color.primary,
-                                  borderRadius: const .all(.circular(10)),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                      label: '',
-                    ),
-                ],
-                selectedIndex: currentTab.index,
-                onDestinationSelected: onItemTapped,
-              ),
-            )
-          : null,
     ),
   );
 }
