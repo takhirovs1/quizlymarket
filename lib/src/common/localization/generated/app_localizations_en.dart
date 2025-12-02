@@ -85,4 +85,69 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get enterTest => 'Enter test';
+
+  @override
+  String get cancel => 'Cancel';
+
+  @override
+  String get testPurchasedDescription => 'You can start the test customized for you.';
+
+  @override
+  String get testPurchasedTitle => 'Test purchased!';
+
+  @override
+  String get test => 'Test';
+
+  @override
+  String get startTest => 'Start test';
+
+  @override
+  String get parameters => 'Parameters:';
+
+  @override
+  String get testModeLabel => 'Test mode:';
+
+  @override
+  String get testModeCustom => 'Custom';
+
+  @override
+  String get testModeUniversity => 'University';
+
+  @override
+  String get testModeQuestionTime => 'How long should it take to answer each question on the test?';
+
+  @override
+  String get openTest => 'Open test';
+
+  @override
+  String get changeQuestionOrAnswer => 'Should the questions and answer variants be shuffled?';
+
+  @override
+  String get shuffleAll => 'Shuffle everything';
+
+  @override
+  String get shuffleNone => 'Do not shuffle';
+
+  @override
+  String get shuffleQuestions => 'Questions only';
+
+  @override
+  String get shuffleAnswers => 'Answers only';
+
+  @override
+  String get selectQuestionByRange => 'Select questions by range:';
+
+  @override
+  String get allOfTimeTest => 'Total test time:';
+
+  @override
+  String questionRangeHint(int count) {
+    return '$count questions will rotate out of $count.';
+  }
+
+  @override
+  String get testTotalTime30Min => '30 min';
+
+  @override
+  String get testTotalTime1Hour => '1 hour';
 }

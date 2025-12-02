@@ -4,4 +4,6 @@ sealed class Routes {
   static const String cart = '/cart';
   static const String profile = '/profile';
   static const String testInit = '/test-init';
+  static const String customMode = '/custom-mode';
+  static const String universityMode = '/university-mode';
 }

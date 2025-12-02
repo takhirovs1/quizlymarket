@@ -248,6 +248,132 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Enter test'**
   String get enterTest;
+
+  /// No description provided for @cancel.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel'**
+  String get cancel;
+
+  /// No description provided for @testPurchasedDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'You can start the test customized for you.'**
+  String get testPurchasedDescription;
+
+  /// No description provided for @testPurchasedTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Test purchased!'**
+  String get testPurchasedTitle;
+
+  /// No description provided for @test.
+  ///
+  /// In en, this message translates to:
+  /// **'Test'**
+  String get test;
+
+  /// No description provided for @startTest.
+  ///
+  /// In en, this message translates to:
+  /// **'Start test'**
+  String get startTest;
+
+  /// No description provided for @parameters.
+  ///
+  /// In en, this message translates to:
+  /// **'Parameters:'**
+  String get parameters;
+
+  /// No description provided for @testModeLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Test mode:'**
+  String get testModeLabel;
+
+  /// No description provided for @testModeCustom.
+  ///
+  /// In en, this message translates to:
+  /// **'Custom'**
+  String get testModeCustom;
+
+  /// No description provided for @testModeUniversity.
+  ///
+  /// In en, this message translates to:
+  /// **'University'**
+  String get testModeUniversity;
+
+  /// No description provided for @testModeQuestionTime.
+  ///
+  /// In en, this message translates to:
+  /// **'How long should it take to answer each question on the test?'**
+  String get testModeQuestionTime;
+
+  /// No description provided for @openTest.
+  ///
+  /// In en, this message translates to:
+  /// **'Open test'**
+  String get openTest;
+
+  /// No description provided for @changeQuestionOrAnswer.
+  ///
+  /// In en, this message translates to:
+  /// **'Should the questions and answer variants be shuffled?'**
+  String get changeQuestionOrAnswer;
+
+  /// No description provided for @shuffleAll.
+  ///
+  /// In en, this message translates to:
+  /// **'Shuffle everything'**
+  String get shuffleAll;
+
+  /// No description provided for @shuffleNone.
+  ///
+  /// In en, this message translates to:
+  /// **'Do not shuffle'**
+  String get shuffleNone;
+
+  /// No description provided for @shuffleQuestions.
+  ///
+  /// In en, this message translates to:
+  /// **'Questions only'**
+  String get shuffleQuestions;
+
+  /// No description provided for @shuffleAnswers.
+  ///
+  /// In en, this message translates to:
+  /// **'Answers only'**
+  String get shuffleAnswers;
+
+  /// No description provided for @selectQuestionByRange.
+  ///
+  /// In en, this message translates to:
+  /// **'Select questions by range:'**
+  String get selectQuestionByRange;
+
+  /// No description provided for @allOfTimeTest.
+  ///
+  /// In en, this message translates to:
+  /// **'Total test time:'**
+  String get allOfTimeTest;
+
+  /// No description provided for @questionRangeHint.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} questions will rotate out of {count}.'**
+  String questionRangeHint(int count);
+
+  /// No description provided for @testTotalTime30Min.
+  ///
+  /// In en, this message translates to:
+  /// **'30 min'**
+  String get testTotalTime30Min;
+
+  /// No description provided for @testTotalTime1Hour.
+  ///
+  /// In en, this message translates to:
+  /// **'1 hour'**
+  String get testTotalTime1Hour;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
