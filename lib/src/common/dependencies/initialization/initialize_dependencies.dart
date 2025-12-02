@@ -28,11 +28,7 @@ Future<Dependencies> $initializeDependencies({void Function(int progress, String
 typedef _InitializationStep = FutureOr<void> Function(Dependencies dependencies);
 
 Map<String, _InitializationStep> get _initializationSteps => <String, _InitializationStep>{
-  'Platform pre-initialization': (_) async {
-    // await SupabaseService.initialize();
-
-    /// TODO: Initialize firebase
-  },
+  'Platform pre-initialization': (_) {},
   'Creating app metadata': (dependencies) => dependencies.metadata = AppMetadata(
     environment: Config.current.environment.value,
     isWeb: platform.type.js,
@@ -117,6 +113,12 @@ Map<String, _InitializationStep> get _initializationSteps => <String, _Initializ
     dependencies.dio = DioContainer(dio: dio);
   },
 
-  'Repositories': (dependencies) => dependencies.repository = const RepositoryContainer(),
+  'Repositories': (dependencies) async {
+    final supabaseService = await SupabaseService.initialize(
+      url: Config.current.supabaseUrl,
+      anonKey: Config.current.supabaseAnonKey,
+    );
+    dependencies.repository = RepositoryContainer(authRepository: SupabaseRepository(service: supabaseService));
+  },
   'Blocs': (dependencies) => dependencies.bloc = const BlocContainer(),
 };

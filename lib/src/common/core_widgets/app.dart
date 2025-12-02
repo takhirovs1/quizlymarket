@@ -1,8 +1,10 @@
-import 'package:flutter/foundation.dart' show kIsWeb;
+import 'package:flutter/foundation.dart' show kDebugMode, kIsWeb;
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:telegram_web_app/telegram_web_app.dart';
 import 'package:thunder/thunder.dart';
 
+import '../../feature/auth/bloc/auth_bloc.dart';
 import '../../feature/profile/presentation/state/settings_scope.dart';
 import '../extension/context_extension.dart';
 import '../localization/localization.dart';
@@ -20,8 +22,6 @@ class App extends StatefulWidget {
 
   static final ValueNotifier<bool> thunderEnabledNotifier = ValueNotifier<bool>(false);
 
-  /// Accessing [_AppState]
-  static _AppState? maybeOf(BuildContext context) => context.findAncestorStateOfType<_AppState>();
   @override
   State<App> createState() => _AppState();
 }
@@ -37,28 +37,31 @@ class _AppState extends State<App> {
   Widget build(BuildContext context) {
     final initialRoute = context.localSource.onboardingCompleted ? Routes.home : Routes.onboarding;
 
-    return MaterialApp(
-      navigatorKey: rootNavigatorKey,
-      debugShowCheckedModeBanner: false,
-      title: 'Quizly Market',
-      restorationScopeId: 'material_app',
-      onGenerateTitle: (context) => context.l10n.title,
-      initialRoute: initialRoute,
-      onGenerateRoute: onGenerateRoute,
-      supportedLocales: Localization.supportedLocales,
-      localizationsDelegates: Localization.delegates,
-      locale: SettingsScope.settingsOf(context).localization,
-      theme: SettingsScope.settingsOf(context).appTheme,
-      builder: (context, child) => MediaQuery(
-        data: MediaQuery.of(context).copyWith(textScaler: TextScaler.noScaling),
-        child: KeyboardDismiss(
-          child: ValueListenableBuilder<bool>(
-            valueListenable: App.thunderEnabledNotifier,
-            builder: (context, thunderEnabled, _) => Thunder(
-              dio: context.dependencies.dio.all,
-              color: context.color.success,
-              enabled: true,
-              child: child ?? const SizedBox.shrink(),
+    return BlocProvider(
+      create: (context) => AuthBloc(repository: context.dependencies.repository.authRepository),
+      child: MaterialApp(
+        navigatorKey: rootNavigatorKey,
+        debugShowCheckedModeBanner: false,
+        title: 'Quizly Market',
+        restorationScopeId: 'material_app',
+        onGenerateTitle: (context) => context.l10n.title,
+        initialRoute: initialRoute,
+        onGenerateRoute: onGenerateRoute,
+        supportedLocales: Localization.supportedLocales,
+        localizationsDelegates: Localization.delegates,
+        locale: SettingsScope.settingsOf(context).localization,
+        theme: SettingsScope.settingsOf(context).appTheme,
+        builder: (context, child) => MediaQuery(
+          data: MediaQuery.of(context).copyWith(textScaler: TextScaler.noScaling),
+          child: KeyboardDismiss(
+            child: ValueListenableBuilder<bool>(
+              valueListenable: App.thunderEnabledNotifier,
+              builder: (context, thunderEnabled, _) => Thunder(
+                dio: context.dependencies.dio.all,
+                color: context.color.success,
+                enabled: true,
+                child: child ?? const SizedBox.shrink(),
+              ),
             ),
           ),
         ),
@@ -77,8 +80,8 @@ class _AppState extends State<App> {
         telegram
           ..ready()
           ..expand()
-          ..disableVerticalSwipes()
-          ..requestFullscreen();
+          ..disableVerticalSwipes();
+        if (!kDebugMode) telegram.requestFullscreen();
       } on Object catch (error, stackTrace) {
         warning(error, stackTrace, 'Telegram Web App configuration failed');
       }

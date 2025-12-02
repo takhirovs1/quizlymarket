@@ -9,12 +9,7 @@ import '../../../../common/util/dimension.dart';
 /// {@endtemplate}
 
 class BankCardWidget extends StatelessWidget {
-  const BankCardWidget({
-    required this.fullName,
-    required this.balance,
-    required this.id,
-    super.key,
-  });
+  const BankCardWidget({required this.fullName, required this.balance, required this.id, super.key});
 
   final String fullName;
   final int balance;
@@ -40,41 +35,16 @@ class BankCardWidget extends StatelessWidget {
             Row(
               mainAxisAlignment: .spaceBetween,
               children: [
-                Text(
-                  fullName,
-                  style: context.textTheme.nunitoW600s16.copyWith(
-                    color: context.color.white,
-                  ),
-                ),
-                Text(
-                  'Balance',
-                  style: context.textTheme.nunitoW500s14.copyWith(
-                    color: context.color.white,
-                  ),
-                ),
+                Text(fullName, style: context.textTheme.nunitoW600s16.copyWith(color: context.color.white)),
+                Text('Balance', style: context.textTheme.nunitoW500s14.copyWith(color: context.color.white)),
               ],
             ),
-            Text(
-              balance.toUZSString(),
-              style: context.textTheme.nunitoW600s30.copyWith(
-                color: context.color.white,
-              ),
-            ),
+            Text(balance.toUZSString(), style: context.textTheme.nunitoW600s30.copyWith(color: context.color.white)),
             Row(
               mainAxisAlignment: .spaceBetween,
               children: [
-                Text(
-                  'QuizlyMarket Card',
-                  style: context.textTheme.nunitoW600s16.copyWith(
-                    color: context.color.white,
-                  ),
-                ),
-                Text(
-                  id,
-                  style: context.textTheme.nunitoW500s14.copyWith(
-                    color: context.color.white,
-                  ),
-                ),
+                Text('QuizlyMarket Card', style: context.textTheme.nunitoW600s16.copyWith(color: context.color.white)),
+                Text(id, style: context.textTheme.nunitoW500s14.copyWith(color: context.color.white)),
               ],
             ),
           ],

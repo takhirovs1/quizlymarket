@@ -92,13 +92,13 @@ sealed class Pubspec {
   static const PubspecVersion version = (
     /// Non-canonical string representation of the version as provided
     /// in the pubspec.yaml file.
-    representation: r'1.0.0+1',
+    representation: r'1.0.0+6',
 
     /// Returns a 'canonicalized' representation
     /// of the application version.
     /// This represents the version string in accordance with
     /// Semantic Versioning (SemVer) standards.
-    canonical: r'1.0.0+1',
+    canonical: r'1.0.0+6',
 
     /// MAJOR version when you make incompatible API changes.
     /// The major version number: 1 in "1.2.3".
@@ -117,19 +117,19 @@ sealed class Pubspec {
     preRelease: <String>[],
 
     /// The build identifier: "foo" in "1.2.3+foo".
-    build: <String>[r'1'],
+    build: <String>[r'6'],
   );
 
   /// Build date and time (UTC)
   static final DateTime timestamp = DateTime.utc(
     2025,
-    11,
-    29,
-    18,
-    14,
-    51,
-    552,
-    918,
+    12,
+    1,
+    7,
+    27,
+    3,
+    171,
+    13,
   );
 
   /// Name
@@ -419,6 +419,9 @@ sealed class Pubspec {
     'database': <String, Object>{
       'path': r'package/database/',
     },
+    'supabase_service': <String, Object>{
+      'path': r'package/supabase_service/',
+    },
     'meta': r'^1.17.0',
     'intl': r'^0.20.2',
     'collection': r'^1.19.1',
@@ -432,7 +435,6 @@ sealed class Pubspec {
     'permission_handler': r'^12.0.1',
     'dio_retry_plus': r'^2.0.8',
     'thunder': r'^0.2.3',
-    'supabase_flutter': r'^2.10.3',
     'flutter_bloc': r'^9.1.1',
     'equatable': r'^2.0.7',
     'firebase_core': r'^4.2.1',

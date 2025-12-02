@@ -4,7 +4,7 @@ description: "A new Flutter project."
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
-version: 1.0.0+1
+version: 1.0.0+6
 
 environment:
   sdk: ^3.10.1
@@ -22,6 +22,8 @@ dependencies:
     path: package/local_source/
   database:
     path: package/database/
+  supabase_service:
+    path: package/supabase_service/
 
   # annotation
   meta: ^1.17.0
@@ -41,7 +43,6 @@ dependencies:
   # networking
   dio_retry_plus: ^2.0.8
   thunder: ^0.2.3
-  supabase_flutter: ^2.10.3
 
    # state management
   flutter_bloc: ^9.1.1
@@ -70,6 +71,9 @@ dependencies:
   cupertino_icons: ^1.0.8
   vibration: ^3.1.4
   vibration_web: ^1.6.8
+  bloc: ^9.1.0
+  dio: ^5.9.0
+  vector_graphics: ^1.1.19
 
 dev_dependencies:
   flutter_test:

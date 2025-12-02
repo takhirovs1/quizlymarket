@@ -66,7 +66,7 @@ abstract class SequentialCubit<S extends Object> extends Cubit<S> {
         }, onError);
         return completer.future;
       })
-      .catchError((_, __) => null);
+      .catchError((_, _) => null);
 
   @override
   @mustCallSuper

@@ -1,0 +1,32 @@
+{
+  "subject_id": "subject_id",
+  "title": "title",
+  "price": 0,
+  "description": "description", // nullable
+  "question_count": 1,
+  "time_limit_minutes": 10, // nullable
+  "is_active": true, // default true
+  "questions": [
+    {
+      "question": "question",
+      "answers": [
+        {
+          "answer": "answer",
+          "is_correct": true
+        },
+        {
+          "answer": "answer",
+          "is_correct": false
+        },
+        {
+          "answer": "answer",
+          "is_correct": false
+        },
+        {
+          "answer": "answer",
+          "is_correct": false
+        }
+      ]
+    }
+  ]
+}

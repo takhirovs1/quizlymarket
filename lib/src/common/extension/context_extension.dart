@@ -80,7 +80,7 @@ extension NavigatorX on BuildContext {
 extension CustomDialogX on BuildContext {
   Future<void> showCustomDialog({required Widget dialog, bool barrierDismissible = true}) => showGeneralDialog(
     context: this,
-    pageBuilder: (context, _, __) => dialog,
+    pageBuilder: (context, _, _) => dialog,
     barrierLabel: '',
     barrierColor: Colors.black26,
     barrierDismissible: barrierDismissible,
