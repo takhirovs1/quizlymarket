@@ -8,7 +8,12 @@ class AuthState extends Equatable {
   final String? error;
   final bool? isUserExist;
 
-  AuthState copyWith({Status? status, ValueGetter<UserModel?>? user, ValueGetter<String?>? error, ValueGetter<bool?>? isUserExist}) => AuthState(
+  AuthState copyWith({
+    Status? status,
+    ValueGetter<UserModel?>? user,
+    ValueGetter<String?>? error,
+    ValueGetter<bool?>? isUserExist,
+  }) => AuthState(
     status: status ?? this.status,
     user: user != null ? user() : this.user,
     error: error != null ? error() : this.error,

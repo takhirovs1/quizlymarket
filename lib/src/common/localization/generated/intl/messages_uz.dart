@@ -20,6 +20,8 @@ typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'uz';
 
+  static String m0(count) => "${count} ta savoldan 25 tasi almashib tushadi.";
+
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
     "allOfTimeTest": MessageLookupByLibrary.simpleMessage("Testning umumiy vaqti:"),
@@ -52,11 +54,11 @@ class MessageLookup extends MessageLookupByLibrary {
       "Testni o‘zingizga moslab boshlashingiz mumkin.",
     ),
     "pressBackAgainToExit": MessageLookupByLibrary.simpleMessage("Chiqish uchun yana bir marta bosing"),
+    "questionRangeHint": m0,
     "refresh": MessageLookupByLibrary.simpleMessage("Yangilash"),
     "report": MessageLookupByLibrary.simpleMessage("Hisobotlar"),
     "russian": MessageLookupByLibrary.simpleMessage("Rus tili"),
     "selectQuestionByRange": MessageLookupByLibrary.simpleMessage("Savollarni oraliq bo’yicha tanlash:"),
-    "questionRangeHint": (count) => "${count} ta savoldan 25 tasi almashib tushadi.",
     "shuffleAll": MessageLookupByLibrary.simpleMessage("Barchasini aralashtirish"),
     "shuffleAnswers": MessageLookupByLibrary.simpleMessage("Faqat javoblar"),
     "shuffleNone": MessageLookupByLibrary.simpleMessage("Aralashtirilmasin"),
@@ -73,8 +75,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "testPurchased": MessageLookupByLibrary.simpleMessage("Test sotib olindi"),
     "testPurchasedDescription": MessageLookupByLibrary.simpleMessage("Testni o‘zingizga moslab boshlashingiz mumkin."),
     "testPurchasedTitle": MessageLookupByLibrary.simpleMessage("Test sotib olindi!"),
-    "testTotalTime30Min": MessageLookupByLibrary.simpleMessage("30 daqiqa"),
     "testTotalTime1Hour": MessageLookupByLibrary.simpleMessage("1 soat"),
+    "testTotalTime30Min": MessageLookupByLibrary.simpleMessage("30 daqiqa"),
     "title": MessageLookupByLibrary.simpleMessage("Quizly Market"),
     "uzbek": MessageLookupByLibrary.simpleMessage("O‘zbek tili"),
   };

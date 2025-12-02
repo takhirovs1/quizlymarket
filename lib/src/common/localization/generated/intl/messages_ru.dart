@@ -20,6 +20,8 @@ typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'ru';
 
+  static String m0(count) => "Из ${count} вопросов 25 будут перемешиваться.";
+
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
     "allOfTimeTest": MessageLookupByLibrary.simpleMessage("Общее время теста:"),
@@ -50,11 +52,11 @@ class MessageLookup extends MessageLookupByLibrary {
     "parameters": MessageLookupByLibrary.simpleMessage("Параметры:"),
     "personalizedTestDescription": MessageLookupByLibrary.simpleMessage("Вы можете начать тест, настроенный под вас."),
     "pressBackAgainToExit": MessageLookupByLibrary.simpleMessage("Нажмите еще раз, чтобы выйти"),
+    "questionRangeHint": m0,
     "refresh": MessageLookupByLibrary.simpleMessage("Обновить"),
     "report": MessageLookupByLibrary.simpleMessage("Отчеты"),
     "russian": MessageLookupByLibrary.simpleMessage("Русский"),
     "selectQuestionByRange": MessageLookupByLibrary.simpleMessage("Выберите вопросы по диапазону:"),
-    "questionRangeHint": (count) => "Из ${count} вопросов 25 будут перемешиваться.",
     "shuffleAll": MessageLookupByLibrary.simpleMessage("Перемешать всё"),
     "shuffleAnswers": MessageLookupByLibrary.simpleMessage("Только ответы"),
     "shuffleNone": MessageLookupByLibrary.simpleMessage("Не перемешивать"),
@@ -71,8 +73,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "testPurchased": MessageLookupByLibrary.simpleMessage("Тест приобретен"),
     "testPurchasedDescription": MessageLookupByLibrary.simpleMessage("Вы можете начать тест, настроенный под вас."),
     "testPurchasedTitle": MessageLookupByLibrary.simpleMessage("Тест приобретен!"),
-    "testTotalTime30Min": MessageLookupByLibrary.simpleMessage("30 минут"),
     "testTotalTime1Hour": MessageLookupByLibrary.simpleMessage("1 час"),
+    "testTotalTime30Min": MessageLookupByLibrary.simpleMessage("30 минут"),
     "title": MessageLookupByLibrary.simpleMessage("Quizly Market"),
     "uzbek": MessageLookupByLibrary.simpleMessage("Узбекский"),
   };

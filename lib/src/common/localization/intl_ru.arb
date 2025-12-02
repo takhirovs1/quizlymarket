@@ -50,7 +50,7 @@
   "placeholders": {
     "count": {
       "type": "int",
-      "example": 100
+      "example": "100"
     }
   }
 },

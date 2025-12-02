@@ -50,9 +50,7 @@ class _MainScreenState extends MainState {
           ),
         );
       }
-      if (state.status == Status.success) {
-        
-      }
+      if (state.status == Status.success) {}
     },
     child: PopScope(
       canPop: false,

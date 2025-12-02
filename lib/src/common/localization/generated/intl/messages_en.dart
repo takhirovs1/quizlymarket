@@ -20,6 +20,8 @@ typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'en';
 
+  static String m0(count) => "25 questions will rotate out of ${count}.";
+
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
     "allOfTimeTest": MessageLookupByLibrary.simpleMessage("Total test time:"),
@@ -50,11 +52,11 @@ class MessageLookup extends MessageLookupByLibrary {
     "parameters": MessageLookupByLibrary.simpleMessage("Parameters:"),
     "personalizedTestDescription": MessageLookupByLibrary.simpleMessage("You can start the test customized for you."),
     "pressBackAgainToExit": MessageLookupByLibrary.simpleMessage("Press back again to exit"),
+    "questionRangeHint": m0,
     "refresh": MessageLookupByLibrary.simpleMessage("Refresh"),
     "report": MessageLookupByLibrary.simpleMessage("Reports"),
     "russian": MessageLookupByLibrary.simpleMessage("Russian"),
     "selectQuestionByRange": MessageLookupByLibrary.simpleMessage("Select questions by range:"),
-    "questionRangeHint": (count) => "25 questions will rotate out of ${count}.",
     "shuffleAll": MessageLookupByLibrary.simpleMessage("Shuffle everything"),
     "shuffleAnswers": MessageLookupByLibrary.simpleMessage("Answers only"),
     "shuffleNone": MessageLookupByLibrary.simpleMessage("Do not shuffle"),
@@ -71,8 +73,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "testPurchased": MessageLookupByLibrary.simpleMessage("Test purchased"),
     "testPurchasedDescription": MessageLookupByLibrary.simpleMessage("You can start the test customized for you."),
     "testPurchasedTitle": MessageLookupByLibrary.simpleMessage("Test purchased!"),
-    "testTotalTime30Min": MessageLookupByLibrary.simpleMessage("30 min"),
     "testTotalTime1Hour": MessageLookupByLibrary.simpleMessage("1 hour"),
+    "testTotalTime30Min": MessageLookupByLibrary.simpleMessage("30 min"),
     "title": MessageLookupByLibrary.simpleMessage("Quizly Market"),
     "uzbek": MessageLookupByLibrary.simpleMessage("Uzbek"),
   };

@@ -302,24 +302,29 @@ class GeneratedLocalization {
     return Intl.message('Выберите вопросы по диапазону:', name: 'selectQuestionByRange', desc: '', args: []);
   }
 
-  /// `Total test time:`
+  /// `Общее время теста:`
   String get allOfTimeTest {
     return Intl.message('Общее время теста:', name: 'allOfTimeTest', desc: '', args: []);
   }
 
-  /// `30 min`
+  /// `Из {count} вопросов 25 будут перемешиваться.`
+  String questionRangeHint(int count) {
+    return Intl.message(
+      'Из $count вопросов 25 будут перемешиваться.',
+      name: 'questionRangeHint',
+      desc: '',
+      args: [count],
+    );
+  }
+
+  /// `30 минут`
   String get testTotalTime30Min {
     return Intl.message('30 минут', name: 'testTotalTime30Min', desc: '', args: []);
   }
 
-  /// `1 hour`
+  /// `1 час`
   String get testTotalTime1Hour {
     return Intl.message('1 час', name: 'testTotalTime1Hour', desc: '', args: []);
-  }
-
-  /// `25 questions will rotate out of {count}.`
-  String questionRangeHint(int count) {
-    return Intl.message('25 questions will rotate out of $count.', name: 'questionRangeHint', desc: '', args: [count]);
   }
 }
 
