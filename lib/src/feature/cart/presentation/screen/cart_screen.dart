@@ -21,7 +21,7 @@ class _CartScreenState extends CartState {
       child: ListView.separated(
         padding: Dimension.pTop16,
         itemBuilder: (context, index) => CustomCardWidget(
-          subject: 'Akademik koʻnikmalar',
+          subject: 'Akademik ko\'nikmalar',
           university: 'Alfraganus',
           direction: 'Iqtisodiyot sirtqi 2-kurs 2-semistr',
           testCount: 100,

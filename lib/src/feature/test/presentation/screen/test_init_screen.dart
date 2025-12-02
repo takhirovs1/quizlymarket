@@ -42,7 +42,7 @@ class _TestInitScreenState extends TestInitState {
       padding: Dimension.pAll16,
       children: [
         const TestInfoWidget(
-          subject: 'Akademik koʻnikmalar',
+          subject: 'Akademik ko\'nikmalar',
           university: 'Alfraganus',
           direction: 'Iqtisodiyot sirtqi 2-kurs 2-semistr',
           testCount: 100,

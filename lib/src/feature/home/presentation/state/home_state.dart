@@ -84,7 +84,7 @@ abstract class HomeState extends State<HomeScreen> {
               mainAxisAlignment: .spaceBetween,
               children: [
                 Text(
-                  'Akademik koʻnikmalar',
+                  'Akademik ko\'nikmalar',
                   style: context.textTheme.sfProW500s20.copyWith(
                     color: context.color.black,
                     fontWeight: FontWeight.w700,
