@@ -9,9 +9,5 @@ class AdminMainScreen extends StatefulWidget {
 
 class _AdminMainScreenState extends State<AdminMainScreen> {
   @override
-  Widget build(BuildContext context) => const Scaffold(
-      body: Center(
-        child: Text('Admin Main'),
-      ),
-    );
+  Widget build(BuildContext context) => const Scaffold(body: Center(child: Text('Admin Main')));
 }

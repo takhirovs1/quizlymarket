@@ -11,5 +11,4 @@ sealed class Routes {
 
   /// Admin routes
   static const String adminHome = '/admin-home';
-  
 }
