@@ -18,8 +18,8 @@ abstract class TestInitState extends State<TestInitScreen> {
   }
 
   void onOpenTestScreen() => switch (testSettings.value.testMode) {
-    TestMode.custom => context.goNamed(Routes.customMode, arguments: testSettings.value),
-    TestMode.university => context.goNamed(Routes.universityMode, arguments: testSettings.value),
+    TestMode.custom => context.goReplacementNamed(Routes.customMode, arguments: testSettings.value),
+    TestMode.university => context.goReplacementNamed(Routes.universityMode, arguments: testSettings.value),
   };
 
   void _setupTelegramBackButton() {
