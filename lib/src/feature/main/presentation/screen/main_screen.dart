@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:telegram_web_app/telegram_web_app.dart';
 
 import '../../../../common/constant/gen/assets.gen.dart';
 import '../../../../common/extension/context_extension.dart';
 import '../../../../common/util/dimension.dart';
+import '../../../auth/bloc/auth_bloc.dart';
 import '../../../cart/presentation/screen/cart_screen.dart';
 import '../../../home/presentation/screen/home_screen.dart';
 import '../../../profile/presentation/screen/profile_screen.dart';
@@ -25,6 +28,12 @@ class _MainScreenState extends MainState {
   void initState() {
     super.initState();
     _pages = const [HomeScreen(), CartScreen(), ProfileScreen()];
+    _loginToApp();
+  }
+
+  void _loginToApp() {
+    final telegramID = TelegramWebApp.instance.initDataUnsafe?.user?.id.toString();
+    if (telegramID != null) context.read<AuthBloc>().add(LoginEvent(telegramID: telegramID));
   }
 
   @override

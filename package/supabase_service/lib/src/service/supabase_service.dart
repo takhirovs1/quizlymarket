@@ -2,7 +2,7 @@ import 'dart:developer';
 
 import 'package:supabase_flutter/supabase_flutter.dart';
 
-class SupabaseService {
+class SupabaseService with SupabaseHelpersMixin {
   final Supabase? _supabase;
 
   const SupabaseService(this._supabase);
@@ -20,15 +20,24 @@ class SupabaseService {
   }
 
   Future<Map<String, Object?>> login({required String telegramID}) async {
-    final email = '$telegramID@quizlymarket.fake';
-    final response = await _supabase?.client.auth.signInWithPassword(email: email, password: telegramID);
-    log('response id: ${response?.user?.id}');
+    final response = await _supabase?.client.auth.signInWithPassword(email: getEmail(telegramID), password: telegramID);
+    log('response id in login: ${response?.user?.id}');
     return {};
   }
 
-  Future<Map<String, Object?>> signUp({required String telegramID, required String name}) async {
+  Future<Map<String, Object?>> signUp({
+    required String telegramID,
+    required String name,
+    required String telegramUsername,
+  }) async {
+    final response = await _supabase?.client.auth.signUp(email: getEmail(telegramID), password: telegramID);
+    log('response id in signUp: ${response?.user?.id}');
     return {};
   }
 
   Future<void> dispose() async => await _supabase?.dispose();
+}
+
+mixin SupabaseHelpersMixin {
+  String getEmail(String telegramID) => '$telegramID@quizlymarket.fake';
 }

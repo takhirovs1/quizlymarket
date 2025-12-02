@@ -42,36 +42,25 @@ class _CustomCardWidgetState extends State<CustomCardWidget> {
         padding: Dimension.pAll16,
         child: Column(
           spacing: 4,
-          crossAxisAlignment: .start,
+          crossAxisAlignment: .stretch,
           children: [
             Row(
-              mainAxisAlignment: .spaceBetween,
-              crossAxisAlignment: .start,
               children: [
-                Row(
-                  spacing: 4,
-                  children: [
-                    Lottie.asset('assets/lottie/book.json', width: 24, height: 24, repeat: false),
-                    Text(
-                      widget.subject,
-                      style: context.textTheme.sfProW500s16.copyWith(
-                        color: context.color.black,
-                        fontWeight: FontWeight.w700,
-                      ),
-                      maxLines: 2,
-                      overflow: TextOverflow.ellipsis,
+                // Lottie.asset('assets/lottie/book.json', width: 24, height: 24, repeat: false),
+                Expanded(
+                  child: Text(
+                    widget.subject,
+                    style: context.textTheme.sfProW500s16.copyWith(
+                      color: context.color.black,
+                      fontWeight: FontWeight.w700,
                     ),
-                  ],
+                  ),
                 ),
 
-                Text(
-                  widget.university,
-                  style: context.textTheme.sfProW500s16.copyWith(color: context.color.gray),
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
-                ),
+                Text(widget.university, style: context.textTheme.sfProW500s16.copyWith(color: context.color.gray)),
               ],
             ),
+
             Text(
               widget.direction,
               style: context.textTheme.sfProW500s16.copyWith(color: context.color.gray),

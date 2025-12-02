@@ -19,6 +19,10 @@ class SupabaseRepository implements AuthRepository {
       UserModel.fromJson(await _service.login(telegramID: telegramID));
 
   @override
-  Future<UserModel> signUp({required String telegramID, required String name}) async =>
-      UserModel.fromJson(await _service.signUp(telegramID: telegramID, name: name));
+  Future<UserModel> signUp({
+    required String telegramID,
+    required String name,
+    required String telegramUsername,
+  }) async =>
+      UserModel.fromJson(await _service.signUp(telegramID: telegramID, name: name, telegramUsername: telegramUsername));
 }

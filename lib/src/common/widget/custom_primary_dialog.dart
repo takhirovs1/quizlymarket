@@ -28,12 +28,10 @@ class CustomPrimaryDialog extends StatelessWidget {
         Stack(
           children: [
             Assets.images.backgroundImage.image(width: 190, height: 180),
-            Positioned(
-              child: Assets.images.robot.image(width: 190, height: 180),
-            ),
+            Positioned(child: Assets.images.robot.image(width: 190, height: 180)),
           ],
         ),
-        
+
         Dimension.hBox16,
 
         Text(
