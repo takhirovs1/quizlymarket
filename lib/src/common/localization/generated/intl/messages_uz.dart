@@ -68,13 +68,19 @@ class MessageLookup extends MessageLookupByLibrary {
     "personalizedTestDescription": MessageLookupByLibrary.simpleMessage(
       "Testni o‘zingizga moslab boshlashingiz mumkin.",
     ),
-    "pressBackAgainToExit": MessageLookupByLibrary.simpleMessage("Chiqish uchun yana bir marta bosing"),
+    "pressBackAgainToExit": MessageLookupByLibrary.simpleMessage(
+      "Chiqish uchun yana bir marta bosing",
+    ),
     "questionRangeHint": m0,
     "refresh": MessageLookupByLibrary.simpleMessage("Yangilash"),
     "report": MessageLookupByLibrary.simpleMessage("Hisobotlar"),
     "russian": MessageLookupByLibrary.simpleMessage("Rus tili"),
-    "selectQuestionByRange": MessageLookupByLibrary.simpleMessage("Savollarni oraliq bo’yicha tanlash:"),
-    "shuffleAll": MessageLookupByLibrary.simpleMessage("Barchasini aralashtirish"),
+    "selectQuestionByRange": MessageLookupByLibrary.simpleMessage(
+      "Savollarni oraliq bo’yicha tanlash:",
+    ),
+    "shuffleAll": MessageLookupByLibrary.simpleMessage(
+      "Barchasini aralashtirish",
+    ),
     "shuffleAnswers": MessageLookupByLibrary.simpleMessage("Faqat javoblar"),
     "shuffleNone": MessageLookupByLibrary.simpleMessage("Aralashtirilmasin"),
     "shuffleQuestions": MessageLookupByLibrary.simpleMessage("Faqat savollar"),
@@ -89,10 +95,15 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "testModeUniversity": MessageLookupByLibrary.simpleMessage("Universitet"),
     "testPurchased": MessageLookupByLibrary.simpleMessage("Test sotib olindi"),
-    "testPurchasedDescription": MessageLookupByLibrary.simpleMessage("Testni o‘zingizga moslab boshlashingiz mumkin."),
-    "testPurchasedTitle": MessageLookupByLibrary.simpleMessage("Test sotib olindi!"),
+    "testPurchasedDescription": MessageLookupByLibrary.simpleMessage(
+      "Testni o‘zingizga moslab boshlashingiz mumkin.",
+    ),
+    "testPurchasedTitle": MessageLookupByLibrary.simpleMessage(
+      "Test sotib olindi!",
+    ),
     "testTotalTime1Hour": MessageLookupByLibrary.simpleMessage("1 soat"),
     "testTotalTime30Min": MessageLookupByLibrary.simpleMessage("30 daqiqa"),
+    "time": MessageLookupByLibrary.simpleMessage("Vaqt"),
     "title": MessageLookupByLibrary.simpleMessage("Quizly Market"),
     "uzbek": MessageLookupByLibrary.simpleMessage("O‘zbek tili"),
     "wrong": MessageLookupByLibrary.simpleMessage("Xato"),

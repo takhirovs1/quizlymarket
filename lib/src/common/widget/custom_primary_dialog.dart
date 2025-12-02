@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import '../constant/gen/assets.gen.dart';
 import '../extension/context_extension.dart';
-import '../util/dimension.dart';  
 import 'custom_button.dart';
 
 class CustomPrimaryDialog extends StatelessWidget {

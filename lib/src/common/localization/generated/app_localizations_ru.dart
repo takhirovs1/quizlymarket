@@ -150,4 +150,16 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get testTotalTime1Hour => '1 час';
+
+  @override
+  String get correct => 'Правильно';
+
+  @override
+  String get wrong => 'Неправильно';
+
+  @override
+  String get skipped => 'Пропущено';
+
+  @override
+  String get time => 'Время';
 }

@@ -436,6 +436,26 @@ class GeneratedLocalization {
       args: [],
     );
   }
+
+  /// `Правильно`
+  String get correct {
+    return Intl.message('Правильно', name: 'correct', desc: '', args: []);
+  }
+
+  /// `Неправильно`
+  String get wrong {
+    return Intl.message('Неправильно', name: 'wrong', desc: '', args: []);
+  }
+
+  /// `Пропущено`
+  String get skipped {
+    return Intl.message('Пропущено', name: 'skipped', desc: '', args: []);
+  }
+
+  /// `Время`
+  String get time {
+    return Intl.message('Время', name: 'time', desc: '', args: []);
+  }
 }
 
 class AppLocalizationDelegate
