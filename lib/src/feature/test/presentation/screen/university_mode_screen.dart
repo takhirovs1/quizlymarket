@@ -63,11 +63,11 @@ class _UniversityModeScreenState extends State<UniversityModeScreen> {
       automaticallyImplyLeading: false,
       scrolledUnderElevation: 0,
       elevation: 0,
-      toolbarHeight: context.height * .10,
-      surfaceTintColor: Colors.transparent,
+      toolbarHeight: context.telegramWebApp.safeAreaInset.top + 56,
+      surfaceTintColor: context.color.transparent,
       title: Column(
         children: [
-          SizedBox(height: context.height * .02),
+          SizedBox(height: context.telegramWebApp.safeAreaInset.top.toDouble()),
           Text(_format(_remaining), style: context.textTheme.nunitoW600s24.copyWith(color: context.color.white)),
         ],
       ),

@@ -13,6 +13,14 @@ class TestResultScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Scaffold(
+    appBar: AppBar(
+      backgroundColor: context.color.primary,
+      automaticallyImplyLeading: false,
+      scrolledUnderElevation: 0,
+      elevation: 0,
+      toolbarHeight: context.telegramWebApp.safeAreaInset.top + 56,
+      surfaceTintColor: context.color.transparent,
+    ),
     body: ListView(
       scrollDirection: Axis.vertical,
       padding: Dimension.pAll16,

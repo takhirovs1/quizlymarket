@@ -34,10 +34,9 @@ abstract class ProfileState extends State<ProfileScreen> {
     if (!kIsWeb) return null;
 
     try {
-      final telegram = TelegramWebApp.instance;
-      if (!telegram.isSupported) return null;
+      if (!context.telegramWebApp.isSupported) return null;
 
-      return telegram.initDataUnsafe?.user;
+      return context.telegramWebApp.initDataUnsafe?.user;
     } on Object catch (_) {
       return null;
     }
@@ -67,7 +66,7 @@ abstract class ProfileState extends State<ProfileScreen> {
         CupertinoDialogAction(
           isDestructiveAction: true,
           onPressed: () {
-            // context.localSource.clearAll().then((_) => context.go(Routes.auth));
+            context.localSource.clearAll().then((_) => context.telegramWebApp.close());
             Navigator.of(context).pop();
           },
           child: Text(

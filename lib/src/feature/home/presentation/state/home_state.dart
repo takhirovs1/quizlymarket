@@ -30,7 +30,7 @@ abstract class HomeState extends State<HomeScreen> {
     if (!kIsWeb) return null;
 
     try {
-      final telegram = TelegramWebApp.instance;
+      final telegram = context.telegramWebApp;
       if (!telegram.isSupported) return null;
 
       return telegram.initDataUnsafe?.user;

@@ -1,7 +1,6 @@
 import 'package:flutter/foundation.dart' show kDebugMode, kIsWeb;
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:telegram_web_app/telegram_web_app.dart';
 import 'package:thunder/thunder.dart';
 
 import '../../feature/auth/bloc/auth_bloc.dart';
@@ -74,7 +73,7 @@ class _AppState extends State<App> {
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
       try {
-        final telegram = TelegramWebApp.instance;
+        final telegram = context.telegramWebApp;
         if (!telegram.isSupported) return;
 
         telegram

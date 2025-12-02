@@ -24,18 +24,16 @@ class MainScreen extends StatefulWidget {
 
 class _MainScreenState extends MainState {
   late final List<Widget> _pages;
-  late final SafeAreaInset safeAreaInsets;
 
   @override
   void initState() {
-    safeAreaInsets = TelegramWebApp.instance.safeAreaInset;
     super.initState();
     _pages = const [HomeScreen(), CartScreen(), ProfileScreen()];
     _loginToApp();
   }
 
   void _loginToApp() {
-    final telegramID = TelegramWebApp.instance.initDataUnsafe?.user?.id.toString();
+    final telegramID = context.telegramWebApp.initDataUnsafe?.user?.id.toString();
     if (telegramID != null) context.read<AuthBloc>().add(LoginEvent(telegramID: telegramID));
   }
 
@@ -43,7 +41,7 @@ class _MainScreenState extends MainState {
   Widget build(BuildContext context) => BlocListener<AuthBloc, AuthState>(
     listener: (context, state) {
       if (state.isUserExist == false) {
-        final telegramUser = TelegramWebApp.instance.initDataUnsafe?.user;
+        final telegramUser = context.telegramWebApp.initDataUnsafe?.user;
         context.read<AuthBloc>().add(
           SignUpEvent(
             telegramID: telegramUser?.id.toString() ?? '',
@@ -65,11 +63,11 @@ class _MainScreenState extends MainState {
                 automaticallyImplyLeading: false,
                 scrolledUnderElevation: 0,
                 elevation: 0,
-                toolbarHeight: safeAreaInsets.top + 56,
+                toolbarHeight: context.telegramWebApp.safeAreaInset.top + 56,
                 surfaceTintColor: Colors.transparent,
                 title: Column(
                   children: [
-                    SizedBox(height: safeAreaInsets.top.toDouble()),
+                    SizedBox(height: context.telegramWebApp.safeAreaInset.top.toDouble()),
                     Center(
                       child: Text(switch (currentTab.index) {
                         1 => context.l10n.cart,

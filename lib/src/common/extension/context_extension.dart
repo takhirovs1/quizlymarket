@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:local_source/local_source.dart';
+import 'package:telegram_web_app/telegram_web_app.dart';
 
 import '../dependencies/model/app_metadata.dart';
 import '../dependencies/model/dependencies.dart';
@@ -43,6 +44,17 @@ extension BuildContextX on BuildContext {
     final currentSettings = settingsBloc.state.settings;
     settingsBloc.add(.updateSettings(settings: currentSettings.copyWith(themeMode: themeMode)));
   }
+}
+
+extension TelegramWebAppX on BuildContext {
+  TelegramWebApp get telegramWebApp => TelegramWebApp.instance;
+
+  void close() => telegramWebApp.close();
+  void ready() => telegramWebApp.ready();
+  void expand() => telegramWebApp.expand();
+  void disableVerticalSwipes() => telegramWebApp.disableVerticalSwipes();
+  void disableClosingConfirmation() => telegramWebApp.disableClosingConfirmation();
+  void enableClosingConfirmation() => telegramWebApp.enableClosingConfirmation();
 }
 
 /// [SizeX]

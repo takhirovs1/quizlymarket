@@ -23,11 +23,11 @@ class _TestInitScreenState extends TestInitState {
       automaticallyImplyLeading: false,
       scrolledUnderElevation: 0,
       elevation: 0,
-      toolbarHeight: safeAreaInsets.top + 56,
+      toolbarHeight: context.telegramWebApp.safeAreaInset.top + 56,
       surfaceTintColor: context.color.transparent,
       title: Column(
         children: [
-          SizedBox(height: safeAreaInsets.top.toDouble()),
+          SizedBox(height: context.telegramWebApp.safeAreaInset.top.toDouble()),
           Center(
             child: Text(context.l10n.test, style: context.textTheme.nunitoW600s24.copyWith(color: context.color.white)),
           ),

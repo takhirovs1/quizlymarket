@@ -1,6 +1,5 @@
 import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
-import 'package:telegram_web_app/telegram_web_app.dart';
 
 import '../../../../common/extension/context_extension.dart';
 import '../../../../common/router/route_arguments.dart';
@@ -11,7 +10,6 @@ import '../screen/test_init_screen.dart';
 abstract class TestInitState extends State<TestInitScreen> {
   final ValueNotifier<CustomTestSettings> testSettings = ValueNotifier(CustomTestSettings(testMode: TestMode.custom));
   final ValueNotifier<TestMode> selectedTestMode = ValueNotifier(TestMode.custom);
-  late final SafeAreaInset safeAreaInsets;
 
   void updateTestMode(TestMode mode) {
     if (selectedTestMode.value == mode) return;
@@ -28,10 +26,9 @@ abstract class TestInitState extends State<TestInitScreen> {
     if (!kIsWeb) return;
 
     try {
-      final telegram = TelegramWebApp.instance;
-      if (!telegram.isSupported) return;
+      if (!context.telegramWebApp.isSupported) return;
 
-      telegram.backButton
+      context.telegramWebApp.backButton
         ..onClick(_handleTelegramBackButtonPressed)
         ..show();
     } on Object catch (error, stackTrace) {
@@ -43,10 +40,9 @@ abstract class TestInitState extends State<TestInitScreen> {
     if (!kIsWeb) return;
 
     try {
-      final telegram = TelegramWebApp.instance;
-      if (!telegram.isSupported) return;
+      if (!context.telegramWebApp.isSupported) return;
 
-      telegram.backButton
+      context.telegramWebApp.backButton
         ..offClick(_handleTelegramBackButtonPressed)
         ..hide();
     } on Object catch (error, stackTrace) {
@@ -64,7 +60,6 @@ abstract class TestInitState extends State<TestInitScreen> {
   void initState() {
     super.initState();
     _setupTelegramBackButton();
-    safeAreaInsets = TelegramWebApp.instance.safeAreaInset;
   }
 
   @override
