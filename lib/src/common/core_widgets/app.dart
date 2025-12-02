@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:thunder/thunder.dart';
 
 import '../../feature/auth/bloc/auth_bloc.dart';
-import '../../feature/profile/presentation/state/settings_scope.dart';
+import '../../feature/user/profile/presentation/state/settings_scope.dart';
 import '../extension/context_extension.dart';
 import '../localization/localization.dart';
 import '../router/app_router.dart';

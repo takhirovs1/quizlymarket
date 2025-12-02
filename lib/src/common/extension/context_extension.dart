@@ -72,6 +72,8 @@ extension SizeX on BuildContext {
   double get height => MediaQuery.sizeOf(this).height;
 }
 
+
+
 /// [NavigatorX]
 extension NavigatorX on BuildContext {
   bool get canPop => Navigator.canPop(this);

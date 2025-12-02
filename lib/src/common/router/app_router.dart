@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:local_source/local_source.dart';
 
-import '../../feature/main/data/model/main_tabs_enum.dart';
-import '../../feature/main/presentation/screen/main_screen.dart';
-import '../../feature/onboarding/presentation/onboarding_screen.dart';
-import '../../feature/test/presentation/screen/custom_mode_screen.dart';
-import '../../feature/test/presentation/screen/test_init_screen.dart';
-import '../../feature/test/presentation/screen/test_result_screen.dart';
-import '../../feature/test/presentation/screen/university_mode_screen.dart';
+import '../../feature/user/main/data/model/main_tabs_enum.dart';
+import '../../feature/user/main/presentation/screen/main_screen.dart';
+import '../../feature/user/onboarding/presentation/onboarding_screen.dart';
+import '../../feature/user/test/presentation/screen/custom_mode_screen.dart';
+import '../../feature/user/test/presentation/screen/test_init_screen.dart';
+import '../../feature/user/test/presentation/screen/test_result_screen.dart';
+import '../../feature/user/test/presentation/screen/university_mode_screen.dart';
 import 'route_arguments.dart';
 
 final GlobalKey<NavigatorState> rootNavigatorKey = GlobalKey<NavigatorState>();

@@ -10,10 +10,10 @@ import 'package:flutter/services.dart';
 import 'package:platform_info/platform_info.dart';
 import 'package:supabase_service/supabase_service.dart';
 import '../../../feature/auth/repository/supabase_repository.dart';
-import '../../../feature/profile/data/models/app_settings.dart';
+import '../../../feature/user/profile/data/models/app_settings.dart';
 
-import '../../../feature/profile/data/repository/profile_repository.dart';
-import '../../../feature/profile/presentation/bloc/settings_bloc.dart';
+import '../../../feature/user/profile/data/repository/profile_repository.dart';
+import '../../../feature/user/profile/presentation/bloc/settings_bloc.dart';
 import '../../constant/config.dart';
 import '../../constant/gen/fonts.gen.dart';
 import '../../constant/pubspec.yaml.g.dart';
