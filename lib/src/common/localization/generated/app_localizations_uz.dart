@@ -150,4 +150,19 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get testTotalTime1Hour => '1 soat';
+
+  @override
+  String get correct => 'Toʻgʻri';
+
+  @override
+  String get wrong => 'Xato';
+
+  @override
+  String get skipped => 'Tashlab ketilgan';
+
+  @override
+  String get time => 'Vaqt';
+
+  @override
+  String get continueAction => 'Davom etish';
 }

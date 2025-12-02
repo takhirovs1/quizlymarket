@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 
 import '../../../../common/extension/context_extension.dart';
+import '../../../../common/router/route_arguments.dart';
 import '../../../../common/util/dimension.dart';
 import '../../../../common/widget/custom_button.dart';
 import '../../data/model/test_init_enum.dart';
@@ -76,7 +77,7 @@ class _CustomModeScreenState extends State<CustomModeScreen> {
     ),
     bottomNavigationBar: Padding(
       padding: Dimension.pAll16,
-      child: CustomButton(onRightPressed: () {}, rightText: context.l10n.startTest),
+      child: CustomButton(onRightPressed: () => context.goNamed(Routes.testResult), rightText: context.l10n.startTest),
     ),
     body: ListView(
       padding: Dimension.pAll16,

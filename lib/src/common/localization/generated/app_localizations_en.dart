@@ -142,7 +142,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String questionRangeHint(int count) {
-    return '$count questions will rotate out of $count.';
+    return '25 questions will rotate out of $count.';
   }
 
   @override
@@ -150,4 +150,19 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get testTotalTime1Hour => '1 hour';
+
+  @override
+  String get correct => 'Correct';
+
+  @override
+  String get wrong => 'Wrong';
+
+  @override
+  String get skipped => 'Skipped';
+
+  @override
+  String get time => 'Time';
+
+  @override
+  String get continueAction => 'Continue';
 }

@@ -7,7 +7,6 @@ import 'package:supabase_service/supabase_service.dart';
 
 import '../../../common/enum/bloc_status_enum.dart';
 import '../../../common/util/error_handler.dart';
-import '../../../common/util/logger.dart';
 import '../model/user_model.dart';
 import '../repository/auth_repository.dart';
 
