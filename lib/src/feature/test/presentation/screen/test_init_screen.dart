@@ -27,7 +27,7 @@ class _TestInitScreenState extends TestInitState {
       surfaceTintColor: Colors.transparent,
       title: Column(
         children: [
-          SizedBox(height: context.height * .02),
+          SizedBox(height: context.height * .03),
           Center(
             child: Text(context.l10n.test, style: context.textTheme.nunitoW600s24.copyWith(color: context.color.white)),
           ),
