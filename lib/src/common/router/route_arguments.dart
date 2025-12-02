@@ -6,4 +6,5 @@ sealed class Routes {
   static const String testInit = '/test-init';
   static const String customMode = '/custom-mode';
   static const String universityMode = '/university-mode';
+  static const String testResult = '/test-result';
 }

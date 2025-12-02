@@ -22,13 +22,21 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m0(count) => "Из ${count} вопросов 25 будут перемешиваться.";
 
+  static String m0(count) => "Из ${count} вопросов 25 будут перемешиваться.";
+
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
     "allOfTimeTest": MessageLookupByLibrary.simpleMessage("Общее время теста:"),
     "appConfiguration": MessageLookupByLibrary.simpleMessage(
       "Настройка приложения",
     ),
+    "appConfiguration": MessageLookupByLibrary.simpleMessage(
+      "Настройка приложения",
+    ),
     "appConfigurationCancel": MessageLookupByLibrary.simpleMessage("Отмена"),
+    "appConfigurationDescription": MessageLookupByLibrary.simpleMessage(
+      "Настройте ваши настройки приложения здесь.",
+    ),
     "appConfigurationDescription": MessageLookupByLibrary.simpleMessage(
       "Настройте ваши настройки приложения здесь.",
     ),
@@ -49,6 +57,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "language": MessageLookupByLibrary.simpleMessage("Изменить язык"),
     "logoutCancel": MessageLookupByLibrary.simpleMessage("Отмена"),
     "logoutConfirm": MessageLookupByLibrary.simpleMessage("Выход"),
+    "logoutConfirmMessage": MessageLookupByLibrary.simpleMessage(
+      "Вы уверены, что хотите выйти?",
+    ),
+    "noInternetConnection": MessageLookupByLibrary.simpleMessage(
+      "Нет интернет соединения",
+    ),
     "logoutConfirmMessage": MessageLookupByLibrary.simpleMessage(
       "Вы уверены, что хотите выйти?",
     ),
@@ -78,6 +92,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "shuffleNone": MessageLookupByLibrary.simpleMessage("Не перемешивать"),
     "shuffleQuestions": MessageLookupByLibrary.simpleMessage("Только вопросы"),
     "signOut": MessageLookupByLibrary.simpleMessage("Выход"),
+    "skipped": MessageLookupByLibrary.simpleMessage("Пропущено"),
     "startTest": MessageLookupByLibrary.simpleMessage("Начать тест"),
     "test": MessageLookupByLibrary.simpleMessage("Тест"),
     "testModeCustom": MessageLookupByLibrary.simpleMessage("Индивидуальный"),
@@ -97,5 +112,6 @@ class MessageLookup extends MessageLookupByLibrary {
     "testTotalTime30Min": MessageLookupByLibrary.simpleMessage("30 минут"),
     "title": MessageLookupByLibrary.simpleMessage("Quizly Market"),
     "uzbek": MessageLookupByLibrary.simpleMessage("Узбекский"),
+    "wrong": MessageLookupByLibrary.simpleMessage("Неправильно"),
   };
 }

@@ -72,7 +72,7 @@ class _AvatarImage extends StatelessWidget {
     final isSvg = normalizedUrl.toLowerCase().endsWith('.svg');
 
     if (!hasPhoto) {
-      return _Placeholder(initials: fallbackText);
+      return ClipOval(child: _Placeholder(initials: fallbackText));
     }
 
     final Widget imageWidget;

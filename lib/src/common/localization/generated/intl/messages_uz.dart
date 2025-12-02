@@ -22,8 +22,22 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m0(count) => "${count} ta savoldan 25 tasi almashib tushadi.";
 
+  static String m0(count) => "${count} ta savoldan 25 tasi almashib tushadi.";
+
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+    "allOfTimeTest": MessageLookupByLibrary.simpleMessage(
+      "Testning umumiy vaqti:",
+    ),
+    "appConfiguration": MessageLookupByLibrary.simpleMessage(
+      "Ilova sozlamalari",
+    ),
+    "appConfigurationCancel": MessageLookupByLibrary.simpleMessage(
+      "Bekor qilish",
+    ),
+    "appConfigurationDescription": MessageLookupByLibrary.simpleMessage(
+      "Ilova sozlamalarini shu yerda sozlang.",
+    ),
     "allOfTimeTest": MessageLookupByLibrary.simpleMessage(
       "Testning umumiy vaqti:",
     ),
@@ -59,6 +73,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "noInternetConnection": MessageLookupByLibrary.simpleMessage(
       "Internet mavjud emas",
     ),
+    "logoutConfirmMessage": MessageLookupByLibrary.simpleMessage(
+      "Chiqishni tasdiqlaysizmi?",
+    ),
+    "noInternetConnection": MessageLookupByLibrary.simpleMessage(
+      "Internet mavjud emas",
+    ),
     "noInternetConnectionDescription": MessageLookupByLibrary.simpleMessage(
       "Iltimos, internet ulanishini tekshirib yana urinib ko‘ring.",
     ),
@@ -84,6 +104,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "shuffleNone": MessageLookupByLibrary.simpleMessage("Aralashtirilmasin"),
     "shuffleQuestions": MessageLookupByLibrary.simpleMessage("Faqat savollar"),
     "signOut": MessageLookupByLibrary.simpleMessage("Chiqish"),
+    "skipped": MessageLookupByLibrary.simpleMessage("Tashlab ketilgan"),
     "startTest": MessageLookupByLibrary.simpleMessage("Testni boshlash"),
     "test": MessageLookupByLibrary.simpleMessage("Test"),
     "testModeCustom": MessageLookupByLibrary.simpleMessage("Moslashtirilgan"),
@@ -103,5 +124,6 @@ class MessageLookup extends MessageLookupByLibrary {
     "testTotalTime30Min": MessageLookupByLibrary.simpleMessage("30 daqiqa"),
     "title": MessageLookupByLibrary.simpleMessage("Quizly Market"),
     "uzbek": MessageLookupByLibrary.simpleMessage("O‘zbek tili"),
+    "wrong": MessageLookupByLibrary.simpleMessage("Xato"),
   };
 }

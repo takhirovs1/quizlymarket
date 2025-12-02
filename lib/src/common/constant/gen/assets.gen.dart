@@ -52,9 +52,6 @@ class $AssetsIconsGen {
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
-  /// File path: assets/images/background_image.png
-  AssetGenImage get backgroundImage => const AssetGenImage('assets/images/background_image.png');
-
   /// File path: assets/images/logo.png
   AssetGenImage get logo => const AssetGenImage('assets/images/logo.png');
 
@@ -67,8 +64,11 @@ class $AssetsImagesGen {
   /// File path: assets/images/robot.png
   AssetGenImage get robot => const AssetGenImage('assets/images/robot.png');
 
+  /// File path: assets/images/robot_result.png
+  AssetGenImage get robotResult => const AssetGenImage('assets/images/robot_result.png');
+
   /// List of all assets
-  List<AssetGenImage> get values => [backgroundImage, logo, logoPng, placeholder, robot];
+  List<AssetGenImage> get values => [logo, logoPng, placeholder, robot, robotResult];
 }
 
 class $AssetsLottieGen {

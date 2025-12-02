@@ -28,11 +28,20 @@ class MessageLookup extends MessageLookupByLibrary {
     "appConfiguration": MessageLookupByLibrary.simpleMessage(
       "App Configuration",
     ),
+    "appConfiguration": MessageLookupByLibrary.simpleMessage(
+      "App Configuration",
+    ),
     "appConfigurationCancel": MessageLookupByLibrary.simpleMessage("Cancel"),
     "appConfigurationDescription": MessageLookupByLibrary.simpleMessage(
       "Configure your app settings here.",
     ),
+    "appConfigurationDescription": MessageLookupByLibrary.simpleMessage(
+      "Configure your app settings here.",
+    ),
     "appConfigurationReset": MessageLookupByLibrary.simpleMessage("Reset"),
+    "appConfigurationResetDescription": MessageLookupByLibrary.simpleMessage(
+      "Reset your app settings to default.",
+    ),
     "appConfigurationResetDescription": MessageLookupByLibrary.simpleMessage(
       "Reset your app settings to default.",
     ),
@@ -44,11 +53,18 @@ class MessageLookup extends MessageLookupByLibrary {
     "changeQuestionOrAnswer": MessageLookupByLibrary.simpleMessage(
       "Should the questions and answer variants be shuffled?",
     ),
+    "correct": MessageLookupByLibrary.simpleMessage("Correct"),
     "english": MessageLookupByLibrary.simpleMessage("English"),
     "enterTest": MessageLookupByLibrary.simpleMessage("Enter test"),
     "language": MessageLookupByLibrary.simpleMessage("Change language"),
     "logoutCancel": MessageLookupByLibrary.simpleMessage("Cancel"),
     "logoutConfirm": MessageLookupByLibrary.simpleMessage("Logout"),
+    "logoutConfirmMessage": MessageLookupByLibrary.simpleMessage(
+      "Are you sure you want to logout?",
+    ),
+    "noInternetConnection": MessageLookupByLibrary.simpleMessage(
+      "No internet connection",
+    ),
     "logoutConfirmMessage": MessageLookupByLibrary.simpleMessage(
       "Are you sure you want to logout?",
     ),
@@ -78,6 +94,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "shuffleNone": MessageLookupByLibrary.simpleMessage("Do not shuffle"),
     "shuffleQuestions": MessageLookupByLibrary.simpleMessage("Questions only"),
     "signOut": MessageLookupByLibrary.simpleMessage("Sign out"),
+    "skipped": MessageLookupByLibrary.simpleMessage("Skipped"),
     "startTest": MessageLookupByLibrary.simpleMessage("Start test"),
     "test": MessageLookupByLibrary.simpleMessage("Test"),
     "testModeCustom": MessageLookupByLibrary.simpleMessage("Custom"),
@@ -97,5 +114,6 @@ class MessageLookup extends MessageLookupByLibrary {
     "testTotalTime30Min": MessageLookupByLibrary.simpleMessage("30 min"),
     "title": MessageLookupByLibrary.simpleMessage("Quizly Market"),
     "uzbek": MessageLookupByLibrary.simpleMessage("Uzbek"),
+    "wrong": MessageLookupByLibrary.simpleMessage("Wrong"),
   };
 }

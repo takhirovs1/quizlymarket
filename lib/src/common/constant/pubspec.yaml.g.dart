@@ -456,6 +456,9 @@ sealed class Pubspec {
     'bloc': r'^9.1.0',
     'dio': r'^5.9.0',
     'vector_graphics': r'^1.1.19',
+    'bloc': r'^9.1.0',
+    'dio': r'^5.9.0',
+    'vector_graphics': r'^1.1.19',
   };
 
   /// Developer dependencies

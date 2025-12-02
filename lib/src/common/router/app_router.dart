@@ -20,6 +20,7 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
         }
         return _materialRoute(const MainScreen(initialTab: MainTabsEnum.home), settings);
       }
+
     case Routes.home:
     case Routes.cart:
     case Routes.profile:

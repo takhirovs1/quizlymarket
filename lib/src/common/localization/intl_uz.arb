@@ -55,4 +55,36 @@
   },
   "testTotalTime30Min": "30 daqiqa",
   "testTotalTime1Hour": "1 soat"
+ "testPurchasedDescription": "Testni o‘zingizga moslab boshlashingiz mumkin.",
+ "testPurchasedTitle": "Test sotib olindi!",
+ "test": "Test",
+ "startTest": "Testni boshlash",
+ "parameters": "Parametrlar:",
+ "testModeLabel": "Test rejimi:",
+ "testModeCustom": "Moslashtirilgan",
+ "testModeUniversity": "Universitet",
+ "testModeQuestionTime": "Testda har bir savolga javob berish uchun qancha vaqt ketishi kerak?",
+ "openTest": "Testga kirish",
+ "changeQuestionOrAnswer" : "Savollar va javob variantlari aralashtirilsinmi?",
+ "shuffleAll": "Barchasini aralashtirish",
+ "shuffleNone": "Aralashtirilmasin",
+"shuffleQuestions": "Faqat savollar",
+"shuffleAnswers": "Faqat javoblar",
+"selectQuestionByRange" : "Savollarni oraliq bo’yicha tanlash:",
+"allOfTimeTest": "Testning umumiy vaqti:",
+"questionRangeHint": "{count} ta savoldan 25 tasi almashib tushadi.",
+"@questionRangeHint": {
+  "placeholders": {
+    "count": {
+      "type": "int",
+      "example": "100"
+    }
+  }
+},
+"testTotalTime30Min": "30 daqiqa",
+"testTotalTime1Hour": "1 soat",
+"correct": "Toʻgʻri",
+"wrong": "Xato",
+"skipped": "Tashlab ketilgan",
+"time": "Vaqt"
 }

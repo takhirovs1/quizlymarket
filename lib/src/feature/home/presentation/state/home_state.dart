@@ -65,16 +65,17 @@ abstract class HomeState extends State<HomeScreen> {
     builder: (ctx) => CustomBottomSheet(
       isScrollable: false,
       maxChildSize: .5,
-      bottomNavigationBar: CustomButton(
-        onRightPressed: _onCanBuyButtonPressed,
-        rightText: context.l10n.buy,
-        onLeftPressed: context.pop,
-        leftText: context.l10n.cancel,
-      ),
+        bottomNavigationBar: CustomButton(
+          onRightPressed: _onCanBuyButtonPressed,
+          rightText: context.l10n.buy,
+          onLeftPressed: context.pop,
+          leftText: context.l10n.cancel,
+        ),
       children: [
         Dimension.hBox12,
         const BankCardWidget(fullName: 'John Doe', balance: 1000000, id: '1234567890'),
         Dimension.hBox16,
+
         Column(
           spacing: 4,
           crossAxisAlignment: .start,
