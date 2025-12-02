@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:telegram_web_app/telegram_web_app.dart';
 
 import '../../../../common/constant/gen/assets.gen.dart';
+import '../../../../common/enum/bloc_status_enum.dart';
 import '../../../../common/extension/context_extension.dart';
 import '../../../../common/util/dimension.dart';
 import '../../../auth/bloc/auth_bloc.dart';
@@ -37,51 +38,68 @@ class _MainScreenState extends MainState {
   }
 
   @override
-  Widget build(BuildContext context) => PopScope(
-    canPop: false,
-    onPopInvokedWithResult: onPopInvokedWithResult,
-    child: Scaffold(
-      appBar: currentTab.isProfileTab
-          ? null
-          : AppBar(
-              backgroundColor: context.color.primary,
-              automaticallyImplyLeading: false,
-              scrolledUnderElevation: 0,
-              elevation: 0,
-              toolbarHeight: context.height * .10,
-              surfaceTintColor: Colors.transparent,
-              title: Column(
-                children: [
-                  SizedBox(height: context.height * .02),
-                  Center(
-                    child: Text(switch (currentTab.index) {
-                      1 => context.l10n.cart,
-                      _ => context.l10n.appName,
-                    }, style: context.textTheme.nunitoW600s24.copyWith(color: context.color.white)),
-                  ),
-                ],
+  Widget build(BuildContext context) => BlocListener<AuthBloc, AuthState>(
+    listener: (context, state) {
+      if (state.isUserExist == false) {
+        final telegramUser = TelegramWebApp.instance.initDataUnsafe?.user;
+        context.read<AuthBloc>().add(
+          SignUpEvent(
+            telegramID: telegramUser?.id.toString() ?? '',
+            name: '${telegramUser?.firstName} ${telegramUser?.lastName ?? ''}'.trim(),
+            telegramUsername: telegramUser?.username ?? '',
+          ),
+        );
+      }
+      if (state.status == Status.success) {
+        
+      }
+    },
+    child: PopScope(
+      canPop: false,
+      onPopInvokedWithResult: onPopInvokedWithResult,
+      child: Scaffold(
+        appBar: currentTab.isProfileTab
+            ? null
+            : AppBar(
+                backgroundColor: context.color.primary,
+                automaticallyImplyLeading: false,
+                scrolledUnderElevation: 0,
+                elevation: 0,
+                toolbarHeight: context.height * .10,
+                surfaceTintColor: Colors.transparent,
+                title: Column(
+                  children: [
+                    SizedBox(height: context.height * .02),
+                    Center(
+                      child: Text(switch (currentTab.index) {
+                        1 => context.l10n.cart,
+                        _ => context.l10n.appName,
+                      }, style: context.textTheme.nunitoW600s24.copyWith(color: context.color.white)),
+                    ),
+                  ],
+                ),
               ),
-            ),
-      body: IndexedStack(index: currentTab.index, children: _pages),
-      bottomNavigationBar: Padding(
-        padding: Dimension.pBottom10,
-        child: BottomNavigationBar(
-          currentIndex: currentTab.index,
-          onTap: onItemTapped,
-          enableFeedback: true,
+        body: IndexedStack(index: currentTab.index, children: _pages),
+        bottomNavigationBar: Padding(
+          padding: Dimension.pBottom10,
+          child: BottomNavigationBar(
+            currentIndex: currentTab.index,
+            onTap: onItemTapped,
+            enableFeedback: true,
 
-          type: .fixed,
-          backgroundColor: context.color.background,
-          selectedItemColor: context.color.primary,
-          unselectedItemColor: context.color.gray,
-          showSelectedLabels: false,
-          showUnselectedLabels: false,
-          elevation: 0,
-          items: [
-            _buildBottomItem(Assets.icons.home),
-            _buildBottomItem(Assets.icons.cart),
-            _buildBottomItem(Assets.icons.profile),
-          ],
+            type: .fixed,
+            backgroundColor: context.color.background,
+            selectedItemColor: context.color.primary,
+            unselectedItemColor: context.color.gray,
+            showSelectedLabels: false,
+            showUnselectedLabels: false,
+            elevation: 0,
+            items: [
+              _buildBottomItem(Assets.icons.home),
+              _buildBottomItem(Assets.icons.cart),
+              _buildBottomItem(Assets.icons.profile),
+            ],
+          ),
         ),
       ),
     ),
