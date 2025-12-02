@@ -66,6 +66,8 @@ extension NavigatorX on BuildContext {
 
   void pop<T extends Object?>([T? result]) => Navigator.of(this).pop<T>(result);
 
+  void goNamed(String name, {Object? arguments}) => Navigator.of(this).pushNamed(name, arguments: arguments);
+
   void popRoute() {
     if (canPop) pop();
   }

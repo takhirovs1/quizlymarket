@@ -24,9 +24,11 @@ class MainScreen extends StatefulWidget {
 
 class _MainScreenState extends MainState {
   late final List<Widget> _pages;
+  late final SafeAreaInset safeAreaInsets;
 
   @override
   void initState() {
+    safeAreaInsets = TelegramWebApp.instance.safeAreaInset;
     super.initState();
     _pages = const [HomeScreen(), CartScreen(), ProfileScreen()];
     _loginToApp();
@@ -67,7 +69,7 @@ class _MainScreenState extends MainState {
                 surfaceTintColor: Colors.transparent,
                 title: Column(
                   children: [
-                    SizedBox(height: context.height * .03),
+                    SizedBox(height: safeAreaInsets.top + 10),
                     Center(
                       child: Text(switch (currentTab.index) {
                         1 => context.l10n.cart,

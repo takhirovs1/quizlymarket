@@ -25,13 +25,9 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
     "allOfTimeTest": MessageLookupByLibrary.simpleMessage("Общее время теста:"),
-    "appConfiguration": MessageLookupByLibrary.simpleMessage(
-      "Настройка приложения",
-    ),
+    "appConfiguration": MessageLookupByLibrary.simpleMessage("Настройка приложения"),
     "appConfigurationCancel": MessageLookupByLibrary.simpleMessage("Отмена"),
-    "appConfigurationDescription": MessageLookupByLibrary.simpleMessage(
-      "Настройте ваши настройки приложения здесь.",
-    ),
+    "appConfigurationDescription": MessageLookupByLibrary.simpleMessage("Настройте ваши настройки приложения здесь."),
     "appConfigurationReset": MessageLookupByLibrary.simpleMessage("Сбросить"),
     "appConfigurationResetDescription": MessageLookupByLibrary.simpleMessage(
       "Сбросьте ваши настройки приложения на defaults.",
@@ -41,21 +37,16 @@ class MessageLookup extends MessageLookupByLibrary {
     "buy": MessageLookupByLibrary.simpleMessage("Купить"),
     "cancel": MessageLookupByLibrary.simpleMessage("Отмена"),
     "cart": MessageLookupByLibrary.simpleMessage("Корзина"),
-    "changeQuestionOrAnswer": MessageLookupByLibrary.simpleMessage(
-      "Следует ли перемешать вопросы и варианты ответов?",
-    ),
+    "changeQuestionOrAnswer": MessageLookupByLibrary.simpleMessage("Следует ли перемешать вопросы и варианты ответов?"),
+    "continueAction": MessageLookupByLibrary.simpleMessage("Продолжить"),
     "correct": MessageLookupByLibrary.simpleMessage("Правильно"),
     "english": MessageLookupByLibrary.simpleMessage("Английский"),
     "enterTest": MessageLookupByLibrary.simpleMessage("Перейти к тесту"),
     "language": MessageLookupByLibrary.simpleMessage("Изменить язык"),
     "logoutCancel": MessageLookupByLibrary.simpleMessage("Отмена"),
     "logoutConfirm": MessageLookupByLibrary.simpleMessage("Выход"),
-    "logoutConfirmMessage": MessageLookupByLibrary.simpleMessage(
-      "Вы уверены, что хотите выйти?",
-    ),
-    "noInternetConnection": MessageLookupByLibrary.simpleMessage(
-      "Нет интернет соединения",
-    ),
+    "logoutConfirmMessage": MessageLookupByLibrary.simpleMessage("Вы уверены, что хотите выйти?"),
+    "noInternetConnection": MessageLookupByLibrary.simpleMessage("Нет интернет соединения"),
     "noInternetConnectionDescription": MessageLookupByLibrary.simpleMessage(
       "Пожалуйста, проверьте ваше интернет соединение и попробуйте снова.",
     ),

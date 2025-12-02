@@ -3,6 +3,7 @@ import 'package:lottie/lottie.dart';
 
 import '../../../../common/constant/gen/assets.gen.dart';
 import '../../../../common/extension/context_extension.dart';
+import '../../../../common/router/route_arguments.dart';
 import '../../../../common/util/dimension.dart';
 import '../../../../common/widget/custom_button.dart';
 import '../widget/result_info_widget.dart';
@@ -60,7 +61,7 @@ class TestResultScreen extends StatelessWidget {
 
     bottomNavigationBar: Padding(
       padding: Dimension.pAll16,
-      child: CustomButton(onRightPressed: () {}, rightText: context.l10n.logoutConfirm),
+      child: CustomButton(onRightPressed: () => context.goNamed(Routes.home), rightText: context.l10n.logoutConfirm),
     ),
   );
 }
