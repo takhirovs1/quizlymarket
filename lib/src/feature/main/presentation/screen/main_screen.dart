@@ -65,7 +65,7 @@ class _MainScreenState extends MainState {
                 automaticallyImplyLeading: false,
                 scrolledUnderElevation: 0,
                 elevation: 0,
-                toolbarHeight: context.height * .10,
+                toolbarHeight: safeAreaInsets.top + 56,
                 surfaceTintColor: Colors.transparent,
                 title: Column(
                   children: [
