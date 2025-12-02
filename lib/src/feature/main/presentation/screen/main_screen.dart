@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:telegram_web_app/telegram_web_app.dart';
 
 import '../../../../common/constant/gen/assets.gen.dart';
 import '../../../../common/enum/bloc_status_enum.dart';
@@ -64,7 +63,7 @@ class _MainScreenState extends MainState {
                 scrolledUnderElevation: 0,
                 elevation: 0,
                 toolbarHeight: context.telegramWebApp.safeAreaInset.top + 56,
-                surfaceTintColor: Colors.transparent,
+                surfaceTintColor: context.color.transparent,
                 title: Column(
                   children: [
                     SizedBox(height: context.telegramWebApp.safeAreaInset.top.toDouble()),

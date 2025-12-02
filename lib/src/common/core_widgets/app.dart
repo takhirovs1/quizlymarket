@@ -34,7 +34,8 @@ class _AppState extends State<App> {
 
   @override
   Widget build(BuildContext context) {
-    final initialRoute = context.localSource.onboardingCompleted ? Routes.home : Routes.onboarding;
+    final localSource = context.localSource;
+    final initialRoute = localSource.onboardingCompleted ? Routes.home : Routes.onboarding;
 
     return BlocProvider(
       create: (context) => AuthBloc(repository: context.dependencies.repository.authRepository),
@@ -45,7 +46,7 @@ class _AppState extends State<App> {
         restorationScopeId: 'material_app',
         onGenerateTitle: (context) => context.l10n.title,
         initialRoute: initialRoute,
-        onGenerateRoute: onGenerateRoute,
+        onGenerateRoute: buildRouteFactory(localSource),
         supportedLocales: Localization.supportedLocales,
         localizationsDelegates: Localization.delegates,
         locale: SettingsScope.settingsOf(context).localization,

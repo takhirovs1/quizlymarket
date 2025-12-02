@@ -146,6 +146,11 @@ class AppLocalizationsUz extends AppLocalizations {
   }
 
   @override
+  String intToCount(int count) {
+    return '$count dona';
+  }
+
+  @override
   String get testTotalTime30Min => '30 daqiqa';
 
   @override

@@ -8,12 +8,10 @@ class ResultInfoWidget extends StatelessWidget {
     required this.leadingTitle,
     required this.trailingTitle,
     super.key,
-    this.trailingIcon,
   });
   final String leadingTitle;
   final String trailingTitle;
   final Widget leadingIcon;
-  final Widget? trailingIcon;
 
   @override
   Widget build(BuildContext context) => Row(
@@ -23,15 +21,15 @@ class ResultInfoWidget extends StatelessWidget {
         spacing: 4,
         children: [
           leadingIcon,
-          Text(leadingTitle, style: context.textTheme.sfProW600s16),
+          Text(
+            leadingTitle,
+            style: context.textTheme.sfProW500s18.copyWith(color: context.color.black, fontWeight: FontWeight.w700),
+          ),
         ],
       ),
-      Row(
-        spacing: 4,
-        children: [
-          if (trailingIcon != null) trailingIcon!,
-          Text(trailingTitle, style: context.textTheme.sfProW600s16),
-        ],
+      Text(
+        trailingTitle,
+        style: context.textTheme.sfProW500s18.copyWith(color: context.color.black, fontWeight: FontWeight.w500),
       ),
     ],
   );

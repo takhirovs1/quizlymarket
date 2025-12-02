@@ -58,6 +58,16 @@
     }
   },
 
+  "intToCount": "{count} pcs",
+  "@intToCount": {
+    "placeholders": {
+      "count": {
+        "type": "int",
+        "example": "10"
+      }
+    }
+  },
+
   "testTotalTime30Min": "30 min",
   "testTotalTime1Hour": "1 hour",
 

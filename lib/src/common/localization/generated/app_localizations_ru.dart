@@ -146,6 +146,11 @@ class AppLocalizationsRu extends AppLocalizations {
   }
 
   @override
+  String intToCount(int count) {
+    return '$count шт.';
+  }
+
+  @override
   String get testTotalTime30Min => '30 минут';
 
   @override

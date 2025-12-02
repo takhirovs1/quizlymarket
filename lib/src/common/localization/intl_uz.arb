@@ -58,6 +58,15 @@
     }
   },
 
+  "intToCount": "{count} dona",
+  "@intToCount": {
+    "placeholders": {
+      "count": {
+        "type": "int",
+        "example": "10"
+      }
+    }
+  },
   "testTotalTime30Min": "30 daqiqa",
   "testTotalTime1Hour": "1 soat",
 

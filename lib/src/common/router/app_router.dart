@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:local_source/local_source.dart';
 
 import '../../feature/main/data/model/main_tabs_enum.dart';
 import '../../feature/main/presentation/screen/main_screen.dart';
@@ -7,21 +8,17 @@ import '../../feature/test/presentation/screen/custom_mode_screen.dart';
 import '../../feature/test/presentation/screen/test_init_screen.dart';
 import '../../feature/test/presentation/screen/test_result_screen.dart';
 import '../../feature/test/presentation/screen/university_mode_screen.dart';
-import '../extension/context_extension.dart';
 import 'route_arguments.dart';
 
 final GlobalKey<NavigatorState> rootNavigatorKey = GlobalKey<NavigatorState>();
 
-Route<dynamic> onGenerateRoute(RouteSettings settings) {
+RouteFactory buildRouteFactory(LocalSource localSource) =>
+    (settings) => _onGenerateRoute(settings, localSource);
+
+Route<dynamic> _onGenerateRoute(RouteSettings settings, LocalSource localSource) {
   switch (settings.name) {
     case Routes.onboarding:
-      {
-        if (!rootNavigatorKey.currentContext!.localSource.onboardingCompleted) {
-          return _materialRoute(const OnboardingScreen(), settings);
-        }
-        return _materialRoute(const MainScreen(initialTab: MainTabsEnum.home), settings);
-      }
-
+      return _resolveOnboardingOrHome(settings, localSource);
     case Routes.home:
     case Routes.cart:
     case Routes.profile:
@@ -36,7 +33,7 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
     case Routes.testResult:
       return _materialRoute(const TestResultScreen(), settings);
     default:
-      return _materialRoute(const OnboardingScreen(), settings);
+      return _resolveOnboardingOrHome(settings, localSource);
   }
 }
 
@@ -48,3 +45,8 @@ MainTabsEnum _tabFromRoute(String? routeName) => switch (routeName) {
 
 MaterialPageRoute<dynamic> _materialRoute(Widget child, RouteSettings settings) =>
     MaterialPageRoute<dynamic>(settings: settings, builder: (_) => child);
+
+Route<dynamic> _resolveOnboardingOrHome(RouteSettings settings, LocalSource localSource) =>
+    localSource.onboardingCompleted
+    ? _materialRoute(const MainScreen(initialTab: MainTabsEnum.home), settings)
+    : _materialRoute(const OnboardingScreen(), settings);

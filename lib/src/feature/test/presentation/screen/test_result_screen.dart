@@ -13,18 +13,11 @@ class TestResultScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Scaffold(
-    appBar: AppBar(
-      backgroundColor: context.color.primary,
-      automaticallyImplyLeading: false,
-      scrolledUnderElevation: 0,
-      elevation: 0,
-      toolbarHeight: context.telegramWebApp.safeAreaInset.top + 56,
-      surfaceTintColor: context.color.transparent,
-    ),
     body: ListView(
       scrollDirection: Axis.vertical,
       padding: Dimension.pAll16,
       children: [
+        SizedBox(height: context.telegramWebApp.safeAreaInset.top.toDouble()),
         Center(
           child: SizedBox(
             width: context.width * 0.4,
@@ -32,36 +25,44 @@ class TestResultScreen extends StatelessWidget {
             child: Assets.images.robotResult.image(fit: BoxFit.contain),
           ),
         ),
-
         Dimension.hBox16,
-
         Text(
           'Akademik ko\'nikmalar',
-          maxLines: 1,
+          maxLines: 2,
           overflow: .ellipsis,
           style: context.textTheme.sfProW500s22.copyWith(color: context.color.black),
         ),
-
         Text(
           'Iqtisodiyot sirtqi 2-kurs 2-semistr',
+          maxLines: 2,
+          overflow: .ellipsis,
           style: context.textTheme.sfProW400s16.copyWith(color: context.color.gray),
         ),
         Text(
-          'Iqtisodiyot sirtqi 2-kurs 2-semistr',
+          context.l10n.questionRangeHint(100),
           style: context.textTheme.sfProW400s16.copyWith(color: context.color.gray),
         ),
 
         Dimension.hBox24,
-        ResultInfoWidget(
-          leadingIcon: Lottie.asset(Assets.lottie.book, width: 24, height: 24, repeat: false),
-          leadingTitle: context.l10n.correct,
-          trailingTitle: context.l10n.testTotalTime30Min,
-          trailingIcon: Lottie.asset(Assets.lottie.book, width: 24, height: 24, repeat: false),
-        ),
 
         ResultInfoWidget(
-          leadingIcon: Lottie.asset(Assets.lottie.book, width: 24, height: 24, repeat: false),
+          leadingIcon: Lottie.asset(Assets.lottie.correct, width: 24, height: 24),
+          leadingTitle: context.l10n.correct,
+          trailingTitle: context.l10n.intToCount(10),
+        ),
+        ResultInfoWidget(
+          leadingIcon: Lottie.asset(Assets.lottie.incorrect, width: 24, height: 24),
           leadingTitle: context.l10n.wrong,
+          trailingTitle: context.l10n.intToCount(20),
+        ),
+        ResultInfoWidget(
+          leadingIcon: Lottie.asset(Assets.lottie.hourglass, width: 24, height: 24),
+          leadingTitle: context.l10n.skipped,
+          trailingTitle: context.l10n.intToCount(30),
+        ),
+        ResultInfoWidget(
+          leadingIcon: Lottie.asset(Assets.lottie.clock, width: 24, height: 24),
+          leadingTitle: context.l10n.time,
           trailingTitle: context.l10n.testTotalTime30Min,
         ),
       ],

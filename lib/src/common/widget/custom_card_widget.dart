@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
@@ -90,20 +91,31 @@ class _CustomCardWidgetState extends State<CustomCardWidget> {
                       Lottie.asset(Assets.lottie.money, width: 24, height: 24, repeat: false),
                       Text(
                         widget.price?.toUZSString() ?? '',
-                        style: context.textTheme.sfProW500s14.copyWith(color: context.color.primary),
+                        style: context.textTheme.sfProW500s14.copyWith(
+                          color: context.color.primary,
+                          fontWeight: FontWeight.w700,
+                        ),
                       ),
                     ],
                   ),
                   false => const SizedBox.shrink(),
                 },
-
-                FilledButton(
-                  style: FilledButton.styleFrom(padding: Dimension.pH12V8, backgroundColor: context.color.primary),
-                  onPressed: widget.onPressed,
-                  child: Text(
-                    widget.buttonText,
-                    style: context.textTheme.sfProW500s14.copyWith(color: context.color.white),
-                  ),
+                Row(
+                  children: [
+                    IconButton(
+                      onPressed: () {},
+                      icon: Lottie.asset(Assets.lottie.linkcopy, width: 24, height: 24, repeat: false),
+                    ),
+                    Dimension.wBox4,
+                    FilledButton(
+                      style: FilledButton.styleFrom(padding: Dimension.pH12V8, backgroundColor: context.color.primary),
+                      onPressed: widget.onPressed,
+                      child: Text(
+                        widget.buttonText,
+                        style: context.textTheme.sfProW500s14.copyWith(color: context.color.white),
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),

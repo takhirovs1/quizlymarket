@@ -80,6 +80,15 @@ class $AssetsLottieGen {
   /// File path: assets/lottie/circle_star.json
   String get circleStar => 'assets/lottie/circle_star.json';
 
+  /// File path: assets/lottie/clock.json
+  String get clock => 'assets/lottie/clock.json';
+
+  /// File path: assets/lottie/correct.json
+  String get correct => 'assets/lottie/correct.json';
+
+  /// File path: assets/lottie/correct2.json
+  String get correct2 => 'assets/lottie/correct2.json';
+
   /// File path: assets/lottie/diamond.json
   String get diamond => 'assets/lottie/diamond.json';
 
@@ -89,8 +98,17 @@ class $AssetsLottieGen {
   /// File path: assets/lottie/error2.json
   String get error2 => 'assets/lottie/error2.json';
 
+  /// File path: assets/lottie/hourglass.json
+  String get hourglass => 'assets/lottie/hourglass.json';
+
+  /// File path: assets/lottie/incorrect.json
+  String get incorrect => 'assets/lottie/incorrect.json';
+
   /// File path: assets/lottie/laptop.json
   String get laptop => 'assets/lottie/laptop.json';
+
+  /// File path: assets/lottie/linkcopy.json
+  String get linkcopy => 'assets/lottie/linkcopy.json';
 
   /// File path: assets/lottie/money.json
   String get money => 'assets/lottie/money.json';
@@ -98,11 +116,31 @@ class $AssetsLottieGen {
   /// File path: assets/lottie/phone.json
   String get phone => 'assets/lottie/phone.json';
 
+  /// File path: assets/lottie/share.json
+  String get share => 'assets/lottie/share.json';
+
   /// File path: assets/lottie/timer.json
   String get timer => 'assets/lottie/timer.json';
 
   /// List of all assets
-  List<String> get values => [book, circleStar, diamond, error, error2, laptop, money, phone, timer];
+  List<String> get values => [
+    book,
+    circleStar,
+    clock,
+    correct,
+    correct2,
+    diamond,
+    error,
+    error2,
+    hourglass,
+    incorrect,
+    laptop,
+    linkcopy,
+    money,
+    phone,
+    share,
+    timer,
+  ];
 }
 
 class $AssetsVectorsGen {
