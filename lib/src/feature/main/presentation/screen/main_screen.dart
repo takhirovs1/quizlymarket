@@ -69,7 +69,7 @@ class _MainScreenState extends MainState {
                 surfaceTintColor: Colors.transparent,
                 title: Column(
                   children: [
-                    SizedBox(height: safeAreaInsets.top + 10),
+                    SizedBox(height: safeAreaInsets.top.toDouble()),
                     Center(
                       child: Text(switch (currentTab.index) {
                         1 => context.l10n.cart,

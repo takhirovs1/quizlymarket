@@ -23,11 +23,11 @@ class _TestInitScreenState extends TestInitState {
       automaticallyImplyLeading: false,
       scrolledUnderElevation: 0,
       elevation: 0,
-      toolbarHeight: context.height * .10,
+      toolbarHeight: safeAreaInsets.top + 56,
       surfaceTintColor: context.color.transparent,
       title: Column(
         children: [
-          SizedBox(height: context.height * .03),
+          SizedBox(height: safeAreaInsets.top.toDouble()),
           Center(
             child: Text(context.l10n.test, style: context.textTheme.nunitoW600s24.copyWith(color: context.color.white)),
           ),

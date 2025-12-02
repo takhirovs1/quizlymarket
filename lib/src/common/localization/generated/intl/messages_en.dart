@@ -52,19 +52,13 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "openTest": MessageLookupByLibrary.simpleMessage("Open test"),
     "parameters": MessageLookupByLibrary.simpleMessage("Parameters:"),
-    "personalizedTestDescription": MessageLookupByLibrary.simpleMessage(
-      "You can start the test customized for you.",
-    ),
-    "pressBackAgainToExit": MessageLookupByLibrary.simpleMessage(
-      "Press back again to exit",
-    ),
+    "personalizedTestDescription": MessageLookupByLibrary.simpleMessage("You can start the test customized for you."),
+    "pressBackAgainToExit": MessageLookupByLibrary.simpleMessage("Press back again to exit"),
     "questionRangeHint": m0,
     "refresh": MessageLookupByLibrary.simpleMessage("Refresh"),
     "report": MessageLookupByLibrary.simpleMessage("Reports"),
     "russian": MessageLookupByLibrary.simpleMessage("Russian"),
-    "selectQuestionByRange": MessageLookupByLibrary.simpleMessage(
-      "Select questions by range:",
-    ),
+    "selectQuestionByRange": MessageLookupByLibrary.simpleMessage("Select questions by range:"),
     "shuffleAll": MessageLookupByLibrary.simpleMessage("Shuffle everything"),
     "shuffleAnswers": MessageLookupByLibrary.simpleMessage("Answers only"),
     "shuffleNone": MessageLookupByLibrary.simpleMessage("Do not shuffle"),
@@ -80,12 +74,8 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "testModeUniversity": MessageLookupByLibrary.simpleMessage("University"),
     "testPurchased": MessageLookupByLibrary.simpleMessage("Test purchased"),
-    "testPurchasedDescription": MessageLookupByLibrary.simpleMessage(
-      "You can start the test customized for you.",
-    ),
-    "testPurchasedTitle": MessageLookupByLibrary.simpleMessage(
-      "Test purchased!",
-    ),
+    "testPurchasedDescription": MessageLookupByLibrary.simpleMessage("You can start the test customized for you."),
+    "testPurchasedTitle": MessageLookupByLibrary.simpleMessage("Test purchased!"),
     "testTotalTime1Hour": MessageLookupByLibrary.simpleMessage("1 hour"),
     "testTotalTime30Min": MessageLookupByLibrary.simpleMessage("30 min"),
     "time": MessageLookupByLibrary.simpleMessage("Time"),

@@ -52,19 +52,13 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "openTest": MessageLookupByLibrary.simpleMessage("Открыть тест"),
     "parameters": MessageLookupByLibrary.simpleMessage("Параметры:"),
-    "personalizedTestDescription": MessageLookupByLibrary.simpleMessage(
-      "Вы можете начать тест, настроенный под вас.",
-    ),
-    "pressBackAgainToExit": MessageLookupByLibrary.simpleMessage(
-      "Нажмите еще раз, чтобы выйти",
-    ),
+    "personalizedTestDescription": MessageLookupByLibrary.simpleMessage("Вы можете начать тест, настроенный под вас."),
+    "pressBackAgainToExit": MessageLookupByLibrary.simpleMessage("Нажмите еще раз, чтобы выйти"),
     "questionRangeHint": m0,
     "refresh": MessageLookupByLibrary.simpleMessage("Обновить"),
     "report": MessageLookupByLibrary.simpleMessage("Отчеты"),
     "russian": MessageLookupByLibrary.simpleMessage("Русский"),
-    "selectQuestionByRange": MessageLookupByLibrary.simpleMessage(
-      "Выберите вопросы по диапазону:",
-    ),
+    "selectQuestionByRange": MessageLookupByLibrary.simpleMessage("Выберите вопросы по диапазону:"),
     "shuffleAll": MessageLookupByLibrary.simpleMessage("Перемешать всё"),
     "shuffleAnswers": MessageLookupByLibrary.simpleMessage("Только ответы"),
     "shuffleNone": MessageLookupByLibrary.simpleMessage("Не перемешивать"),
@@ -80,12 +74,8 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "testModeUniversity": MessageLookupByLibrary.simpleMessage("Университет"),
     "testPurchased": MessageLookupByLibrary.simpleMessage("Тест приобретен"),
-    "testPurchasedDescription": MessageLookupByLibrary.simpleMessage(
-      "Вы можете начать тест, настроенный под вас.",
-    ),
-    "testPurchasedTitle": MessageLookupByLibrary.simpleMessage(
-      "Тест приобретен!",
-    ),
+    "testPurchasedDescription": MessageLookupByLibrary.simpleMessage("Вы можете начать тест, настроенный под вас."),
+    "testPurchasedTitle": MessageLookupByLibrary.simpleMessage("Тест приобретен!"),
     "testTotalTime1Hour": MessageLookupByLibrary.simpleMessage("1 час"),
     "testTotalTime30Min": MessageLookupByLibrary.simpleMessage("30 минут"),
     "time": MessageLookupByLibrary.simpleMessage("Время"),

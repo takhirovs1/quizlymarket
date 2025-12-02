@@ -11,6 +11,7 @@ import '../screen/test_init_screen.dart';
 abstract class TestInitState extends State<TestInitScreen> {
   final ValueNotifier<CustomTestSettings> testSettings = ValueNotifier(CustomTestSettings(testMode: TestMode.custom));
   final ValueNotifier<TestMode> selectedTestMode = ValueNotifier(TestMode.custom);
+  late final SafeAreaInset safeAreaInsets;
 
   void updateTestMode(TestMode mode) {
     if (selectedTestMode.value == mode) return;
@@ -63,6 +64,7 @@ abstract class TestInitState extends State<TestInitScreen> {
   void initState() {
     super.initState();
     _setupTelegramBackButton();
+    safeAreaInsets = TelegramWebApp.instance.safeAreaInset;
   }
 
   @override
