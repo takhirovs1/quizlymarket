@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../constant/gen/assets.gen.dart';
 import '../extension/context_extension.dart';
-import '../util/dimension.dart';
+import '../util/dimension.dart';  
 import 'custom_button.dart';
 
 class CustomPrimaryDialog extends StatelessWidget {
@@ -25,15 +25,9 @@ class CustomPrimaryDialog extends StatelessWidget {
     title: Column(
       spacing: 16,
       children: [
-        Stack(
-          children: [
-            Assets.images.backgroundImage.image(width: 190, height: 180),
-            Positioned(child: Assets.images.robot.image(width: 190, height: 180)),
-          ],
-        ),
+        Assets.images.robot.image(width: context.width * 0.5, height: context.height * 0.4, fit: BoxFit.scaleDown),
 
-        Dimension.hBox16,
-
+        // Dimension.hBox16,
         Text(
           title,
           maxLines: 2,

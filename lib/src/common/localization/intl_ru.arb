@@ -45,15 +45,19 @@
 "shuffleAnswers": "Только ответы",
 "selectQuestionByRange" : "Выберите вопросы по диапазону:",
 "allOfTimeTest": "Общее время теста:",
-"questionRangeHint": "Из {count} вопросов 25 будут перемешиваться.",
-"@questionRangeHint": {
+ "questionRangeHint": "Из {count} вопросов 25 будут перемешиваться.",
+ "@questionRangeHint": {
   "placeholders": {
     "count": {
       "type": "int",
-      "example": 100
+      "example": "100"
     }
   }
-},
-"testTotalTime30Min": "30 минут",
-"testTotalTime1Hour": "1 час"
+ },
+ "testTotalTime30Min": "30 минут",
+ "testTotalTime1Hour": "1 час",
+ "correct": "Правильно",
+ "wrong": "Неправильно",
+ "skipped": "Пропущено",
+ "time": "Время"
 }

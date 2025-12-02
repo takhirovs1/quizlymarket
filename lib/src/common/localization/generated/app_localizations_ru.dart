@@ -85,4 +85,81 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get enterTest => 'Перейти к тесту';
+
+  @override
+  String get cancel => 'Отмена';
+
+  @override
+  String get testPurchasedDescription => 'Вы можете начать тест, настроенный под вас.';
+
+  @override
+  String get testPurchasedTitle => 'Тест приобретен!';
+
+  @override
+  String get test => 'Тест';
+
+  @override
+  String get startTest => 'Начать тест';
+
+  @override
+  String get parameters => 'Параметры:';
+
+  @override
+  String get testModeLabel => 'Режим теста:';
+
+  @override
+  String get testModeCustom => 'Индивидуальный';
+
+  @override
+  String get testModeUniversity => 'Университет';
+
+  @override
+  String get testModeQuestionTime => 'Сколько времени должно занять ответ на каждый вопрос теста?';
+
+  @override
+  String get openTest => 'Открыть тест';
+
+  @override
+  String get changeQuestionOrAnswer => 'Следует ли перемешать вопросы и варианты ответов?';
+
+  @override
+  String get shuffleAll => 'Перемешать всё';
+
+  @override
+  String get shuffleNone => 'Не перемешивать';
+
+  @override
+  String get shuffleQuestions => 'Только вопросы';
+
+  @override
+  String get shuffleAnswers => 'Только ответы';
+
+  @override
+  String get selectQuestionByRange => 'Выберите вопросы по диапазону:';
+
+  @override
+  String get allOfTimeTest => 'Общее время теста:';
+
+  @override
+  String questionRangeHint(int count) {
+    return 'Из $count вопросов 25 будут перемешиваться.';
+  }
+
+  @override
+  String get testTotalTime30Min => '30 минут';
+
+  @override
+  String get testTotalTime1Hour => '1 час';
+
+  @override
+  String get correct => 'Правильно';
+
+  @override
+  String get wrong => 'Неправильно';
+
+  @override
+  String get skipped => 'Пропущено';
+
+  @override
+  String get time => 'Время';
 }

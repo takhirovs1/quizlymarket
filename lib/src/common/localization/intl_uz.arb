@@ -49,12 +49,16 @@
   "placeholders": {
     "count": {
       "type": "int",
-      "example": 100
+      "example": "100"
     }
   }
 },
 "testTotalTime30Min": "30 daqiqa",
-"testTotalTime1Hour": "1 soat"
+"testTotalTime1Hour": "1 soat",
+"correct": "Toʻgʻri",
+"wrong": "Xato",
+"skipped": "Tashlab ketilgan",
+"time": "Vaqt"
 }
 
 

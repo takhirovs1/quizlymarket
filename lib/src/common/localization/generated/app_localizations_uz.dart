@@ -85,4 +85,81 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get enterTest => 'Testga kirish';
+
+  @override
+  String get cancel => 'Bekor qilish';
+
+  @override
+  String get testPurchasedDescription => 'Testni o‘zingizga moslab boshlashingiz mumkin.';
+
+  @override
+  String get testPurchasedTitle => 'Test sotib olindi!';
+
+  @override
+  String get test => 'Test';
+
+  @override
+  String get startTest => 'Testni boshlash';
+
+  @override
+  String get parameters => 'Parametrlar:';
+
+  @override
+  String get testModeLabel => 'Test rejimi:';
+
+  @override
+  String get testModeCustom => 'Moslashtirilgan';
+
+  @override
+  String get testModeUniversity => 'Universitet';
+
+  @override
+  String get testModeQuestionTime => 'Testda har bir savolga javob berish uchun qancha vaqt ketishi kerak?';
+
+  @override
+  String get openTest => 'Testga kirish';
+
+  @override
+  String get changeQuestionOrAnswer => 'Savollar va javob variantlari aralashtirilsinmi?';
+
+  @override
+  String get shuffleAll => 'Barchasini aralashtirish';
+
+  @override
+  String get shuffleNone => 'Aralashtirilmasin';
+
+  @override
+  String get shuffleQuestions => 'Faqat savollar';
+
+  @override
+  String get shuffleAnswers => 'Faqat javoblar';
+
+  @override
+  String get selectQuestionByRange => 'Savollarni oraliq bo’yicha tanlash:';
+
+  @override
+  String get allOfTimeTest => 'Testning umumiy vaqti:';
+
+  @override
+  String questionRangeHint(int count) {
+    return '$count ta savoldan 25 tasi almashib tushadi.';
+  }
+
+  @override
+  String get testTotalTime30Min => '30 daqiqa';
+
+  @override
+  String get testTotalTime1Hour => '1 soat';
+
+  @override
+  String get correct => 'Toʻgʻri';
+
+  @override
+  String get wrong => 'Xato';
+
+  @override
+  String get skipped => 'Tashlab ketilgan';
+
+  @override
+  String get time => 'Vaqt';
 }
