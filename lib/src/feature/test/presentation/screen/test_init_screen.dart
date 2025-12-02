@@ -23,11 +23,11 @@ class _TestInitScreenState extends TestInitState {
       automaticallyImplyLeading: false,
       scrolledUnderElevation: 0,
       elevation: 0,
-      toolbarHeight: context.height * .10,
-      surfaceTintColor: Colors.transparent,
+      toolbarHeight: safeAreaInsets.top + 56,
+      surfaceTintColor: context.color.transparent,
       title: Column(
         children: [
-          SizedBox(height: context.height * .03),
+          SizedBox(height: safeAreaInsets.top.toDouble()),
           Center(
             child: Text(context.l10n.test, style: context.textTheme.nunitoW600s24.copyWith(color: context.color.white)),
           ),
@@ -36,20 +36,19 @@ class _TestInitScreenState extends TestInitState {
     ),
     bottomNavigationBar: Padding(
       padding: Dimension.pAll16,
-      child: CustomButton(onRightPressed: () {}, rightText: context.l10n.startTest),
+      child: CustomButton(onRightPressed: onOpenTestScreen, rightText: context.l10n.startTest),
     ),
     body: ListView(
       padding: Dimension.pAll16,
-      children: const [
-        TestInfoWidget(
-          subject: 'Akademik koʻnikmalar',
+      children: [
+        const TestInfoWidget(
+          subject: 'Akademik ko\'nikmalar',
           university: 'Alfraganus',
           direction: 'Iqtisodiyot sirtqi 2-kurs 2-semistr',
           testCount: 100,
         ),
-
         Dimension.hBox14,
-        TestModeWidget(),
+        TestModeWidget(selectedMode: selectedTestMode, onModeChanged: updateTestMode, settingsNotifier: testSettings),
       ],
     ),
   );

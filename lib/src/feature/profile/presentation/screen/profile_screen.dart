@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meta/meta.dart';
-import 'package:telegram_web_app/telegram_web_app.dart';
 
 import '../../../../common/extension/context_extension.dart';
 import '../../../../common/util/dimension.dart';
@@ -93,8 +92,6 @@ class _ProfileScreenState extends ProfileState {
               padding: const EdgeInsets.only(bottom: 12),
               child: Text(formatVersion(), style: context.textTheme.sfProW400s12.copyWith(color: context.color.gray)),
             ),
-
-            Text('safeInsets: ${TelegramWebApp.instance.safeAreaInset.toString()}'),
           ],
         ),
       ),

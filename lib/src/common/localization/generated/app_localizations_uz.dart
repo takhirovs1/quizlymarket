@@ -135,7 +135,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get shuffleAnswers => 'Faqat javoblar';
 
   @override
-  String get selectQuestionByRange => 'Savollarni oraliq bo’yicha tanlash:';
+  String get selectQuestionByRange => 'Savollarni oraliq bo‘yicha tanlash:';
 
   @override
   String get allOfTimeTest => 'Testning umumiy vaqti:';
@@ -152,7 +152,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get testTotalTime1Hour => '1 soat';
 
   @override
-  String get correct => 'Toʻgʻri';
+  String get correct => 'To\'g\'ri';
 
   @override
   String get wrong => 'Xato';
@@ -162,4 +162,7 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get time => 'Vaqt';
+
+  @override
+  String get continueAction => 'Davom etish';
 }

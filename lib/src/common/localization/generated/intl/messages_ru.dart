@@ -44,6 +44,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "changeQuestionOrAnswer": MessageLookupByLibrary.simpleMessage(
       "Следует ли перемешать вопросы и варианты ответов?",
     ),
+    "continueAction": MessageLookupByLibrary.simpleMessage("Продолжить"),
     "correct": MessageLookupByLibrary.simpleMessage("Правильно"),
     "english": MessageLookupByLibrary.simpleMessage("Английский"),
     "enterTest": MessageLookupByLibrary.simpleMessage("Перейти к тесту"),

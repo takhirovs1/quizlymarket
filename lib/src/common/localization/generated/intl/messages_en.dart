@@ -44,6 +44,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "changeQuestionOrAnswer": MessageLookupByLibrary.simpleMessage(
       "Should the questions and answer variants be shuffled?",
     ),
+    "continueAction": MessageLookupByLibrary.simpleMessage("Continue"),
     "correct": MessageLookupByLibrary.simpleMessage("Correct"),
     "english": MessageLookupByLibrary.simpleMessage("English"),
     "enterTest": MessageLookupByLibrary.simpleMessage("Enter test"),

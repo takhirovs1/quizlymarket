@@ -48,7 +48,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "changeQuestionOrAnswer": MessageLookupByLibrary.simpleMessage(
       "Savollar va javob variantlari aralashtirilsinmi?",
     ),
-    "correct": MessageLookupByLibrary.simpleMessage("Toʻgʻri"),
+    "continueAction": MessageLookupByLibrary.simpleMessage("Davom etish"),
+    "correct": MessageLookupByLibrary.simpleMessage("To\'g\'ri"),
     "english": MessageLookupByLibrary.simpleMessage("Ingliz tili"),
     "enterTest": MessageLookupByLibrary.simpleMessage("Testga kirish"),
     "language": MessageLookupByLibrary.simpleMessage("Tilni o‘zgartirish"),
@@ -76,7 +77,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "report": MessageLookupByLibrary.simpleMessage("Hisobotlar"),
     "russian": MessageLookupByLibrary.simpleMessage("Rus tili"),
     "selectQuestionByRange": MessageLookupByLibrary.simpleMessage(
-      "Savollarni oraliq bo’yicha tanlash:",
+      "Savollarni oraliq bo‘yicha tanlash:",
     ),
     "shuffleAll": MessageLookupByLibrary.simpleMessage(
       "Barchasini aralashtirish",

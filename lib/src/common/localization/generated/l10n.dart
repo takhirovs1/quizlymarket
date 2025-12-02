@@ -437,6 +437,16 @@ class GeneratedLocalization {
     );
   }
 
+  /// `Продолжить`
+  String get continueAction {
+    return Intl.message(
+      'Продолжить',
+      name: 'continueAction',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Правильно`
   String get correct {
     return Intl.message('Правильно', name: 'correct', desc: '', args: []);

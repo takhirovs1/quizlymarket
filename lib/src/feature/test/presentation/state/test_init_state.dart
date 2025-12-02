@@ -3,10 +3,27 @@ import 'package:flutter/material.dart';
 import 'package:telegram_web_app/telegram_web_app.dart';
 
 import '../../../../common/extension/context_extension.dart';
+import '../../../../common/router/route_arguments.dart';
 import '../../../../common/util/logger.dart';
+import '../../data/model/test_init_enum.dart';
 import '../screen/test_init_screen.dart';
 
 abstract class TestInitState extends State<TestInitScreen> {
+  final ValueNotifier<CustomTestSettings> testSettings = ValueNotifier(CustomTestSettings(testMode: TestMode.custom));
+  final ValueNotifier<TestMode> selectedTestMode = ValueNotifier(TestMode.custom);
+  late final SafeAreaInset safeAreaInsets;
+
+  void updateTestMode(TestMode mode) {
+    if (selectedTestMode.value == mode) return;
+    selectedTestMode.value = mode;
+    testSettings.value = testSettings.value.copyWith(testMode: mode);
+  }
+
+  void onOpenTestScreen() => switch (testSettings.value.testMode) {
+    TestMode.custom => context.goNamed(Routes.customMode, arguments: testSettings.value),
+    TestMode.university => context.goNamed(Routes.universityMode, arguments: testSettings.value),
+  };
+
   void _setupTelegramBackButton() {
     if (!kIsWeb) return;
 
@@ -47,10 +64,13 @@ abstract class TestInitState extends State<TestInitScreen> {
   void initState() {
     super.initState();
     _setupTelegramBackButton();
+    safeAreaInsets = TelegramWebApp.instance.safeAreaInset;
   }
 
   @override
   void dispose() {
+    selectedTestMode.dispose();
+    testSettings.dispose();
     _teardownTelegramBackButton();
     super.dispose();
   }

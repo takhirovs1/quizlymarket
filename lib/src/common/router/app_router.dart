@@ -3,8 +3,10 @@ import 'package:flutter/material.dart';
 import '../../feature/main/data/model/main_tabs_enum.dart';
 import '../../feature/main/presentation/screen/main_screen.dart';
 import '../../feature/onboarding/presentation/onboarding_screen.dart';
+import '../../feature/test/presentation/screen/custom_mode_screen.dart';
 import '../../feature/test/presentation/screen/test_init_screen.dart';
 import '../../feature/test/presentation/screen/test_result_screen.dart';
+import '../../feature/test/presentation/screen/university_mode_screen.dart';
 import '../extension/context_extension.dart';
 import 'route_arguments.dart';
 
@@ -27,6 +29,10 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
       return _materialRoute(MainScreen(initialTab: tab), settings);
     case Routes.testInit:
       return _materialRoute(const TestInitScreen(), settings);
+    case Routes.customMode:
+      return _materialRoute(const CustomModeScreen(), settings);
+    case Routes.universityMode:
+      return _materialRoute(const UniversityModeScreen(), settings);
     case Routes.testResult:
       return _materialRoute(const TestResultScreen(), settings);
     default:
