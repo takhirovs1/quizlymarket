@@ -43,7 +43,7 @@ class _MainScreenState extends MainState {
               surfaceTintColor: Colors.transparent,
               title: Column(
                 children: [
-                  SizedBox(height: context.height * .02),
+                  SizedBox(height: context.height * .03),
                   Center(
                     child: Text(switch (currentTab.index) {
                       1 => context.l10n.cart,
