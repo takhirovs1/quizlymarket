@@ -378,30 +378,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'1 hour'**
   String get testTotalTime1Hour;
-
-  /// No description provided for @correct.
-  ///
-  /// In en, this message translates to:
-  /// **'Correct'**
-  String get correct;
-
-  /// No description provided for @wrong.
-  ///
-  /// In en, this message translates to:
-  /// **'Wrong'**
-  String get wrong;
-
-  /// No description provided for @skipped.
-  ///
-  /// In en, this message translates to:
-  /// **'Skipped'**
-  String get skipped;
-
-  /// No description provided for @time.
-  ///
-  /// In en, this message translates to:
-  /// **'Time'**
-  String get time;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

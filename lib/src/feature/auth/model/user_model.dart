@@ -15,9 +15,9 @@ class UserModel extends Equatable {
 
   factory UserModel.fromJson(Map<String, Object?> json) => UserModel(
     userID: json['user_id'] as String,
-    telegramID: json['telegram_id'] as String,
+    telegramID: json['telegram_id'] as int,
     telegramUsername: json['telegram_username'] as String?,
-    name: json['name'] as String,
+    name: json['full_name'] as String,
     createdAt: json['created_at'] as String,
     updatedAt: json['updated_at'] as String?,
     balance: (json['balance'] as num?)?.toDouble() ?? 0.0,
@@ -25,7 +25,7 @@ class UserModel extends Equatable {
   );
 
   final String userID;
-  final String telegramID;
+  final int telegramID;
   final String? telegramUsername;
   final String name;
   final String createdAt;
@@ -35,7 +35,7 @@ class UserModel extends Equatable {
 
   UserModel copyWith({
     String? userID,
-    String? telegramID,
+    int? telegramID,
     ValueGetter<String?>? telegramUsername,
     String? name,
     String? createdAt,

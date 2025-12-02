@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:supabase_service/src/constants/tables.dart';
 
 class SupabaseService with SupabaseHelpersMixin {
   final Supabase? _supabase;
@@ -22,7 +23,9 @@ class SupabaseService with SupabaseHelpersMixin {
   Future<Map<String, Object?>> login({required String telegramID}) async {
     final response = await _supabase?.client.auth.signInWithPassword(email: getEmail(telegramID), password: telegramID);
     log('response id in login: ${response?.user?.id}');
-    return {};
+    final profile = await _supabase?.client.from(Tables.profiles).select().limit(1).single();
+    log('profile in login: $profile');
+    return profile?.cast<String, Object?>() ?? {};
   }
 
   Future<Map<String, Object?>> signUp({
@@ -32,7 +35,15 @@ class SupabaseService with SupabaseHelpersMixin {
   }) async {
     final response = await _supabase?.client.auth.signUp(email: getEmail(telegramID), password: telegramID);
     log('response id in signUp: ${response?.user?.id}');
-    return {};
+    final id = response?.user?.id;
+    final profile = await _supabase?.client.from(Tables.profiles).upsert({
+      'user_id': id,
+      'telegram_id': telegramID,
+      'telegram_username': telegramUsername,
+      'full_name': name,
+    }).select();
+    log('profile in signUp: $profile');
+    return profile?.first.cast<String, Object?>() ?? {};
   }
 
   Future<void> dispose() async => await _supabase?.dispose();
