@@ -80,6 +80,9 @@ extension NavigatorX on BuildContext {
 
   void goNamed(String name, {Object? arguments}) => Navigator.of(this).pushNamed(name, arguments: arguments);
 
+  void goReplacementNamed(String name, {Object? arguments}) =>
+      Navigator.of(this).pushReplacementNamed(name, arguments: arguments);
+
   void popRoute() {
     if (canPop) pop();
   }
