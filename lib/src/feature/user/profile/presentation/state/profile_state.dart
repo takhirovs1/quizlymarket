@@ -1,27 +1,25 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
-import 'package:telegram_web_app/telegram_web_app.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../common/extension/context_extension.dart';
 import '../../../../../common/model/language_option.dart';
 import '../../../../../common/util/dimension.dart';
 import '../../../../../common/widget/custom_bottom_sheet.dart';
 import '../../../../../common/widget/custom_tile.dart';
+import '../../../../../feature/auth/bloc/auth_bloc.dart';
+import '../../../../../feature/auth/model/user_model.dart';
 import '../../data/models/telegram_user_model.dart';
 import '../screen/profile_screen.dart';
 
 abstract class ProfileState extends State<ProfileScreen> {
   late final ProfileUserData profileData;
-  late final bool isTelegramUser;
   late String currentLocale;
 
   @override
   void initState() {
     super.initState();
-    final telegramUser = _resolveTelegramUser();
-    isTelegramUser = telegramUser != null;
-    profileData = telegramUser != null ? ProfileUserData.fromTelegram(telegramUser) : const ProfileUserData.mock();
+    profileData = ProfileUserData.fromUserModel(_resolveUserModel());
   }
 
   @override
@@ -30,15 +28,12 @@ abstract class ProfileState extends State<ProfileScreen> {
     currentLocale = Localizations.localeOf(context).languageCode;
   }
 
-  WebAppUser? _resolveTelegramUser() {
-    if (!kIsWeb) return null;
-
+  UserModel _resolveUserModel() {
     try {
-      if (!context.telegramWebApp.isSupported) return null;
-
-      return context.telegramWebApp.initDataUnsafe?.user;
+      final authBloc = context.read<AuthBloc>();
+      return authBloc.state.user ?? MockUsers.activeUser;
     } on Object catch (_) {
-      return null;
+      return MockUsers.activeUser;
     }
   }
 

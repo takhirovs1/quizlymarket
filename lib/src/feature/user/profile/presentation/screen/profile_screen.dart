@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meta/meta.dart';
 
 import '../../../../../common/extension/context_extension.dart';
+import '../../../../../common/router/route_arguments.dart';
 import '../../../../../common/util/dimension.dart';
 import '../../../../../common/widget/custom_tile.dart';
 import '../state/profile_state.dart';
@@ -41,15 +42,11 @@ class _ProfileScreenState extends ProfileState {
                   ProfileHeader(
                     photoUrl: '',
                     fullName: profileData.fullName,
-                    id: profileData.id.toString(),
+                    id: profileData.id,
                     username: profileData.username ?? '',
                   ),
                   Dimension.hBox16,
-                  BankCardWidget(
-                    fullName: profileData.fullName,
-                    balance: profileData.balance ?? 0,
-                    id: profileData.id.toString(),
-                  ),
+                  BankCardWidget(fullName: profileData.fullName, balance: profileData.balance, id: profileData.id),
                   Dimension.hBox16,
                   Material(
                     color: context.color.white,
@@ -83,6 +80,17 @@ class _ProfileScreenState extends ProfileState {
                       onTap: logOut,
                       textColor: context.color.error,
                       isLogout: true,
+                    ),
+                  ),
+                  Dimension.hBox12,
+                  Material(
+                    color: context.color.white,
+                    shape: const RoundedRectangleBorder(borderRadius: Dimension.rAll10),
+                    clipBehavior: Clip.antiAlias,
+                    child: CustomTile(
+                      leading: Icon(Icons.switch_account_sharp, color: context.color.error),
+                      title: 'Switch account',
+                      onTap: () => context.goReplacementNamed(Routes.adminHome),
                     ),
                   ),
                 ],
