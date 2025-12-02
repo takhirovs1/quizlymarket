@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:local_source/local_source.dart';
 
+import '../../feature/admin/home/presentation/screen/admin_home_screen.dart';
 import '../../feature/user/main/data/model/main_tabs_enum.dart';
 import '../../feature/user/main/presentation/screen/main_screen.dart';
 import '../../feature/user/onboarding/presentation/onboarding_screen.dart';
@@ -15,27 +16,18 @@ final GlobalKey<NavigatorState> rootNavigatorKey = GlobalKey<NavigatorState>();
 RouteFactory buildRouteFactory(LocalSource localSource) =>
     (settings) => _onGenerateRoute(settings, localSource);
 
-Route<dynamic> _onGenerateRoute(RouteSettings settings, LocalSource localSource) {
-  switch (settings.name) {
-    case Routes.onboarding:
-      return _resolveOnboardingOrHome(settings, localSource);
-    case Routes.home:
-    case Routes.cart:
-    case Routes.profile:
-      final tab = _tabFromRoute(settings.name);
-      return _materialRoute(MainScreen(initialTab: tab), settings);
-    case Routes.testInit:
-      return _materialRoute(const TestInitScreen(), settings);
-    case Routes.customMode:
-      return _materialRoute(const CustomModeScreen(), settings);
-    case Routes.universityMode:
-      return _materialRoute(const UniversityModeScreen(), settings);
-    case Routes.testResult:
-      return _materialRoute(const TestResultScreen(), settings);
-    default:
-      return _resolveOnboardingOrHome(settings, localSource);
-  }
-}
+Route<dynamic> _onGenerateRoute(RouteSettings settings, LocalSource localSource) => switch (settings.name) {
+  Routes.onboarding => _resolveOnboardingOrHome(settings, localSource),
+  Routes.home ||
+  Routes.cart ||
+  Routes.profile => _materialRoute(MainScreen(initialTab: _tabFromRoute(settings.name)), settings),
+  Routes.testInit => _materialRoute(const TestInitScreen(), settings),
+  Routes.customMode => _materialRoute(const CustomModeScreen(), settings),
+  Routes.universityMode => _materialRoute(const UniversityModeScreen(), settings),
+  Routes.testResult => _materialRoute(const TestResultScreen(), settings),
+  Routes.adminHome => _materialRoute(const AdminHomeScreen(), settings),
+  _ => _resolveOnboardingOrHome(settings, localSource),
+};
 
 MainTabsEnum _tabFromRoute(String? routeName) => switch (routeName) {
   Routes.cart => MainTabsEnum.cart,
