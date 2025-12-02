@@ -152,7 +152,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get testTotalTime1Hour => '1 soat';
 
   @override
-  String get correct => 'Toʻgʻri';
+  String get correct => 'To\'g\'ri';
 
   @override
   String get wrong => 'Xato';

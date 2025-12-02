@@ -36,7 +36,7 @@ class TestResultScreen extends StatelessWidget {
         Dimension.hBox16,
 
         Text(
-          'Akademik koʻnikmalar',
+          'Akademik ko\'nikmalar',
           maxLines: 1,
           overflow: .ellipsis,
           style: context.textTheme.sfProW500s22.copyWith(color: context.color.black),
