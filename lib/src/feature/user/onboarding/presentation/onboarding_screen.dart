@@ -74,7 +74,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 
   Future<void> _completeOnboarding() async {
     await context.localSource.setOnboardingCompleted(true);
-    if (!context.mounted) return;
+    if (!mounted) return;
     await Navigator.of(context).pushNamedAndRemoveUntil(Routes.home, (route) => false);
   }
 

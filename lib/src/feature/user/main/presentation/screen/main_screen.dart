@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../common/constant/gen/assets.gen.dart';
-import '../../../../../common/enum/bloc_status_enum.dart';
 import '../../../../../common/extension/context_extension.dart';
 import '../../../../../common/util/dimension.dart';
-import '../../../../auth/bloc/auth_bloc.dart';
 import '../../../cart/presentation/screen/cart_screen.dart';
 import '../../../home/presentation/screen/home_screen.dart';
 import '../../../profile/presentation/screen/profile_screen.dart';
