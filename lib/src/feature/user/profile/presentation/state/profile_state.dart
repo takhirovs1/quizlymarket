@@ -1,40 +1,20 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../common/extension/context_extension.dart';
 import '../../../../../common/model/language_option.dart';
 import '../../../../../common/util/dimension.dart';
 import '../../../../../common/widget/custom_bottom_sheet.dart';
 import '../../../../../common/widget/custom_tile.dart';
-import '../../../../../feature/auth/bloc/auth_bloc.dart';
-import '../../../../../feature/auth/model/user_model.dart';
-import '../../data/models/telegram_user_model.dart';
 import '../screen/profile_screen.dart';
 
 abstract class ProfileState extends State<ProfileScreen> {
-  late final ProfileUserData profileData;
   late String currentLocale;
-
-  @override
-  void initState() {
-    super.initState();
-    profileData = ProfileUserData.fromUserModel(_resolveUserModel());
-  }
 
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
     currentLocale = Localizations.localeOf(context).languageCode;
-  }
-
-  UserModel _resolveUserModel() {
-    try {
-      final authBloc = context.read<AuthBloc>();
-      return authBloc.state.user ?? MockUsers.activeUser;
-    } on Object catch (_) {
-      return MockUsers.activeUser;
-    }
   }
 
   String formatVersion() {
@@ -69,6 +49,10 @@ abstract class ProfileState extends State<ProfileScreen> {
         CupertinoDialogAction(
           isDestructiveAction: true,
           onPressed: () {
+            context.localSource.clearAll().then((_) {
+              if (mounted) context.telegramWebApp.close();
+            });
+            Navigator.of(context).pop();
             context.telegramWebApp.hapticFeedback.notificationOccurred(.error);
             context.localSource.clearAll().then((_) => context.telegramWebApp.close());
             context.pop();

@@ -41,12 +41,16 @@ class _ProfileScreenState extends ProfileState {
                   Dimension.hBox64,
                   ProfileHeader(
                     photoUrl: '',
-                    fullName: profileData.fullName,
-                    id: profileData.id,
-                    username: profileData.username ?? '',
+                    fullName: context.user?.name ?? '',
+                    id: context.user?.telegramID.toString() ?? '',
+                    username: context.user?.telegramUsername ?? '',
                   ),
                   Dimension.hBox16,
-                  BankCardWidget(fullName: profileData.fullName, balance: profileData.balance, id: profileData.id),
+                  BankCardWidget(
+                    fullName: context.user?.name ?? '',
+                    balance: context.user?.balance ?? .0,
+                    id: context.user?.telegramID.toString() ?? '',
+                  ),
                   Dimension.hBox16,
                   Material(
                     color: context.color.white,

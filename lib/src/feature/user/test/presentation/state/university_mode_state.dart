@@ -18,9 +18,9 @@ abstract class UniversityModeState extends State<UniversityModeScreen> {
   Duration remaining = Duration.zero;
   Timer? timer;
   Stopwatch totalTimer = Stopwatch();
-  var correctCount = 0;
-  var incorrectCount = 0;
-  var unselectedCount = 0;
+  int correctCount = 0;
+  int incorrectCount = 0;
+  int unselectedCount = 0;
 
   Color getColor(int i, TestState state, {bool? isBg, bool? isText}) {
     final isCorrect = state.tests[state.currentQuestionIndex].answers[i - 1].isCorrect;

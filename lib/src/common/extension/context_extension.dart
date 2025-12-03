@@ -1,9 +1,12 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:local_source/local_source.dart';
 import 'package:telegram_web_app/telegram_web_app.dart';
 
+import '../../feature/auth/bloc/auth_bloc.dart';
+import '../../feature/auth/model/user_model.dart';
 import '../dependencies/model/app_metadata.dart';
 import '../dependencies/model/dependencies.dart';
 import '../dependencies/widget/dependencies_scope.dart';
@@ -33,6 +36,8 @@ extension BuildContextX on BuildContext {
   LocalSource get localSource => dependencies.localeSource;
   AppMetadata get appMetadata => dependencies.metadata;
 
+  UserModel? get user => read<AuthBloc>().state.user;
+
   void setLocale(Locale localization) {
     final settingsBloc = dependencies.settingsBloc;
     final currentSettings = settingsBloc.state.settings;
@@ -48,6 +53,7 @@ extension BuildContextX on BuildContext {
 
 extension TelegramWebAppX on BuildContext {
   TelegramWebApp get telegramWebApp => TelegramWebApp.instance;
+  WebAppUser? get telegramUser => telegramWebApp.initDataUnsafe?.user;
 
   void close() => telegramWebApp.close();
   void ready() => telegramWebApp.ready();
