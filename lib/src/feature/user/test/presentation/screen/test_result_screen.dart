@@ -22,7 +22,8 @@ class _TestResultScreenState extends State<TestResultScreen> {
   String format(Duration duration) {
     final totalMinutes = duration.inMinutes;
     final normalizedMinutes = totalMinutes < 0 ? 0 : totalMinutes;
-    return context.l10n.totalTime(normalizedMinutes);
+    final normalizedSeconds = duration.inSeconds.remainder(60).abs();
+    return context.l10n.totalTime(normalizedMinutes, normalizedSeconds);
   }
 
   @override
