@@ -427,6 +427,16 @@ class GeneratedLocalization {
     );
   }
 
+  /// `Добавить в домашний экран`
+  String get addToHomeScreenApp {
+    return Intl.message(
+      'Добавить в домашний экран',
+      name: 'addToHomeScreenApp',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `30 минут`
   String get testTotalTime30Min {
     return Intl.message(

@@ -27,6 +27,9 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+    "addToHomeScreenApp": MessageLookupByLibrary.simpleMessage(
+      "Добавить в домашний экран",
+    ),
     "allOfTimeTest": MessageLookupByLibrary.simpleMessage("Общее время теста:"),
     "appConfiguration": MessageLookupByLibrary.simpleMessage(
       "Настройка приложения",

@@ -71,7 +71,7 @@
       }
     }
   },
-
+  "addToHomeScreenApp": "Add to home screen",
   "testTotalTime30Min": "30 min",
   "testTotalTime1Hour": "1 hour",
   "finish": "Finish",

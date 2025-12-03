@@ -22,7 +22,7 @@ RouteFactory buildRouteFactory(LocalSource localSource, UserRole? role) =>
 
 Route<dynamic> _onGenerateRoute(RouteSettings settings, LocalSource localSource, UserRole? role) {
   // TODO: Shu joydan userga qarab page'ga ajratish kerak
-  final userRole = role ?? MockUsers.activeRole;
+  final userRole = role ?? UserRole.user;
   return switch (settings.name) {
     Routes.onboarding => _resolveOnboardingOrHome(settings, localSource),
     Routes.home ||
@@ -54,7 +54,7 @@ MaterialPageRoute<dynamic> _materialRoute(Widget child, RouteSettings settings) 
 
 Route<dynamic> _resolveOnboardingOrHome(RouteSettings settings, LocalSource localSource) =>
     localSource.onboardingCompleted
-    ? _materialRoute(_homeScreenForRole(MockUsers.activeRole, Routes.home), settings)
+    ? _materialRoute(_homeScreenForRole(UserRole.user, Routes.home), settings)
     : _materialRoute(const OnboardingScreen(), settings);
 
 Widget _homeScreenForRole(UserRole role, String? routeName) =>

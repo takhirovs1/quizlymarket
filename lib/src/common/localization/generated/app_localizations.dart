@@ -373,6 +373,12 @@ abstract class AppLocalizations {
   /// **'{count} pcs'**
   String intToCount(int count);
 
+  /// No description provided for @addToHomeScreenApp.
+  ///
+  /// In en, this message translates to:
+  /// **'Add to home screen'**
+  String get addToHomeScreenApp;
+
   /// No description provided for @testTotalTime30Min.
   ///
   /// In en, this message translates to:

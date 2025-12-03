@@ -151,6 +151,9 @@ class AppLocalizationsRu extends AppLocalizations {
   }
 
   @override
+  String get addToHomeScreenApp => 'Добавить в домашний экран';
+
+  @override
   String get testTotalTime30Min => '30 минут';
 
   @override
