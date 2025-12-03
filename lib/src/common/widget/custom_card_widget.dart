@@ -33,7 +33,30 @@ class CustomCardWidget extends StatefulWidget {
   final String studyYears;
 }
 
-class _CustomCardWidgetState extends State<CustomCardWidget> {
+class _CustomCardWidgetState extends State<CustomCardWidget> with SingleTickerProviderStateMixin {
+  late final AnimationController _linkCopyController;
+  bool _isCopyAnimationReady = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _linkCopyController = AnimationController(vsync: this);
+  }
+
+  @override
+  void dispose() {
+    _linkCopyController.dispose();
+    super.dispose();
+  }
+
+  void _replayCopyAnimation() {
+    if (!_isCopyAnimationReady) return;
+    if (_linkCopyController.isAnimating) {
+      _linkCopyController.stop();
+    }
+    _linkCopyController.forward(from: 0);
+  }
+
   @override
   Widget build(BuildContext context) => Padding(
     padding: Dimension.pH16,
@@ -103,8 +126,20 @@ class _CustomCardWidgetState extends State<CustomCardWidget> {
                 Row(
                   children: [
                     IconButton(
-                      onPressed: () {},
-                      icon: Lottie.asset(Assets.lottie.linkcopy, width: 24, height: 24, repeat: false),
+                      onPressed: _replayCopyAnimation,
+                      icon: Lottie.asset(
+                        Assets.lottie.linkcopy,
+                        width: 24,
+                        height: 24,
+                        repeat: false,
+                        controller: _linkCopyController,
+                        onLoaded: (composition) {
+                          _linkCopyController
+                            ..duration = composition.duration
+                            ..forward(from: 0);
+                          _isCopyAnimationReady = true;
+                        },
+                      ),
                     ),
                     Dimension.wBox4,
                     FilledButton(

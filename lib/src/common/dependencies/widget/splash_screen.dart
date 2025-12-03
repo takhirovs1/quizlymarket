@@ -38,12 +38,22 @@ class _SplashScreenState extends SplashController {
         textDirection: .ltr,
         child: Scaffold(
           backgroundColor: const Color(0xff1C58F2),
-          bottomNavigationBar: const Padding(
-            padding: Dimension.pBottom32,
-            child: CircularProgressIndicator.adaptive(strokeWidth: 2),
-          ),
-          body: Center(
-            child: SizedBox(width: context.width * 0.5, height: context.width * 0.5, child: _buildLogo()),
+          body: Column(
+            children: [
+              Expanded(
+                child: Center(
+                  child: SizedBox(width: context.width * 0.5, height: context.width * 0.5, child: _buildLogo()),
+                ),
+              ),
+              const Padding(
+                padding: Dimension.pBottom32,
+                child: SizedBox(
+                  width: 24,
+                  height: 24,
+                  child: CircularProgressIndicator.adaptive(strokeWidth: 2, backgroundColor: Colors.white,),
+                ),
+              ),
+            ],
           ),
         ),
       ),

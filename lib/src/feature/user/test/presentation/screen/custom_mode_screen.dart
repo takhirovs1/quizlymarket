@@ -50,9 +50,13 @@ class _CustomModeScreenState extends CustomModeState {
                     backgroundColor: .all(context.color.transparent),
                     side: .all(BorderSide(color: context.color.background)),
                     padding: .all(Dimension.pH12V8),
+                    overlayColor: .all(context.color.gray.withValues(alpha: 0.1)),
                   ),
                   onPressed: () => context.goNamed(Routes.testResult),
-                  child: Text('Tugatish', style: context.textTheme.sfProW500s16.copyWith(color: context.color.gray)),
+                  child: Text(
+                    context.l10n.finish,
+                    style: context.textTheme.sfProW500s16.copyWith(color: context.color.gray),
+                  ),
                 ),
               ],
             ),
@@ -60,7 +64,7 @@ class _CustomModeScreenState extends CustomModeState {
             Row(
               mainAxisAlignment: .spaceBetween,
               children: [
-                Text('Savol:', style: context.textTheme.sfProW400s14.copyWith(color: context.color.gray)),
+                Text(context.l10n.question, style: context.textTheme.sfProW400s14.copyWith(color: context.color.gray)),
                 Text(
                   '${state.currentQuestionIndex + 1}/${state.tests.length}',
                   style: context.textTheme.sfProW400s16.copyWith(color: context.color.gray),
