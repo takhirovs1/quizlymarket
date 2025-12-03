@@ -37,31 +37,28 @@ class _AppState extends State<App> {
     final localSource = context.localSource;
     final initialRoute = localSource.onboardingCompleted ? Routes.home : Routes.onboarding;
 
-    return BlocProvider(
-      create: (context) => AuthBloc(repository: context.dependencies.repository.authRepository),
-      child: MaterialApp(
-        navigatorKey: rootNavigatorKey,
-        debugShowCheckedModeBanner: false,
-        title: 'Quizly Market',
-        restorationScopeId: 'material_app',
-        onGenerateTitle: (context) => context.l10n.title,
-        initialRoute: initialRoute,
-        onGenerateRoute: buildRouteFactory(localSource),
-        supportedLocales: Localization.supportedLocales,
-        localizationsDelegates: Localization.delegates,
-        locale: SettingsScope.settingsOf(context).localization,
-        theme: SettingsScope.settingsOf(context).appTheme,
-        builder: (context, child) => MediaQuery(
-          data: MediaQuery.of(context).copyWith(textScaler: TextScaler.noScaling),
-          child: KeyboardDismiss(
-            child: ValueListenableBuilder<bool>(
-              valueListenable: App.thunderEnabledNotifier,
-              builder: (context, thunderEnabled, _) => Thunder(
-                dio: context.dependencies.dio.all,
-                color: context.color.success,
-                enabled: false,
-                child: child ?? const SizedBox.shrink(),
-              ),
+    return MaterialApp(
+      navigatorKey: rootNavigatorKey,
+      debugShowCheckedModeBanner: false,
+      title: 'Quizly Market',
+      restorationScopeId: 'material_app',
+      onGenerateTitle: (context) => context.l10n.title,
+      initialRoute: initialRoute,
+      onGenerateRoute: buildRouteFactory(localSource, context.read<AuthBloc>().state.user?.role),
+      supportedLocales: Localization.supportedLocales,
+      localizationsDelegates: Localization.delegates,
+      locale: SettingsScope.settingsOf(context).localization,
+      theme: SettingsScope.settingsOf(context).appTheme,
+      builder: (context, child) => MediaQuery(
+        data: MediaQuery.of(context).copyWith(textScaler: TextScaler.noScaling),
+        child: KeyboardDismiss(
+          child: ValueListenableBuilder<bool>(
+            valueListenable: App.thunderEnabledNotifier,
+            builder: (context, thunderEnabled, _) => Thunder(
+              dio: context.dependencies.dio.all,
+              color: context.color.success,
+              enabled: false,
+              child: child ?? const SizedBox.shrink(),
             ),
           ),
         ),
