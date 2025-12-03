@@ -6,7 +6,7 @@ import 'package:local_source/local_source.dart';
 import 'package:meta/meta.dart';
 
 import '../../../feature/auth/repository/auth_repository.dart';
-import '../../../feature/profile/presentation/bloc/settings_bloc.dart';
+import '../../../feature/user/profile/presentation/bloc/settings_bloc.dart';
 import 'app_metadata.dart';
 
 /// {@template dependencies}

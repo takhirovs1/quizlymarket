@@ -1,43 +1,41 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:local_source/local_source.dart';
 
-import '../../feature/main/data/model/main_tabs_enum.dart';
-import '../../feature/main/presentation/screen/main_screen.dart';
-import '../../feature/onboarding/presentation/onboarding_screen.dart';
-import '../../feature/test/presentation/screen/custom_mode_screen.dart';
-import '../../feature/test/presentation/screen/test_init_screen.dart';
-import '../../feature/test/presentation/screen/test_result_screen.dart';
-import '../../feature/test/presentation/screen/university_mode_screen.dart';
-import '../extension/context_extension.dart';
+import '../../feature/admin/home/presentation/screen/admin_home_screen.dart';
+import '../../feature/admin/main/presentation/screen/admin_main_screen.dart';
+import '../../feature/auth/model/user_model.dart';
+import '../../feature/user/main/data/model/main_tabs_enum.dart';
+import '../../feature/user/main/presentation/screen/main_screen.dart';
+import '../../feature/user/onboarding/presentation/onboarding_screen.dart';
+import '../../feature/user/test/presentation/bloc/test_bloc.dart';
+import '../../feature/user/test/presentation/screen/custom_mode_screen.dart';
+import '../../feature/user/test/presentation/screen/test_init_screen.dart';
+import '../../feature/user/test/presentation/screen/test_result_screen.dart';
+import '../../feature/user/test/presentation/screen/university_mode_screen.dart';
 import 'route_arguments.dart';
 
 final GlobalKey<NavigatorState> rootNavigatorKey = GlobalKey<NavigatorState>();
 
-Route<dynamic> onGenerateRoute(RouteSettings settings) {
-  switch (settings.name) {
-    case Routes.onboarding:
-      {
-        if (!rootNavigatorKey.currentContext!.localSource.onboardingCompleted) {
-          return _materialRoute(const OnboardingScreen(), settings);
-        }
-        return _materialRoute(const MainScreen(initialTab: MainTabsEnum.home), settings);
-      }
+RouteFactory buildRouteFactory(LocalSource localSource) =>
+    (settings) => _onGenerateRoute(settings, localSource);
 
-    case Routes.home:
-    case Routes.cart:
-    case Routes.profile:
-      final tab = _tabFromRoute(settings.name);
-      return _materialRoute(MainScreen(initialTab: tab), settings);
-    case Routes.testInit:
-      return _materialRoute(const TestInitScreen(), settings);
-    case Routes.customMode:
-      return _materialRoute(const CustomModeScreen(), settings);
-    case Routes.universityMode:
-      return _materialRoute(const UniversityModeScreen(), settings);
-    case Routes.testResult:
-      return _materialRoute(const TestResultScreen(), settings);
-    default:
-      return _materialRoute(const OnboardingScreen(), settings);
-  }
+Route<dynamic> _onGenerateRoute(RouteSettings settings, LocalSource localSource) {
+  final role = MockUsers.activeRole;
+
+  return switch (settings.name) {
+    Routes.onboarding => _resolveOnboardingOrHome(settings, localSource),
+    Routes.home || Routes.cart || Routes.profile => _materialRoute(_homeScreenForRole(role, settings.name), settings),
+    Routes.testInit => _materialRoute(const TestInitScreen(), settings),
+    Routes.customMode => _materialRoute(
+      BlocProvider(create: (context) => TestBloc(), child: const CustomModeScreen()),
+      settings,
+    ),
+    Routes.universityMode => _materialRoute(const UniversityModeScreen(), settings),
+    Routes.testResult => _materialRoute(const TestResultScreen(), settings),
+    Routes.adminHome => _materialRoute(const AdminHomeScreen(), settings),
+    _ => _resolveOnboardingOrHome(settings, localSource),
+  };
 }
 
 MainTabsEnum _tabFromRoute(String? routeName) => switch (routeName) {
@@ -48,3 +46,11 @@ MainTabsEnum _tabFromRoute(String? routeName) => switch (routeName) {
 
 MaterialPageRoute<dynamic> _materialRoute(Widget child, RouteSettings settings) =>
     MaterialPageRoute<dynamic>(settings: settings, builder: (_) => child);
+
+Route<dynamic> _resolveOnboardingOrHome(RouteSettings settings, LocalSource localSource) =>
+    localSource.onboardingCompleted
+    ? _materialRoute(_homeScreenForRole(MockUsers.activeRole, Routes.home), settings)
+    : _materialRoute(const OnboardingScreen(), settings);
+
+Widget _homeScreenForRole(UserRole role, String? routeName) =>
+    role == UserRole.admin ? const AdminMainScreen() : MainScreen(initialTab: _tabFromRoute(routeName));

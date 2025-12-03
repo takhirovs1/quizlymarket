@@ -4,7 +4,9 @@ import 'package:flutter_svg/svg.dart';
 import 'package:vector_graphics/vector_graphics.dart';
 
 import '../../constant/gen/fonts.gen.dart';
+import '../../extension/context_extension.dart';
 import '../../theme/theme_data.dart';
+import '../../util/dimension.dart';
 
 /// {@template splash_screen}
 /// Splash screen widget.
@@ -36,8 +38,22 @@ class _SplashScreenState extends SplashController {
         textDirection: .ltr,
         child: Scaffold(
           backgroundColor: const Color(0xff1C58F2),
-          body: Center(
-            child: Transform.scale(scale: widget.logo?.scale ?? .5, child: _buildLogo()),
+          body: Column(
+            children: [
+              Expanded(
+                child: Center(
+                  child: SizedBox(width: context.width * 0.5, height: context.width * 0.5, child: _buildLogo()),
+                ),
+              ),
+              const Padding(
+                padding: Dimension.pBottom32,
+                child: SizedBox(
+                  width: 24,
+                  height: 24,
+                  child: CircularProgressIndicator.adaptive(strokeWidth: 2, backgroundColor: Colors.white,),
+                ),
+              ),
+            ],
           ),
         ),
       ),

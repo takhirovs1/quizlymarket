@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
@@ -32,7 +33,30 @@ class CustomCardWidget extends StatefulWidget {
   final String studyYears;
 }
 
-class _CustomCardWidgetState extends State<CustomCardWidget> {
+class _CustomCardWidgetState extends State<CustomCardWidget> with SingleTickerProviderStateMixin {
+  late final AnimationController _linkCopyController;
+  bool _isCopyAnimationReady = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _linkCopyController = AnimationController(vsync: this);
+  }
+
+  @override
+  void dispose() {
+    _linkCopyController.dispose();
+    super.dispose();
+  }
+
+  void _replayCopyAnimation() {
+    if (!_isCopyAnimationReady) return;
+    if (_linkCopyController.isAnimating) {
+      _linkCopyController.stop();
+    }
+    _linkCopyController.forward(from: 0);
+  }
+
   @override
   Widget build(BuildContext context) => Padding(
     padding: Dimension.pH16,
@@ -90,20 +114,43 @@ class _CustomCardWidgetState extends State<CustomCardWidget> {
                       Lottie.asset(Assets.lottie.money, width: 24, height: 24, repeat: false),
                       Text(
                         widget.price?.toUZSString() ?? '',
-                        style: context.textTheme.sfProW500s14.copyWith(color: context.color.primary),
+                        style: context.textTheme.sfProW500s14.copyWith(
+                          color: context.color.primary,
+                          fontWeight: FontWeight.w700,
+                        ),
                       ),
                     ],
                   ),
                   false => const SizedBox.shrink(),
                 },
-
-                FilledButton(
-                  style: FilledButton.styleFrom(padding: Dimension.pH12V8, backgroundColor: context.color.primary),
-                  onPressed: widget.onPressed,
-                  child: Text(
-                    widget.buttonText,
-                    style: context.textTheme.sfProW500s14.copyWith(color: context.color.white),
-                  ),
+                Row(
+                  children: [
+                    IconButton(
+                      onPressed: _replayCopyAnimation,
+                      icon: Lottie.asset(
+                        Assets.lottie.linkcopy,
+                        width: 24,
+                        height: 24,
+                        repeat: false,
+                        controller: _linkCopyController,
+                        onLoaded: (composition) {
+                          _linkCopyController
+                            ..duration = composition.duration
+                            ..forward(from: 0);
+                          _isCopyAnimationReady = true;
+                        },
+                      ),
+                    ),
+                    Dimension.wBox4,
+                    FilledButton(
+                      style: FilledButton.styleFrom(padding: Dimension.pH12V8, backgroundColor: context.color.primary),
+                      onPressed: widget.onPressed,
+                      child: Text(
+                        widget.buttonText,
+                        style: context.textTheme.sfProW500s14.copyWith(color: context.color.white),
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),

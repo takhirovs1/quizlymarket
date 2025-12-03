@@ -8,7 +8,7 @@ import 'src/common/dependencies/widget/dependencies_scope.dart';
 import 'src/common/dependencies/widget/splash_screen.dart';
 import 'src/common/util/helpers.dart';
 import 'src/common/util/logger.dart';
-import 'src/feature/profile/presentation/state/settings_scope.dart';
+import 'src/feature/user/profile/presentation/state/settings_scope.dart';
 
 @pragma('vm:entry-point')
 void main([List<String>? args]) => runZonedGuarded<Future<void>>(() async {

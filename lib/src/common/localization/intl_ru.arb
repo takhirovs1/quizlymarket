@@ -58,9 +58,21 @@
     }
   },
 
+  "intToCount": "{count} шт.",
+  "@intToCount": {
+    "placeholders": {
+      "count": {
+        "type": "int",
+        "example": "10"
+      }
+    }
+  },
   "testTotalTime30Min": "30 минут",
   "testTotalTime1Hour": "1 час",
-
+  "finish": "Завершить",
+  "question": "Вопрос:",
+  "next": "Следующий",
+  "exit": "Выход",
 "continueAction": "Продолжить",
   "correct": "Правильно",
   "wrong": "Неправильно",

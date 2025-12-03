@@ -91,11 +91,7 @@ abstract class AppLocalizations {
   ];
 
   /// A list of this localizations delegate's supported locales.
-  static const List<Locale> supportedLocales = <Locale>[
-    Locale('en'),
-    Locale('ru'),
-    Locale('uz')
-  ];
+  static const List<Locale> supportedLocales = <Locale>[Locale('en'), Locale('ru'), Locale('uz')];
 
   /// No description provided for @noInternetConnection.
   ///
@@ -367,6 +363,12 @@ abstract class AppLocalizations {
   /// **'25 questions will rotate out of {count}.'**
   String questionRangeHint(int count);
 
+  /// No description provided for @intToCount.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} pcs'**
+  String intToCount(int count);
+
   /// No description provided for @testTotalTime30Min.
   ///
   /// In en, this message translates to:
@@ -378,6 +380,30 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'1 hour'**
   String get testTotalTime1Hour;
+
+  /// No description provided for @finish.
+  ///
+  /// In en, this message translates to:
+  /// **'Finish'**
+  String get finish;
+
+  /// No description provided for @question.
+  ///
+  /// In en, this message translates to:
+  /// **'Question:'**
+  String get question;
+
+  /// No description provided for @next.
+  ///
+  /// In en, this message translates to:
+  /// **'Next'**
+  String get next;
+
+  /// No description provided for @exit.
+  ///
+  /// In en, this message translates to:
+  /// **'Exit'**
+  String get exit;
 
   /// No description provided for @correct.
   ///
@@ -426,19 +452,20 @@ class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> 
 }
 
 AppLocalizations lookupAppLocalizations(Locale locale) {
-
-
   // Lookup logic when only language code is specified.
   switch (locale.languageCode) {
-    case 'en': return AppLocalizationsEn();
-    case 'ru': return AppLocalizationsRu();
-    case 'uz': return AppLocalizationsUz();
+    case 'en':
+      return AppLocalizationsEn();
+    case 'ru':
+      return AppLocalizationsRu();
+    case 'uz':
+      return AppLocalizationsUz();
   }
 
   throw FlutterError(
     'AppLocalizations.delegate failed to load unsupported locale "$locale". This is likely '
     'an issue with the localizations generation tool. Please file an issue '
     'on GitHub with a reproducible sample app and the gen-l10n configuration '
-    'that was used.'
+    'that was used.',
   );
 }
