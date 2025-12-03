@@ -323,17 +323,45 @@ class GeneratedLocalization {
   }
 
   /// `{minutes} минута`
-  String totalTime(int minutes) {
+  String minutesDuration(int minutes) {
     return Intl.plural(
       minutes,
+      zero: '',
       one: '$minutes минута',
       few: '$minutes минуты',
       many: '$minutes минут',
       other: '$minutes минут',
-      name: 'totalTime',
+      name: 'minutesDuration',
       desc: '',
       args: [minutes],
     );
+  }
+
+  /// `{seconds} секунда`
+  String secondsDuration(int seconds) {
+    return Intl.plural(
+      seconds,
+      zero: '$seconds секунд',
+      one: '$seconds секунда',
+      few: '$seconds секунды',
+      many: '$seconds секунд',
+      other: '$seconds секунд',
+      name: 'secondsDuration',
+      desc: '',
+      args: [seconds],
+    );
+  }
+
+  /// `Количество минут и секунд`
+  String totalTime(int minutes, [int seconds = 0]) {
+    final buffer = StringBuffer();
+    if (minutes > 0) buffer.write(minutesDuration(minutes));
+    final shouldShowSeconds = seconds > 0 || minutes == 0;
+    if (shouldShowSeconds) {
+      if (buffer.isNotEmpty) buffer.write(' ');
+      buffer.write(secondsDuration(seconds));
+    }
+    return buffer.toString().trim();
   }
 
   /// `Добавить в домашний экран`
