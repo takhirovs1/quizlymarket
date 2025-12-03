@@ -157,6 +157,18 @@ class AppLocalizationsUz extends AppLocalizations {
   String get testTotalTime1Hour => '1 soat';
 
   @override
+  String get finish => 'Tugatish';
+
+  @override
+  String get question => 'Savol:';
+
+  @override
+  String get next => 'Keyingisi';
+
+  @override
+  String get exit => 'Chiqish';
+
+  @override
   String get correct => 'To\'g\'ri';
 
   @override

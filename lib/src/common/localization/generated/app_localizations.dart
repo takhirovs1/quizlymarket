@@ -381,6 +381,30 @@ abstract class AppLocalizations {
   /// **'1 hour'**
   String get testTotalTime1Hour;
 
+  /// No description provided for @finish.
+  ///
+  /// In en, this message translates to:
+  /// **'Finish'**
+  String get finish;
+
+  /// No description provided for @question.
+  ///
+  /// In en, this message translates to:
+  /// **'Question:'**
+  String get question;
+
+  /// No description provided for @next.
+  ///
+  /// In en, this message translates to:
+  /// **'Next'**
+  String get next;
+
+  /// No description provided for @exit.
+  ///
+  /// In en, this message translates to:
+  /// **'Exit'**
+  String get exit;
+
   /// No description provided for @correct.
   ///
   /// In en, this message translates to:

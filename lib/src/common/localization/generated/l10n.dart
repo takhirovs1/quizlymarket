@@ -332,6 +332,26 @@ class GeneratedLocalization {
     return Intl.message('1 час', name: 'testTotalTime1Hour', desc: '', args: []);
   }
 
+  /// `Завершить`
+  String get finish {
+    return Intl.message('Завершить', name: 'finish', desc: '', args: []);
+  }
+
+  /// `Вопрос:`
+  String get question {
+    return Intl.message('Вопрос:', name: 'question', desc: '', args: []);
+  }
+
+  /// `Следующий`
+  String get next {
+    return Intl.message('Следующий', name: 'next', desc: '', args: []);
+  }
+
+  /// `Выход`
+  String get exit {
+    return Intl.message('Выход', name: 'exit', desc: '', args: []);
+  }
+
   /// `Продолжить`
   String get continueAction {
     return Intl.message('Продолжить', name: 'continueAction', desc: '', args: []);

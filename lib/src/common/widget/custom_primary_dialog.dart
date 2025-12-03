@@ -22,9 +22,11 @@ class CustomPrimaryDialog extends StatelessWidget {
   Widget build(BuildContext context) => AlertDialog(
     backgroundColor: context.color.background,
     title: Column(
+      crossAxisAlignment: .center,
+      mainAxisAlignment: .center,
       spacing: 16,
       children: [
-        Assets.images.robot.image(width: context.width * 0.5, height: context.height * 0.4, fit: BoxFit.scaleDown),
+        Assets.images.robot.image(width: context.width * 0.4, height: context.width * 0.4, fit: BoxFit.scaleDown),
 
         // Dimension.hBox16,
         Text(

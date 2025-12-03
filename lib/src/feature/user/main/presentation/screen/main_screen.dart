@@ -79,23 +79,28 @@ class _MainScreenState extends MainState {
         body: IndexedStack(index: currentTab.index, children: _pages),
         bottomNavigationBar: Padding(
           padding: Dimension.pBottom10,
-          child: BottomNavigationBar(
-            currentIndex: currentTab.index,
-            onTap: onItemTapped,
-            enableFeedback: true,
-
-            type: .fixed,
-            backgroundColor: context.color.background,
-            selectedItemColor: context.color.primary,
-            unselectedItemColor: context.color.gray,
-            showSelectedLabels: false,
-            showUnselectedLabels: false,
-            elevation: 0,
-            items: [
-              _buildBottomItem(Assets.icons.home),
-              _buildBottomItem(Assets.icons.cart),
-              _buildBottomItem(Assets.icons.profile),
-            ],
+          child: DecoratedBox(
+            decoration: BoxDecoration(color: context.color.gray),
+            child: Padding(
+              padding: Dimension.pTop1,
+              child: BottomNavigationBar(
+                currentIndex: currentTab.index,
+                onTap: onItemTapped,
+                enableFeedback: true,
+                type: .fixed,
+                backgroundColor: context.color.background,
+                selectedItemColor: context.color.primary,
+                unselectedItemColor: context.color.gray,
+                showSelectedLabels: false,
+                showUnselectedLabels: false,
+                elevation: 0,
+                items: [
+                  _buildBottomItem(Assets.icons.home),
+                  _buildBottomItem(Assets.icons.cart),
+                  _buildBottomItem(Assets.icons.profile),
+                ],
+              ),
+            ),
           ),
         ),
       ),

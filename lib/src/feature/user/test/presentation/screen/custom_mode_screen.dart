@@ -97,6 +97,83 @@ class _CustomModeScreenState extends CustomModeState {
                         child: Text(
                           test.answers[i - 1].answer,
                           style: context.textTheme.sfProW500s14.copyWith(color: getColor(i, state, isText: true)),
+    body: ListView(
+      padding: Dimension.pAll16,
+      children: [
+        Row(
+          mainAxisAlignment: .spaceBetween,
+          children: [
+            Expanded(
+              child: Text('Akademik ko\'nikmalar', style: context.textTheme.sfProW500s22, overflow: .ellipsis),
+            ),
+            OutlinedButton(
+              style: ButtonStyle(
+                backgroundColor: .all(context.color.transparent),
+                side: .all(BorderSide(color: context.color.background)),
+                padding: .all(Dimension.pH12V8),
+                shadowColor: .all(context.color.primary),
+                overlayColor: .all(context.color.gray.withValues(alpha: 0.1)),
+              ),
+              onPressed: () => context.goReplacementNamed(Routes.testResult),
+              child: Text(
+                context.l10n.finish,
+                style: context.textTheme.sfProW500s16.copyWith(color: context.color.gray),
+              ),
+            ),
+          ],
+        ),
+        Dimension.hBox20,
+        Row(
+          mainAxisAlignment: .spaceBetween,
+          children: [
+            Text(context.l10n.question, style: context.textTheme.sfProW400s14.copyWith(color: context.color.gray)),
+            Text('67/100', style: context.textTheme.sfProW400s14.copyWith(color: context.color.gray)),
+          ],
+        ),
+        Dimension.hBox14,
+        Text(
+          'Касбий компетенциялар қандай ҳолларда иш жойида муваффақиятга эришишга ёрдам беради?',
+          style: context.textTheme.sfProW500s18,
+        ),
+        Dimension.hBox32,
+        ValueListenableBuilder(
+          valueListenable: testResult,
+          builder: (context, value, child) => Column(
+            children: [
+              for (int i = 1; i <= 4; i++) ...[
+                RadioGroup(
+                  onChanged: (_) => testResult.value = i,
+                  groupValue: testResult.value,
+                  child: Row(
+                    crossAxisAlignment: .center,
+                    children: [
+                      Radio(
+                        value: i,
+                        backgroundColor: .all(context.color.transparent),
+                        activeColor: context.color.primary,
+                        visualDensity: .adaptivePlatformDensity,
+                        side: BorderSide(width: 1, color: context.color.primary),
+                        overlayColor: .all(context.color.transparent),
+                      ),
+                      GestureDetector(
+                        onTap: () => testResult.value = i,
+                        child: AnimatedContainer(
+                          duration: const Duration(milliseconds: 180),
+                          padding: Dimension.pH12V6,
+                          decoration: BoxDecoration(
+                            color: value == i ? context.color.primary.withValues(alpha: 0.1) : context.color.white,
+                            borderRadius: Dimension.rAll8,
+                            border: .all(
+                              color: value == i ? context.color.primary : context.color.outline.withValues(alpha: 0.6),
+                            ),
+                          ),
+                          alignment: .center,
+                          child: Text(
+                            'Оммавий ахборот воситалари орқали ёритиш',
+                            style: context.textTheme.sfProW500s14.copyWith(
+                              color: value == i ? context.color.primary : context.color.gray,
+                            ),
+                          ),
                         ),
                       ),
                     ),
@@ -122,6 +199,7 @@ class _CustomModeScreenState extends CustomModeState {
         },
         rightText: 'Next',
       ),
+      child: CustomButton(onRightPressed: () {}, rightText: context.l10n.next),
     ),
   );
 }

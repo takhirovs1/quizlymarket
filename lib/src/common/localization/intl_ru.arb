@@ -69,7 +69,10 @@
   },
   "testTotalTime30Min": "30 минут",
   "testTotalTime1Hour": "1 час",
-
+  "finish": "Завершить",
+  "question": "Вопрос:",
+  "next": "Следующий",
+  "exit": "Выход",
 "continueAction": "Продолжить",
   "correct": "Правильно",
   "wrong": "Неправильно",

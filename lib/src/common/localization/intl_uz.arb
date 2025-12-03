@@ -69,7 +69,10 @@
   },
   "testTotalTime30Min": "30 daqiqa",
   "testTotalTime1Hour": "1 soat",
-
+  "finish": "Tugatish",
+  "question": "Savol:",
+  "next": "Keyingisi",
+  "exit": "Chiqish",
   "correct": "To'g'ri",
   "wrong": "Xato",
   "skipped": "Tashlab ketilgan",
