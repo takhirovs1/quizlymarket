@@ -10,7 +10,7 @@ import '../screen/custom_mode_screen.dart';
 abstract class CustomModeState extends State<CustomModeScreen> {
   late final TestBloc bloc;
   late final ValueNotifier<int> testResult;
-  bool isSelected = false;
+  late final ValueNotifier<bool> isSelected;
   Duration remaining = Duration.zero;
   Timer? timer;
 
@@ -26,7 +26,10 @@ abstract class CustomModeState extends State<CustomModeScreen> {
   }
 
   void startTimer() {
+    final args = ModalRoute.of(context)?.settings.arguments as CustomTestSettings?;
+    setState(() => remaining = args?.questionTime.duration ?? const Duration(minutes: 30));
     timer?.cancel();
+    timer = null;
     if (remaining.inSeconds <= 0) return;
     timer = Timer.periodic(const Duration(seconds: 1), (timer) {
       if (!mounted) return;
@@ -51,17 +54,15 @@ abstract class CustomModeState extends State<CustomModeScreen> {
     super.initState();
     bloc = TestBloc();
     testResult = ValueNotifier(0);
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      final args = ModalRoute.of(context)?.settings.arguments as CustomTestSettings?;
-      setState(() => remaining = args?.questionTime.duration ?? const Duration(minutes: 30));
-      startTimer();
-    });
+    isSelected = ValueNotifier(false);
+    WidgetsBinding.instance.addPostFrameCallback((_) => startTimer());
   }
 
   @override
   void dispose() {
     bloc.close();
     testResult.dispose();
+    isSelected.dispose();
     timer?.cancel();
     super.dispose();
   }

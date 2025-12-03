@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -19,26 +17,26 @@ class CustomModeScreen extends StatefulWidget {
 
 class _CustomModeScreenState extends CustomModeState {
   @override
-  Widget build(BuildContext context) => Scaffold(
-    backgroundColor: context.color.white,
-    appBar: AppBar(
-      backgroundColor: context.color.primary,
-      automaticallyImplyLeading: false,
-      scrolledUnderElevation: 0,
-      elevation: 0,
-      toolbarHeight: context.telegramWebApp.safeAreaInset.top + 56,
-      surfaceTintColor: context.color.transparent,
-      title: Column(
-        children: [
-          SizedBox(height: context.telegramWebApp.safeAreaInset.top.toDouble()),
-          Text(format(remaining), style: context.textTheme.nunitoW600s24.copyWith(color: context.color.white)),
-        ],
-      ),
-    ),
-    body: BlocBuilder<TestBloc, TestState>(
-      builder: (context, state) {
-        final test = state.tests[state.currentQuestionIndex];
-        return ListView(
+  Widget build(BuildContext context) => BlocBuilder<TestBloc, TestState>(
+    builder: (context, state) {
+      final test = state.tests[state.currentQuestionIndex];
+      return Scaffold(
+        backgroundColor: context.color.white,
+        appBar: AppBar(
+          backgroundColor: context.color.primary,
+          automaticallyImplyLeading: false,
+          scrolledUnderElevation: 0,
+          elevation: 0,
+          toolbarHeight: context.telegramWebApp.safeAreaInset.top + 56,
+          surfaceTintColor: context.color.transparent,
+          title: Column(
+            children: [
+              SizedBox(height: context.telegramWebApp.safeAreaInset.top.toDouble()),
+              Text(format(remaining), style: context.textTheme.nunitoW600s24.copyWith(color: context.color.white)),
+            ],
+          ),
+        ),
+        body: ListView(
           padding: Dimension.pAll16,
           children: [
             Row(
@@ -65,12 +63,12 @@ class _CustomModeScreenState extends CustomModeState {
                 Text('Savol:', style: context.textTheme.sfProW400s14.copyWith(color: context.color.gray)),
                 Text(
                   '${state.currentQuestionIndex + 1}/${state.tests.length}',
-                  style: context.textTheme.sfProW400s14.copyWith(color: context.color.gray),
+                  style: context.textTheme.sfProW400s16.copyWith(color: context.color.gray),
                 ),
               ],
             ),
             Dimension.hBox14,
-            Text(test.question, style: context.textTheme.sfProW500s18),
+            Text(test.question, style: context.textTheme.sfProW500s20),
             Dimension.hBox32,
             ValueListenableBuilder(
               valueListenable: testResult,
@@ -79,10 +77,10 @@ class _CustomModeScreenState extends CustomModeState {
                   for (int i = 1; i <= test.answers.length; i++) ...[
                     GestureDetector(
                       onTap: () {
-                        if (!isSelected) {
+                        if (!isSelected.value) {
                           testResult.value = i;
                           context.read<TestBloc>().add(const TestAnswerEvent());
-                          isSelected = true;
+                          isSelected.value = true;
                         }
                       },
                       child: AnimatedContainer(
@@ -96,7 +94,7 @@ class _CustomModeScreenState extends CustomModeState {
                         alignment: .topLeft,
                         child: Text(
                           test.answers[i - 1].answer,
-                          style: context.textTheme.sfProW500s14.copyWith(color: getColor(i, state, isText: true)),
+                          style: context.textTheme.sfProW500s16.copyWith(color: getColor(i, state, isText: true)),
                         ),
                       ),
                     ),
@@ -106,22 +104,27 @@ class _CustomModeScreenState extends CustomModeState {
               ),
             ),
           ],
-        );
-      },
-    ),
-    bottomNavigationBar: Padding(
-      padding: Dimension.pAll16,
-      child: CustomButton(
-        onRightPressed: () {
-          if (isSelected) {
-            testResult.value = 0;
-            isSelected = false;
-            log('clear test');
-            context.read<TestBloc>().add(const ClearTestEvent());
-          }
-        },
-        rightText: 'Next',
-      ),
-    ),
+        ),
+        bottomNavigationBar: Padding(
+          padding: Dimension.pAll16,
+          child: ValueListenableBuilder(
+            valueListenable: isSelected,
+            builder: (context, value, child) => CustomButton(
+              rightButtonType: value ? .active : .disabled,
+              onRightPressed: () {
+                if (value) {
+                  testResult.value = 0;
+                  isSelected.value = false;
+                  startTimer();
+                  context.read<TestBloc>().add(const ClearTestEvent());
+                }
+                if (state.currentQuestionIndex == state.tests.length - 1) context.goReplacementNamed(Routes.testResult);
+              },
+              rightText: state.currentQuestionIndex == state.tests.length - 1 ? 'Tugatish' : 'Next',
+            ),
+          ),
+        ),
+      );
+    },
   );
 }
