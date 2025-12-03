@@ -92,13 +92,13 @@ sealed class Pubspec {
   static const PubspecVersion version = (
     /// Non-canonical string representation of the version as provided
     /// in the pubspec.yaml file.
-    representation: r'1.0.0+37',
+    representation: r'1.0.0+38',
 
     /// Returns a 'canonicalized' representation
     /// of the application version.
     /// This represents the version string in accordance with
     /// Semantic Versioning (SemVer) standards.
-    canonical: r'1.0.0+37',
+    canonical: r'1.0.0+38',
 
     /// MAJOR version when you make incompatible API changes.
     /// The major version number: 1 in "1.2.3".
@@ -117,7 +117,7 @@ sealed class Pubspec {
     preRelease: <String>[],
 
     /// The build identifier: "foo" in "1.2.3+foo".
-    build: <String>[r'37'],
+    build: <String>[r'38'],
   );
 
   /// Build date and time (UTC)
@@ -126,10 +126,10 @@ sealed class Pubspec {
     12,
     3,
     10,
-    34,
-    10,
-    182,
-    762,
+    38,
+    38,
+    54,
+    526,
   );
 
   /// Name
@@ -536,7 +536,7 @@ sealed class Pubspec {
         r'config/',
       ],
       'fonts': <Object>[
-        r'{family: SFPro, fonts: [{asset: assets/fonts/sf_pro/SFPRODISPLAYTHINITALIC.ttf, weight: 100, style: italic}, {asset: assets/fonts/sf_pro/SFPRODISPLAYULTRALIGHTITALIC.ttf, weight: 200, style: italic}, {asset: assets/fonts/sf_pro/SFPRODISPLAYLIGHTITALIC.ttf, weight: 300, style: italic}, {asset: assets/fonts/sf_pro/SFPRODISPLAYREGULAR.ttf, weight: 400}, {asset: assets/fonts/sf_pro/SFPRODISPLAYMEDIUM.ttf, weight: 500}, {asset: assets/fonts/sf_pro/SFPRODISPLAYSEMIBOLDITALIC.ttf, weight: 600, style: italic}, {asset: assets/fonts/sf_pro/SFPRODISPLAYBOLD.ttf, weight: 700}, {asset: assets/fonts/sf_pro/SFPRODISPLAYHEAVYITALIC.ttf, weight: 800, style: italic}, {asset: assets/fonts/sf_pro/SFPRODISPLAYBLACKITALIC.ttf, weight: 900, style: italic}]}',
+        r'{family: SFPro, fonts: [{asset: assets/fonts/sf_pro/SFPRODISPLAYTHINITALIC.OTF, weight: 100, style: italic}, {asset: assets/fonts/sf_pro/SFPRODISPLAYULTRALIGHTITALIC.OTF, weight: 200, style: italic}, {asset: assets/fonts/sf_pro/SFPRODISPLAYLIGHTITALIC.OTF, weight: 300, style: italic}, {asset: assets/fonts/sf_pro/SFPRODISPLAYREGULAR.OTF, weight: 400}, {asset: assets/fonts/sf_pro/SFPRODISPLAYMEDIUM.OTF, weight: 500}, {asset: assets/fonts/sf_pro/SFPRODISPLAYSEMIBOLDITALIC.OTF, weight: 600, style: italic}, {asset: assets/fonts/sf_pro/SFPRODISPLAYBOLD.OTF, weight: 700}, {asset: assets/fonts/sf_pro/SFPRODISPLAYHEAVYITALIC.OTF, weight: 800, style: italic}, {asset: assets/fonts/sf_pro/SFPRODISPLAYBLACKITALIC.OTF, weight: 900, style: italic}]}',
         r'{family: Nunito, fonts: [{asset: assets/fonts/work_sans/Nunito-Black.ttf, weight: 900}, {asset: assets/fonts/work_sans/Nunito-BlackItalic.ttf, weight: 900, style: italic}, {asset: assets/fonts/work_sans/Nunito-Bold.ttf, weight: 700}, {asset: assets/fonts/work_sans/Nunito-BoldItalic.ttf, weight: 700, style: italic}, {asset: assets/fonts/work_sans/Nunito-ExtraBold.ttf, weight: 800}, {asset: assets/fonts/work_sans/Nunito-ExtraBoldItalic.ttf, weight: 800, style: italic}, {asset: assets/fonts/work_sans/Nunito-ExtraLight.ttf, weight: 200}, {asset: assets/fonts/work_sans/Nunito-ExtraLightItalic.ttf, weight: 200, style: italic}, {asset: assets/fonts/work_sans/Nunito-Italic.ttf, style: italic}, {asset: assets/fonts/work_sans/Nunito-Light.ttf, weight: 300}, {asset: assets/fonts/work_sans/Nunito-LightItalic.ttf, weight: 300, style: italic}, {asset: assets/fonts/work_sans/Nunito-Medium.ttf, weight: 500}, {asset: assets/fonts/work_sans/Nunito-MediumItalic.ttf, weight: 500, style: italic}, {asset: assets/fonts/work_sans/Nunito-Regular.ttf}, {asset: assets/fonts/work_sans/Nunito-SemiBold.ttf, weight: 600}, {asset: assets/fonts/work_sans/Nunito-SemiBoldItalic.ttf, weight: 600, style: italic}]}',
       ],
     },
