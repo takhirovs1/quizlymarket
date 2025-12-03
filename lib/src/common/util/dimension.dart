@@ -34,7 +34,6 @@ sealed class Dimension {
     ),
   ];
 
-
   static const dottedDividerHeight = 8.0;
 
   // Spacer

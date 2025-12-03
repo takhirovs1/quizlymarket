@@ -18,7 +18,7 @@ class DottedDivider extends StatelessWidget {
           const dashSpace = 4.0;
           final dashCount = (constraints.maxWidth / (dashWidth + dashSpace)).floor();
           if (dashCount <= 0) return const SizedBox.shrink();
-    
+
           return Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: List.generate(
