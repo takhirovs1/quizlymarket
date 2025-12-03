@@ -4,7 +4,7 @@ description: "A new Flutter project."
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
-version: 1.0.0+28
+version: 1.0.0+36
 
 environment:
   sdk: ^3.10.1
@@ -24,7 +24,6 @@ dependencies:
     path: package/database/
   supabase_service:
     path: package/supabase_service/
-
   # annotation
   meta: ^1.17.0
 
@@ -113,28 +112,28 @@ flutter:
   fonts:
     - family: SFPro
       fonts:
-        - asset: assets/fonts/sf_pro/SFPRODISPLAYTHINITALIC.OTF
+        - asset: assets/fonts/sf_pro/SFPRODISPLAYTHINITALIC.ttf
           weight: 100
           style: italic
-        - asset: assets/fonts/sf_pro/SFPRODISPLAYULTRALIGHTITALIC.OTF
+        - asset: assets/fonts/sf_pro/SFPRODISPLAYULTRALIGHTITALIC.ttf
           weight: 200
           style: italic
-        - asset: assets/fonts/sf_pro/SFPRODISPLAYLIGHTITALIC.OTF
+        - asset: assets/fonts/sf_pro/SFPRODISPLAYLIGHTITALIC.ttf
           weight: 300
           style: italic
-        - asset: assets/fonts/sf_pro/SFPRODISPLAYREGULAR.OTF
+        - asset: assets/fonts/sf_pro/SFPRODISPLAYREGULAR.ttf
           weight: 400
-        - asset: assets/fonts/sf_pro/SFPRODISPLAYMEDIUM.OTF
+        - asset: assets/fonts/sf_pro/SFPRODISPLAYMEDIUM.ttf
           weight: 500
-        - asset: assets/fonts/sf_pro/SFPRODISPLAYSEMIBOLDITALIC.OTF
+        - asset: assets/fonts/sf_pro/SFPRODISPLAYSEMIBOLDITALIC.ttf
           weight: 600
           style: italic
-        - asset: assets/fonts/sf_pro/SFPRODISPLAYBOLD.OTF
+        - asset: assets/fonts/sf_pro/SFPRODISPLAYBOLD.ttf
           weight: 700
-        - asset: assets/fonts/sf_pro/SFPRODISPLAYHEAVYITALIC.OTF
+        - asset: assets/fonts/sf_pro/SFPRODISPLAYHEAVYITALIC.ttf
           weight: 800
           style: italic
-        - asset: assets/fonts/sf_pro/SFPRODISPLAYBLACKITALIC.OTF
+        - asset: assets/fonts/sf_pro/SFPRODISPLAYBLACKITALIC.ttf
           weight: 900
           style: italic
     - family: Nunito

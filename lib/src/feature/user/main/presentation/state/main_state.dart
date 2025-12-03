@@ -23,6 +23,7 @@ abstract class MainState extends State<MainScreen> {
 
   // Bottom navigation bar item tapped
   Future<void> onItemTapped(int index) async {
+    context.telegramWebApp.hapticFeedback.impactOccurred(.soft);
     bottomNavigationAnimated = false;
     if (mounted) setState(() {});
     final newTab = MainTabsEnum.values[index];

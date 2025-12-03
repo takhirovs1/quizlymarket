@@ -141,8 +141,8 @@ class AppLocalizationsRu extends AppLocalizations {
   String get allOfTimeTest => 'Общее время теста:';
 
   @override
-  String questionRangeHint(int count) {
-    return 'Из $count вопросов 25 будут перемешиваться.';
+  String questionRangeHint(int count, int solved) {
+    return 'Из $count вопросов $solved будут перемешиваться.';
   }
 
   @override
