@@ -70,10 +70,7 @@ class TestResultScreen extends StatelessWidget {
 
     bottomNavigationBar: Padding(
       padding: Dimension.pAll16,
-      child: CustomButton(
-        onRightPressed: () => context.goReplacementNamed(Routes.home),
-        rightText: context.l10n.logoutConfirm,
-      ),
+      child: CustomButton(onRightPressed: () => context.goReplacementNamed(Routes.home), rightText: context.l10n.exit),
     ),
   );
 }

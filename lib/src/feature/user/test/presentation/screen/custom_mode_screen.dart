@@ -45,9 +45,14 @@ class _CustomModeScreenState extends CustomModeState {
                 backgroundColor: .all(context.color.transparent),
                 side: .all(BorderSide(color: context.color.background)),
                 padding: .all(Dimension.pH12V8),
+                shadowColor: .all(context.color.primary),
+                overlayColor: .all(context.color.gray.withValues(alpha: 0.1)),
               ),
-              onPressed: () => context.goNamed(Routes.testResult),
-              child: Text('Tugatish', style: context.textTheme.sfProW500s16.copyWith(color: context.color.gray)),
+              onPressed: () => context.goReplacementNamed(Routes.testResult),
+              child: Text(
+                context.l10n.finish,
+                style: context.textTheme.sfProW500s16.copyWith(color: context.color.gray),
+              ),
             ),
           ],
         ),
@@ -55,7 +60,7 @@ class _CustomModeScreenState extends CustomModeState {
         Row(
           mainAxisAlignment: .spaceBetween,
           children: [
-            Text('Savol:', style: context.textTheme.sfProW400s14.copyWith(color: context.color.gray)),
+            Text(context.l10n.question, style: context.textTheme.sfProW400s14.copyWith(color: context.color.gray)),
             Text('67/100', style: context.textTheme.sfProW400s14.copyWith(color: context.color.gray)),
           ],
         ),
@@ -117,7 +122,7 @@ class _CustomModeScreenState extends CustomModeState {
     ),
     bottomNavigationBar: Padding(
       padding: Dimension.pAll16,
-      child: CustomButton(onRightPressed: () {}, rightText: context.l10n.startTest),
+      child: CustomButton(onRightPressed: () {}, rightText: context.l10n.next),
     ),
   );
 }
