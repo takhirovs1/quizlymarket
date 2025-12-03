@@ -24,8 +24,6 @@ dependencies:
     path: package/database/
   supabase_service:
     path: package/supabase_service/
-  excel:
-    path: package/excel-main/
   # annotation
   meta: ^1.17.0
 
