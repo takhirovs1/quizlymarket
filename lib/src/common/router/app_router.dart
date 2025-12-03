@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:local_source/local_source.dart';
 
 import '../../feature/admin/home/presentation/screen/admin_home_screen.dart';
@@ -7,6 +8,7 @@ import '../../feature/auth/model/user_model.dart';
 import '../../feature/user/main/data/model/main_tabs_enum.dart';
 import '../../feature/user/main/presentation/screen/main_screen.dart';
 import '../../feature/user/onboarding/presentation/onboarding_screen.dart';
+import '../../feature/user/test/presentation/bloc/test_bloc.dart';
 import '../../feature/user/test/presentation/screen/custom_mode_screen.dart';
 import '../../feature/user/test/presentation/screen/test_init_screen.dart';
 import '../../feature/user/test/presentation/screen/test_result_screen.dart';
@@ -25,7 +27,10 @@ Route<dynamic> _onGenerateRoute(RouteSettings settings, LocalSource localSource)
     Routes.onboarding => _resolveOnboardingOrHome(settings, localSource),
     Routes.home || Routes.cart || Routes.profile => _materialRoute(_homeScreenForRole(role, settings.name), settings),
     Routes.testInit => _materialRoute(const TestInitScreen(), settings),
-    Routes.customMode => _materialRoute(const CustomModeScreen(), settings),
+    Routes.customMode => _materialRoute(
+      BlocProvider(create: (context) => TestBloc(), child: const CustomModeScreen()),
+      settings,
+    ),
     Routes.universityMode => _materialRoute(const UniversityModeScreen(), settings),
     Routes.testResult => _materialRoute(const TestResultScreen(), settings),
     Routes.adminHome => _materialRoute(const AdminHomeScreen(), settings),
