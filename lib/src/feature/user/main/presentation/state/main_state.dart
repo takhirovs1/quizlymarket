@@ -81,6 +81,7 @@ abstract class MainState extends State<MainScreen> {
   @override
   void initState() {
     super.initState();
+    telegramSettingsButton();
     currentTab = widget.initialTab;
   }
 

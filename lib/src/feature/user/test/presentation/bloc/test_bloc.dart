@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../common/enum/bloc_status_enum.dart';
 import '../../../../../common/model/test_model.dart';
+import '../../data/model/fake_model.dart';
 
 part 'test_event.dart';
 part 'test_state.dart';

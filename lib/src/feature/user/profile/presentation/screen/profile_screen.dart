@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meta/meta.dart';
 
+import '../../../../../common/constant/gen/assets.gen.dart';
 import '../../../../../common/extension/context_extension.dart';
 import '../../../../../common/router/route_arguments.dart';
 import '../../../../../common/util/dimension.dart';
@@ -59,7 +60,9 @@ class _ProfileScreenState extends ProfileState {
                     child: CustomTile(
                       leading: Icon(CupertinoIcons.money_dollar, color: context.color.primary),
                       title: context.l10n.report,
-                      onTap: () {},
+                      onTap: () {
+                        context.telegramWebApp.hapticFeedback.impactOccurred(.light);
+                      },
                     ),
                   ),
                   Dimension.hBox12,
@@ -79,10 +82,11 @@ class _ProfileScreenState extends ProfileState {
                     shape: const RoundedRectangleBorder(borderRadius: Dimension.rAll10),
                     clipBehavior: Clip.antiAlias,
                     child: CustomTile(
-                      leading: Icon(Icons.apple_rounded, color: context.color.primary),
+                      leading: Assets.vectors.addHome.svg(
+                        colorFilter: ColorFilter.mode(context.color.primary, BlendMode.srcATop),
+                      ),
                       title: context.l10n.addToHomeScreenApp,
                       onTap: addToHomeScreen,
-                      textColor: context.color.primary,
                     ),
                   ),
                   Dimension.hBox12,
