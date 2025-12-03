@@ -74,6 +74,28 @@ class _UniversityModeScreenState extends UniversityModeState {
               ],
             ),
             Dimension.hBox14,
+            SizedBox(
+              height: 44,
+              child: ListView.separated(
+                scrollDirection: Axis.horizontal,
+                itemCount: state.tests.length,
+                separatorBuilder: (context, index) => Dimension.wBox12,
+                itemBuilder: (context, index) => AnimatedContainer(
+                  width: 40,
+                  height: 44,
+                  duration: const Duration(milliseconds: 180),
+                  padding: Dimension.pH12V6,
+                  decoration: BoxDecoration(
+                    color: context.color.outline.withValues(alpha: 0.1),
+                    borderRadius: Dimension.rAll12,
+                    border: .all(width: 2.5, color: context.color.outline),
+                  ),
+                  alignment: .center,
+                  child: Text('${index + 1}'),
+                ),
+              ),
+            ),
+            Dimension.hBox14,
             Text(test.question, style: context.textTheme.sfProW500s20),
             Dimension.hBox32,
             ValueListenableBuilder(
