@@ -87,59 +87,13 @@ class _UniversityModeContentState extends State<UniversityModeContent> {
         ),
         Dimension.hBox16,
         Text(
-          context.l10n.questionRangeHint(100),
+          context.l10n.questionRangeHint(
+            widget.settings.questionRange.end.toInt(),
+            widget.settings.questionRange.start.toInt(),
+          ),
           style: context.textTheme.sfProW400s16.copyWith(color: context.color.gray),
         ),
       ],
     ),
-  Widget build(BuildContext context) => Column(
-    crossAxisAlignment: .start,
-    children: [
-      Text(context.l10n.allOfTimeTest, style: context.textTheme.sfProW400s16.copyWith(color: context.color.gray)),
-      Dimension.hBox8,
-      ValueListenableBuilder<TotalTestTimeOption>(
-        valueListenable: _selectedTotalTime,
-        builder: (context, selected, _) => Row(
-          spacing: 8,
-          mainAxisSize: .min,
-          children: TotalTestTimeOption.values
-              .map(
-                (option) => GestureDetector(
-                  onTap: () => _onTotalTimePressed(option),
-                  child: AnimatedContainer(
-                    duration: const Duration(milliseconds: 180),
-                    height: 36,
-                    alignment: Alignment.center,
-                    decoration: BoxDecoration(
-                      color: option == selected ? context.color.primary : context.color.white,
-                      borderRadius: Dimension.rAll8,
-                      border: Border.all(
-                        color: option == selected ? context.color.primary : context.color.outline.withValues(alpha: .6),
-                      ),
-                    ),
-                    child: Padding(
-                      padding: Dimension.pH12V6,
-                      child: Text(
-                        _totalTimeLabel(context, option),
-                        style: context.textTheme.sfProW500s16.copyWith(
-                          color: option == selected ? context.color.white : context.color.gray,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-              )
-              .toList(),
-        ),
-      ),
-      Dimension.hBox16,
-      Text(
-        context.l10n.questionRangeHint(
-          widget.settings.questionRange.end.toInt(),
-          widget.settings.questionRange.start.toInt(),
-        ),
-        style: context.textTheme.sfProW400s16.copyWith(color: context.color.gray),
-      ),
-    ],
   );
 }
