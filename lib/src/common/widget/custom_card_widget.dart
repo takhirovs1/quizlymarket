@@ -126,7 +126,10 @@ class _CustomCardWidgetState extends State<CustomCardWidget> with SingleTickerPr
                 Row(
                   children: [
                     IconButton(
-                      onPressed: _replayCopyAnimation,
+                      onPressed: () {
+                        context.telegramWebApp.hapticFeedback.impactOccurred(.light);
+                        _replayCopyAnimation();
+                      },
                       icon: Lottie.asset(
                         Assets.lottie.linkcopy,
                         width: 24,
@@ -144,7 +147,10 @@ class _CustomCardWidgetState extends State<CustomCardWidget> with SingleTickerPr
                     Dimension.wBox4,
                     FilledButton(
                       style: FilledButton.styleFrom(padding: Dimension.pH12V8, backgroundColor: context.color.primary),
-                      onPressed: widget.onPressed,
+                      onPressed: () {
+                        context.telegramWebApp.hapticFeedback.impactOccurred(.light);
+                        widget.onPressed();
+                      },
                       child: Text(
                         widget.buttonText,
                         style: context.textTheme.sfProW500s14.copyWith(color: context.color.white),

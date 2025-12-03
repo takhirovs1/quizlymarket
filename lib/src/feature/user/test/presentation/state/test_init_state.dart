@@ -12,15 +12,19 @@ abstract class TestInitState extends State<TestInitScreen> {
   final ValueNotifier<TestMode> selectedTestMode = ValueNotifier(TestMode.custom);
 
   void updateTestMode(TestMode mode) {
+    context.telegramWebApp.hapticFeedback.impactOccurred(.light);
     if (selectedTestMode.value == mode) return;
     selectedTestMode.value = mode;
     testSettings.value = testSettings.value.copyWith(testMode: mode);
   }
 
-  void onOpenTestScreen() => switch (testSettings.value.testMode) {
-    TestMode.custom => context.goReplacementNamed(Routes.customMode, arguments: testSettings.value),
-    TestMode.university => context.goReplacementNamed(Routes.universityMode, arguments: testSettings.value),
-  };
+  void onOpenTestScreen() {
+    context.telegramWebApp.hapticFeedback.impactOccurred(.light);
+    return switch (testSettings.value.testMode) {
+      TestMode.custom => context.goReplacementNamed(Routes.customMode, arguments: testSettings.value),
+      TestMode.university => context.goReplacementNamed(Routes.universityMode, arguments: testSettings.value),
+    };
+  }
 
   void _setupTelegramBackButton() {
     if (!kIsWeb) return;
@@ -51,6 +55,7 @@ abstract class TestInitState extends State<TestInitScreen> {
   }
 
   void _handleTelegramBackButtonPressed() {
+    context.telegramWebApp.hapticFeedback.impactOccurred(.light);
     if (!mounted) return;
 
     context.pop();
