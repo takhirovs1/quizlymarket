@@ -24,12 +24,6 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m1(count, solved) => "${count} ta savoldan ${solved} tasi almashib tushadi.";
 
-  static String m2(minutes) =>
-      "${Intl.pluralLogic(minutes, locale: 'uz', zero: '', one: '${minutes} daqiqa', other: '${minutes} daqiqa')}";
-
-  static String m3(seconds) =>
-      "${Intl.pluralLogic(seconds, locale: 'uz', zero: '${seconds} soniya', one: '${seconds} soniya', other: '${seconds} soniya')}";
-
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
     "addToHomeScreenApp": MessageLookupByLibrary.simpleMessage("Ilovani bosh sahifaga qo‘shish"),
@@ -58,7 +52,6 @@ class MessageLookup extends MessageLookupByLibrary {
     "logoutCancel": MessageLookupByLibrary.simpleMessage("Bekor qilish"),
     "logoutConfirm": MessageLookupByLibrary.simpleMessage("Chiqish"),
     "logoutConfirmMessage": MessageLookupByLibrary.simpleMessage("Chiqishni tasdiqlaysizmi?"),
-    "minutesDuration": m2,
     "next": MessageLookupByLibrary.simpleMessage("Keyingisi"),
     "noInternetConnection": MessageLookupByLibrary.simpleMessage("Internet mavjud emas"),
     "noInternetConnectionDescription": MessageLookupByLibrary.simpleMessage(
@@ -97,7 +90,6 @@ class MessageLookup extends MessageLookupByLibrary {
     "testTotalTime30Min": MessageLookupByLibrary.simpleMessage("30 daqiqa"),
     "time": MessageLookupByLibrary.simpleMessage("Vaqt"),
     "title": MessageLookupByLibrary.simpleMessage("Quizly Market"),
-    "secondsDuration": m3,
     "uzbek": MessageLookupByLibrary.simpleMessage("O‘zbek tili"),
     "wrong": MessageLookupByLibrary.simpleMessage("Xato"),
   };

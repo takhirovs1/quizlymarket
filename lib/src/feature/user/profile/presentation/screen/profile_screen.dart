@@ -101,8 +101,6 @@ class _ProfileScreenState extends ProfileState {
                       isLogout: true,
                     ),
                   ),
-
-                 
                 ],
               ),
             ),

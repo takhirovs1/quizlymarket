@@ -24,12 +24,6 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m1(count, solved) => "${solved} questions will rotate out of ${count}.";
 
-  static String m2(minutes) =>
-      "${Intl.pluralLogic(minutes, locale: 'en', zero: '', one: '${minutes} minute', other: '${minutes} minutes')}";
-
-  static String m3(seconds) =>
-      "${Intl.pluralLogic(seconds, locale: 'en', zero: '${seconds} seconds', one: '${seconds} second', other: '${seconds} seconds')}";
-
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
     "addToHomeScreenApp": MessageLookupByLibrary.simpleMessage("Add to home screen"),
@@ -58,7 +52,6 @@ class MessageLookup extends MessageLookupByLibrary {
     "logoutCancel": MessageLookupByLibrary.simpleMessage("Cancel"),
     "logoutConfirm": MessageLookupByLibrary.simpleMessage("Logout"),
     "logoutConfirmMessage": MessageLookupByLibrary.simpleMessage("Are you sure you want to logout?"),
-    "minutesDuration": m2,
     "next": MessageLookupByLibrary.simpleMessage("Next"),
     "noInternetConnection": MessageLookupByLibrary.simpleMessage("No internet connection"),
     "noInternetConnectionDescription": MessageLookupByLibrary.simpleMessage(
@@ -95,7 +88,6 @@ class MessageLookup extends MessageLookupByLibrary {
     "testTotalTime30Min": MessageLookupByLibrary.simpleMessage("30 min"),
     "time": MessageLookupByLibrary.simpleMessage("Time"),
     "title": MessageLookupByLibrary.simpleMessage("Quizly Market"),
-    "secondsDuration": m3,
     "uzbek": MessageLookupByLibrary.simpleMessage("Uzbek"),
     "wrong": MessageLookupByLibrary.simpleMessage("Wrong"),
   };
