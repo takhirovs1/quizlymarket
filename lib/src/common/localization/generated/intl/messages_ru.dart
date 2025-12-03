@@ -24,6 +24,9 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m1(count, solved) => "Из ${count} вопросов ${solved} будут перемешиваться.";
 
+  static String m2(minutes) =>
+      "${Intl.pluralLogic(minutes, locale: 'ru', one: '${minutes} минута', few: '${minutes} минуты', many: '${minutes} минут', other: '${minutes} минут')}";
+
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
     "addToHomeScreenApp": MessageLookupByLibrary.simpleMessage("Добавить в домашний экран"),
@@ -52,6 +55,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "logoutCancel": MessageLookupByLibrary.simpleMessage("Отмена"),
     "logoutConfirm": MessageLookupByLibrary.simpleMessage("Выход"),
     "logoutConfirmMessage": MessageLookupByLibrary.simpleMessage("Вы уверены, что хотите выйти?"),
+    "totalTime": m2,
     "next": MessageLookupByLibrary.simpleMessage("Следующий"),
     "noInternetConnection": MessageLookupByLibrary.simpleMessage("Нет интернет соединения"),
     "noInternetConnectionDescription": MessageLookupByLibrary.simpleMessage(

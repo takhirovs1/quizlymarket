@@ -683,6 +683,22 @@ class FakeModel {
       ],
     ),
     QuestionModel(
+      id: '49',
+      testId: '1',
+      question: 'Академик тадқиқотда «парафраз» нима?',
+      answers: [
+        AnswerModel(
+          id: '1',
+          questionId: '49',
+          answer: 'Муаллифнинг фикрларини ўз сўзлар билан изоҳлаш',
+          isCorrect: true,
+        ),
+        AnswerModel(id: '2', questionId: '49', answer: 'Янги бир фикр ёзиш', isCorrect: false),
+        AnswerModel(id: '3', questionId: '49', answer: 'Текшириш ва аниқлаш', isCorrect: false),
+        AnswerModel(id: '4', questionId: '49', answer: 'Савол бериш', isCorrect: false),
+      ],
+    ),
+    QuestionModel(
       id: '50',
       testId: '1',
       question: 'Академик ёзувда «аналитик» ёзувни қандай тушуниш мумкин?',

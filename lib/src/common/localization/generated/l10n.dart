@@ -322,6 +322,20 @@ class GeneratedLocalization {
     return Intl.message('$count шт.', name: 'intToCount', desc: '', args: [count]);
   }
 
+  /// `{minutes} минута`
+  String totalTime(int minutes) {
+    return Intl.plural(
+      minutes,
+      one: '$minutes минута',
+      few: '$minutes минуты',
+      many: '$minutes минут',
+      other: '$minutes минут',
+      name: 'totalTime',
+      desc: '',
+      args: [minutes],
+    );
+  }
+
   /// `Добавить в домашний экран`
   String get addToHomeScreenApp {
     return Intl.message('Добавить в домашний экран', name: 'addToHomeScreenApp', desc: '', args: []);
