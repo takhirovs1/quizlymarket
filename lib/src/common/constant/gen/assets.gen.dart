@@ -110,6 +110,12 @@ class $AssetsLottieGen {
   /// File path: assets/lottie/linkcopy.json
   String get linkcopy => 'assets/lottie/linkcopy.json';
 
+  /// File path: assets/lottie/loading.json
+  String get loading => 'assets/lottie/loading.json';
+
+  /// File path: assets/lottie/loading2.json
+  String get loading2 => 'assets/lottie/loading2.json';
+
   /// File path: assets/lottie/money.json
   String get money => 'assets/lottie/money.json';
 
@@ -136,6 +142,8 @@ class $AssetsLottieGen {
     incorrect,
     laptop,
     linkcopy,
+    loading,
+    loading2,
     money,
     phone,
     share,

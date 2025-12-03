@@ -157,6 +157,18 @@ class AppLocalizationsEn extends AppLocalizations {
   String get testTotalTime1Hour => '1 hour';
 
   @override
+  String get finish => 'Finish';
+
+  @override
+  String get question => 'Question:';
+
+  @override
+  String get next => 'Next';
+
+  @override
+  String get exit => 'Exit';
+
+  @override
   String get correct => 'Correct';
 
   @override

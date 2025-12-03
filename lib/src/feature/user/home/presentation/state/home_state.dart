@@ -50,7 +50,6 @@ abstract class HomeState extends State<HomeScreen> {
             context.pop();
             Navigator.of(context).pushNamed(Routes.testInit);
           },
-
           title: context.l10n.testPurchased,
           buttonText: context.l10n.enterTest,
         ),

@@ -28,7 +28,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     }
 
     return Scaffold(
-      backgroundColor: context.color.primary,
+      backgroundColor: const Color(0xff1C58F2),
       body: Padding(
         padding: Dimension.pH32,
         child: Column(
@@ -43,7 +43,11 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     style: context.textTheme.nunitoW500s10.copyWith(fontSize: 50, color: context.color.white),
                   ),
                   Dimension.hBox64,
-                  Assets.images.logoPng.image(),
+                  Assets.images.logoPng.image(
+                    width: context.width * 0.7,
+                    height: context.width * 0.7,
+                    fit: BoxFit.scaleDown,
+                  ),
                 ],
               ),
             ),
