@@ -40,6 +40,13 @@ abstract class MainState extends State<MainScreen> {
     setState(() => currentTab = newTab);
   }
 
+  void telegramSettingsButton() {
+    context.telegramWebApp.settingButton.onClick(() {
+      context.telegramWebApp.hapticFeedback.impactOccurred(.light);
+      unawaited(onItemTapped(MainTabsEnum.profile.index));
+    });
+  }
+
   void onPopInvokedWithResult(bool didPop, Object? result) {
     if (didPop) return;
 

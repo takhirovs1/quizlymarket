@@ -25,7 +25,9 @@ Route<dynamic> _onGenerateRoute(RouteSettings settings, LocalSource localSource,
   final userRole = role ?? MockUsers.activeRole;
   return switch (settings.name) {
     Routes.onboarding => _resolveOnboardingOrHome(settings, localSource),
-    Routes.home || Routes.cart || Routes.profile => _materialRoute(_homeScreenForRole(userRole, settings.name), settings),
+    Routes.home ||
+    Routes.cart ||
+    Routes.profile => _materialRoute(_homeScreenForRole(userRole, settings.name), settings),
     Routes.testInit => _materialRoute(const TestInitScreen(), settings),
     Routes.customMode => _materialRoute(
       BlocProvider(create: (context) => TestBloc(), child: const CustomModeScreen()),

@@ -151,6 +151,9 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
+  String get addToHomeScreenApp => 'Add to home screen';
+
+  @override
   String get testTotalTime30Min => '30 min';
 
   @override

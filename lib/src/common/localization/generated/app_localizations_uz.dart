@@ -151,6 +151,9 @@ class AppLocalizationsUz extends AppLocalizations {
   }
 
   @override
+  String get addToHomeScreenApp => 'Ilovani bosh sahifaga qo‘shish';
+
+  @override
   String get testTotalTime30Min => '30 daqiqa';
 
   @override
