@@ -124,7 +124,7 @@ class _CustomModeScreenState extends CustomModeState {
                 }
                 if (state.currentQuestionIndex == state.tests.length - 1) context.goReplacementNamed(Routes.testResult);
               },
-              rightText: state.currentQuestionIndex == state.tests.length - 1 ? 'Tugatish' : 'Next',
+              rightText: state.currentQuestionIndex == state.tests.length - 1 ? context.l10n.finish : context.l10n.next,
             ),
           ),
         ),
