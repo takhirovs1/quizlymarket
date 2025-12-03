@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../../../common/extension/context_extension.dart';
 import '../../../../../common/util/dimension.dart';
 import '../../data/model/test_init_enum.dart';
+import '../../data/model/test_init_model.dart';
 import 'custom_mode_widget.dart';
 import 'university_mode_widget.dart';
 
@@ -26,7 +27,7 @@ class TestModeWidget extends StatelessWidget {
     children: [
       Text(
         context.l10n.parameters,
-        style: context.textTheme.sfProW500s16.copyWith(color: context.color.black, fontWeight: FontWeight.w700),
+        style: context.textTheme.sfProW500s16.copyWith(color: context.color.black, fontWeight: .w700),
       ),
       Text(context.l10n.testModeLabel, style: context.textTheme.sfProW400s16.copyWith(color: context.color.gray)),
       Dimension.hBox8,
@@ -44,13 +45,13 @@ class TestModeWidget extends StatelessWidget {
                     style: FilledButton.styleFrom(
                       elevation: 0,
                       padding: Dimension.pH12V8,
-                      backgroundColor: mode == TestMode.custom ? context.color.primary : context.color.white,
+                      backgroundColor: mode == .custom ? context.color.primary : context.color.white,
                     ),
-                    onPressed: () => _onModePressed(TestMode.custom),
+                    onPressed: () => _onModePressed(.custom),
                     child: Text(
                       context.l10n.testModeCustom,
                       style: context.textTheme.sfProW500s16.copyWith(
-                        color: mode == TestMode.custom ? context.color.white : context.color.primary,
+                        color: mode == .custom ? context.color.white : context.color.primary,
                       ),
                     ),
                   ),
@@ -61,13 +62,13 @@ class TestModeWidget extends StatelessWidget {
                     style: FilledButton.styleFrom(
                       elevation: 0,
                       padding: Dimension.pH12V8,
-                      backgroundColor: mode == TestMode.university ? context.color.primary : context.color.white,
+                      backgroundColor: mode == .university ? context.color.primary : context.color.white,
                     ),
-                    onPressed: () => _onModePressed(TestMode.university),
+                    onPressed: () => _onModePressed(.university),
                     child: Text(
                       context.l10n.testModeUniversity,
                       style: context.textTheme.sfProW500s16.copyWith(
-                        color: mode == TestMode.university ? context.color.white : context.color.primary,
+                        color: mode == .university ? context.color.white : context.color.primary,
                       ),
                     ),
                   ),
@@ -80,8 +81,8 @@ class TestModeWidget extends StatelessWidget {
               builder: (context, settings, _) {
                 settings.testMode = mode;
                 return switch (mode) {
-                  TestMode.custom => CustomModeContent(settings: settings),
-                  TestMode.university => UniversityModeContent(settings: settings),
+                  .custom => CustomModeContent(settings: settings),
+                  .university => UniversityModeContent(settings: settings),
                 };
               },
             ),

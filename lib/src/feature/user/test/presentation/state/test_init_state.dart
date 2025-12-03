@@ -5,6 +5,7 @@ import '../../../../../common/extension/context_extension.dart';
 import '../../../../../common/router/route_arguments.dart';
 import '../../../../../common/util/logger.dart';
 import '../../data/model/test_init_enum.dart';
+import '../../data/model/test_init_model.dart';
 import '../screen/test_init_screen.dart';
 
 abstract class TestInitState extends State<TestInitScreen> {

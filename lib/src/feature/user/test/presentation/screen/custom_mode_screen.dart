@@ -83,8 +83,16 @@ class _CustomModeScreenState extends CustomModeState {
                       onTap: () {
                         if (!isSelected.value) {
                           testResult.value = i;
+                          if (test.answers[testResult.value - 1].isCorrect) {
+                            context.telegramWebApp.hapticFeedback.notificationOccurred(.success);
+                            correctCount++;
+                          } else {
+                            context.telegramWebApp.hapticFeedback.notificationOccurred(.error);
+                            incorrectCount++;
+                          }
                           context.read<TestBloc>().add(const TestAnswerEvent());
                           isSelected.value = true;
+                          remaining = const Duration(seconds: 3);
                         }
                       },
                       child: AnimatedContainer(
@@ -117,12 +125,9 @@ class _CustomModeScreenState extends CustomModeState {
               rightButtonType: value ? .active : .disabled,
               onRightPressed: () {
                 if (value) {
-                  testResult.value = 0;
-                  isSelected.value = false;
-                  startTimer();
-                  context.read<TestBloc>().add(const ClearTestEvent());
+                  context.telegramWebApp.hapticFeedback.impactOccurred(.light);
+                  onTimerEnd();
                 }
-                if (state.currentQuestionIndex == state.tests.length - 1) context.goReplacementNamed(Routes.testResult);
               },
               rightText: state.currentQuestionIndex == state.tests.length - 1 ? context.l10n.finish : context.l10n.next,
             ),

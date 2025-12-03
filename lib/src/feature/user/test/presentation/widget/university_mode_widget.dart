@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../../../common/extension/context_extension.dart';
 import '../../../../../common/util/dimension.dart';
 import '../../data/model/test_init_enum.dart';
+import '../../data/model/test_init_model.dart';
 
 class UniversityModeContent extends StatefulWidget {
   const UniversityModeContent({required this.settings, super.key});
@@ -81,7 +82,10 @@ class _UniversityModeContentState extends State<UniversityModeContent> {
       ),
       Dimension.hBox16,
       Text(
-        context.l10n.questionRangeHint(100),
+        context.l10n.questionRangeHint(
+          widget.settings.questionRange.end.toInt(),
+          widget.settings.questionRange.start.toInt(),
+        ),
         style: context.textTheme.sfProW400s16.copyWith(color: context.color.gray),
       ),
     ],

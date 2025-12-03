@@ -31,7 +31,10 @@ Route<dynamic> _onGenerateRoute(RouteSettings settings, LocalSource localSource)
       BlocProvider(create: (context) => TestBloc(), child: const CustomModeScreen()),
       settings,
     ),
-    Routes.universityMode => _materialRoute(const UniversityModeScreen(), settings),
+    Routes.universityMode => _materialRoute(
+      BlocProvider(create: (context) => TestBloc(), child: const UniversityModeScreen()),
+      settings,
+    ),
     Routes.testResult => _materialRoute(const TestResultScreen(), settings),
     Routes.adminHome => _materialRoute(const AdminHomeScreen(), settings),
     _ => _resolveOnboardingOrHome(settings, localSource),

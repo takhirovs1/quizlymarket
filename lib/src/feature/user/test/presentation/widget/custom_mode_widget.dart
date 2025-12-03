@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../../../common/extension/context_extension.dart';
 import '../../../../../common/util/dimension.dart';
 import '../../data/model/test_init_enum.dart';
+import '../../data/model/test_init_model.dart';
 import 'selectable_chip_widget.dart';
 
 class CustomModeContent extends StatefulWidget {
