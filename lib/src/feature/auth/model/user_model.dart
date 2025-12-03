@@ -72,7 +72,13 @@ class UserModel extends Equatable {
   List<Object?> get props => [userID, telegramID, telegramUsername, name, createdAt, updatedAt, balance, role];
 }
 
-enum UserRole { admin, user }
+enum UserRole {
+  admin,
+  user;
+
+  bool get isAdmin => this == .admin;
+  bool get isUser => this == .user;
+}
 
 /// Simple in-memory fixtures that mimic backend responses for both roles.
 /// Use [useRole] to switch between the mocked admin and user profiles.

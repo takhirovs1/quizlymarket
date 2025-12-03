@@ -28,78 +28,57 @@ class _MainScreenState extends MainState {
   void initState() {
     super.initState();
     _pages = const [HomeScreen(), CartScreen(), ProfileScreen()];
-    _loginToApp();
-  }
-
-  void _loginToApp() {
-    final telegramID = context.telegramWebApp.initDataUnsafe?.user?.id.toString();
-    if (telegramID != null) context.read<AuthBloc>().add(LoginEvent(telegramID: telegramID));
   }
 
   @override
-  Widget build(BuildContext context) => BlocListener<AuthBloc, AuthState>(
-    listener: (context, state) {
-      if (state.isUserExist == false) {
-        final telegramUser = context.telegramWebApp.initDataUnsafe?.user;
-        context.read<AuthBloc>().add(
-          SignUpEvent(
-            telegramID: telegramUser?.id.toString() ?? '',
-            name: '${telegramUser?.firstName} ${telegramUser?.lastName ?? ''}'.trim(),
-            telegramUsername: telegramUser?.username ?? '',
-          ),
-        );
-      }
-      if (state.status == Status.success) {}
-    },
-    child: PopScope(
-      canPop: false,
-      onPopInvokedWithResult: onPopInvokedWithResult,
-      child: Scaffold(
-        appBar: currentTab.isProfileTab
-            ? null
-            : AppBar(
-                backgroundColor: context.color.primary,
-                automaticallyImplyLeading: false,
-                scrolledUnderElevation: 0,
-                elevation: 0,
-                toolbarHeight: context.telegramWebApp.safeAreaInset.top + 56,
-                surfaceTintColor: context.color.transparent,
-                title: Column(
-                  children: [
-                    SizedBox(height: context.telegramWebApp.safeAreaInset.top.toDouble()),
-                    Center(
-                      child: Text(switch (currentTab.index) {
-                        1 => context.l10n.cart,
-                        _ => context.l10n.appName,
-                      }, style: context.textTheme.nunitoW600s24.copyWith(color: context.color.white)),
-                    ),
-                  ],
-                ),
-              ),
-        body: IndexedStack(index: currentTab.index, children: _pages),
-        bottomNavigationBar: Padding(
-          padding: Dimension.pBottom10,
-          child: DecoratedBox(
-            decoration: BoxDecoration(color: context.color.gray),
-            child: Padding(
-              padding: Dimension.pTop1,
-              child: BottomNavigationBar(
-                currentIndex: currentTab.index,
-                onTap: onItemTapped,
-                enableFeedback: true,
-                type: .fixed,
-                backgroundColor: context.color.background,
-                selectedItemColor: context.color.primary,
-                unselectedItemColor: context.color.gray,
-                showSelectedLabels: false,
-                showUnselectedLabels: false,
-                elevation: 0,
-                items: [
-                  _buildBottomItem(Assets.icons.home),
-                  _buildBottomItem(Assets.icons.cart),
-                  _buildBottomItem(Assets.icons.profile),
+  Widget build(BuildContext context) => PopScope(
+    canPop: false,
+    onPopInvokedWithResult: onPopInvokedWithResult,
+    child: Scaffold(
+      appBar: currentTab.isProfileTab
+          ? null
+          : AppBar(
+              backgroundColor: context.color.primary,
+              automaticallyImplyLeading: false,
+              scrolledUnderElevation: 0,
+              elevation: 0,
+              toolbarHeight: context.telegramWebApp.safeAreaInset.top + 56,
+              surfaceTintColor: context.color.transparent,
+              title: Column(
+                children: [
+                  SizedBox(height: context.telegramWebApp.safeAreaInset.top.toDouble()),
+                  Center(
+                    child: Text(switch (currentTab.index) {
+                      1 => context.l10n.cart,
+                      _ => context.l10n.appName,
+                    }, style: context.textTheme.nunitoW600s24.copyWith(color: context.color.white)),
+                  ),
                 ],
               ),
+            ),
+      body: IndexedStack(index: currentTab.index, children: _pages),
+      bottomNavigationBar: Padding(
+        padding: Dimension.pBottom10,
+        child: DecoratedBox(
+          decoration: BoxDecoration(color: context.color.gray),
+          child: Padding(
+            padding: Dimension.pTop1,
+            child: BottomNavigationBar(
+              currentIndex: currentTab.index,
+              onTap: onItemTapped,
+              enableFeedback: true,
+              type: .fixed,
+              backgroundColor: context.color.background,
+              selectedItemColor: context.color.primary,
+              unselectedItemColor: context.color.gray,
+              showSelectedLabels: false,
+              showUnselectedLabels: false,
+              elevation: 0,
+              items: [
+                _buildBottomItem(Assets.icons.home),
+                _buildBottomItem(Assets.icons.cart),
+                _buildBottomItem(Assets.icons.profile),
+              ],
             ),
           ),
         ),
