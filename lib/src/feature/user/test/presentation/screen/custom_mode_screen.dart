@@ -52,7 +52,7 @@ class _CustomModeScreenState extends CustomModeState {
                     overlayColor: .all(context.color.gray.withValues(alpha: 0.1)),
                   ),
                   onPressed: () {
-                    unselectedCount = bloc.state.tests.length - (correctCount + incorrectCount);
+                    unselectedCount = (bloc.state.tests.length - 1) - (correctCount + incorrectCount);
                     onTimerEnd();
                   },
                   child: Text(

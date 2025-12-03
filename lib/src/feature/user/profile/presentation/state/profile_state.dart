@@ -67,6 +67,7 @@ abstract class ProfileState extends State<ProfileScreen> {
   );
 
   Future<void> onTapLanguageChange() async {
+    context.telegramWebApp.hapticFeedback.impactOccurred(.light);
     final languages = <LanguageOption>[
       LanguageOption(code: 'en', label: context.l10n.english),
       LanguageOption(code: 'ru', label: context.l10n.russian),
@@ -111,7 +112,7 @@ abstract class ProfileState extends State<ProfileScreen> {
       Navigator.of(context).pop();
       return;
     }
-
+    context.telegramWebApp.hapticFeedback.impactOccurred(.light);
     setState(() => currentLocale = code);
     context.setLocale(Locale(code));
     Navigator.of(context).pop();

@@ -21,6 +21,7 @@ abstract class CustomModeState extends State<CustomModeScreen> {
   int correctCount = 0;
   int incorrectCount = 0;
   int unselectedCount = 0;
+  bool isInitialized = false;
 
   Color getColor(int i, TestState state, {bool? isBg, bool? isText}) {
     final isCorrect = state.tests[state.currentQuestionIndex].answers[i - 1].isCorrect;
@@ -60,6 +61,10 @@ abstract class CustomModeState extends State<CustomModeScreen> {
 
   void startTimer() {
     args = ModalRoute.of(context)?.settings.arguments as CustomTestSettings?;
+    if (!isInitialized) {
+      isInitialized = true;
+      context.read<TestBloc>().add(FilterTestsEvent(args: args));
+    }
     setState(() => remaining = args?.questionTime.duration ?? const Duration(minutes: 30));
     timer?.cancel();
     timer = null;

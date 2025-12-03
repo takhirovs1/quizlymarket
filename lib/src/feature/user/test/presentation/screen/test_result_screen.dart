@@ -20,10 +20,10 @@ class _TestResultScreenState extends State<TestResultScreen> {
   TestResultModel? args;
 
   String format(Duration duration) {
-    final hours = duration.inHours;
-    final minutes = duration.inMinutes.remainder(60).toString().padLeft(2, '0');
-    final seconds = duration.inSeconds.remainder(60).toString().padLeft(2, '0');
-    return hours > 0 ? '${hours.toString().padLeft(2, '0')}:$minutes:$seconds' : '$minutes:$seconds';
+    final totalMinutes = duration.inMinutes;
+    final normalizedMinutes = totalMinutes < 0 ? 0 : totalMinutes;
+    final normalizedSeconds = duration.inSeconds.remainder(60).abs();
+    return context.l10n.totalTime(normalizedMinutes, normalizedSeconds);
   }
 
   @override
