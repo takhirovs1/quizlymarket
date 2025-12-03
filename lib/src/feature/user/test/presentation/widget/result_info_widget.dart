@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../../common/extension/context_extension.dart';
+import '../../../../../common/widget/dotted_divider.dart';
 
 class ResultInfoWidget extends StatelessWidget {
   const ResultInfoWidget({
@@ -15,10 +16,10 @@ class ResultInfoWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Row(
-    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    crossAxisAlignment: CrossAxisAlignment.end,
     children: [
       Row(
-        spacing: 4,
+        spacing: 12,
         children: [
           leadingIcon,
           Text(
@@ -27,6 +28,7 @@ class ResultInfoWidget extends StatelessWidget {
           ),
         ],
       ),
+      Expanded(child: DottedDivider(color: context.color.outline)),
       Text(
         trailingTitle,
         style: context.textTheme.sfProW500s18.copyWith(color: context.color.black, fontWeight: FontWeight.w500),
