@@ -79,6 +79,18 @@ class _ProfileScreenState extends ProfileState {
                     shape: const RoundedRectangleBorder(borderRadius: Dimension.rAll10),
                     clipBehavior: Clip.antiAlias,
                     child: CustomTile(
+                      leading: Icon(Icons.apple_rounded, color: context.color.primary),
+                      title: context.l10n.addToHomeScreenApp,
+                      onTap: addToHomeScreen,
+                      textColor: context.color.primary,
+                    ),
+                  ),
+                  Dimension.hBox12,
+                  Material(
+                    color: context.color.white,
+                    shape: const RoundedRectangleBorder(borderRadius: Dimension.rAll10),
+                    clipBehavior: Clip.antiAlias,
+                    child: CustomTile(
                       leading: Icon(Icons.logout, color: context.color.error),
                       title: context.l10n.signOut,
                       onTap: logOut,
@@ -86,6 +98,7 @@ class _ProfileScreenState extends ProfileState {
                       isLogout: true,
                     ),
                   ),
+
                   Dimension.hBox12,
                   Material(
                     color: context.color.white,

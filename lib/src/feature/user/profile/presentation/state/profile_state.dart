@@ -24,6 +24,11 @@ abstract class ProfileState extends State<ProfileScreen> {
     return raw;
   }
 
+  void addToHomeScreen() {
+    context.telegramWebApp.hapticFeedback.impactOccurred(.light);
+    context.telegramWebApp.addToHomeScreen();
+  }
+
   Future<void> logOut() async => await showCupertinoDialog<void>(
     context: context,
     barrierDismissible: true,
@@ -32,7 +37,10 @@ abstract class ProfileState extends State<ProfileScreen> {
       content: Padding(padding: Dimension.pTop8, child: Text(context.l10n.logoutConfirmMessage)),
       actions: [
         CupertinoDialogAction(
-          onPressed: () => Navigator.of(context).pop(),
+          onPressed: () {
+            context.telegramWebApp.hapticFeedback.notificationOccurred(.success);
+            context.pop();
+          },
           child: Text(
             context.l10n.logoutCancel,
             style: context.textTheme.nunitoW600s16.copyWith(color: context.color.primary),
@@ -45,6 +53,9 @@ abstract class ProfileState extends State<ProfileScreen> {
               if (mounted) context.telegramWebApp.close();
             });
             Navigator.of(context).pop();
+            context.telegramWebApp.hapticFeedback.notificationOccurred(.error);
+            context.localSource.clearAll().then((_) => context.telegramWebApp.close());
+            context.pop();
           },
           child: Text(
             context.l10n.logoutConfirm,
