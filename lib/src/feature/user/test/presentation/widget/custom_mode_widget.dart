@@ -23,6 +23,7 @@ class _CustomModeContentState extends State<CustomModeContent> {
   late final ValueNotifier<QuestionTimeOption> _selectedOption;
   late final ValueNotifier<ShuffleOption> _shuffleOption;
   late final ValueNotifier<RangeValues> _questionRange;
+  late RangeValues _lastHapticRange;
 
   @override
   void initState() {
@@ -30,21 +31,29 @@ class _CustomModeContentState extends State<CustomModeContent> {
     _selectedOption = ValueNotifier<QuestionTimeOption>(widget.settings.questionTime);
     _shuffleOption = ValueNotifier<ShuffleOption>(widget.settings.shuffleOption);
     _questionRange = ValueNotifier<RangeValues>(widget.settings.questionRange);
+    _lastHapticRange = widget.settings.questionRange;
   }
 
   RangeValues _snapRange(RangeValues values) {
     double snap(double v) => (_questionStep * (v / _questionStep).round()).toDouble();
     final start = snap(values.start).clamp(_minQuestions.toDouble(), _maxQuestions.toDouble() - _questionStep);
     final end = snap(values.end).clamp(start + _questionStep, _maxQuestions.toDouble());
-    return RangeValues(start, end);
+    final snappedRange = RangeValues(start, end);
+    if (snappedRange != _lastHapticRange) {
+      context.telegramWebApp.hapticFeedback.impactOccurred(.light);
+      _lastHapticRange = snappedRange;
+    }
+    return snappedRange;
   }
 
   void _onQuestionTimePressed(QuestionTimeOption option) {
+    context.telegramWebApp.hapticFeedback.impactOccurred(.light);
     _selectedOption.value = option;
     widget.settings.questionTime = option;
   }
 
   void _onShuffleOptionPressed(ShuffleOption option) {
+    context.telegramWebApp.hapticFeedback.impactOccurred(.light);
     _shuffleOption.value = option;
     widget.settings.shuffleOption = option;
   }
@@ -61,9 +70,12 @@ class _CustomModeContentState extends State<CustomModeContent> {
   Widget build(BuildContext context) => Column(
     crossAxisAlignment: .start,
     children: [
-      Text(
-        context.l10n.testModeQuestionTime,
-        style: context.textTheme.sfProW400s16.copyWith(color: context.color.gray),
+      Padding(
+        padding: Dimension.pH16,
+        child: Text(
+          context.l10n.testModeQuestionTime,
+          style: context.textTheme.sfProW400s16.copyWith(color: context.color.gray),
+        ),
       ),
       Dimension.hBox8,
       SizedBox(
@@ -78,109 +90,123 @@ class _CustomModeContentState extends State<CustomModeContent> {
             itemBuilder: (context, index) {
               final option = QuestionTimeOption.values[index];
               final isSelected = option == selected;
-              return GestureDetector(
-                onTap: () => _onQuestionTimePressed(option),
-                child: AnimatedContainer(
-                  duration: const Duration(milliseconds: 180),
-                  padding: Dimension.pH12V6,
-                  decoration: BoxDecoration(
-                    color: isSelected ? context.color.primary.withValues(alpha: 0.1) : context.color.white,
-                    borderRadius: Dimension.rAll8,
-                    border: Border.all(
-                      color: isSelected ? context.color.primary : context.color.outline.withValues(alpha: 0.6),
+              return Row(
+                children: [
+                  if (index == 0) Dimension.wBox16,
+                  GestureDetector(
+                    onTap: () => _onQuestionTimePressed(option),
+                    child: AnimatedContainer(
+                      duration: const Duration(milliseconds: 180),
+                      padding: Dimension.pH12V6,
+                      decoration: BoxDecoration(
+                        color: isSelected ? context.color.primary.withValues(alpha: 0.1) : context.color.white,
+                        borderRadius: Dimension.rAll8,
+                        border: Border.all(
+                          color: isSelected ? context.color.primary : context.color.outline.withValues(alpha: 0.6),
+                        ),
+                      ),
+                      alignment: Alignment.center,
+                      child: Text(
+                        option.label,
+                        style: context.textTheme.sfProW500s14.copyWith(
+                          color: isSelected ? context.color.primary : context.color.gray,
+                        ),
+                      ),
                     ),
                   ),
-                  alignment: Alignment.center,
-                  child: Text(
-                    option.label,
-                    style: context.textTheme.sfProW500s14.copyWith(
-                      color: isSelected ? context.color.primary : context.color.gray,
-                    ),
-                  ),
-                ),
+                ],
               );
             },
           ),
         ),
       ),
       Dimension.hBox16,
-      Text(
-        context.l10n.changeQuestionOrAnswer,
-        style: context.textTheme.sfProW400s16.copyWith(color: context.color.gray),
-      ),
-      Dimension.hBox8,
-      ValueListenableBuilder<ShuffleOption>(
-        valueListenable: _shuffleOption,
-        builder: (context, selected, _) => Wrap(
-          spacing: 8,
-          runSpacing: 8,
-          children: ShuffleOption.values
-              .map(
-                (option) => SelectableChip(
-                  option: option,
-                  isSelected: option == selected,
-                  onTap: () => _onShuffleOptionPressed(option),
-                ),
-              )
-              .toList(),
-        ),
-      ),
-      Dimension.hBox16,
-      Text(
-        context.l10n.selectQuestionByRange,
-        style: context.textTheme.sfProW400s16.copyWith(color: context.color.gray),
-      ),
-      Dimension.hBox8,
-      ValueListenableBuilder<RangeValues>(
-        valueListenable: _questionRange,
-        builder: (context, range, _) => Column(
+      Padding(
+        padding: Dimension.pH16,
+        child: Column(
+          crossAxisAlignment: .start,
           children: [
-            Row(
-              mainAxisAlignment: .spaceBetween,
-              children: [
-                Text(
-                  '${range.start.toInt()}',
-                  style: context.textTheme.sfProW500s16.copyWith(
-                    color: context.color.gray,
-                    fontWeight: FontWeight.w700,
-                    fontSize: 17,
+            Text(
+              context.l10n.changeQuestionOrAnswer,
+              style: context.textTheme.sfProW400s16.copyWith(color: context.color.gray),
+            ),
+            Dimension.hBox8,
+            ValueListenableBuilder<ShuffleOption>(
+              valueListenable: _shuffleOption,
+              builder: (context, selected, _) => Wrap(
+                spacing: 8,
+                runSpacing: 8,
+                children: ShuffleOption.values
+                    .map(
+                      (option) => SelectableChip(
+                        option: option,
+                        isSelected: option == selected,
+                        onTap: () => _onShuffleOptionPressed(option),
+                      ),
+                    )
+                    .toList(),
+              ),
+            ),
+            Dimension.hBox16,
+            Text(
+              context.l10n.selectQuestionByRange,
+              style: context.textTheme.sfProW400s16.copyWith(color: context.color.gray),
+            ),
+            Dimension.hBox8,
+            ValueListenableBuilder<RangeValues>(
+              valueListenable: _questionRange,
+              builder: (context, range, _) => Column(
+                children: [
+                  Row(
+                    mainAxisAlignment: .spaceBetween,
+                    children: [
+                      Text(
+                        '${range.start.toInt()}',
+                        style: context.textTheme.sfProW500s16.copyWith(
+                          color: context.color.gray,
+                          fontWeight: FontWeight.w700,
+                          fontSize: 17,
+                        ),
+                      ),
+                      Flexible(
+                        child: SliderTheme(
+                          data: SliderTheme.of(context).copyWith(
+                            trackHeight: 6,
+                            activeTrackColor: context.color.primary,
+                            inactiveTrackColor: context.color.outline.withValues(alpha: 0.25),
+                            thumbColor: context.color.white,
+                            overlayColor: context.color.primary.withValues(alpha: 0.12),
+                            thumbShape: const RoundSliderThumbShape(enabledThumbRadius: 14),
+                            overlayShape: const RoundSliderOverlayShape(overlayRadius: 24),
+                          ),
+                          child: RangeSlider(
+                            values: range,
+                            min: _minQuestions.toDouble(),
+                            max: _maxQuestions.toDouble(),
+
+                            // divisions: (_maxQuestions - _minQuestions) ~/ _questionStep,
+                            // labels: RangeLabels('${range.start.toInt()}', '${range.end.toInt()}'),
+                            onChanged: (value) {
+                              final snapped = _snapRange(value);
+                              if (snapped.end - snapped.start < _questionStep) return;
+                              _questionRange.value = snapped;
+                              widget.settings.questionRange = snapped;
+                            },
+                          ),
+                        ),
+                      ),
+                      Text(
+                        '${range.end.toInt()}',
+                        style: context.textTheme.sfProW500s16.copyWith(
+                          color: context.color.gray,
+                          fontWeight: FontWeight.w700,
+                          fontSize: 17,
+                        ),
+                      ),
+                    ],
                   ),
-                ),
-                Flexible(
-                  child: SliderTheme(
-                    data: SliderTheme.of(context).copyWith(
-                      trackHeight: 6,
-                      activeTrackColor: context.color.primary,
-                      inactiveTrackColor: context.color.outline.withValues(alpha: 0.25),
-                      thumbColor: context.color.white,
-                      overlayColor: context.color.primary.withValues(alpha: 0.12),
-                      thumbShape: const RoundSliderThumbShape(enabledThumbRadius: 14),
-                      overlayShape: const RoundSliderOverlayShape(overlayRadius: 24),
-                    ),
-                    child: RangeSlider(
-                      values: range,
-                      min: _minQuestions.toDouble(),
-                      max: _maxQuestions.toDouble(),
-                      // divisions: (_maxQuestions - _minQuestions) ~/ _questionStep,
-                      // labels: RangeLabels('${range.start.toInt()}', '${range.end.toInt()}'),
-                      onChanged: (value) {
-                        final snapped = _snapRange(value);
-                        if (snapped.end - snapped.start < _questionStep) return;
-                        _questionRange.value = snapped;
-                        widget.settings.questionRange = snapped;
-                      },
-                    ),
-                  ),
-                ),
-                Text(
-                  '${range.end.toInt()}',
-                  style: context.textTheme.sfProW500s16.copyWith(
-                    color: context.color.gray,
-                    fontWeight: FontWeight.w700,
-                    fontSize: 17,
-                  ),
-                ),
-              ],
+                ],
+              ),
             ),
           ],
         ),

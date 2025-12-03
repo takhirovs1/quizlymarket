@@ -39,13 +39,15 @@ class _TestInitScreenState extends TestInitState {
       child: CustomButton(onRightPressed: onOpenTestScreen, rightText: context.l10n.startTest),
     ),
     body: ListView(
-      padding: Dimension.pAll16,
       children: [
-        const TestInfoWidget(
-          subject: 'Akademik ko\'nikmalar',
-          university: 'Alfraganus',
-          direction: 'Iqtisodiyot sirtqi 2-kurs 2-semistr',
-          testCount: 100,
+        const Padding(
+          padding: Dimension.pH16Top16,
+          child: TestInfoWidget(
+            subject: 'Akademik ko\'nikmalar',
+            university: 'Alfraganus',
+            direction: 'Iqtisodiyot sirtqi 2-kurs 2-semistr',
+            testCount: 100,
+          ),
         ),
         Dimension.hBox14,
         TestModeWidget(selectedMode: selectedTestMode, onModeChanged: updateTestMode, settingsNotifier: testSettings),

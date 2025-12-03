@@ -93,7 +93,13 @@ class _TestResultScreenState extends State<TestResultScreen> {
 
     bottomNavigationBar: Padding(
       padding: Dimension.pAll16,
-      child: CustomButton(onRightPressed: () => context.goReplacementNamed(Routes.home), rightText: context.l10n.exit),
+      child: CustomButton(
+        onRightPressed: () {
+          context.telegramWebApp.hapticFeedback.impactOccurred(.light);
+          context.goReplacementNamed(Routes.home);
+        },
+        rightText: context.l10n.exit,
+      ),
     ),
   );
 }

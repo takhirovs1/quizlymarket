@@ -48,6 +48,7 @@ abstract class HomeState extends State<HomeScreen> {
           description: context.l10n.testPurchasedDescription,
           onPressed: () {
             context.pop();
+            context.telegramWebApp.hapticFeedback.selectionChanged();
             Navigator.of(context).pushNamed(Routes.testInit);
           },
           title: context.l10n.testPurchased,
@@ -65,9 +66,15 @@ abstract class HomeState extends State<HomeScreen> {
       isScrollable: false,
       maxChildSize: .5,
       bottomNavigationBar: CustomButton(
-        onRightPressed: _onCanBuyButtonPressed,
+        onRightPressed: () {
+          context.telegramWebApp.hapticFeedback.notificationOccurred(.success);
+          _onCanBuyButtonPressed();
+        },
         rightText: context.l10n.buy,
-        onLeftPressed: context.pop,
+        onLeftPressed: () {
+          context.telegramWebApp.hapticFeedback.notificationOccurred(.error);
+          context.pop();
+        },
         leftText: context.l10n.cancel,
       ),
       children: [
