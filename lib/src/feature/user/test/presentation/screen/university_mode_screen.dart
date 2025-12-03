@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../common/extension/context_extension.dart';
-import '../../../../../common/router/route_arguments.dart';
 import '../../../../../common/util/dimension.dart';
 import '../../../../../common/widget/custom_button.dart';
 import '../bloc/test_bloc.dart';
@@ -52,7 +51,10 @@ class _UniversityModeScreenState extends UniversityModeState {
                     padding: .all(Dimension.pH12V8),
                     overlayColor: .all(context.color.gray.withValues(alpha: 0.1)),
                   ),
-                  onPressed: () => context.goNamed(Routes.testResult),
+                  onPressed: () {
+                    unselectedCount = bloc.state.tests.length - (correctCount + incorrectCount);
+                    onTimerEnd();
+                  },
                   child: Text(
                     context.l10n.finish,
                     style: context.textTheme.sfProW500s16.copyWith(color: context.color.gray),
