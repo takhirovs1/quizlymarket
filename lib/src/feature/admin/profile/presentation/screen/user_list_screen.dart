@@ -26,7 +26,7 @@ class _UserListScreenState extends State<UserListScreen> {
     super.initState();
     _searchController = TextEditingController();
   }
- 
+
   @override
   void dispose() {
     _debounce?.cancel();
