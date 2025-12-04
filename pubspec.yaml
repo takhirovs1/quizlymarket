@@ -112,28 +112,28 @@ flutter:
   fonts:
     - family: SFPro
       fonts:
-        - asset: assets/fonts/sf_pro/SFPRODISPLAYTHINITALIC.ttf
+        - asset: assets/fonts/sf_pro/SFPRODISPLAYTHINITALIC.OTF
           weight: 100
           style: italic
-        - asset: assets/fonts/sf_pro/SFPRODISPLAYULTRALIGHTITALIC.ttf
+        - asset: assets/fonts/sf_pro/SFPRODISPLAYULTRALIGHTITALIC.OTF
           weight: 200
           style: italic
-        - asset: assets/fonts/sf_pro/SFPRODISPLAYLIGHTITALIC.ttf
+        - asset: assets/fonts/sf_pro/SFPRODISPLAYLIGHTITALIC.OTF
           weight: 300
           style: italic
-        - asset: assets/fonts/sf_pro/SFPRODISPLAYREGULAR.ttf
+        - asset: assets/fonts/sf_pro/SFPRODISPLAYREGULAR.OTF
           weight: 400
-        - asset: assets/fonts/sf_pro/SFPRODISPLAYMEDIUM.ttf
+        - asset: assets/fonts/sf_pro/SFPRODISPLAYMEDIUM.OTF
           weight: 500
-        - asset: assets/fonts/sf_pro/SFPRODISPLAYSEMIBOLDITALIC.ttf
+        - asset: assets/fonts/sf_pro/SFPRODISPLAYSEMIBOLDITALIC.OTF
           weight: 600
           style: italic
-        - asset: assets/fonts/sf_pro/SFPRODISPLAYBOLD.ttf
+        - asset: assets/fonts/sf_pro/SFPRODISPLAYBOLD.OTF
           weight: 700
-        - asset: assets/fonts/sf_pro/SFPRODISPLAYHEAVYITALIC.ttf
+        - asset: assets/fonts/sf_pro/SFPRODISPLAYHEAVYITALIC.OTF
           weight: 800
           style: italic
-        - asset: assets/fonts/sf_pro/SFPRODISPLAYBLACKITALIC.ttf
+        - asset: assets/fonts/sf_pro/SFPRODISPLAYBLACKITALIC.OTF
           weight: 900
           style: italic
     - family: Nunito

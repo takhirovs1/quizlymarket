@@ -182,4 +182,10 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get continueAction => 'Continue';
+
+  @override
+  String get search => 'Search';
+
+  @override
+  String get filter => 'Filter';
 }

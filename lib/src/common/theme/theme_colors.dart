@@ -28,6 +28,7 @@ final class ThemeColors extends ThemeExtension<ThemeColors> {
     required this.black,
     required this.gray,
     required this.primaryLight,
+    required this.cardBackground,
   });
 
   final Color primary;
@@ -55,7 +56,7 @@ final class ThemeColors extends ThemeExtension<ThemeColors> {
   final Color transparent;
   final Color black;
   final Color gray;
-
+  final Color cardBackground;
   static const ThemeColors light = ThemeColors(
     primaryLight: Color(0xFF007AFF),
     primary: Color(0xFF3772FF),
@@ -82,6 +83,7 @@ final class ThemeColors extends ThemeExtension<ThemeColors> {
     transparent: Colors.transparent,
     black: Colors.black,
     gray: Color(0xFF808080),
+    cardBackground: Color(0x14747480),
   );
 
   static const ThemeColors dark = ThemeColors(
@@ -110,6 +112,7 @@ final class ThemeColors extends ThemeExtension<ThemeColors> {
     transparent: Colors.transparent,
     black: Colors.black,
     gray: Color(0xFF808080),
+    cardBackground: Color(0x14747480),
   );
 
   @override
@@ -139,6 +142,7 @@ final class ThemeColors extends ThemeExtension<ThemeColors> {
     Color? black,
     Color? gray,
     Color? primaryLight,
+    Color? cardBackground,
   }) => ThemeColors(
     primary: primary ?? this.primary,
     onPrimary: onPrimary ?? this.onPrimary,
@@ -165,6 +169,7 @@ final class ThemeColors extends ThemeExtension<ThemeColors> {
     black: black ?? this.black,
     gray: gray ?? this.gray,
     primaryLight: primaryLight ?? this.primaryLight,
+    cardBackground: cardBackground ?? this.cardBackground,
   );
 
   @override
@@ -196,5 +201,6 @@ final class ThemeColors extends ThemeExtension<ThemeColors> {
           transparent: .lerp(transparent, other.transparent, t)!,
           black: .lerp(black, other.black, t)!,
           gray: .lerp(gray, other.gray, t)!,
+          cardBackground: .lerp(cardBackground, other.cardBackground, t)!,
         );
 }
