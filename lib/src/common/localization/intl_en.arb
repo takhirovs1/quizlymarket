@@ -10,7 +10,6 @@
   "appConfigurationReset": "Reset",
   "appConfigurationResetDescription": "Reset your app settings to default.",
   "title": "Quizly Market",
-
   "pressBackAgainToExit": "Press back again to exit",
   "language": "Change language",
   "english": "English",
@@ -24,14 +23,12 @@
   "buy": "Buy",
   "appName": "QuizlyMarket",
   "cart": "Cart",
-
   "testPurchased": "Test purchased",
   "personalizedTestDescription": "You can start the test customized for you.",
   "enterTest": "Enter test",
   "cancel": "Cancel",
   "testPurchasedDescription": "You can start the test customized for you.",
   "testPurchasedTitle": "Test purchased!",
-
   "test": "Test",
   "startTest": "Start test",
   "parameters": "Parameters:",
@@ -47,7 +44,6 @@
   "shuffleAnswers": "Answers only",
   "selectQuestionByRange": "Select questions by range:",
   "allOfTimeTest": "Total test time:",
-
   "questionRangeHint": "{solved} questions will rotate out of {count}.",
   "@questionRangeHint": {
     "placeholders": {
@@ -61,7 +57,6 @@
       }
     }
   },
-
   "intToCount": "{count} pcs",
   "@intToCount": {
     "placeholders": {
@@ -101,5 +96,6 @@
   "time": "Time",
   "continueAction": "Continue",
   "search": "Search",
-  "filter": "Filter"
+  "filter": "Filter",
+  "noTestsFound": "Testlar topilmadi"
 }

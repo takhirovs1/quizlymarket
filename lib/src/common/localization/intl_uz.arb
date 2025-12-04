@@ -10,7 +10,6 @@
   "appConfigurationReset": "Tiklash",
   "appConfigurationResetDescription": "Ilova sozlamalarini sukut bo‘yicha tiklang.",
   "title": "Quizly Market",
-
   "pressBackAgainToExit": "Chiqish uchun yana bir marta bosing",
   "language": "Tilni o‘zgartirish",
   "english": "Ingliz tili",
@@ -24,14 +23,12 @@
   "buy": "Sotib olish",
   "appName": "QuizlyMarket",
   "cart": "Savat",
-
   "testPurchased": "Test sotib olindi",
   "personalizedTestDescription": "Testni o‘zingizga moslab boshlashingiz mumkin.",
   "enterTest": "Testga kirish",
   "cancel": "Bekor qilish",
   "testPurchasedDescription": "Testni o‘zingizga moslab boshlashingiz mumkin.",
   "testPurchasedTitle": "Test sotib olindi!",
-
   "test": "Test",
   "startTest": "Testni boshlash",
   "parameters": "Parametrlar:",
@@ -47,7 +44,6 @@
   "shuffleAnswers": "Faqat javoblar",
   "selectQuestionByRange": "Savollarni oraliq bo‘yicha tanlash:",
   "allOfTimeTest": "Testning umumiy vaqti:",
-
   "questionRangeHint": "{count} ta savoldan {solved} tasi almashib tushadi.",
   "@questionRangeHint": {
     "placeholders": {
@@ -61,7 +57,6 @@
       }
     }
   },
-
   "intToCount": "{count} dona",
   "@intToCount": {
     "placeholders": {
@@ -101,5 +96,6 @@
   "time": "Vaqt",
   "continueAction": "Davom etish",
   "search": "Qidirish",
-  "filter": "Filtrlash"
+  "filter": "Filtrlash",
+  "noTestsFound": "Testlar topilmadi"
 }
