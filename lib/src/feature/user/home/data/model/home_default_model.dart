@@ -1,9 +1,7 @@
 class DirectionModel {
-  const DirectionModel({required this.id, required this.name});
+  DirectionModel({required this.id, required this.name});
   final String id;
   final String name;
-
-  const DirectionModel({required this.id, required this.name});
 }
 
 class CourseModel {
@@ -11,8 +9,6 @@ class CourseModel {
   final String id;
   final String name;
   final List<DirectionModel> directions;
-
-  const CourseModel({required this.id, required this.name, this.directions = const []});
 }
 
 class FacultyModel {
@@ -20,8 +16,6 @@ class FacultyModel {
   final String id;
   final String name;
   final List<CourseModel> courses;
-
-  const FacultyModel({required this.id, required this.name, this.courses = const []});
 }
 
 class UniversityModel {
@@ -29,6 +23,4 @@ class UniversityModel {
   final String id;
   final String name;
   final List<FacultyModel> faculties;
-
-  const UniversityModel({required this.id, required this.name, this.faculties = const []});
 }
