@@ -57,9 +57,9 @@ final class HomeRepositoryImpl implements HomeRepository {
     await _dio.get<List<DirectionModel>>('Urls.directions');
 
     final defData = <DirectionModel>[
-      const DirectionModel(id: 'd_all', name: 'Barcha yo’nalishlar'),
-      const DirectionModel(id: 'd1', name: 'Economy'),
-      const DirectionModel(id: 'd2', name: 'World economy and international econ...'),
+      DirectionModel(id: 'd_all', name: 'Barcha yo’nalishlar'),
+      DirectionModel(id: 'd1', name: 'Economy'),
+      DirectionModel(id: 'd2', name: 'World economy and international econ...'),
     ];
     return defData;
   }
