@@ -29,10 +29,8 @@ abstract class TestInitState extends State<TestInitScreen> {
 
   void _setupTelegramBackButton() {
     if (!kIsWeb) return;
-
     try {
       if (!context.telegramWebApp.isSupported) return;
-
       context.telegramWebApp.backButton
         ..onClick(_handleTelegramBackButtonPressed)
         ..show();
@@ -43,10 +41,8 @@ abstract class TestInitState extends State<TestInitScreen> {
 
   void _teardownTelegramBackButton() {
     if (!kIsWeb) return;
-
     try {
       if (!context.telegramWebApp.isSupported) return;
-
       context.telegramWebApp.backButton
         ..offClick(_handleTelegramBackButtonPressed)
         ..hide();
@@ -58,7 +54,6 @@ abstract class TestInitState extends State<TestInitScreen> {
   void _handleTelegramBackButtonPressed() {
     context.telegramWebApp.hapticFeedback.impactOccurred(.light);
     if (!mounted) return;
-
     context.pop();
   }
 

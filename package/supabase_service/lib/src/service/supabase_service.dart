@@ -127,9 +127,9 @@ class SupabaseService with SupabaseHelpersMixin {
     }
   }
 
-  Future<List<Map<String, Object?>>> getTests() async {
+  Future<List<Map<String, Object?>>> getTests({String? search}) async {
     try {
-      final res = await _client
+      var builder = _client
           .from('tests')
           .select('''
       id,
@@ -161,6 +161,15 @@ class SupabaseService with SupabaseHelpersMixin {
       )
     ''')
           .eq('is_active', true);
+      if (search != null && search.isNotEmpty) {
+        builder = builder.ilike('title', '%$search%');
+        // .ilike('subject.name', '%$search%')
+        // .ilike('subject.direction.name', '%$search%');
+        // .ilike('subject.direction.course.name', '%$search%')
+        // .ilike('subject.direction.course.faculty.name', '%$search%')
+        // .ilike('subject.direction.course.faculty.university.name', '%$search%');
+      }
+      final res = await builder;
       log('getTests() res=$res');
 
       return _castRows(res);

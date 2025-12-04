@@ -45,7 +45,7 @@ class _TestResultScreenState extends State<TestResultScreen> {
           child: SizedBox(
             width: context.width * 0.4,
             height: context.width * 0.4,
-            child: Assets.images.robotResult.image(fit: BoxFit.contain),
+            child: Assets.images.robotResult.image(fit: .contain),
           ),
         ),
         Dimension.hBox16,

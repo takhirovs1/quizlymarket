@@ -242,4 +242,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get filter => 'Фильтр';
+
+  @override
+  String get noTestsFound => 'Testlar topilmadi';
 }

@@ -32,8 +32,8 @@ class CustomTextFiled extends StatefulWidget {
     this.keyboardType,
   });
   final TextEditingController? controller;
-  final void Function(String)? onChanged;
-  final void Function(String)? onSubmitted;
+  final void Function(String value)? onChanged;
+  final void Function(String value)? onSubmitted;
   final VoidCallback? onTap;
   final FocusNode? focusNode;
   final TextInputType? keyboardType;

@@ -15,8 +15,8 @@ import '../../../../../common/widget/bank_card_widget.dart';
 import '../../../../../common/widget/custom_bottom_sheet.dart';
 import '../../../../../common/widget/custom_button.dart';
 import '../../../../../common/widget/custom_primary_dialog.dart';
-import '../../data/repository/home_repository.dart';
-import '../bloc/filter/filter_bloc.dart';
+import '../../../../auth/bloc/auth_bloc.dart';
+import '../../../../tests/model/test_model.dart';
 import '../screen/home_screen.dart';
 import '../widget/filter_bottom_sheet.dart';
 
@@ -35,7 +35,6 @@ abstract class HomeState extends State<HomeScreen> {
 
   @override
   void dispose() {
-    // TODO: implement dispose
     super.dispose();
     searchController.dispose();
   }
@@ -71,7 +70,7 @@ abstract class HomeState extends State<HomeScreen> {
       );
   }
 
-  Future<void> onBuyButtonPressed() async => await showModalBottomSheet<void>(
+  Future<void> onBuyButtonPressed(TestModel test) async => await showModalBottomSheet<void>(
     context: context,
     useRootNavigator: true,
     isScrollControlled: true,
@@ -93,7 +92,14 @@ abstract class HomeState extends State<HomeScreen> {
       ),
       children: [
         Dimension.hBox12,
-        const BankCardWidget(fullName: 'John Doe', balance: 1000000, id: '1234567890', cardName: 'QuizlyMarket Card'),
+        BlocBuilder<AuthBloc, AuthState>(
+          builder: (context, state) => BankCardWidget(
+            fullName: state.user?.name ?? '',
+            balance: state.user?.balance ?? 0,
+            id: state.user?.telegramID.toString() ?? '',
+            cardName: 'QuizlyMarket Card',
+          ),
+        ),
         Dimension.hBox16,
 
         Column(
@@ -104,7 +110,7 @@ abstract class HomeState extends State<HomeScreen> {
               mainAxisAlignment: .spaceBetween,
               children: [
                 Text(
-                  'Akademik ko\'nikmalar',
+                  test.subject.name,
                   style: context.textTheme.sfProW500s20.copyWith(
                     color: context.color.black,
                     fontWeight: FontWeight.w700,
@@ -113,7 +119,7 @@ abstract class HomeState extends State<HomeScreen> {
                   overflow: TextOverflow.ellipsis,
                 ),
                 Text(
-                  'Alfraganus',
+                  test.universityName,
                   style: context.textTheme.sfProW500s18.copyWith(color: context.color.gray),
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
@@ -121,13 +127,13 @@ abstract class HomeState extends State<HomeScreen> {
               ],
             ),
             Text(
-              'Iqtisodiyot sirtqi 2-kurs 2-semistr',
+              '${test.directionName} ${test.academicYearSemesterText}',
               style: context.textTheme.sfProW500s18.copyWith(color: context.color.gray),
               maxLines: 2,
               overflow: .ellipsis,
             ),
             Text(
-              '100 ta savol',
+              '${test.questionCount} ta savol',
               style: context.textTheme.sfProW500s18.copyWith(color: context.color.gray),
               maxLines: 2,
               overflow: .ellipsis,
@@ -137,7 +143,7 @@ abstract class HomeState extends State<HomeScreen> {
               children: [
                 Lottie.asset(Assets.lottie.money, width: 24, height: 24, repeat: false),
                 Text(
-                  10000.toUZSString(),
+                  test.price.toUZSString(),
                   style: context.textTheme.sfProW500s26.copyWith(
                     color: context.color.primary,
                     fontStyle: .normal,

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../common/constant/gen/assets.gen.dart';
 import '../../../../../common/extension/context_extension.dart';
 import '../../../../../common/util/dimension.dart';
+import '../../../../tests/bloc/tests_bloc.dart';
 import '../../../cart/presentation/screen/cart_screen.dart';
 import '../../../home/presentation/screen/home_screen.dart';
 import '../../../profile/presentation/screen/profile_screen.dart';
@@ -20,62 +22,73 @@ class MainScreen extends StatefulWidget {
 
 class _MainScreenState extends MainState {
   late final List<Widget> _pages;
+  late final TestsBloc testsBloc;
 
   @override
   void initState() {
     super.initState();
+    testsBloc = TestsBloc(testsRepository: context.dependencies.repository.testsRepository)..add(const GetTestsEvent());
     _pages = const [HomeScreen(), CartScreen(), ProfileScreen()];
   }
 
   @override
-  Widget build(BuildContext context) => PopScope(
-    canPop: false,
-    onPopInvokedWithResult: onPopInvokedWithResult,
-    child: Scaffold(
-      appBar: currentTab.isProfileTab
-          ? null
-          : AppBar(
-              backgroundColor: context.color.primary,
-              automaticallyImplyLeading: false,
-              scrolledUnderElevation: 0,
-              elevation: 0,
-              toolbarHeight: context.telegramWebApp.safeAreaInset.top + 56,
-              surfaceTintColor: context.color.transparent,
-              title: Column(
-                children: [
-                  SizedBox(height: context.telegramWebApp.safeAreaInset.top.toDouble()),
-                  Center(
-                    child: Text(switch (currentTab.index) {
-                      1 => context.l10n.cart,
-                      _ => context.l10n.appName,
-                    }, style: context.textTheme.nunitoW600s24.copyWith(color: context.color.white)),
-                  ),
+  void dispose() {
+    testsBloc.close();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) => BlocProvider.value(
+    value: testsBloc,
+    child: PopScope(
+      canPop: false,
+      onPopInvokedWithResult: onPopInvokedWithResult,
+      child: Scaffold(
+        appBar: currentTab.isProfileTab
+            ? null
+            : AppBar(
+                backgroundColor: context.color.primary,
+                automaticallyImplyLeading: false,
+                scrolledUnderElevation: 0,
+                elevation: 0,
+                toolbarHeight: context.telegramWebApp.safeAreaInset.top + 56,
+                surfaceTintColor: context.color.transparent,
+                title: Column(
+                  children: [
+                    SizedBox(height: context.telegramWebApp.safeAreaInset.top.toDouble()),
+                    Center(
+                      child: Text(switch (currentTab.index) {
+                        1 => context.l10n.cart,
+                        _ => context.l10n.appName,
+                      }, style: context.textTheme.nunitoW600s24.copyWith(color: context.color.white)),
+                    ),
+                  ],
+                ),
+              ),
+        body: IndexedStack(index: currentTab.index, children: _pages),
+        bottomNavigationBar: Padding(
+          padding: Dimension.pBottom10,
+          child: DecoratedBox(
+            decoration: BoxDecoration(color: context.color.gray),
+            child: Padding(
+              padding: Dimension.pTop1,
+              child: BottomNavigationBar(
+                currentIndex: currentTab.index,
+                onTap: onItemTapped,
+                enableFeedback: true,
+                type: .fixed,
+                backgroundColor: context.color.background,
+                selectedItemColor: context.color.primary,
+                unselectedItemColor: context.color.gray,
+                showSelectedLabels: false,
+                showUnselectedLabels: false,
+                elevation: 0,
+                items: [
+                  _buildBottomItem(Assets.icons.home),
+                  _buildBottomItem(Assets.icons.cart),
+                  _buildBottomItem(Assets.icons.profile),
                 ],
               ),
-            ),
-      body: IndexedStack(index: currentTab.index, children: _pages),
-      bottomNavigationBar: Padding(
-        padding: Dimension.pBottom10,
-        child: DecoratedBox(
-          decoration: BoxDecoration(color: context.color.gray),
-          child: Padding(
-            padding: Dimension.pTop1,
-            child: BottomNavigationBar(
-              currentIndex: currentTab.index,
-              onTap: onItemTapped,
-              enableFeedback: true,
-              type: .fixed,
-              backgroundColor: context.color.background,
-              selectedItemColor: context.color.primary,
-              unselectedItemColor: context.color.gray,
-              showSelectedLabels: false,
-              showUnselectedLabels: false,
-              elevation: 0,
-              items: [
-                _buildBottomItem(Assets.icons.home),
-                _buildBottomItem(Assets.icons.cart),
-                _buildBottomItem(Assets.icons.profile),
-              ],
             ),
           ),
         ),

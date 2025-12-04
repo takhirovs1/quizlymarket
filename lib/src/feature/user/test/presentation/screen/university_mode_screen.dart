@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -100,7 +98,6 @@ class _UniversityModeScreenState extends UniversityModeState {
                 separatorBuilder: (context, index) => Dimension.wBox12,
                 itemBuilder: (context, index) => GestureDetector(
                   onTap: () {
-                    log('index: $index, revealAnswer: ${isSelected.value[index] != null}');
                     context.read<TestBloc>().add(
                       ChangeQuestionEvent(index: index, revealAnswer: isSelected.value[index] != null),
                     );

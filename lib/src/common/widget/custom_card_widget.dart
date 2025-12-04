@@ -8,6 +8,7 @@ import '../util/dimension.dart';
 
 class CustomCardWidget extends StatefulWidget {
   const CustomCardWidget({
+    required this.title,
     required this.subject,
     required this.university,
     required this.direction,
@@ -22,6 +23,7 @@ class CustomCardWidget extends StatefulWidget {
   @override
   State<CustomCardWidget> createState() => _CustomCardWidgetState();
 
+  final String title;
   final String subject;
   final String university;
   final String direction;
@@ -70,7 +72,7 @@ class _CustomCardWidgetState extends State<CustomCardWidget> with SingleTickerPr
               // Lottie.asset('assets/lottie/book.json', width: 24, height: 24, repeat: false),
               Expanded(
                 child: Text(
-                  widget.subject,
+                  widget.title,
                   style: context.textTheme.sfProW500s16.copyWith(
                     color: context.color.black,
                     fontWeight: FontWeight.w700,
@@ -83,7 +85,7 @@ class _CustomCardWidgetState extends State<CustomCardWidget> with SingleTickerPr
           ),
 
           Text(
-            widget.direction,
+            '${widget.direction}/${widget.subject}',
             style: context.textTheme.sfProW500s16.copyWith(color: context.color.gray),
             maxLines: 2,
             overflow: .ellipsis,
@@ -92,6 +94,7 @@ class _CustomCardWidgetState extends State<CustomCardWidget> with SingleTickerPr
             spacing: 10,
             children: [
               Text(
+                // TODO(Samandar): Translate this text
                 '${widget.testCount} ta savol',
                 style: context.textTheme.sfProW400s14.copyWith(color: context.color.gray),
                 maxLines: 1,

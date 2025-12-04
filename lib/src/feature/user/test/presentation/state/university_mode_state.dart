@@ -17,13 +17,12 @@ abstract class UniversityModeState extends State<UniversityModeScreen> {
   late final ValueNotifier<Map<int, bool>> isSelected;
   late final ScrollController scrollController;
   Map<int, int> selectedAnswers = {};
-  Duration remaining = Duration.zero;
+  Duration remaining = .zero;
   Timer? timer;
   Stopwatch totalTimer = Stopwatch();
   int correctCount = 0;
   int incorrectCount = 0;
   int unselectedCount = 0;
-  bool isInitialized = false;
 
   Color getColorQuestion(int i, TestState state, {bool? isBg, bool? isText}) {
     final isCorrect = isSelected.value[i];
@@ -67,6 +66,7 @@ abstract class UniversityModeState extends State<UniversityModeScreen> {
         ),
       );
       timer?.cancel();
+      timer = null;
       return;
     } else if (animateIndex == 24) {
       for (var i = 0; i < 25; i++) {
@@ -98,15 +98,11 @@ abstract class UniversityModeState extends State<UniversityModeScreen> {
 
   void startTimer() {
     args = ModalRoute.of(context)?.settings.arguments as CustomTestSettings?;
-    if (!isInitialized) {
-      isInitialized = true;
-      context.read<TestBloc>().add(FilterTestsEvent(args: args));
-    }
     setState(() => remaining = args?.totalTestTime.duration ?? const Duration(minutes: 30));
     timer?.cancel();
     timer = null;
     if (remaining.inSeconds <= 0) return;
-    timer = Timer.periodic(const Duration(seconds: 1), (timer) {
+    timer = Timer.periodic(const Duration(seconds: 1), (_) {
       if (!mounted) return;
       if (remaining.inSeconds <= 1) {
         unselectedCount = 25 - (correctCount + incorrectCount);
@@ -128,7 +124,7 @@ abstract class UniversityModeState extends State<UniversityModeScreen> {
     super.initState();
     scrollController = ScrollController();
     totalTimer.start();
-    bloc = context.read<TestBloc>();
+    bloc = context.read<TestBloc>()..add(FilterTestsEvent(args: args));
     testResult = ValueNotifier(0);
     isSelected = ValueNotifier({});
     WidgetsBinding.instance.addPostFrameCallback((_) => startTimer());
@@ -141,6 +137,7 @@ abstract class UniversityModeState extends State<UniversityModeScreen> {
     testResult.dispose();
     isSelected.dispose();
     timer?.cancel();
+    timer = null;
     scrollController.dispose();
     super.dispose();
   }
