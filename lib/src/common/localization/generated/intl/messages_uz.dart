@@ -59,6 +59,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "english": MessageLookupByLibrary.simpleMessage("Ingliz tili"),
     "enterTest": MessageLookupByLibrary.simpleMessage("Testga kirish"),
     "exit": MessageLookupByLibrary.simpleMessage("Chiqish"),
+    "filter": MessageLookupByLibrary.simpleMessage("Filtrlash"),
     "finish": MessageLookupByLibrary.simpleMessage("Tugatish"),
     "intToCount": m0,
     "language": MessageLookupByLibrary.simpleMessage("Tilni o‘zgartirish"),
@@ -93,6 +94,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "shuffleAll": MessageLookupByLibrary.simpleMessage(
       "Barchasini aralashtirish",
     ),
+    "search": MessageLookupByLibrary.simpleMessage("Qidirish"),
+    "selectQuestionByRange": MessageLookupByLibrary.simpleMessage("Savollarni oraliq bo‘yicha tanlash:"),
+    "shuffleAll": MessageLookupByLibrary.simpleMessage("Barchasini aralashtirish"),
     "shuffleAnswers": MessageLookupByLibrary.simpleMessage("Faqat javoblar"),
     "shuffleNone": MessageLookupByLibrary.simpleMessage("Aralashtirilmasin"),
     "shuffleQuestions": MessageLookupByLibrary.simpleMessage("Faqat savollar"),

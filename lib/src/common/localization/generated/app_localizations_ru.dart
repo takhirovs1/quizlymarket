@@ -185,4 +185,10 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get continueAction => 'Продолжить';
+
+  @override
+  String get search => 'Поиск';
+
+  @override
+  String get filter => 'Фильтр';
 }

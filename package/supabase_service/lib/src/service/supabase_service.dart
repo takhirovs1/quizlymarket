@@ -23,7 +23,7 @@ class SupabaseService with SupabaseHelpersMixin {
   Future<Map<String, Object?>> login({required String telegramID}) async {
     final response = await _supabase?.client.auth.signInWithPassword(email: getEmail(telegramID), password: telegramID);
     log('response id in login: ${response?.user?.id}');
-    final profile = await _supabase?.client.from(Tables.profiles).select().limit(1).single();
+    final profile = await _supabase?.client.from(Tables.profiles).select().eq('telegram_id', int.parse(telegramID)).limit(1).single();
     log('profile in login: $profile');
     return profile?.cast<String, Object?>() ?? {};
   }

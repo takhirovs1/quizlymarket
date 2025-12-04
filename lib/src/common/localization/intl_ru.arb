@@ -80,9 +80,11 @@
   "question": "Вопрос:",
   "next": "Следующий",
   "exit": "Выход",
-"continueAction": "Продолжить",
+  "continueAction": "Продолжить",
   "correct": "Правильно",
   "wrong": "Неправильно",
   "skipped": "Пропущено",
-  "time": "Время"
+  "time": "Время",
+  "search": "Поиск",
+  "filter": "Фильтр"
 }

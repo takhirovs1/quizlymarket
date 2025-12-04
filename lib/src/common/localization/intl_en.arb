@@ -84,5 +84,7 @@
   "wrong": "Wrong",
   "skipped": "Skipped",
   "time": "Time",
-"continueAction": "Continue"
+  "continueAction": "Continue",
+  "search": "Search",
+  "filter": "Filter"
 }
