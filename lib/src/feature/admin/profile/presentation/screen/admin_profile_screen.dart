@@ -53,6 +53,7 @@ class _AdminProfileScreenState extends AdminProfileState {
                     title: context.l10n.topUp,
                     onTap: () {
                       context.telegramWebApp.hapticFeedback.impactOccurred(.light);
+                      context.goNamed(Routes.adminTopUpUserBalance);
                     },
                   ),
                 ),

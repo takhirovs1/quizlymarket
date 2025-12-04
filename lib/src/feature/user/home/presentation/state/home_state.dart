@@ -160,7 +160,7 @@ abstract class HomeState extends State<HomeScreen> {
   }
 
   List<UniversityModel> universities = <UniversityModel>[
-    UniversityModel(
+    const UniversityModel(
       id: 'u1',
       name: 'Alfraganus',
 
@@ -197,8 +197,8 @@ abstract class HomeState extends State<HomeScreen> {
         FacultyModel(id: 'f4', name: 'Faculty of Philology'),
       ],
     ),
-    UniversityModel(id: 'u2', name: 'Toshkent davlat Iqtisodiyot University'),
-    UniversityModel(id: 'u3', name: 'Toshkent davlat Yuridik University'),
-    UniversityModel(id: 'u4', name: 'WUIT'),
+    const UniversityModel(id: 'u2', name: 'Toshkent davlat Iqtisodiyot University', faculties: []),
+    const UniversityModel(id: 'u3', name: 'Toshkent davlat Yuridik University', faculties: []),
+    const UniversityModel(id: 'u4', name: 'WUIT', faculties: []),
   ];
 }
