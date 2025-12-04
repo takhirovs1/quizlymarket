@@ -34,7 +34,6 @@ abstract class HomeState extends State<HomeScreen> {
 
   @override
   void dispose() {
-    // TODO: implement dispose
     super.dispose();
     searchController.dispose();
   }
@@ -119,7 +118,7 @@ abstract class HomeState extends State<HomeScreen> {
                   overflow: TextOverflow.ellipsis,
                 ),
                 Text(
-                  test.subject.direction.course.faculty.university.name,
+                  test.universityName,
                   style: context.textTheme.sfProW500s18.copyWith(color: context.color.gray),
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
@@ -127,7 +126,7 @@ abstract class HomeState extends State<HomeScreen> {
               ],
             ),
             Text(
-              '${test.subject.direction.name} ${test.academicYearSemesterText}',
+              '${test.directionName} ${test.academicYearSemesterText}',
               style: context.textTheme.sfProW500s18.copyWith(color: context.color.gray),
               maxLines: 2,
               overflow: .ellipsis,

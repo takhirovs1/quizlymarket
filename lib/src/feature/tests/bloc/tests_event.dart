@@ -5,5 +5,6 @@ sealed class TestsEvent {
 }
 
 final class GetTestsEvent extends TestsEvent {
-  const GetTestsEvent();
+  const GetTestsEvent({this.search});
+  final String? search;
 }

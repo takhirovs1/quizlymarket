@@ -35,6 +35,10 @@ class _HomeScreenState extends HomeState {
     sliver: SliverToBoxAdapter(
       child: CustomTextFiled(
         hintText: context.l10n.search,
+        controller: searchController,
+        onChanged: (value) {
+          context.read<TestsBloc>().add(GetTestsEvent(search: value));
+        },
         action: IconButton(
           hoverColor: context.color.transparent,
           onPressed: onFilterButtonPressed,
@@ -70,6 +74,7 @@ class _HomeScreenState extends HomeState {
           mainAxisSize: MainAxisSize.min,
           children: [
             CustomCardWidget(
+              title: test.title,
               subject: test.subject.name,
               university: test.subject.direction.course.faculty.university.name,
               direction: test.subject.direction.name,
