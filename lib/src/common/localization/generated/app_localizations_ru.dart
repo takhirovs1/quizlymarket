@@ -151,6 +151,18 @@ class AppLocalizationsRu extends AppLocalizations {
   }
 
   @override
+  String get upload => 'Загрузка';
+
+  @override
+  String get statistics => 'Статистика';
+
+  @override
+  String get topUp => 'Пополнить баланс пользователя';
+
+  @override
+  String get withdraw => 'Вывести баланс';
+
+  @override
   String get addToHomeScreenApp => 'Добавить в домашний экран';
 
   @override

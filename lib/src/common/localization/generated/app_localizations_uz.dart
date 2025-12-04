@@ -151,6 +151,18 @@ class AppLocalizationsUz extends AppLocalizations {
   }
 
   @override
+  String get upload => 'Yuklash';
+
+  @override
+  String get statistics => 'Statistika';
+
+  @override
+  String get topUp => 'Foydalanuvchi pulini to‘ldirish';
+
+  @override
+  String get withdraw => 'Pulni chiqarish';
+
+  @override
   String get addToHomeScreenApp => 'Ilovani bosh sahifaga qo‘shish';
 
   @override
