@@ -14,6 +14,8 @@ class TestBloc extends Bloc<TestEvent, TestState> {
     on<TestAnswerEvent>(_onTestAnswerEvent);
     on<ClearTestEvent>(_onClearTestEvent);
     on<FilterTestsEvent>(_onFilterTestsEvent);
+    on<UniversityTestEvent>(_onUniversityTestEvent);
+    on<ChangeQuestionEvent>(_onChangeQuestionEvent);
   }
 
   void _onTestAnswerEvent(TestAnswerEvent event, Emitter<TestState> emit) {
@@ -25,7 +27,9 @@ class TestBloc extends Bloc<TestEvent, TestState> {
     emit(state.copyWith(status: Status.loading));
     var questionIndex = state.currentQuestionIndex;
     if (state.tests.length - 1 > questionIndex) questionIndex++;
-    emit(state.copyWith(status: Status.success, revealAnswer: false, currentQuestionIndex: questionIndex));
+    emit(
+      state.copyWith(status: Status.success, revealAnswer: false, currentQuestionIndex: event.index ?? questionIndex),
+    );
   }
 
   void _onFilterTestsEvent(FilterTestsEvent event, Emitter<TestState> emit) {
@@ -48,5 +52,17 @@ class TestBloc extends Bloc<TestEvent, TestState> {
           .toList();
       emit(state.copyWith(status: Status.success, tests: shuffledTests));
     }
+  }
+
+  void _onUniversityTestEvent(UniversityTestEvent event, Emitter<TestState> emit) {
+    emit(state.copyWith(status: Status.loading));
+    var test = List<QuestionModel>.from(state.tests)..shuffle();
+    test = test.map((e) => e.copyWith(answers: List<AnswerModel>.from(e.answers)..shuffle())).toList();
+    emit(state.copyWith(status: Status.success, tests: test.sublist(0, 25)));
+  }
+
+  void _onChangeQuestionEvent(ChangeQuestionEvent event, Emitter<TestState> emit) {
+    emit(state.copyWith(status: Status.loading));
+    emit(state.copyWith(status: Status.success, currentQuestionIndex: event.index, revealAnswer: true));
   }
 }

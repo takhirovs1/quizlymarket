@@ -14,13 +14,28 @@ abstract class UniversityModeState extends State<UniversityModeScreen> {
   CustomTestSettings? args;
   late final TestBloc bloc;
   late final ValueNotifier<int> testResult;
-  late final ValueNotifier<bool> isSelected;
+  late final ValueNotifier<Map<int, bool>> isSelected;
+  Map<int, int> selectedAnswers = {};
   Duration remaining = Duration.zero;
   Timer? timer;
   Stopwatch totalTimer = Stopwatch();
   int correctCount = 0;
   int incorrectCount = 0;
   int unselectedCount = 0;
+  bool isInitialized = false;
+
+  Color getColorQuestion(int i, TestState state, {bool? isBg, bool? isText}) {
+    final isCorrect = isSelected.value[i];
+    return i == state.currentQuestionIndex
+        ? context.color.primary.withValues(alpha: (isBg ?? false) ? 0.1 : 1)
+        : isCorrect == true
+        ? context.color.success.withValues(alpha: (isBg ?? false) ? 0.1 : 1)
+        : isCorrect == false
+        ? context.color.error.withValues(alpha: (isBg ?? false) ? 0.1 : 1)
+        : (isText ?? false)
+        ? context.color.black
+        : context.color.outline.withValues(alpha: (isBg ?? false) ? 0.1 : 1);
+  }
 
   Color getColor(int i, TestState state, {bool? isBg, bool? isText}) {
     final isCorrect = state.tests[state.currentQuestionIndex].answers[i - 1].isCorrect;
@@ -34,10 +49,11 @@ abstract class UniversityModeState extends State<UniversityModeScreen> {
   }
 
   void onTimerEnd() {
-    if (!isSelected.value) unselectedCount++;
+    if (isSelected.value[bloc.state.currentQuestionIndex] == null &&
+        unselectedCount + correctCount + incorrectCount < 25)
+      unselectedCount++;
     testResult.value = 0;
-    isSelected.value = false;
-    if (bloc.state.tests.length <= (correctCount + incorrectCount + unselectedCount)) {
+    if (25 <= (correctCount + incorrectCount + unselectedCount)) {
       context.goNamed(
         Routes.testResult,
         arguments: TestResultModel(
@@ -46,7 +62,7 @@ abstract class UniversityModeState extends State<UniversityModeScreen> {
           unselectedCount: unselectedCount,
           totalTime: Duration(milliseconds: (totalTimer..stop()).elapsedMilliseconds),
           testCount: bloc.state.tests.length,
-          totalQuestions: args?.questionRange.end.toInt() ?? 0,
+          totalQuestions: 25,
           takenQuestions: bloc.state.tests.length,
         ),
       );
@@ -58,6 +74,10 @@ abstract class UniversityModeState extends State<UniversityModeScreen> {
 
   void startTimer() {
     args = ModalRoute.of(context)?.settings.arguments as CustomTestSettings?;
+    if (!isInitialized) {
+      isInitialized = true;
+      context.read<TestBloc>().add(FilterTestsEvent(args: args));
+    }
     setState(() => remaining = args?.totalTestTime.duration ?? const Duration(minutes: 30));
     timer?.cancel();
     timer = null;
@@ -65,7 +85,10 @@ abstract class UniversityModeState extends State<UniversityModeScreen> {
     timer = Timer.periodic(const Duration(seconds: 1), (timer) {
       if (!mounted) return;
       if (remaining.inSeconds <= 1) {
-        unselectedCount = bloc.state.tests.length - (correctCount + incorrectCount);
+        unselectedCount =
+            (args?.questionRange.end.toInt() ?? 0) -
+            (args?.questionRange.start.toInt() ?? 0) -
+            (correctCount + incorrectCount);
         onTimerEnd();
       }
       setState(() => remaining -= const Duration(seconds: 1));
@@ -85,7 +108,7 @@ abstract class UniversityModeState extends State<UniversityModeScreen> {
     totalTimer.start();
     bloc = TestBloc();
     testResult = ValueNotifier(0);
-    isSelected = ValueNotifier(false);
+    isSelected = ValueNotifier({});
     WidgetsBinding.instance.addPostFrameCallback((_) => startTimer());
   }
 
