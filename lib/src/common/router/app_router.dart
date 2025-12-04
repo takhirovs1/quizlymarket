@@ -15,7 +15,6 @@ import '../../feature/user/test/presentation/screen/custom_mode_screen.dart';
 import '../../feature/user/test/presentation/screen/test_init_screen.dart';
 import '../../feature/user/test/presentation/screen/test_result_screen.dart';
 import '../../feature/user/test/presentation/screen/university_mode_screen.dart';
-import '../util/logger.dart';
 import 'route_arguments.dart';
 
 final GlobalKey<NavigatorState> rootNavigatorKey = GlobalKey<NavigatorState>();
@@ -24,9 +23,7 @@ RouteFactory buildRouteFactory(LocalSource localSource, UserRole? role) =>
     (settings) => _onGenerateRoute(settings, localSource, role);
 
 Route<dynamic> _onGenerateRoute(RouteSettings settings, LocalSource localSource, UserRole? role) {
-  // TODO: Shu joydan userga qarab page'ga ajratish kerak
-  const userRole =  UserRole.admin;
-  info('userRole: $userRole');
+  final userRole =  role ?? UserRole.user;
   return switch (settings.name) {
     Routes.onboarding => _resolveOnboardingOrHome(settings, localSource, userRole),
     Routes.home ||
