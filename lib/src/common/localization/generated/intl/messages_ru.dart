@@ -22,23 +22,18 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m0(count) => "${count} шт.";
 
-  static String m1(count, solved) =>
-      "Из ${count} вопросов ${solved} будут перемешиваться.";
+  static String m1(count, solved) => "Из ${count} вопросов ${solved} будут перемешиваться.";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-    "addToHomeScreenApp": MessageLookupByLibrary.simpleMessage(
-      "Добавить в домашний экран",
-    ),
+    "add": MessageLookupByLibrary.simpleMessage("Добавить"),
+    "addToHomeScreenApp": MessageLookupByLibrary.simpleMessage("Добавить в домашний экран"),
     "admin": MessageLookupByLibrary.simpleMessage("Admin"),
     "allOfTimeTest": MessageLookupByLibrary.simpleMessage("Общее время теста:"),
-    "appConfiguration": MessageLookupByLibrary.simpleMessage(
-      "Настройка приложения",
-    ),
+    "amount": MessageLookupByLibrary.simpleMessage("Сумма"),
+    "appConfiguration": MessageLookupByLibrary.simpleMessage("Настройка приложения"),
     "appConfigurationCancel": MessageLookupByLibrary.simpleMessage("Отмена"),
-    "appConfigurationDescription": MessageLookupByLibrary.simpleMessage(
-      "Настройте ваши настройки приложения здесь.",
-    ),
+    "appConfigurationDescription": MessageLookupByLibrary.simpleMessage("Настройте ваши настройки приложения здесь."),
     "appConfigurationReset": MessageLookupByLibrary.simpleMessage("Сбросить"),
     "appConfigurationResetDescription": MessageLookupByLibrary.simpleMessage(
       "Сбросьте ваши настройки приложения на defaults.",
@@ -47,13 +42,13 @@ class MessageLookup extends MessageLookupByLibrary {
     "appName": MessageLookupByLibrary.simpleMessage("QuizlyMarket"),
     "buy": MessageLookupByLibrary.simpleMessage("Купить"),
     "cancel": MessageLookupByLibrary.simpleMessage("Отмена"),
+    "cardID": MessageLookupByLibrary.simpleMessage("ID карты"),
     "cart": MessageLookupByLibrary.simpleMessage("Корзина"),
-    "changeQuestionOrAnswer": MessageLookupByLibrary.simpleMessage(
-      "Следует ли перемешать вопросы и варианты ответов?",
-    ),
+    "changeQuestionOrAnswer": MessageLookupByLibrary.simpleMessage("Следует ли перемешать вопросы и варианты ответов?"),
     "continueAction": MessageLookupByLibrary.simpleMessage("Продолжить"),
     "correct": MessageLookupByLibrary.simpleMessage("Правильно"),
     "english": MessageLookupByLibrary.simpleMessage("Английский"),
+    "enterAmount": MessageLookupByLibrary.simpleMessage("Сумму введите"),
     "enterTest": MessageLookupByLibrary.simpleMessage("Перейти к тесту"),
     "exit": MessageLookupByLibrary.simpleMessage("Выход"),
     "filter": MessageLookupByLibrary.simpleMessage("Фильтр"),
@@ -62,27 +57,17 @@ class MessageLookup extends MessageLookupByLibrary {
     "language": MessageLookupByLibrary.simpleMessage("Изменить язык"),
     "logoutCancel": MessageLookupByLibrary.simpleMessage("Отмена"),
     "logoutConfirm": MessageLookupByLibrary.simpleMessage("Выход"),
-    "logoutConfirmMessage": MessageLookupByLibrary.simpleMessage(
-      "Вы уверены, что хотите выйти?",
-    ),
+    "logoutConfirmMessage": MessageLookupByLibrary.simpleMessage("Вы уверены, что хотите выйти?"),
     "next": MessageLookupByLibrary.simpleMessage("Следующий"),
-    "noInternetConnection": MessageLookupByLibrary.simpleMessage(
-      "Нет интернет соединения",
-    ),
+    "noInternetConnection": MessageLookupByLibrary.simpleMessage("Нет интернет соединения"),
     "noInternetConnectionDescription": MessageLookupByLibrary.simpleMessage(
       "Пожалуйста, проверьте ваше интернет соединение и попробуйте снова.",
     ),
-    "noUsersFound": MessageLookupByLibrary.simpleMessage(
-      "Пользователь не найден",
-    ),
+    "noUsersFound": MessageLookupByLibrary.simpleMessage("Пользователь не найден"),
     "openTest": MessageLookupByLibrary.simpleMessage("Открыть тест"),
     "parameters": MessageLookupByLibrary.simpleMessage("Параметры:"),
-    "personalizedTestDescription": MessageLookupByLibrary.simpleMessage(
-      "Вы можете начать тест, настроенный под вас.",
-    ),
-    "pressBackAgainToExit": MessageLookupByLibrary.simpleMessage(
-      "Нажмите еще раз, чтобы выйти",
-    ),
+    "personalizedTestDescription": MessageLookupByLibrary.simpleMessage("Вы можете начать тест, настроенный под вас."),
+    "pressBackAgainToExit": MessageLookupByLibrary.simpleMessage("Нажмите еще раз, чтобы выйти"),
     "question": MessageLookupByLibrary.simpleMessage("Вопрос:"),
     "questionRangeHint": m1,
     "refresh": MessageLookupByLibrary.simpleMessage("Обновить"),
@@ -90,9 +75,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "russian": MessageLookupByLibrary.simpleMessage("Русский"),
     "save": MessageLookupByLibrary.simpleMessage("Сохранить"),
     "search": MessageLookupByLibrary.simpleMessage("Поиск"),
-    "selectQuestionByRange": MessageLookupByLibrary.simpleMessage(
-      "Выберите вопросы по диапазону:",
-    ),
+    "selectQuestionByRange": MessageLookupByLibrary.simpleMessage("Выберите вопросы по диапазону:"),
     "shuffleAll": MessageLookupByLibrary.simpleMessage("Перемешать всё"),
     "shuffleAnswers": MessageLookupByLibrary.simpleMessage("Только ответы"),
     "shuffleNone": MessageLookupByLibrary.simpleMessage("Не перемешивать"),
@@ -109,27 +92,20 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "testModeUniversity": MessageLookupByLibrary.simpleMessage("Университет"),
     "testPurchased": MessageLookupByLibrary.simpleMessage("Тест приобретен"),
-    "testPurchasedDescription": MessageLookupByLibrary.simpleMessage(
-      "Вы можете начать тест, настроенный под вас.",
-    ),
-    "testPurchasedTitle": MessageLookupByLibrary.simpleMessage(
-      "Тест приобретен!",
-    ),
+    "testPurchasedDescription": MessageLookupByLibrary.simpleMessage("Вы можете начать тест, настроенный под вас."),
+    "testPurchasedTitle": MessageLookupByLibrary.simpleMessage("Тест приобретен!"),
     "testTotalTime1Hour": MessageLookupByLibrary.simpleMessage("1 час"),
     "testTotalTime30Min": MessageLookupByLibrary.simpleMessage("30 минут"),
     "time": MessageLookupByLibrary.simpleMessage("Время"),
     "title": MessageLookupByLibrary.simpleMessage("Quizly Market"),
-    "topUp": MessageLookupByLibrary.simpleMessage(
-      "Пополнить баланс пользователя",
-    ),
-    "topUpUserBalance": MessageLookupByLibrary.simpleMessage(
-      "Пополнить баланс",
-    ),
+    "topUp": MessageLookupByLibrary.simpleMessage("Пополнить баланс пользователя"),
+    "topUpUserBalance": MessageLookupByLibrary.simpleMessage("Пополнить баланс"),
     "unknownError": MessageLookupByLibrary.simpleMessage("Ошибка"),
     "upload": MessageLookupByLibrary.simpleMessage("Загрузка"),
     "user": MessageLookupByLibrary.simpleMessage("Студент"),
     "userList": MessageLookupByLibrary.simpleMessage("Список пользователей"),
     "userRole": MessageLookupByLibrary.simpleMessage("Роль пользователя:"),
+    "users": MessageLookupByLibrary.simpleMessage("Пользователи"),
     "uzbek": MessageLookupByLibrary.simpleMessage("Узбекский"),
     "withdraw": MessageLookupByLibrary.simpleMessage("Вывести баланс"),
     "wrong": MessageLookupByLibrary.simpleMessage("Неправильно"),

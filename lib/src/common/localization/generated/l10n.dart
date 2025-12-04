@@ -28,9 +28,7 @@ class GeneratedLocalization {
   static const AppLocalizationDelegate delegate = AppLocalizationDelegate();
 
   static Future<GeneratedLocalization> load(Locale locale) {
-    final name = (locale.countryCode?.isEmpty ?? false)
-        ? locale.languageCode
-        : locale.toString();
+    final name = (locale.countryCode?.isEmpty ?? false) ? locale.languageCode : locale.toString();
     final localeName = Intl.canonicalizedLocale(name);
     return initializeMessages(localeName).then((_) {
       Intl.defaultLocale = localeName;
@@ -51,20 +49,12 @@ class GeneratedLocalization {
   }
 
   static GeneratedLocalization? maybeOf(BuildContext context) {
-    return Localizations.of<GeneratedLocalization>(
-      context,
-      GeneratedLocalization,
-    );
+    return Localizations.of<GeneratedLocalization>(context, GeneratedLocalization);
   }
 
   /// `Нет интернет соединения`
   String get noInternetConnection {
-    return Intl.message(
-      'Нет интернет соединения',
-      name: 'noInternetConnection',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Нет интернет соединения', name: 'noInternetConnection', desc: '', args: []);
   }
 
   /// `Пожалуйста, проверьте ваше интернет соединение и попробуйте снова.`
@@ -84,12 +74,7 @@ class GeneratedLocalization {
 
   /// `Настройка приложения`
   String get appConfiguration {
-    return Intl.message(
-      'Настройка приложения',
-      name: 'appConfiguration',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Настройка приложения', name: 'appConfiguration', desc: '', args: []);
   }
 
   /// `Настройте ваши настройки приложения здесь.`
@@ -104,32 +89,17 @@ class GeneratedLocalization {
 
   /// `Сохранить`
   String get appConfigurationSave {
-    return Intl.message(
-      'Сохранить',
-      name: 'appConfigurationSave',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Сохранить', name: 'appConfigurationSave', desc: '', args: []);
   }
 
   /// `Отмена`
   String get appConfigurationCancel {
-    return Intl.message(
-      'Отмена',
-      name: 'appConfigurationCancel',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Отмена', name: 'appConfigurationCancel', desc: '', args: []);
   }
 
   /// `Сбросить`
   String get appConfigurationReset {
-    return Intl.message(
-      'Сбросить',
-      name: 'appConfigurationReset',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Сбросить', name: 'appConfigurationReset', desc: '', args: []);
   }
 
   /// `Сбросьте ваши настройки приложения на defaults.`
@@ -149,12 +119,7 @@ class GeneratedLocalization {
 
   /// `Нажмите еще раз, чтобы выйти`
   String get pressBackAgainToExit {
-    return Intl.message(
-      'Нажмите еще раз, чтобы выйти',
-      name: 'pressBackAgainToExit',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Нажмите еще раз, чтобы выйти', name: 'pressBackAgainToExit', desc: '', args: []);
   }
 
   /// `Изменить язык`
@@ -189,12 +154,7 @@ class GeneratedLocalization {
 
   /// `Вы уверены, что хотите выйти?`
   String get logoutConfirmMessage {
-    return Intl.message(
-      'Вы уверены, что хотите выйти?',
-      name: 'logoutConfirmMessage',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Вы уверены, что хотите выйти?', name: 'logoutConfirmMessage', desc: '', args: []);
   }
 
   /// `Выход`
@@ -224,12 +184,7 @@ class GeneratedLocalization {
 
   /// `Тест приобретен`
   String get testPurchased {
-    return Intl.message(
-      'Тест приобретен',
-      name: 'testPurchased',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Тест приобретен', name: 'testPurchased', desc: '', args: []);
   }
 
   /// `Вы можете начать тест, настроенный под вас.`
@@ -244,12 +199,7 @@ class GeneratedLocalization {
 
   /// `Перейти к тесту`
   String get enterTest {
-    return Intl.message(
-      'Перейти к тесту',
-      name: 'enterTest',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Перейти к тесту', name: 'enterTest', desc: '', args: []);
   }
 
   /// `Отмена`
@@ -269,12 +219,7 @@ class GeneratedLocalization {
 
   /// `Тест приобретен!`
   String get testPurchasedTitle {
-    return Intl.message(
-      'Тест приобретен!',
-      name: 'testPurchasedTitle',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Тест приобретен!', name: 'testPurchasedTitle', desc: '', args: []);
   }
 
   /// `Тест`
@@ -294,32 +239,17 @@ class GeneratedLocalization {
 
   /// `Режим теста:`
   String get testModeLabel {
-    return Intl.message(
-      'Режим теста:',
-      name: 'testModeLabel',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Режим теста:', name: 'testModeLabel', desc: '', args: []);
   }
 
   /// `Индивидуальный`
   String get testModeCustom {
-    return Intl.message(
-      'Индивидуальный',
-      name: 'testModeCustom',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Индивидуальный', name: 'testModeCustom', desc: '', args: []);
   }
 
   /// `Университет`
   String get testModeUniversity {
-    return Intl.message(
-      'Университет',
-      name: 'testModeUniversity',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Университет', name: 'testModeUniversity', desc: '', args: []);
   }
 
   /// `Сколько времени должно занять ответ на каждый вопрос теста?`
@@ -349,62 +279,32 @@ class GeneratedLocalization {
 
   /// `Перемешать всё`
   String get shuffleAll {
-    return Intl.message(
-      'Перемешать всё',
-      name: 'shuffleAll',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Перемешать всё', name: 'shuffleAll', desc: '', args: []);
   }
 
   /// `Не перемешивать`
   String get shuffleNone {
-    return Intl.message(
-      'Не перемешивать',
-      name: 'shuffleNone',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Не перемешивать', name: 'shuffleNone', desc: '', args: []);
   }
 
   /// `Только вопросы`
   String get shuffleQuestions {
-    return Intl.message(
-      'Только вопросы',
-      name: 'shuffleQuestions',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Только вопросы', name: 'shuffleQuestions', desc: '', args: []);
   }
 
   /// `Только ответы`
   String get shuffleAnswers {
-    return Intl.message(
-      'Только ответы',
-      name: 'shuffleAnswers',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Только ответы', name: 'shuffleAnswers', desc: '', args: []);
   }
 
   /// `Выберите вопросы по диапазону:`
   String get selectQuestionByRange {
-    return Intl.message(
-      'Выберите вопросы по диапазону:',
-      name: 'selectQuestionByRange',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Выберите вопросы по диапазону:', name: 'selectQuestionByRange', desc: '', args: []);
   }
 
   /// `Общее время теста:`
   String get allOfTimeTest {
-    return Intl.message(
-      'Общее время теста:',
-      name: 'allOfTimeTest',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Общее время теста:', name: 'allOfTimeTest', desc: '', args: []);
   }
 
   /// `Из {count} вопросов {solved} будут перемешиваться.`
@@ -419,12 +319,7 @@ class GeneratedLocalization {
 
   /// `{count} шт.`
   String intToCount(int count) {
-    return Intl.message(
-      '$count шт.',
-      name: 'intToCount',
-      desc: '',
-      args: [count],
-    );
+    return Intl.message('$count шт.', name: 'intToCount', desc: '', args: [count]);
   }
 
   /// `Загрузка`
@@ -439,12 +334,7 @@ class GeneratedLocalization {
 
   /// `Пополнить баланс пользователя`
   String get topUp {
-    return Intl.message(
-      'Пополнить баланс пользователя',
-      name: 'topUp',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Пополнить баланс пользователя', name: 'topUp', desc: '', args: []);
   }
 
   /// `Вывести баланс`
@@ -454,22 +344,12 @@ class GeneratedLocalization {
 
   /// `Список пользователей`
   String get userList {
-    return Intl.message(
-      'Список пользователей',
-      name: 'userList',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Список пользователей', name: 'userList', desc: '', args: []);
   }
 
   /// `Пользователь не найден`
   String get noUsersFound {
-    return Intl.message(
-      'Пользователь не найден',
-      name: 'noUsersFound',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Пользователь не найден', name: 'noUsersFound', desc: '', args: []);
   }
 
   /// `Ошибка`
@@ -479,12 +359,32 @@ class GeneratedLocalization {
 
   /// `Пополнить баланс`
   String get topUpUserBalance {
-    return Intl.message(
-      'Пополнить баланс',
-      name: 'topUpUserBalance',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Пополнить баланс', name: 'topUpUserBalance', desc: '', args: []);
+  }
+
+  /// `Пользователи`
+  String get users {
+    return Intl.message('Пользователи', name: 'users', desc: '', args: []);
+  }
+
+  /// `Добавить`
+  String get add {
+    return Intl.message('Добавить', name: 'add', desc: '', args: []);
+  }
+
+  /// `Сумма`
+  String get amount {
+    return Intl.message('Сумма', name: 'amount', desc: '', args: []);
+  }
+
+  /// `ID карты`
+  String get cardID {
+    return Intl.message('ID карты', name: 'cardID', desc: '', args: []);
+  }
+
+  /// `Сумму введите`
+  String get enterAmount {
+    return Intl.message('Сумму введите', name: 'enterAmount', desc: '', args: []);
   }
 
   /// `Сохранить`
@@ -494,12 +394,7 @@ class GeneratedLocalization {
 
   /// `Роль пользователя:`
   String get userRole {
-    return Intl.message(
-      'Роль пользователя:',
-      name: 'userRole',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Роль пользователя:', name: 'userRole', desc: '', args: []);
   }
 
   /// `Admin`
@@ -514,32 +409,17 @@ class GeneratedLocalization {
 
   /// `Добавить в домашний экран`
   String get addToHomeScreenApp {
-    return Intl.message(
-      'Добавить в домашний экран',
-      name: 'addToHomeScreenApp',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Добавить в домашний экран', name: 'addToHomeScreenApp', desc: '', args: []);
   }
 
   /// `30 минут`
   String get testTotalTime30Min {
-    return Intl.message(
-      '30 минут',
-      name: 'testTotalTime30Min',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('30 минут', name: 'testTotalTime30Min', desc: '', args: []);
   }
 
   /// `1 час`
   String get testTotalTime1Hour {
-    return Intl.message(
-      '1 час',
-      name: 'testTotalTime1Hour',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('1 час', name: 'testTotalTime1Hour', desc: '', args: []);
   }
 
   /// `Завершить`
@@ -564,12 +444,7 @@ class GeneratedLocalization {
 
   /// `Продолжить`
   String get continueAction {
-    return Intl.message(
-      'Продолжить',
-      name: 'continueAction',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Продолжить', name: 'continueAction', desc: '', args: []);
   }
 
   /// `Правильно`
@@ -603,8 +478,7 @@ class GeneratedLocalization {
   }
 }
 
-class AppLocalizationDelegate
-    extends LocalizationsDelegate<GeneratedLocalization> {
+class AppLocalizationDelegate extends LocalizationsDelegate<GeneratedLocalization> {
   const AppLocalizationDelegate();
 
   List<Locale> get supportedLocales {
@@ -618,8 +492,7 @@ class AppLocalizationDelegate
   @override
   bool isSupported(Locale locale) => _isSupported(locale);
   @override
-  Future<GeneratedLocalization> load(Locale locale) =>
-      GeneratedLocalization.load(locale);
+  Future<GeneratedLocalization> load(Locale locale) => GeneratedLocalization.load(locale);
   @override
   bool shouldReload(AppLocalizationDelegate old) => false;
 
