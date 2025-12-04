@@ -127,6 +127,49 @@ class SupabaseService with SupabaseHelpersMixin {
     }
   }
 
+  Future<List<Map<String, Object?>>> getTests() async {
+    try {
+      final res = await _client
+          .from('tests')
+          .select('''
+      id,
+      subject_id,
+      title,
+      price,
+      question_count,
+      academic_year,
+      semester,
+      subject:subjects(
+        id,
+        name,
+        direction:directions(
+          id,
+          name,
+          course:courses(
+            id,
+            name,
+            faculty:faculties(
+              id,
+              name,
+              university:universities(
+                id,
+                name
+              )
+            )
+          )
+        )
+      )
+    ''')
+          .eq('is_active', true);
+      log('getTests() res=$res');
+
+      return _castRows(res);
+    } catch (error, stackTrace) {
+      log('Failed to fetch tests', error: error, stackTrace: stackTrace);
+      return const <Map<String, Object?>>[];
+    }
+  }
+
   /// Tears down the Supabase client and clears the cached singleton.
   Future<void> dispose() async {
     await _supabase.dispose();

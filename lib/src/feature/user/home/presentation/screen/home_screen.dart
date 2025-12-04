@@ -3,9 +3,11 @@ import 'package:lottie/lottie.dart';
 
 import '../../../../../common/constant/gen/assets.gen.dart';
 import '../../../../../common/extension/context_extension.dart';
+// import '../../../../../common/model/test_model.dart';
 import '../../../../../common/util/dimension.dart';
 import '../../../../../common/widget/custom_card_widget.dart';
 import '../../../../../common/widget/custom_text_filed.dart';
+import '../../../../tests/model/test_model.dart';
 import '../state/home_state.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -36,21 +38,33 @@ class _HomeScreenState extends HomeState {
           ),
 
           Dimension.hBox16,
-          ListView.separated(
-            physics: const NeverScrollableScrollPhysics(),
-            shrinkWrap: true,
-            itemBuilder: (context, index) => CustomCardWidget(
-              subject: 'Akademik ko\'nikmalar',
-              university: 'Alfraganus',
-              direction: 'Iqtisodiyot sirtqi 2-kurs 2-semistr',
-              testCount: 100,
-              studyYears: '2025-2026',
-              price: 10000,
-              buttonText: context.l10n.buy,
-              onPressed: onBuyButtonPressed,
-            ),
-            separatorBuilder: (context, index) => Dimension.hBox12,
-            itemCount: 10,
+          FutureBuilder(
+            future: context.dependencies.repository.testsRepository.getTests(),
+            builder: (context, snapshot) => switch ((snapshot.data, snapshot.error)) {
+              (final List<TestModel> tests, null) => ListView.separated(
+                physics: const NeverScrollableScrollPhysics(),
+                shrinkWrap: true,
+                itemBuilder: (context, index) {
+                  final test = tests[index];
+                  return CustomCardWidget(
+                    subject: test.subject.name,
+                    university: test.subject.direction.course.faculty.university.name,
+                    direction: test.subject.direction.name,
+                    testCount: test.questionCount,
+                    studyYears: test.academicYearSemesterText,
+                    price: test.price,
+                    buttonText: context.l10n.buy,
+                    onPressed: onBuyButtonPressed,
+                  );
+                },
+                separatorBuilder: (context, index) => Dimension.hBox12,
+                itemCount: tests.length,
+              ),
+              // TODO: Error case
+              (null, Object? error) => Text(error.toString()),
+              // TODO: Loading case
+              _ => const SizedBox.shrink(),
+            },
           ),
         ],
       ),
