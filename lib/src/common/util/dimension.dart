@@ -14,7 +14,7 @@ sealed class Dimension {
   static const defaultSwitchHeight = 32;
 
   // Dividers
-  static const Divider divider = Divider(thickness: 1, height: 0, color: Color(0xFFD6D8DD));
+  static const Divider divider = Divider(thickness: 1, height: 0, color: Color(0xFFC8C7CB));
 
   // Shadows
   static List<BoxShadow> get whiteBlackShadows => [

@@ -5,6 +5,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../common/enum/bloc_status_enum.dart';
 import '../../../../../common/extension/context_extension.dart';
+import '../../../../../common/extension/int_extension.dart';
+import '../../../../../common/util/dimension.dart';
+import '../../data/model/user_list_model.dart';
 import '../bloc/client/client_bloc.dart';
 
 class UserListScreen extends StatefulWidget {
@@ -35,7 +38,9 @@ class _UserListScreenState extends State<UserListScreen> {
     _debounce?.cancel();
     _debounce = Timer(const Duration(milliseconds: 300), () {
       final searchQuery = value.trim();
-      context.read<ClientBloc>().add(searchQuery.isEmpty ? const GetClientsEvent() : GetClientsEvent(searchQuery: searchQuery));
+      context.read<ClientBloc>().add(
+        searchQuery.isEmpty ? const GetClientsEvent() : GetClientsEvent(searchQuery: searchQuery),
+      );
     });
   }
 
@@ -58,17 +63,15 @@ class _UserListScreenState extends State<UserListScreen> {
                 builder: (context, state) {
                   final clients = state.clients ?? const [];
                   if (state.status == Status.loading) {
-                    return const Center(child: CircularProgressIndicator());
+                    return const Center(child: CircularProgressIndicator.adaptive());
                   }
                   if (clients.isEmpty) {
-                    return const Center(child: Text('No users found'));
+                    return Center(
+                      child: Text('No users found', style: TextStyle(color: context.color.onSurface)),
+                    );
                   }
-                  return ListView.separated(
-                    itemBuilder: (context, index) => ListTile(
-                      title: Text(clients[index].name),
-                      subtitle: Text(clients[index].telegramUsername ?? ''),
-                    ),
-                    separatorBuilder: (_, __) => const Divider(height: 1),
+                  return ListView.builder(
+                    itemBuilder: (context, index) => UserTile(user: clients[index]),
                     itemCount: clients.length,
                   );
                 },
@@ -77,6 +80,72 @@ class _UserListScreenState extends State<UserListScreen> {
           ],
         ),
       ),
+    ),
+  );
+}
+
+class UserTile extends StatelessWidget {
+  const UserTile({required this.user, super.key});
+  final ClientModel user;
+
+  @override
+  Widget build(BuildContext context) => Padding(
+    padding: Dimension.pV4,
+    child: Row(
+      spacing: 6,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Center(
+          child: SizedBox(
+            height: 50,
+            width: 50,
+            child: DecoratedBox(
+              decoration: BoxDecoration(color: context.color.primary, shape: BoxShape.circle),
+              child: Center(
+                child: Text(
+                  user.name.characters.first.toUpperCase(),
+                  style: context.textTheme.nunitoW600s16.copyWith(color: context.color.onPrimary),
+                ),
+              ),
+            ),
+          ),
+        ),
+
+        Flexible(
+          child: Column(
+            spacing: 4,
+            children: [
+              Row(
+                mainAxisAlignment: .spaceBetween,
+                children: [
+                  Text(user.name, style: context.textTheme.sfProW500s16.copyWith(color: context.color.black)),
+                  Text(
+                    user.balance.toInt().toUZSString(),
+                    style: context.textTheme.sfProW500s16.copyWith(
+                      color: context.color.success,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                ],
+              ),
+              Row(
+                mainAxisAlignment: .spaceBetween,
+                children: [
+                  Text(
+                    '@${user.telegramUsername}',
+                    style: context.textTheme.sfProW400s12.copyWith(color: context.color.gray),
+                  ),
+                  Text(
+                    'ID: ${user.telegramID}',
+                    style: context.textTheme.sfProW500s12.copyWith(color: context.color.gray),
+                  ),
+                ],
+              ),
+              Dimension.divider,
+            ],
+          ),
+        ),
+      ],
     ),
   );
 }
