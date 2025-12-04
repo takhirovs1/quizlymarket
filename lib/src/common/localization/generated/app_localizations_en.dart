@@ -160,6 +160,21 @@ class AppLocalizationsEn extends AppLocalizations {
   String get topUp => 'Top up user balance';
 
   @override
+  String get users => 'Users';
+
+  @override
+  String get add => 'Add';
+
+  @override
+  String get amount => 'Amount';
+
+  @override
+  String get cardID => 'Card ID';
+
+  @override
+  String get enterAmount => 'Enter amount';
+
+  @override
   String get withdraw => 'Withdraw';
 
   @override

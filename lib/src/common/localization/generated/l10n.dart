@@ -362,6 +362,31 @@ class GeneratedLocalization {
     return Intl.message('Пополнить баланс', name: 'topUpUserBalance', desc: '', args: []);
   }
 
+  /// `Пользователи`
+  String get users {
+    return Intl.message('Пользователи', name: 'users', desc: '', args: []);
+  }
+
+  /// `Добавить`
+  String get add {
+    return Intl.message('Добавить', name: 'add', desc: '', args: []);
+  }
+
+  /// `Сумма`
+  String get amount {
+    return Intl.message('Сумма', name: 'amount', desc: '', args: []);
+  }
+
+  /// `ID карты`
+  String get cardID {
+    return Intl.message('ID карты', name: 'cardID', desc: '', args: []);
+  }
+
+  /// `Сумму введите`
+  String get enterAmount {
+    return Intl.message('Сумму введите', name: 'enterAmount', desc: '', args: []);
+  }
+
   /// `Сохранить`
   String get save {
     return Intl.message('Сохранить', name: 'save', desc: '', args: []);

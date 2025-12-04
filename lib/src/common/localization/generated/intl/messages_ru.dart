@@ -26,9 +26,11 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+    "add": MessageLookupByLibrary.simpleMessage("Добавить"),
     "addToHomeScreenApp": MessageLookupByLibrary.simpleMessage("Добавить в домашний экран"),
     "admin": MessageLookupByLibrary.simpleMessage("Admin"),
     "allOfTimeTest": MessageLookupByLibrary.simpleMessage("Общее время теста:"),
+    "amount": MessageLookupByLibrary.simpleMessage("Сумма"),
     "appConfiguration": MessageLookupByLibrary.simpleMessage("Настройка приложения"),
     "appConfigurationCancel": MessageLookupByLibrary.simpleMessage("Отмена"),
     "appConfigurationDescription": MessageLookupByLibrary.simpleMessage("Настройте ваши настройки приложения здесь."),
@@ -40,11 +42,13 @@ class MessageLookup extends MessageLookupByLibrary {
     "appName": MessageLookupByLibrary.simpleMessage("QuizlyMarket"),
     "buy": MessageLookupByLibrary.simpleMessage("Купить"),
     "cancel": MessageLookupByLibrary.simpleMessage("Отмена"),
+    "cardID": MessageLookupByLibrary.simpleMessage("ID карты"),
     "cart": MessageLookupByLibrary.simpleMessage("Корзина"),
     "changeQuestionOrAnswer": MessageLookupByLibrary.simpleMessage("Следует ли перемешать вопросы и варианты ответов?"),
     "continueAction": MessageLookupByLibrary.simpleMessage("Продолжить"),
     "correct": MessageLookupByLibrary.simpleMessage("Правильно"),
     "english": MessageLookupByLibrary.simpleMessage("Английский"),
+    "enterAmount": MessageLookupByLibrary.simpleMessage("Сумму введите"),
     "enterTest": MessageLookupByLibrary.simpleMessage("Перейти к тесту"),
     "exit": MessageLookupByLibrary.simpleMessage("Выход"),
     "filter": MessageLookupByLibrary.simpleMessage("Фильтр"),
@@ -101,6 +105,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "user": MessageLookupByLibrary.simpleMessage("Студент"),
     "userList": MessageLookupByLibrary.simpleMessage("Список пользователей"),
     "userRole": MessageLookupByLibrary.simpleMessage("Роль пользователя:"),
+    "users": MessageLookupByLibrary.simpleMessage("Пользователи"),
     "uzbek": MessageLookupByLibrary.simpleMessage("Узбекский"),
     "withdraw": MessageLookupByLibrary.simpleMessage("Вывести баланс"),
     "wrong": MessageLookupByLibrary.simpleMessage("Неправильно"),

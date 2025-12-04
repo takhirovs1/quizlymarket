@@ -160,6 +160,21 @@ class AppLocalizationsRu extends AppLocalizations {
   String get topUp => 'Пополнить баланс пользователя';
 
   @override
+  String get users => 'Пользователи';
+
+  @override
+  String get add => 'Добавить';
+
+  @override
+  String get amount => 'Сумма';
+
+  @override
+  String get cardID => 'ID карты';
+
+  @override
+  String get enterAmount => 'Сумму введите';
+
+  @override
   String get withdraw => 'Вывести баланс';
 
   @override

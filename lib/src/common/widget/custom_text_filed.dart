@@ -29,12 +29,14 @@ class CustomTextFiled extends StatefulWidget {
     this.suffixIcon,
     this.cursorColor,
     this.action,
+    this.keyboardType,
   });
   final TextEditingController? controller;
   final void Function(String)? onChanged;
   final void Function(String)? onSubmitted;
   final VoidCallback? onTap;
   final FocusNode? focusNode;
+  final TextInputType? keyboardType;
   final Color? fillColor;
   final Color? borderColor;
   final double? height;
@@ -79,7 +81,7 @@ class _CustomTextFiledState extends State<CustomTextFiled> {
                   onFieldSubmitted: widget.onSubmitted,
                   focusNode: widget.focusNode,
                   validator: widget.validator,
-
+                  keyboardType: widget.keyboardType,
                   style: widget.style ?? context.textTheme.nunitoW400s16,
                   cursorColor: widget.cursorColor ?? context.color.primary,
                   decoration: InputDecoration(

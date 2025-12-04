@@ -387,6 +387,36 @@ abstract class AppLocalizations {
   /// **'Top up user balance'**
   String get topUp;
 
+  /// No description provided for @users.
+  ///
+  /// In en, this message translates to:
+  /// **'Users'**
+  String get users;
+
+  /// No description provided for @add.
+  ///
+  /// In en, this message translates to:
+  /// **'Add'**
+  String get add;
+
+  /// No description provided for @amount.
+  ///
+  /// In en, this message translates to:
+  /// **'Amount'**
+  String get amount;
+
+  /// No description provided for @cardID.
+  ///
+  /// In en, this message translates to:
+  /// **'Card ID'**
+  String get cardID;
+
+  /// No description provided for @enterAmount.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter amount'**
+  String get enterAmount;
+
   /// No description provided for @withdraw.
   ///
   /// In en, this message translates to:

@@ -26,9 +26,11 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+    "add": MessageLookupByLibrary.simpleMessage("Qo‘shish"),
     "addToHomeScreenApp": MessageLookupByLibrary.simpleMessage("Ilovani bosh sahifaga qo‘shish"),
     "admin": MessageLookupByLibrary.simpleMessage("Admin"),
     "allOfTimeTest": MessageLookupByLibrary.simpleMessage("Testning umumiy vaqti:"),
+    "amount": MessageLookupByLibrary.simpleMessage("Summa"),
     "appConfiguration": MessageLookupByLibrary.simpleMessage("Ilova sozlamalari"),
     "appConfigurationCancel": MessageLookupByLibrary.simpleMessage("Bekor qilish"),
     "appConfigurationDescription": MessageLookupByLibrary.simpleMessage("Ilova sozlamalarini shu yerda sozlang."),
@@ -40,11 +42,13 @@ class MessageLookup extends MessageLookupByLibrary {
     "appName": MessageLookupByLibrary.simpleMessage("QuizlyMarket"),
     "buy": MessageLookupByLibrary.simpleMessage("Sotib olish"),
     "cancel": MessageLookupByLibrary.simpleMessage("Bekor qilish"),
+    "cardID": MessageLookupByLibrary.simpleMessage("ID karta"),
     "cart": MessageLookupByLibrary.simpleMessage("Savat"),
     "changeQuestionOrAnswer": MessageLookupByLibrary.simpleMessage("Savollar va javob variantlari aralashtirilsinmi?"),
     "continueAction": MessageLookupByLibrary.simpleMessage("Davom etish"),
     "correct": MessageLookupByLibrary.simpleMessage("To\'g\'ri"),
     "english": MessageLookupByLibrary.simpleMessage("Ingliz tili"),
+    "enterAmount": MessageLookupByLibrary.simpleMessage("Summani kiriting"),
     "enterTest": MessageLookupByLibrary.simpleMessage("Testga kirish"),
     "exit": MessageLookupByLibrary.simpleMessage("Chiqish"),
     "filter": MessageLookupByLibrary.simpleMessage("Filtrlash"),
@@ -103,6 +107,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "user": MessageLookupByLibrary.simpleMessage("O\'quvchi"),
     "userList": MessageLookupByLibrary.simpleMessage("Foydalanuvchi ro‘yxati"),
     "userRole": MessageLookupByLibrary.simpleMessage("Foydalanuvchi xuquqi:"),
+    "users": MessageLookupByLibrary.simpleMessage("Foydalanuvchilar"),
     "uzbek": MessageLookupByLibrary.simpleMessage("O‘zbek tili"),
     "withdraw": MessageLookupByLibrary.simpleMessage("Pulni chiqarish"),
     "wrong": MessageLookupByLibrary.simpleMessage("Xato"),

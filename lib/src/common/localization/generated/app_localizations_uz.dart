@@ -160,6 +160,21 @@ class AppLocalizationsUz extends AppLocalizations {
   String get topUp => 'Foydalanuvchi pulini to‘ldirish';
 
   @override
+  String get users => 'Foydalanuvchilar';
+
+  @override
+  String get add => 'Qo‘shish';
+
+  @override
+  String get amount => 'Summa';
+
+  @override
+  String get cardID => 'ID karta';
+
+  @override
+  String get enterAmount => 'Summani kiriting';
+
+  @override
   String get withdraw => 'Pulni chiqarish';
 
   @override
