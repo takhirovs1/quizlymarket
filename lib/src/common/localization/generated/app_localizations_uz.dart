@@ -166,6 +166,27 @@ class AppLocalizationsUz extends AppLocalizations {
   String get userList => 'Foydalanuvchi ro‘yxati';
 
   @override
+  String get noUsersFound => 'Foydalanuvchi topilmadi';
+
+  @override
+  String get unknownError => 'Ma\'lumot topilmadi';
+
+  @override
+  String get save => 'Saqlash';
+
+  @override
+  String get userRole => 'Foydalanuvchi xuquqi:';
+
+  @override
+  String get admin => 'Admin';
+
+  @override
+  String get user => 'O\'quvchi';
+
+  @override
+  String get topUpUserBalance => 'Pul to‘ldirish';
+
+  @override
   String get addToHomeScreenApp => 'Ilovani bosh sahifaga qo‘shish';
 
   @override

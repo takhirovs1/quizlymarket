@@ -166,6 +166,27 @@ class AppLocalizationsEn extends AppLocalizations {
   String get userList => 'User list';
 
   @override
+  String get noUsersFound => 'User not found';
+
+  @override
+  String get unknownError => 'Error';
+
+  @override
+  String get save => 'Save';
+
+  @override
+  String get userRole => 'User role:';
+
+  @override
+  String get admin => 'Admin';
+
+  @override
+  String get user => 'Student';
+
+  @override
+  String get topUpUserBalance => 'Top up';
+
+  @override
   String get addToHomeScreenApp => 'Add to home screen';
 
   @override

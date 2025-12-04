@@ -399,6 +399,48 @@ abstract class AppLocalizations {
   /// **'User list'**
   String get userList;
 
+  /// No description provided for @noUsersFound.
+  ///
+  /// In en, this message translates to:
+  /// **'User not found'**
+  String get noUsersFound;
+
+  /// No description provided for @unknownError.
+  ///
+  /// In en, this message translates to:
+  /// **'Error'**
+  String get unknownError;
+
+  /// No description provided for @save.
+  ///
+  /// In en, this message translates to:
+  /// **'Save'**
+  String get save;
+
+  /// No description provided for @userRole.
+  ///
+  /// In en, this message translates to:
+  /// **'User role:'**
+  String get userRole;
+
+  /// No description provided for @admin.
+  ///
+  /// In en, this message translates to:
+  /// **'Admin'**
+  String get admin;
+
+  /// No description provided for @user.
+  ///
+  /// In en, this message translates to:
+  /// **'Student'**
+  String get user;
+
+  /// No description provided for @topUpUserBalance.
+  ///
+  /// In en, this message translates to:
+  /// **'Top up'**
+  String get topUpUserBalance;
+
   /// No description provided for @addToHomeScreenApp.
   ///
   /// In en, this message translates to:

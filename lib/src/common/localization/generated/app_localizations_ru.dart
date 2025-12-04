@@ -166,6 +166,27 @@ class AppLocalizationsRu extends AppLocalizations {
   String get userList => 'Список пользователей';
 
   @override
+  String get noUsersFound => 'Пользователь не найден';
+
+  @override
+  String get unknownError => 'Ошибка';
+
+  @override
+  String get save => 'Сохранить';
+
+  @override
+  String get userRole => 'Роль пользователя:';
+
+  @override
+  String get admin => 'Admin';
+
+  @override
+  String get user => 'Студент';
+
+  @override
+  String get topUpUserBalance => 'Пополнить баланс';
+
+  @override
   String get addToHomeScreenApp => 'Добавить в домашний экран';
 
   @override
