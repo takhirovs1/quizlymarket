@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../common/enum/bloc_status_enum.dart';
 import '../../../../../common/extension/context_extension.dart';
 import '../../../../../common/util/dimension.dart';
+import '../../../../../common/widget/custom_text_filed.dart';
 import '../bloc/client/client_bloc.dart';
 import '../state/user_list_state.dart';
 import '../widget/user_tile_widget.dart';
@@ -43,10 +44,11 @@ class _UserListScreenState extends UserListState {
         children: [
           Padding(
             padding: Dimension.pH16Top16,
-            child: TextField(
+            child: CustomTextFiled(
+              fillColor: context.color.white,
               controller: searchController,
               onChanged: onSearchChanged,
-              decoration: const InputDecoration(hintText: 'Search by full name', prefixIcon: Icon(Icons.search)),
+              hintText: context.l10n.search,
             ),
           ),
           Dimension.hBox16,

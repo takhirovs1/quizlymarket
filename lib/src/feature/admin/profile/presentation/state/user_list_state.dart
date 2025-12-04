@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../../common/extension/context_extension.dart';
 import '../bloc/client/client_bloc.dart';
 import '../screen/user_list_screen.dart';
 
@@ -10,8 +10,8 @@ abstract class UserListState extends State<UserListScreen> {
 
   @override
   void initState() {
-    clientBloc = ClientBloc(repository: context.dependencies.repository.clientRepository);
     super.initState();
+    clientBloc = context.read<ClientBloc>();
     searchController = TextEditingController();
   }
 
@@ -25,9 +25,6 @@ abstract class UserListState extends State<UserListScreen> {
     final searchQuery = value.trim();
     if (searchQuery.isEmpty) {
       clientBloc.add(const GetClientsEvent());
-      return;
-    }
-    if (searchQuery.length <= 3) {
       return;
     }
     clientBloc.add(GetClientsEvent(searchQuery: searchQuery));
