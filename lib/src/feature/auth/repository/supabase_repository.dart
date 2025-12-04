@@ -3,8 +3,8 @@ import 'package:supabase_service/supabase_service.dart';
 import '../model/user_model.dart';
 import 'auth_repository.dart';
 
-class SupabaseRepository implements AuthRepository {
-  SupabaseRepository({required SupabaseService service}) : _service = service;
+class SupabaseAuthRepository implements AuthRepository {
+  SupabaseAuthRepository({required SupabaseService service}) : _service = service;
 
   final SupabaseService _service;
 

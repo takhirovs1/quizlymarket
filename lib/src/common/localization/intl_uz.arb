@@ -71,6 +71,11 @@
       }
     }
   },
+  "upload": "Yuklash",
+  "statistics": "Statistika",
+  "topUp": "Foydalanuvchi pulini to‘ldirish",
+  "withdraw": "Pulni chiqarish",
+  "userList": "Foydalanuvchi ro‘yxati",
   "addToHomeScreenApp": "Ilovani bosh sahifaga qo‘shish",
   "testTotalTime30Min": "30 daqiqa",
   "testTotalTime1Hour": "1 soat",
@@ -82,5 +87,7 @@
   "wrong": "Xato",
   "skipped": "Tashlab ketilgan",
   "time": "Vaqt",
-"continueAction": "Davom etish"
+  "continueAction": "Davom etish",
+  "search": "Qidirish",
+  "filter": "Filtrlash"
 }

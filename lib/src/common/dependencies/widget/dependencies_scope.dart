@@ -30,49 +30,102 @@ class DependenciesScope extends StatefulWidget {
 }
 
 class _DependenciesScopeState extends State<DependenciesScope> {
-  AuthBloc? authBloc;
-
-  late final Completer<Dependencies> _dependenciesCompleter = Completer<Dependencies>();
-
+  AuthBloc? _authBloc;
   StreamSubscription<AuthState>? _authStateSubscription;
+  late Future<Dependencies> _dependenciesFuture;
+  bool _signUpRequested = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _dependenciesFuture = _initializeDependencies();
+  }
+
+  @override
+  void didUpdateWidget(covariant DependenciesScope oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (widget.initialization != oldWidget.initialization) {
+      _resetAuthFlow();
+      _dependenciesFuture = _initializeDependencies();
+    }
+  }
 
   Future<Dependencies> _initializeDependencies() async {
     final dependencies = await widget.initialization;
-    await Future<void>.delayed(const Duration(milliseconds: 2000));
-    if (authBloc == null) {
-      authBloc = AuthBloc(repository: dependencies.repository.authRepository);
-      final telegramID = TelegramWebApp.instance.initDataUnsafe?.user?.id.toString();
-      if (telegramID != null) authBloc?.add(LoginEvent(telegramID: telegramID));
-      _authStateSubscription = authBloc?.stream.asBroadcastStream().listen((state) {
-        if (state.isUserExist == false) {
-          final telegramUser = TelegramWebApp.instance.initDataUnsafe?.user;
-          authBloc?.add(
-            SignUpEvent(
-              telegramID: telegramUser?.id.toString() ?? '',
-              name: '${telegramUser?.firstName} ${telegramUser?.lastName ?? ''}'.trim(),
-              telegramUsername: telegramUser?.username ?? '',
-            ),
-          );
-        }
-        if (state.status == Status.success && state.user != null) {
-          _dependenciesCompleter.complete(dependencies);
-          _authStateSubscription?.cancel();
-        }
-        if (state.status == Status.error) {
-          _dependenciesCompleter.completeError(state.error ?? 'Unknown error');
-          _authStateSubscription?.cancel();
-        }
-      });
-    } else {
-      _dependenciesCompleter.complete(dependencies);
+    await _ensureAuthenticated(dependencies);
+    return dependencies;
+  }
+
+  Future<void> _ensureAuthenticated(Dependencies dependencies) async {
+    _authBloc ??= AuthBloc(repository: dependencies.repository.authRepository);
+    _signUpRequested = false;
+    final bloc = _authBloc!;
+    final completer = Completer<void>();
+
+    if (_authStateSubscription != null) {
+      await _authStateSubscription!.cancel();
+      _authStateSubscription = null;
     }
 
-    return _dependenciesCompleter.future;
+    _authStateSubscription = bloc.stream.listen((state) {
+      if (state.isUserExist == false && !_signUpRequested) {
+        _signUpRequested = true;
+        _requestSignUp(bloc);
+      }
+
+      if (state.status == Status.success && state.user != null) {
+        if (!completer.isCompleted) completer.complete();
+      } else if (state.status == Status.error) {
+        _completeWithError(completer, state.error ?? 'Unknown error');
+      }
+    });
+
+    final telegramUser = TelegramWebApp.instance.initDataUnsafe?.user;
+    final telegramId = telegramUser?.id;
+    final telegramID = telegramId?.toString();
+    if (telegramID == null || telegramID.isEmpty) {
+      _completeWithError(completer, 'Missing Telegram user identifier');
+    } else {
+      bloc.add(LoginEvent(telegramID: telegramID));
+    }
+
+    try {
+      await completer.future;
+    } finally {
+      if (_authStateSubscription != null) {
+        await _authStateSubscription!.cancel();
+        _authStateSubscription = null;
+      }
+    }
+  }
+
+  void _requestSignUp(AuthBloc bloc) {
+    final telegramUser = TelegramWebApp.instance.initDataUnsafe?.user;
+    final telegramId = telegramUser?.id;
+    bloc.add(
+      SignUpEvent(
+        telegramID: telegramId == null ? '' : telegramId.toString(),
+        name: '${telegramUser?.firstName ?? ''} ${telegramUser?.lastName ?? ''}'.trim(),
+        telegramUsername: telegramUser?.username ?? '',
+      ),
+    );
+  }
+
+  void _completeWithError(Completer<void> completer, String message) {
+    if (!completer.isCompleted) completer.completeError(StateError(message), StackTrace.current);
+  }
+
+  void _resetAuthFlow() {
+    _signUpRequested = false;
+    unawaited(_authStateSubscription?.cancel());
+    _authStateSubscription = null;
+    _authBloc?.close();
+    _authBloc = null;
   }
 
   @override
   void dispose() {
-    authBloc?.close();
+    _resetAuthFlow();
     super.dispose();
   }
 
@@ -80,14 +133,14 @@ class _DependenciesScopeState extends State<DependenciesScope> {
   Widget build(BuildContext context) => Material(
     color: Colors.white,
     child: FutureBuilder<Dependencies>(
-      future: _initializeDependencies(),
+      future: _dependenciesFuture,
       builder: (context, snapshot) => AnimatedSwitcher(
         duration: const Duration(milliseconds: 500),
         key: const ValueKey('dependencies_scope'),
         transitionBuilder: (child, animation) => FadeTransition(opacity: animation, child: child),
         child: switch ((snapshot.data, snapshot.error, snapshot.stackTrace)) {
           (final Dependencies dependencies, null, null) => BlocProvider.value(
-            value: authBloc!,
+            value: _authBloc!,
             child: _InheritedDependencies(dependencies: dependencies, child: widget.child),
           ),
           (_, final Object error, final StackTrace? stackTrace) =>

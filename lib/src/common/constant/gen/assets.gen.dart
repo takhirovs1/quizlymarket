@@ -36,6 +36,9 @@ class $AssetsIconsGen {
   /// File path: assets/icons/add_home.svg
   SvgGenImage get addHome => const SvgGenImage('assets/icons/add_home.svg');
 
+  /// File path: assets/icons/arrow_back.svg
+  SvgGenImage get arrowBack => const SvgGenImage('assets/icons/arrow_back.svg');
+
   /// File path: assets/icons/cart.svg
   SvgGenImage get cart => const SvgGenImage('assets/icons/cart.svg');
 
@@ -49,7 +52,7 @@ class $AssetsIconsGen {
   SvgGenImage get upload => const SvgGenImage('assets/icons/upload.svg');
 
   /// List of all assets
-  List<SvgGenImage> get values => [addHome, cart, home, profile, upload];
+  List<SvgGenImage> get values => [addHome, arrowBack, cart, home, profile, upload];
 }
 
 class $AssetsImagesGen {
@@ -101,6 +104,9 @@ class $AssetsLottieGen {
   /// File path: assets/lottie/error2.json
   String get error2 => 'assets/lottie/error2.json';
 
+  /// File path: assets/lottie/filter.json
+  String get filter => 'assets/lottie/filter.json';
+
   /// File path: assets/lottie/hourglass.json
   String get hourglass => 'assets/lottie/hourglass.json';
 
@@ -141,6 +147,7 @@ class $AssetsLottieGen {
     diamond,
     error,
     error2,
+    filter,
     hourglass,
     incorrect,
     laptop,
@@ -160,6 +167,9 @@ class $AssetsVectorsGen {
   /// File path: assets/vectors/add_home.vec
   SvgGenImage get addHome => const SvgGenImage.vec('assets/vectors/add_home.vec');
 
+  /// File path: assets/vectors/arrow_back.vec
+  SvgGenImage get arrowBack => const SvgGenImage.vec('assets/vectors/arrow_back.vec');
+
   /// File path: assets/vectors/cart.vec
   SvgGenImage get cart => const SvgGenImage.vec('assets/vectors/cart.vec');
 
@@ -173,7 +183,7 @@ class $AssetsVectorsGen {
   SvgGenImage get upload => const SvgGenImage.vec('assets/vectors/upload.vec');
 
   /// List of all assets
-  List<SvgGenImage> get values => [addHome, cart, home, profile, upload];
+  List<SvgGenImage> get values => [addHome, arrowBack, cart, home, profile, upload];
 }
 
 class Assets {

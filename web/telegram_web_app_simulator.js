@@ -94,6 +94,8 @@
       photo_url: "https://placehold.co/96x96",
     };
 
+  console.log('mockUser', mockUser);
+
   writeStorage('tgDebugUser', JSON.stringify(mockUser));
 
   const now = Math.floor(Date.now() / 1000);

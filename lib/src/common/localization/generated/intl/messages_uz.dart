@@ -22,15 +22,26 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m0(count) => "${count} dona";
 
-  static String m1(count, solved) => "${count} ta savoldan ${solved} tasi almashib tushadi.";
+  static String m1(count, solved) =>
+      "${count} ta savoldan ${solved} tasi almashib tushadi.";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-    "addToHomeScreenApp": MessageLookupByLibrary.simpleMessage("Ilovani bosh sahifaga qo‘shish"),
-    "allOfTimeTest": MessageLookupByLibrary.simpleMessage("Testning umumiy vaqti:"),
-    "appConfiguration": MessageLookupByLibrary.simpleMessage("Ilova sozlamalari"),
-    "appConfigurationCancel": MessageLookupByLibrary.simpleMessage("Bekor qilish"),
-    "appConfigurationDescription": MessageLookupByLibrary.simpleMessage("Ilova sozlamalarini shu yerda sozlang."),
+    "addToHomeScreenApp": MessageLookupByLibrary.simpleMessage(
+      "Ilovani bosh sahifaga qo‘shish",
+    ),
+    "allOfTimeTest": MessageLookupByLibrary.simpleMessage(
+      "Testning umumiy vaqti:",
+    ),
+    "appConfiguration": MessageLookupByLibrary.simpleMessage(
+      "Ilova sozlamalari",
+    ),
+    "appConfigurationCancel": MessageLookupByLibrary.simpleMessage(
+      "Bekor qilish",
+    ),
+    "appConfigurationDescription": MessageLookupByLibrary.simpleMessage(
+      "Ilova sozlamalarini shu yerda sozlang.",
+    ),
     "appConfigurationReset": MessageLookupByLibrary.simpleMessage("Tiklash"),
     "appConfigurationResetDescription": MessageLookupByLibrary.simpleMessage(
       "Ilova sozlamalarini sukut bo‘yicha tiklang.",
@@ -40,20 +51,27 @@ class MessageLookup extends MessageLookupByLibrary {
     "buy": MessageLookupByLibrary.simpleMessage("Sotib olish"),
     "cancel": MessageLookupByLibrary.simpleMessage("Bekor qilish"),
     "cart": MessageLookupByLibrary.simpleMessage("Savat"),
-    "changeQuestionOrAnswer": MessageLookupByLibrary.simpleMessage("Savollar va javob variantlari aralashtirilsinmi?"),
+    "changeQuestionOrAnswer": MessageLookupByLibrary.simpleMessage(
+      "Savollar va javob variantlari aralashtirilsinmi?",
+    ),
     "continueAction": MessageLookupByLibrary.simpleMessage("Davom etish"),
     "correct": MessageLookupByLibrary.simpleMessage("To\'g\'ri"),
     "english": MessageLookupByLibrary.simpleMessage("Ingliz tili"),
     "enterTest": MessageLookupByLibrary.simpleMessage("Testga kirish"),
     "exit": MessageLookupByLibrary.simpleMessage("Chiqish"),
+    "filter": MessageLookupByLibrary.simpleMessage("Filtrlash"),
     "finish": MessageLookupByLibrary.simpleMessage("Tugatish"),
     "intToCount": m0,
     "language": MessageLookupByLibrary.simpleMessage("Tilni o‘zgartirish"),
     "logoutCancel": MessageLookupByLibrary.simpleMessage("Bekor qilish"),
     "logoutConfirm": MessageLookupByLibrary.simpleMessage("Chiqish"),
-    "logoutConfirmMessage": MessageLookupByLibrary.simpleMessage("Chiqishni tasdiqlaysizmi?"),
+    "logoutConfirmMessage": MessageLookupByLibrary.simpleMessage(
+      "Chiqishni tasdiqlaysizmi?",
+    ),
     "next": MessageLookupByLibrary.simpleMessage("Keyingisi"),
-    "noInternetConnection": MessageLookupByLibrary.simpleMessage("Internet mavjud emas"),
+    "noInternetConnection": MessageLookupByLibrary.simpleMessage(
+      "Internet mavjud emas",
+    ),
     "noInternetConnectionDescription": MessageLookupByLibrary.simpleMessage(
       "Iltimos, internet ulanishini tekshirib yana urinib ko‘ring.",
     ),
@@ -62,20 +80,28 @@ class MessageLookup extends MessageLookupByLibrary {
     "personalizedTestDescription": MessageLookupByLibrary.simpleMessage(
       "Testni o‘zingizga moslab boshlashingiz mumkin.",
     ),
-    "pressBackAgainToExit": MessageLookupByLibrary.simpleMessage("Chiqish uchun yana bir marta bosing"),
+    "pressBackAgainToExit": MessageLookupByLibrary.simpleMessage(
+      "Chiqish uchun yana bir marta bosing",
+    ),
     "question": MessageLookupByLibrary.simpleMessage("Savol:"),
     "questionRangeHint": m1,
     "refresh": MessageLookupByLibrary.simpleMessage("Yangilash"),
     "report": MessageLookupByLibrary.simpleMessage("Hisobotlar"),
     "russian": MessageLookupByLibrary.simpleMessage("Rus tili"),
-    "selectQuestionByRange": MessageLookupByLibrary.simpleMessage("Savollarni oraliq bo‘yicha tanlash:"),
-    "shuffleAll": MessageLookupByLibrary.simpleMessage("Barchasini aralashtirish"),
+    "search": MessageLookupByLibrary.simpleMessage("Qidirish"),
+    "selectQuestionByRange": MessageLookupByLibrary.simpleMessage(
+      "Savollarni oraliq bo‘yicha tanlash:",
+    ),
+    "shuffleAll": MessageLookupByLibrary.simpleMessage(
+      "Barchasini aralashtirish",
+    ),
     "shuffleAnswers": MessageLookupByLibrary.simpleMessage("Faqat javoblar"),
     "shuffleNone": MessageLookupByLibrary.simpleMessage("Aralashtirilmasin"),
     "shuffleQuestions": MessageLookupByLibrary.simpleMessage("Faqat savollar"),
     "signOut": MessageLookupByLibrary.simpleMessage("Chiqish"),
     "skipped": MessageLookupByLibrary.simpleMessage("Tashlab ketilgan"),
     "startTest": MessageLookupByLibrary.simpleMessage("Testni boshlash"),
+    "statistics": MessageLookupByLibrary.simpleMessage("Statistika"),
     "test": MessageLookupByLibrary.simpleMessage("Test"),
     "testModeCustom": MessageLookupByLibrary.simpleMessage("Moslashtirilgan"),
     "testModeLabel": MessageLookupByLibrary.simpleMessage("Test rejimi:"),
@@ -84,13 +110,23 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "testModeUniversity": MessageLookupByLibrary.simpleMessage("Universitet"),
     "testPurchased": MessageLookupByLibrary.simpleMessage("Test sotib olindi"),
-    "testPurchasedDescription": MessageLookupByLibrary.simpleMessage("Testni o‘zingizga moslab boshlashingiz mumkin."),
-    "testPurchasedTitle": MessageLookupByLibrary.simpleMessage("Test sotib olindi!"),
+    "testPurchasedDescription": MessageLookupByLibrary.simpleMessage(
+      "Testni o‘zingizga moslab boshlashingiz mumkin.",
+    ),
+    "testPurchasedTitle": MessageLookupByLibrary.simpleMessage(
+      "Test sotib olindi!",
+    ),
     "testTotalTime1Hour": MessageLookupByLibrary.simpleMessage("1 soat"),
     "testTotalTime30Min": MessageLookupByLibrary.simpleMessage("30 daqiqa"),
     "time": MessageLookupByLibrary.simpleMessage("Vaqt"),
     "title": MessageLookupByLibrary.simpleMessage("Quizly Market"),
+    "topUp": MessageLookupByLibrary.simpleMessage(
+      "Foydalanuvchi pulini to‘ldirish",
+    ),
+    "upload": MessageLookupByLibrary.simpleMessage("Yuklash"),
+    "userList": MessageLookupByLibrary.simpleMessage("Foydalanuvchi ro‘yxati"),
     "uzbek": MessageLookupByLibrary.simpleMessage("O‘zbek tili"),
+    "withdraw": MessageLookupByLibrary.simpleMessage("Pulni chiqarish"),
     "wrong": MessageLookupByLibrary.simpleMessage("Xato"),
   };
 }

@@ -71,6 +71,11 @@
       }
     }
   },
+  "upload": "Upload",
+  "statistics": "Statistics",
+  "topUp": "Top up user balance",
+  "withdraw": "Withdraw",
+  "userList": "User list",
   "addToHomeScreenApp": "Add to home screen",
   "testTotalTime30Min": "30 min",
   "testTotalTime1Hour": "1 hour",
@@ -82,5 +87,7 @@
   "wrong": "Wrong",
   "skipped": "Skipped",
   "time": "Time",
-"continueAction": "Continue"
+  "continueAction": "Continue",
+  "search": "Search",
+  "filter": "Filter"
 }

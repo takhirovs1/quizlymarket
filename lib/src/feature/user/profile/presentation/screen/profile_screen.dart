@@ -8,8 +8,8 @@ import '../../../../../common/extension/context_extension.dart';
 import '../../../../../common/util/dimension.dart';
 import '../../../../../common/widget/custom_tile.dart';
 import '../state/profile_state.dart';
-import '../widget/bank_card_widget.dart';
-import '../widget/profile_header.dart';
+import '../../../../../common/widget/bank_card_widget.dart';
+import '../../../../../common/widget/profile_header.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({this.data, super.key});
@@ -50,6 +50,7 @@ class _ProfileScreenState extends ProfileState {
                     fullName: context.user?.name ?? '',
                     balance: context.user?.balance ?? .0,
                     id: context.user?.telegramID.toString() ?? '',
+                    cardName: 'QuizlyMarket Card',
                   ),
                   Dimension.hBox16,
                   Material(
