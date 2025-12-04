@@ -50,6 +50,7 @@ class _ProfileScreenState extends ProfileState {
                     fullName: context.user?.name ?? '',
                     balance: context.user?.balance ?? .0,
                     id: context.user?.telegramID.toString() ?? '',
+                    cardName: 'QuizlyMarket Card',
                   ),
                   Dimension.hBox16,
                   Material(

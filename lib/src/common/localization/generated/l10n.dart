@@ -437,6 +437,31 @@ class GeneratedLocalization {
     return Intl.message('Статистика', name: 'statistics', desc: '', args: []);
   }
 
+  /// `Пополнить баланс пользователя`
+  String get topUp {
+    return Intl.message(
+      'Пополнить баланс пользователя',
+      name: 'topUp',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Вывести баланс`
+  String get withdraw {
+    return Intl.message('Вывести баланс', name: 'withdraw', desc: '', args: []);
+  }
+
+  /// `Список пользователей`
+  String get userList {
+    return Intl.message(
+      'Список пользователей',
+      name: 'userList',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Добавить в домашний экран`
   String get addToHomeScreenApp {
     return Intl.message(

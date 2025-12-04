@@ -90,7 +90,7 @@ abstract class HomeState extends State<HomeScreen> {
       ),
       children: [
         Dimension.hBox12,
-        const BankCardWidget(fullName: 'John Doe', balance: 1000000, id: '1234567890'),
+        const BankCardWidget(fullName: 'John Doe', balance: 1000000, id: '1234567890', cardName: 'QuizlyMarket Card'),
         Dimension.hBox16,
 
         Column(

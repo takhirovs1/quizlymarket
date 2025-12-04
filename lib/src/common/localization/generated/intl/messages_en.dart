@@ -85,7 +85,6 @@ class MessageLookup extends MessageLookupByLibrary {
     "report": MessageLookupByLibrary.simpleMessage("Reports"),
     "russian": MessageLookupByLibrary.simpleMessage("Russian"),
     "search": MessageLookupByLibrary.simpleMessage("Search"),
-    "selectQuestionByRange": MessageLookupByLibrary.simpleMessage("Select questions by range:"),
     "selectQuestionByRange": MessageLookupByLibrary.simpleMessage(
       "Select questions by range:",
     ),
@@ -115,8 +114,11 @@ class MessageLookup extends MessageLookupByLibrary {
     "testTotalTime30Min": MessageLookupByLibrary.simpleMessage("30 min"),
     "time": MessageLookupByLibrary.simpleMessage("Time"),
     "title": MessageLookupByLibrary.simpleMessage("Quizly Market"),
+    "topUp": MessageLookupByLibrary.simpleMessage("Top up user balance"),
     "upload": MessageLookupByLibrary.simpleMessage("Upload"),
+    "userList": MessageLookupByLibrary.simpleMessage("User list"),
     "uzbek": MessageLookupByLibrary.simpleMessage("Uzbek"),
+    "withdraw": MessageLookupByLibrary.simpleMessage("Withdraw"),
     "wrong": MessageLookupByLibrary.simpleMessage("Wrong"),
   };
 }

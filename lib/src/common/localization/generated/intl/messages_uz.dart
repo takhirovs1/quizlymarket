@@ -88,15 +88,13 @@ class MessageLookup extends MessageLookupByLibrary {
     "refresh": MessageLookupByLibrary.simpleMessage("Yangilash"),
     "report": MessageLookupByLibrary.simpleMessage("Hisobotlar"),
     "russian": MessageLookupByLibrary.simpleMessage("Rus tili"),
+    "search": MessageLookupByLibrary.simpleMessage("Qidirish"),
     "selectQuestionByRange": MessageLookupByLibrary.simpleMessage(
       "Savollarni oraliq bo‘yicha tanlash:",
     ),
     "shuffleAll": MessageLookupByLibrary.simpleMessage(
       "Barchasini aralashtirish",
     ),
-    "search": MessageLookupByLibrary.simpleMessage("Qidirish"),
-    "selectQuestionByRange": MessageLookupByLibrary.simpleMessage("Savollarni oraliq bo‘yicha tanlash:"),
-    "shuffleAll": MessageLookupByLibrary.simpleMessage("Barchasini aralashtirish"),
     "shuffleAnswers": MessageLookupByLibrary.simpleMessage("Faqat javoblar"),
     "shuffleNone": MessageLookupByLibrary.simpleMessage("Aralashtirilmasin"),
     "shuffleQuestions": MessageLookupByLibrary.simpleMessage("Faqat savollar"),
@@ -122,8 +120,13 @@ class MessageLookup extends MessageLookupByLibrary {
     "testTotalTime30Min": MessageLookupByLibrary.simpleMessage("30 daqiqa"),
     "time": MessageLookupByLibrary.simpleMessage("Vaqt"),
     "title": MessageLookupByLibrary.simpleMessage("Quizly Market"),
+    "topUp": MessageLookupByLibrary.simpleMessage(
+      "Foydalanuvchi pulini to‘ldirish",
+    ),
     "upload": MessageLookupByLibrary.simpleMessage("Yuklash"),
+    "userList": MessageLookupByLibrary.simpleMessage("Foydalanuvchi ro‘yxati"),
     "uzbek": MessageLookupByLibrary.simpleMessage("O‘zbek tili"),
+    "withdraw": MessageLookupByLibrary.simpleMessage("Pulni chiqarish"),
     "wrong": MessageLookupByLibrary.simpleMessage("Xato"),
   };
 }

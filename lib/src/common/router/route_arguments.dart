@@ -13,4 +13,5 @@ sealed class Routes {
   static const String adminHome = '/admin-home';
   static const String adminUpload = '/admin-upload';
   static const String adminProfile = '/admin-profile';
+  static const String adminUserList = '/admin-user-list';
 }

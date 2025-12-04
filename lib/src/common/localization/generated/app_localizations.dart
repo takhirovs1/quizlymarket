@@ -369,6 +369,30 @@ abstract class AppLocalizations {
   /// **'{count} pcs'**
   String intToCount(int count);
 
+  /// No description provided for @upload.
+  ///
+  /// In en, this message translates to:
+  /// **'Upload'**
+  String get upload;
+
+  /// No description provided for @statistics.
+  ///
+  /// In en, this message translates to:
+  /// **'Statistics'**
+  String get statistics;
+
+  /// No description provided for @topUp.
+  ///
+  /// In en, this message translates to:
+  /// **'Top up user balance'**
+  String get topUp;
+
+  /// No description provided for @withdraw.
+  ///
+  /// In en, this message translates to:
+  /// **'Withdraw'**
+  String get withdraw;
+
   /// No description provided for @addToHomeScreenApp.
   ///
   /// In en, this message translates to:

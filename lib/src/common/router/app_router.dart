@@ -5,6 +5,7 @@ import 'package:local_source/local_source.dart';
 import '../../feature/admin/home/presentation/screen/admin_home_screen.dart';
 import '../../feature/admin/main/presentation/screen/admin_main_screen.dart';
 import '../../feature/admin/profile/presentation/screen/admin_profile_screen.dart';
+import '../../feature/admin/profile/presentation/screen/user_list_screen.dart';
 import '../../feature/admin/upload/presentation/screen/upload_screen.dart';
 import '../../feature/auth/model/user_model.dart';
 import '../../feature/user/main/data/model/main_tabs_enum.dart';
@@ -41,6 +42,7 @@ Route<dynamic> _onGenerateRoute(RouteSettings settings, LocalSource localSource,
     Routes.testResult => _materialRoute(const TestResultScreen(), settings),
     Routes.adminHome => _materialRoute(const AdminHomeScreen(), settings),
     Routes.adminUpload => _materialRoute(const UploadScreen(), settings),
+    Routes.adminUserList => _materialRoute(const UserListScreen(), settings),
     Routes.adminProfile => _materialRoute(const AdminProfileScreen(), settings),
     _ => _resolveOnboardingOrHome(settings, localSource, userRole),
   };

@@ -1,10 +1,10 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/widgets.dart';
 
-import '../../../common/enum/user_role_enum.dart';
+import '../../../../../common/enum/user_role_enum.dart';
 
-class UserModel extends Equatable {
-  const UserModel({
+class ClientModel extends Equatable {
+  const ClientModel({
     required this.userID,
     required this.telegramID,
     required this.name,
@@ -15,7 +15,7 @@ class UserModel extends Equatable {
     this.telegramUsername,
   });
 
-  factory UserModel.fromJson(Map<String, Object?> json) => UserModel(
+  factory ClientModel.fromJson(Map<String, Object?> json) => ClientModel(
     userID: json['user_id'] as String,
     telegramID: json['telegram_id'] as int,
     telegramUsername: json['telegram_username'] as String?,
@@ -35,7 +35,7 @@ class UserModel extends Equatable {
   final double balance;
   final UserRole role;
 
-  UserModel copyWith({
+  ClientModel copyWith({
     String? userID,
     int? telegramID,
     ValueGetter<String?>? telegramUsername,
@@ -44,7 +44,7 @@ class UserModel extends Equatable {
     String? updatedAt,
     double? balance,
     UserRole? role,
-  }) => UserModel(
+  }) => ClientModel(
     userID: userID ?? this.userID,
     telegramID: telegramID ?? this.telegramID,
     telegramUsername: telegramUsername != null ? telegramUsername() : this.telegramUsername,
@@ -73,3 +73,5 @@ class UserModel extends Equatable {
   @override
   List<Object?> get props => [userID, telegramID, telegramUsername, name, createdAt, updatedAt, balance, role];
 }
+
+
