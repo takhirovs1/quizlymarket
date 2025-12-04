@@ -387,6 +387,36 @@ abstract class AppLocalizations {
   /// **'Top up user balance'**
   String get topUp;
 
+  /// No description provided for @users.
+  ///
+  /// In en, this message translates to:
+  /// **'Users'**
+  String get users;
+
+  /// No description provided for @add.
+  ///
+  /// In en, this message translates to:
+  /// **'Add'**
+  String get add;
+
+  /// No description provided for @amount.
+  ///
+  /// In en, this message translates to:
+  /// **'Amount'**
+  String get amount;
+
+  /// No description provided for @cardID.
+  ///
+  /// In en, this message translates to:
+  /// **'Card ID'**
+  String get cardID;
+
+  /// No description provided for @enterAmount.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter amount'**
+  String get enterAmount;
+
   /// No description provided for @withdraw.
   ///
   /// In en, this message translates to:
@@ -398,6 +428,48 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'User list'**
   String get userList;
+
+  /// No description provided for @noUsersFound.
+  ///
+  /// In en, this message translates to:
+  /// **'User not found'**
+  String get noUsersFound;
+
+  /// No description provided for @unknownError.
+  ///
+  /// In en, this message translates to:
+  /// **'Error'**
+  String get unknownError;
+
+  /// No description provided for @save.
+  ///
+  /// In en, this message translates to:
+  /// **'Save'**
+  String get save;
+
+  /// No description provided for @userRole.
+  ///
+  /// In en, this message translates to:
+  /// **'User role:'**
+  String get userRole;
+
+  /// No description provided for @admin.
+  ///
+  /// In en, this message translates to:
+  /// **'Admin'**
+  String get admin;
+
+  /// No description provided for @user.
+  ///
+  /// In en, this message translates to:
+  /// **'Student'**
+  String get user;
+
+  /// No description provided for @topUpUserBalance.
+  ///
+  /// In en, this message translates to:
+  /// **'Top up'**
+  String get topUpUserBalance;
 
   /// No description provided for @addToHomeScreenApp.
   ///

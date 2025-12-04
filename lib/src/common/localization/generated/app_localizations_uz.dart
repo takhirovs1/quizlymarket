@@ -160,10 +160,46 @@ class AppLocalizationsUz extends AppLocalizations {
   String get topUp => 'Foydalanuvchi pulini to‘ldirish';
 
   @override
+  String get users => 'Foydalanuvchilar';
+
+  @override
+  String get add => 'Qo‘shish';
+
+  @override
+  String get amount => 'Summa';
+
+  @override
+  String get cardID => 'ID karta';
+
+  @override
+  String get enterAmount => 'Summani kiriting';
+
+  @override
   String get withdraw => 'Pulni chiqarish';
 
   @override
   String get userList => 'Foydalanuvchi ro‘yxati';
+
+  @override
+  String get noUsersFound => 'Foydalanuvchi topilmadi';
+
+  @override
+  String get unknownError => 'Ma\'lumot topilmadi';
+
+  @override
+  String get save => 'Saqlash';
+
+  @override
+  String get userRole => 'Foydalanuvchi xuquqi:';
+
+  @override
+  String get admin => 'Admin';
+
+  @override
+  String get user => 'O\'quvchi';
+
+  @override
+  String get topUpUserBalance => 'Pul to‘ldirish';
 
   @override
   String get addToHomeScreenApp => 'Ilovani bosh sahifaga qo‘shish';

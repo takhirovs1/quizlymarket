@@ -15,6 +15,7 @@ abstract class UniversityModeState extends State<UniversityModeScreen> {
   late final TestBloc bloc;
   late final ValueNotifier<int> testResult;
   late final ValueNotifier<Map<int, bool>> isSelected;
+  late final ScrollController scrollController;
   Map<int, int> selectedAnswers = {};
   Duration remaining = Duration.zero;
   Timer? timer;
@@ -49,10 +50,9 @@ abstract class UniversityModeState extends State<UniversityModeScreen> {
   }
 
   void onTimerEnd() {
-    if (isSelected.value[bloc.state.currentQuestionIndex] == null &&
-        unselectedCount + correctCount + incorrectCount < 25)
-      unselectedCount++;
     testResult.value = 0;
+    int? index;
+    var animateIndex = bloc.state.currentQuestionIndex;
     if (25 <= (correctCount + incorrectCount + unselectedCount)) {
       context.goNamed(
         Routes.testResult,
@@ -68,8 +68,32 @@ abstract class UniversityModeState extends State<UniversityModeScreen> {
       );
       timer?.cancel();
       return;
+    } else if (animateIndex == 24) {
+      for (var i = 0; i < 25; i++) {
+        if (isSelected.value[i] == null) {
+          index = i;
+          animateIndex = i;
+          break;
+        }
+      }
     }
-    context.read<TestBloc>().add(const ClearTestEvent());
+    context.read<TestBloc>().add(ClearTestEvent(index: index));
+    if (animateIndex >= 4 && animateIndex <= 19) {
+      scrollController.animateTo(
+        animateIndex * 52 - 156,
+        duration: const Duration(milliseconds: 200),
+        curve: Curves.easeInBack,
+      );
+    } else if (animateIndex < 4) {
+      scrollController.animateTo(0, duration: const Duration(milliseconds: 200), curve: Curves.easeInBack);
+    } else {
+      scrollController.animateTo(
+        scrollController.position.maxScrollExtent,
+        duration: const Duration(milliseconds: 200),
+        curve: Curves.easeInBack,
+      );
+    }
+    if (isSelected.value[bloc.state.currentQuestionIndex + 1] != null) bloc.add(const TestAnswerEvent());
   }
 
   void startTimer() {
@@ -85,10 +109,7 @@ abstract class UniversityModeState extends State<UniversityModeScreen> {
     timer = Timer.periodic(const Duration(seconds: 1), (timer) {
       if (!mounted) return;
       if (remaining.inSeconds <= 1) {
-        unselectedCount =
-            (args?.questionRange.end.toInt() ?? 0) -
-            (args?.questionRange.start.toInt() ?? 0) -
-            (correctCount + incorrectCount);
+        unselectedCount = 25 - (correctCount + incorrectCount);
         onTimerEnd();
       }
       setState(() => remaining -= const Duration(seconds: 1));
@@ -105,8 +126,9 @@ abstract class UniversityModeState extends State<UniversityModeScreen> {
   @override
   void initState() {
     super.initState();
+    scrollController = ScrollController();
     totalTimer.start();
-    bloc = TestBloc();
+    bloc = context.read<TestBloc>();
     testResult = ValueNotifier(0);
     isSelected = ValueNotifier({});
     WidgetsBinding.instance.addPostFrameCallback((_) => startTimer());
@@ -119,6 +141,7 @@ abstract class UniversityModeState extends State<UniversityModeScreen> {
     testResult.dispose();
     isSelected.dispose();
     timer?.cancel();
+    scrollController.dispose();
     super.dispose();
   }
 }

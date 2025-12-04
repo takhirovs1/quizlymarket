@@ -14,7 +14,8 @@ part 'auth_event.dart';
 part 'auth_state.dart';
 
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
-  AuthBloc({required AuthRepository repository, AuthState? initialState}) : _repository = repository,
+  AuthBloc({required AuthRepository repository, AuthState? initialState})
+    : _repository = repository,
       super(initialState ?? const AuthState()) {
     on<AuthEvent>(
       (event, emit) => switch (event) {

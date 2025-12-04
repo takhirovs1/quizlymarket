@@ -29,7 +29,9 @@ abstract class ProfileState extends State<ProfileScreen> {
     context.telegramWebApp.addToHomeScreen();
   }
 
-  Future<void> logOut() async => await showCupertinoDialog<void>(
+  Future<void> logOut() async {
+    context.telegramWebApp.hapticFeedback.impactOccurred(.light);
+    await showCupertinoDialog<void>(
     context: context,
     barrierDismissible: true,
     builder: (ctx) => CupertinoAlertDialog(
@@ -65,6 +67,7 @@ abstract class ProfileState extends State<ProfileScreen> {
       ],
     ),
   );
+  }
 
   Future<void> onTapLanguageChange() async {
     context.telegramWebApp.hapticFeedback.impactOccurred(.light);
