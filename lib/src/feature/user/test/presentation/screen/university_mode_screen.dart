@@ -38,47 +38,63 @@ class _UniversityModeScreenState extends UniversityModeState {
           ),
         ),
         body: ListView(
-          padding: Dimension.pAll16,
+          padding: Dimension.pV16,
           children: [
-            Row(
-              mainAxisAlignment: .spaceBetween,
-              children: [
-                Expanded(
-                  child: Text('Akademik ko\'nikmalar', style: context.textTheme.sfProW500s22, overflow: .ellipsis),
-                ),
-                OutlinedButton(
-                  style: ButtonStyle(
-                    backgroundColor: .all(context.color.transparent),
-                    side: .all(BorderSide(color: context.color.background)),
-                    padding: .all(Dimension.pH12V8),
-                    overlayColor: .all(context.color.gray.withValues(alpha: 0.1)),
+            Padding(
+              padding: Dimension.pH16,
+              child: Column(
+                children: [
+                  Row(
+                    mainAxisAlignment: .spaceBetween,
+                    children: [
+                      Expanded(
+                        child: Text(
+                          'Akademik ko\'nikmalar',
+                          style: context.textTheme.sfProW500s22,
+                          overflow: .ellipsis,
+                        ),
+                      ),
+                      OutlinedButton(
+                        style: ButtonStyle(
+                          backgroundColor: .all(context.color.transparent),
+                          side: .all(BorderSide(color: context.color.background)),
+                          padding: .all(Dimension.pH12V8),
+                          overlayColor: .all(context.color.gray.withValues(alpha: 0.1)),
+                        ),
+                        onPressed: () {
+                          unselectedCount = 25 - (correctCount + incorrectCount);
+                          onTimerEnd();
+                        },
+                        child: Text(
+                          context.l10n.finish,
+                          style: context.textTheme.sfProW500s16.copyWith(color: context.color.gray),
+                        ),
+                      ),
+                    ],
                   ),
-                  onPressed: () {
-                    unselectedCount = 25 - (correctCount + incorrectCount);
-                    onTimerEnd();
-                  },
-                  child: Text(
-                    context.l10n.finish,
-                    style: context.textTheme.sfProW500s16.copyWith(color: context.color.gray),
+                  Dimension.hBox20,
+                  Row(
+                    mainAxisAlignment: .spaceBetween,
+                    children: [
+                      Text(
+                        context.l10n.question,
+                        style: context.textTheme.sfProW400s14.copyWith(color: context.color.gray),
+                      ),
+                      Text(
+                        '${state.currentQuestionIndex + 1}/25',
+                        style: context.textTheme.sfProW400s16.copyWith(color: context.color.gray),
+                      ),
+                    ],
                   ),
-                ),
-              ],
-            ),
-            Dimension.hBox20,
-            Row(
-              mainAxisAlignment: .spaceBetween,
-              children: [
-                Text(context.l10n.question, style: context.textTheme.sfProW400s14.copyWith(color: context.color.gray)),
-                Text(
-                  '${state.currentQuestionIndex + 1}/25',
-                  style: context.textTheme.sfProW400s16.copyWith(color: context.color.gray),
-                ),
-              ],
+                ],
+              ),
             ),
             Dimension.hBox14,
             SizedBox(
               height: 44,
               child: ListView.separated(
+                padding: Dimension.pH16,
+                controller: scrollController,
                 scrollDirection: Axis.horizontal,
                 itemCount: 25,
                 separatorBuilder: (context, index) => Dimension.wBox12,
@@ -116,49 +132,57 @@ class _UniversityModeScreenState extends UniversityModeState {
                 ),
               ),
             ),
-            Dimension.hBox14,
-            Text(test.question, style: context.textTheme.sfProW500s20),
-            Dimension.hBox32,
-            ValueListenableBuilder(
-              valueListenable: testResult,
-              builder: (context, value, child) => Column(
+            Padding(
+              padding: Dimension.pH16,
+              child: Column(
                 children: [
-                  for (int i = 1; i <= test.answers.length; i++) ...[
-                    GestureDetector(
-                      onTap: () {
-                        if (isSelected.value[state.currentQuestionIndex] == null) {
-                          testResult.value = i;
-                          if (test.answers[testResult.value - 1].isCorrect) {
-                            context.telegramWebApp.hapticFeedback.notificationOccurred(.success);
-                            correctCount++;
-                          } else {
-                            context.telegramWebApp.hapticFeedback.notificationOccurred(.error);
-                            incorrectCount++;
-                          }
-                          context.read<TestBloc>().add(const TestAnswerEvent());
-                          final newIsSelected = Map<int, bool>.from(isSelected.value);
-                          newIsSelected[state.currentQuestionIndex] = test.answers[testResult.value - 1].isCorrect;
-                          isSelected.value = newIsSelected;
-                          selectedAnswers[state.currentQuestionIndex] = testResult.value;
-                        }
-                      },
-                      child: AnimatedContainer(
-                        duration: const Duration(milliseconds: 180),
-                        padding: Dimension.pH12V6,
-                        decoration: BoxDecoration(
-                          color: getColor(i, state, isBg: true),
-                          borderRadius: Dimension.rAll8,
-                          border: .all(color: getColor(i, state)),
-                        ),
-                        alignment: .topLeft,
-                        child: Text(
-                          test.answers[i - 1].answer,
-                          style: context.textTheme.sfProW500s16.copyWith(color: getColor(i, state, isText: true)),
-                        ),
-                      ),
+                  Dimension.hBox14,
+                  Text(test.question, style: context.textTheme.sfProW500s20),
+                  Dimension.hBox32,
+                  ValueListenableBuilder(
+                    valueListenable: testResult,
+                    builder: (context, value, child) => Column(
+                      children: [
+                        for (int i = 1; i <= test.answers.length; i++) ...[
+                          GestureDetector(
+                            onTap: () {
+                              if (isSelected.value[state.currentQuestionIndex] == null) {
+                                testResult.value = i;
+                                if (test.answers[testResult.value - 1].isCorrect) {
+                                  context.telegramWebApp.hapticFeedback.notificationOccurred(.success);
+                                  correctCount++;
+                                } else {
+                                  context.telegramWebApp.hapticFeedback.notificationOccurred(.error);
+                                  incorrectCount++;
+                                }
+                                context.read<TestBloc>().add(const TestAnswerEvent());
+                                final newIsSelected = Map<int, bool>.from(isSelected.value);
+                                newIsSelected[state.currentQuestionIndex] =
+                                    test.answers[testResult.value - 1].isCorrect;
+                                isSelected.value = newIsSelected;
+                                selectedAnswers[state.currentQuestionIndex] = testResult.value;
+                              }
+                            },
+                            child: AnimatedContainer(
+                              duration: const Duration(milliseconds: 180),
+                              padding: Dimension.pH12V6,
+                              decoration: BoxDecoration(
+                                color: getColor(i, state, isBg: true),
+                                borderRadius: Dimension.rAll8,
+                                border: .all(color: getColor(i, state)),
+                              ),
+                              alignment: .topLeft,
+                              child: Text(
+                                test.answers[i - 1].answer,
+                                style: context.textTheme.sfProW500s16.copyWith(color: getColor(i, state, isText: true)),
+                              ),
+                            ),
+                          ),
+                          Dimension.hBox12,
+                        ],
+                      ],
                     ),
-                    Dimension.hBox12,
-                  ],
+                  ),
                 ],
               ),
             ),
