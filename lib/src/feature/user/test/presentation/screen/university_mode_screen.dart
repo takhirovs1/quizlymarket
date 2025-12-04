@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -52,7 +54,7 @@ class _UniversityModeScreenState extends UniversityModeState {
                     overlayColor: .all(context.color.gray.withValues(alpha: 0.1)),
                   ),
                   onPressed: () {
-                    unselectedCount = bloc.state.tests.length - (correctCount + incorrectCount);
+                    unselectedCount = 25 - (correctCount + incorrectCount);
                     onTimerEnd();
                   },
                   child: Text(
@@ -68,7 +70,7 @@ class _UniversityModeScreenState extends UniversityModeState {
               children: [
                 Text(context.l10n.question, style: context.textTheme.sfProW400s14.copyWith(color: context.color.gray)),
                 Text(
-                  '${state.currentQuestionIndex + 1}/${state.tests.length}',
+                  '${state.currentQuestionIndex + 1}/25',
                   style: context.textTheme.sfProW400s16.copyWith(color: context.color.gray),
                 ),
               ],
@@ -78,20 +80,39 @@ class _UniversityModeScreenState extends UniversityModeState {
               height: 44,
               child: ListView.separated(
                 scrollDirection: Axis.horizontal,
-                itemCount: state.tests.length,
+                itemCount: 25,
                 separatorBuilder: (context, index) => Dimension.wBox12,
-                itemBuilder: (context, index) => AnimatedContainer(
-                  width: 40,
-                  height: 44,
-                  duration: const Duration(milliseconds: 180),
-                  padding: Dimension.pH12V6,
-                  decoration: BoxDecoration(
-                    color: context.color.outline.withValues(alpha: 0.1),
-                    borderRadius: Dimension.rAll12,
-                    border: .all(width: 2.5, color: context.color.outline),
+                itemBuilder: (context, index) => GestureDetector(
+                  onTap: () {
+                    log('index: $index, revealAnswer: ${isSelected.value[index] != null}');
+                    context.read<TestBloc>().add(
+                      ChangeQuestionEvent(index: index, revealAnswer: isSelected.value[index] != null),
+                    );
+                    if (isSelected.value[index] != null) {
+                      testResult.value = selectedAnswers[index] ?? 0;
+                      context.read<TestBloc>().add(const TestAnswerEvent());
+                    } else {
+                      testResult.value = 0;
+                      context.read<TestBloc>().add(ClearTestEvent(index: index));
+                    }
+                  },
+                  child: AnimatedContainer(
+                    width: 40,
+                    height: 44,
+                    duration: const Duration(milliseconds: 180),
+                    decoration: BoxDecoration(
+                      color: getColorQuestion(index, state, isBg: true),
+                      borderRadius: Dimension.rAll12,
+                      border: .all(width: 2, color: getColorQuestion(index, state)),
+                    ),
+                    alignment: .center,
+                    child: Text(
+                      '${index + 1}',
+                      style: context.textTheme.sfProW500s16.copyWith(
+                        color: getColorQuestion(index, state, isText: true),
+                      ),
+                    ),
                   ),
-                  alignment: .center,
-                  child: Text('${index + 1}'),
                 ),
               ),
             ),
@@ -105,7 +126,7 @@ class _UniversityModeScreenState extends UniversityModeState {
                   for (int i = 1; i <= test.answers.length; i++) ...[
                     GestureDetector(
                       onTap: () {
-                        if (!isSelected.value) {
+                        if (isSelected.value[state.currentQuestionIndex] == null) {
                           testResult.value = i;
                           if (test.answers[testResult.value - 1].isCorrect) {
                             context.telegramWebApp.hapticFeedback.notificationOccurred(.success);
@@ -115,7 +136,10 @@ class _UniversityModeScreenState extends UniversityModeState {
                             incorrectCount++;
                           }
                           context.read<TestBloc>().add(const TestAnswerEvent());
-                          isSelected.value = true;
+                          final newIsSelected = Map<int, bool>.from(isSelected.value);
+                          newIsSelected[state.currentQuestionIndex] = test.answers[testResult.value - 1].isCorrect;
+                          isSelected.value = newIsSelected;
+                          selectedAnswers[state.currentQuestionIndex] = testResult.value;
                         }
                       },
                       child: AnimatedContainer(
@@ -145,9 +169,9 @@ class _UniversityModeScreenState extends UniversityModeState {
           child: ValueListenableBuilder(
             valueListenable: isSelected,
             builder: (context, value, child) => CustomButton(
-              rightButtonType: value ? .active : .disabled,
+              rightButtonType: value[state.currentQuestionIndex] != null ? .active : .disabled,
               onRightPressed: () {
-                if (value) {
+                if (value[state.currentQuestionIndex] != null) {
                   context.telegramWebApp.hapticFeedback.impactOccurred(.light);
                   onTimerEnd();
                 }

@@ -37,7 +37,7 @@ class _TestResultScreenState extends State<TestResultScreen> {
   @override
   Widget build(BuildContext context) => Scaffold(
     body: ListView(
-      scrollDirection: Axis.vertical,
+      scrollDirection: .vertical,
       padding: Dimension.pAll16,
       children: [
         SizedBox(height: context.telegramWebApp.safeAreaInset.top.toDouble()),
@@ -62,12 +62,10 @@ class _TestResultScreenState extends State<TestResultScreen> {
           style: context.textTheme.sfProW400s16.copyWith(color: context.color.gray),
         ),
         Text(
-          context.l10n.questionRangeHint(args?.totalQuestions ?? 0, args?.takenQuestions ?? 0),
+          context.l10n.questionRangeHint(args?.takenQuestions ?? 0, args?.totalQuestions ?? 0),
           style: context.textTheme.sfProW400s16.copyWith(color: context.color.gray),
         ),
-
         Dimension.hBox24,
-
         ResultInfoWidget(
           leadingIcon: Lottie.asset(Assets.lottie.correct, width: 24, height: 24),
           leadingTitle: context.l10n.correct,
@@ -94,10 +92,9 @@ class _TestResultScreenState extends State<TestResultScreen> {
     bottomNavigationBar: Padding(
       padding: Dimension.pAll16,
       child: CustomButton(
-        onRightPressed: () {
-          context.telegramWebApp.hapticFeedback.impactOccurred(.light);
-          context.goReplacementNamed(Routes.home);
-        },
+        onRightPressed: () => context
+          ..telegramWebApp.hapticFeedback.impactOccurred(.light)
+          ..goReplacementNamed(Routes.home),
         rightText: context.l10n.exit,
       ),
     ),
