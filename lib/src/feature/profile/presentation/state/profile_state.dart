@@ -19,9 +19,11 @@ abstract class ProfileState extends State<ProfileScreen> {
   late final ProfileUserData profileData;
   late final bool isTelegramUser;
   late String currentLocale;
-  String? _profilePhotoUrl;
-
-  String get profilePhotoUrl => _profilePhotoUrl ?? profileData.photoUrl ?? '';
+String? profilePhotoUrl;
+  String? avatarUrl;
+  bool isLoading = true;
+  String? error;
+  // String get _profilePhotoUrl => _profilePhotoUrl ?? profileData.photoUrl ?? '';
 
   @override
   void initState() {
@@ -31,7 +33,8 @@ abstract class ProfileState extends State<ProfileScreen> {
     profileData = telegramUser != null
         ? ProfileUserData.fromTelegram(telegramUser)
         : const ProfileUserData.mock();
-    _loadUserProfilePhoto();
+        log('telegramUser?.id: ${telegramUser?.id}');
+    loadAvatar();
   }
 
   @override
@@ -142,68 +145,59 @@ abstract class ProfileState extends State<ProfileScreen> {
       ..setLocale(Locale(code))
       ..pop();
   }
-
-  Future<void> _loadUserProfilePhoto() async {
-    log('isTelegramUser: $isTelegramUser');
-    if (!isTelegramUser) return;
-
-    final url = await getUserProfileUrl(profileData.id);
-    log('url: $url');
-    if (!mounted || url == null || url.isEmpty) return;
-    
-
-    setState(() {
-      _profilePhotoUrl = url;
-    });
-  }
-
-  Future<String?> getUserProfileUrl(int userId) async {
+  
+  Future<void> loadAvatar() async {
     try {
-      final response = await context.dios.dio.get<Map<String, dynamic>>(
-        '${Urls.telegramBotUrl}/getUserProfilePhotos',
-        queryParameters: <String, dynamic>{
-          'user_id': userId,
-          'limit': 1,
-        },
-      );
-
-      final data = response.data;
-      if (response.statusCode != 200 || data == null || data['ok'] != true) {
-        return null;
+      final url = await getTelegramUserAvatarUrl(7282825856);
+      log('url: $url');
+      if (!mounted) return;
+      if (url == null) {
+          setState(() {
+            isLoading = false;
+            error = 'User profile image topilmadi';
+          });
+      } else {
+        setState(() {
+          avatarUrl = url;
+          isLoading = false;
+        });
       }
-
-      final photos = data['result']?['photos'] as List<dynamic>?;
-      if (photos == null || photos.isEmpty) return null;
-
-      final firstSizes = photos.first as List<dynamic>;
-      if (firstSizes.isEmpty) return null;
-
-      final firstPhoto = firstSizes.first as Map<String, dynamic>;
-      final fileId = firstPhoto['file_id'] as String?;
-      if (fileId == null || fileId.isEmpty) return null;
-
-      // 2) Get the file path by file_id
-      final fileResponse = await context.dios.dio.get<Map<String, dynamic>>(
-        '${Urls.telegramBotUrl}/getFile',
-        queryParameters: <String, dynamic>{
-          'file_id': fileId,
-        },
-      );
-
-      final fileData = fileResponse.data;
-      if (fileResponse.statusCode != 200 ||
-          fileData == null ||
-          fileData['ok'] != true) {
-        return null;
-      }
-
-      final filePath = fileData['result']?['file_path'] as String?;
-      if (filePath == null || filePath.isEmpty) return null;
-
-      // 3) Build direct link to the image file
-      return 'https://api.telegram.org/file/bot${Urls.telegramBotToken}/$filePath';
-    } on Object {
-      return null;
+    } catch (e) {
+      if (!mounted) return;
+      setState(() {
+        isLoading = false;
+        error = 'Xatolik: $e';
+      });
     }
   }
+
+
+  Future<String?> getTelegramUserAvatarUrl(int userId) async {
+
+  final photosRes = await context.dios.dio.get<Map<String, dynamic>>(
+    '${Urls.telegramBotUrl}/getUserProfilePhotos?user_id=$userId&limit=1',
+  );
+
+  if (photosRes.statusCode != 200) return null;
+  final photosJson = photosRes.data;
+  if (photosJson?['ok'] != true ||
+      photosJson?['result']['total_count'] == 0) {
+    return null; 
+  }
+
+  final fileId = photosJson?['result']['photos'][0][0]['file_id'];
+
+  final fileRes = await context.dios.dio.get<Map<String, dynamic>>(
+    '${Urls.telegramBotUrl}/getFile?file_id=$fileId',
+  );
+
+  if (fileRes.statusCode != 200) return null;
+  final fileJson = fileRes.data;
+  if (fileJson?['ok'] != true) return null;
+
+  final filePath = fileJson?['result']['file_path'];
+  profilePhotoUrl = '${Urls.telegramBotUrl}/$filePath';
+  log('profilePhotoUrl: $profilePhotoUrl');
+  return '${Urls.telegramBotUrl}/$filePath';
+} 
 }
