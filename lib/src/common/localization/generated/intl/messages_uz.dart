@@ -59,6 +59,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "english": MessageLookupByLibrary.simpleMessage("Ingliz tili"),
     "enterTest": MessageLookupByLibrary.simpleMessage("Testga kirish"),
     "exit": MessageLookupByLibrary.simpleMessage("Chiqish"),
+    "filter": MessageLookupByLibrary.simpleMessage("Filtrlash"),
     "finish": MessageLookupByLibrary.simpleMessage("Tugatish"),
     "intToCount": m0,
     "language": MessageLookupByLibrary.simpleMessage("Tilni o‘zgartirish"),
@@ -87,6 +88,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "refresh": MessageLookupByLibrary.simpleMessage("Yangilash"),
     "report": MessageLookupByLibrary.simpleMessage("Hisobotlar"),
     "russian": MessageLookupByLibrary.simpleMessage("Rus tili"),
+    "search": MessageLookupByLibrary.simpleMessage("Qidirish"),
     "selectQuestionByRange": MessageLookupByLibrary.simpleMessage(
       "Savollarni oraliq bo‘yicha tanlash:",
     ),

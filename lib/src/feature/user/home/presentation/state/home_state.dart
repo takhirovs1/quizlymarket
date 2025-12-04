@@ -13,17 +13,28 @@ import '../../../../../common/widget/custom_bottom_sheet.dart';
 import '../../../../../common/widget/custom_button.dart';
 import '../../../../../common/widget/custom_primary_dialog.dart';
 import '../../../profile/presentation/widget/bank_card_widget.dart';
+import '../../data/model/home_default_model.dart';
 import '../screen/home_screen.dart';
+import '../widget/filter_bottom_sheet.dart';
 
 abstract class HomeState extends State<HomeScreen> {
   HomeState();
 
   late final WebAppUser? telegramUser;
+  late final TextEditingController searchController;
 
   @override
   void initState() {
     super.initState();
     telegramUser = _resolveTelegramUser();
+    searchController = TextEditingController();
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    searchController.dispose();
   }
 
   WebAppUser? _resolveTelegramUser() {
@@ -137,4 +148,57 @@ abstract class HomeState extends State<HomeScreen> {
       ],
     ),
   );
+
+  void onFilterButtonPressed() {
+    showModalBottomSheet<void>(
+      context: context,
+      useRootNavigator: true,
+      isScrollControlled: true,
+      backgroundColor: context.color.transparent,
+      builder: (ctx) => FilterBottomSheet(universities: universities),
+    );
+  }
+
+  List<UniversityModel> universities = <UniversityModel>[
+    UniversityModel(
+      id: 'u1',
+      name: 'Alfraganus',
+
+      faculties: [
+        FacultyModel(id: 'f_all', name: 'Barcha Fakultetlar'),
+        FacultyModel(
+          id: 'f1',
+          name: 'Faculty of Economics',
+          courses: [
+            CourseModel(id: 'c_all', name: 'Barcha kurslar'),
+            CourseModel(id: 'c1', name: '1-kurs'),
+            CourseModel(id: 'c2', name: '2-kurs'),
+            CourseModel(id: 'c3', name: '3-kurs'),
+            CourseModel(id: 'c4', name: '4-kurs'),
+            CourseModel(
+              id: 'c1_sirtqi',
+              name: '1-kurs sirtqi',
+              directions: [
+                DirectionModel(id: 'd_all', name: 'Barcha yo’nalishlar'),
+                DirectionModel(id: 'd1', name: 'Economy'),
+                DirectionModel(id: 'd2', name: 'World economy and international econ...'),
+                DirectionModel(id: 'd3', name: 'Finance and financial technologies'),
+                DirectionModel(id: 'd4', name: 'Taxes and taxation'),
+                DirectionModel(id: 'd5', name: 'Accounting'),
+              ],
+            ),
+            CourseModel(id: 'c2_sirtqi', name: '2-kurs sirtqi'),
+            CourseModel(id: 'c1_kechki', name: '1-kurs kechki'),
+            CourseModel(id: 'c2_kechki', name: '2-kurs kechki'),
+          ],
+        ),
+        FacultyModel(id: 'f2', name: 'Faculty of Medicine'),
+        FacultyModel(id: 'f3', name: 'Faculty of Social Sciences'),
+        FacultyModel(id: 'f4', name: 'Faculty of Philology'),
+      ],
+    ),
+    UniversityModel(id: 'u2', name: 'Toshkent davlat Iqtisodiyot University'),
+    UniversityModel(id: 'u3', name: 'Toshkent davlat Yuridik University'),
+    UniversityModel(id: 'u4', name: 'WUIT'),
+  ];
 }

@@ -11,12 +11,14 @@ class CustomBottomSheet extends StatelessWidget {
     this.maxChildSize = .9,
     this.isScrollable = true,
     this.bottomNavigationBar,
+    this.title,
   });
   final List<Widget> children;
   final double initialChildSize;
   final double maxChildSize;
   final bool isScrollable;
   final Widget? bottomNavigationBar;
+  final Widget? title;
 
   @override
   Widget build(BuildContext context) => DraggableScrollableSheet(
@@ -49,12 +51,23 @@ class CustomBottomSheet extends StatelessWidget {
           Expanded(
             child: DecoratedBox(
               decoration: BoxDecoration(color: context.color.background, borderRadius: Dimension.rTop16),
-              child: ListView(
-                physics: isScrollable ? null : const NeverScrollableScrollPhysics(),
-                controller: scrollController,
+              child: Padding(
                 padding: const EdgeInsets.fromLTRB(16, 8, 16, 16),
+                child: Column(
+                  crossAxisAlignment: .start,
+                  children: [
+                    ?title,
+                    Dimension.hBox16,
+                    Expanded(
+                      child: ListView(
+                        physics: isScrollable ? null : const NeverScrollableScrollPhysics(),
+                        controller: scrollController,
 
-                children: children,
+                        children: children,
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),

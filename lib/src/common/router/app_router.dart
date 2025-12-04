@@ -13,6 +13,7 @@ import '../../feature/user/test/presentation/screen/custom_mode_screen.dart';
 import '../../feature/user/test/presentation/screen/test_init_screen.dart';
 import '../../feature/user/test/presentation/screen/test_result_screen.dart';
 import '../../feature/user/test/presentation/screen/university_mode_screen.dart';
+import '../util/logger.dart';
 import 'route_arguments.dart';
 
 final GlobalKey<NavigatorState> rootNavigatorKey = GlobalKey<NavigatorState>();
@@ -22,9 +23,10 @@ RouteFactory buildRouteFactory(LocalSource localSource, UserRole? role) =>
 
 Route<dynamic> _onGenerateRoute(RouteSettings settings, LocalSource localSource, UserRole? role) {
   // TODO: Shu joydan userga qarab page'ga ajratish kerak
-  final userRole = role ?? UserRole.user;
+  final userRole = role ?? UserRole.admin;
+  info('userRole: $userRole');
   return switch (settings.name) {
-    Routes.onboarding => _resolveOnboardingOrHome(settings, localSource),
+    Routes.onboarding => _resolveOnboardingOrHome(settings, localSource, userRole),
     Routes.home ||
     Routes.cart ||
     Routes.profile => _materialRoute(_homeScreenForRole(userRole, settings.name), settings),
@@ -39,7 +41,7 @@ Route<dynamic> _onGenerateRoute(RouteSettings settings, LocalSource localSource,
     ),
     Routes.testResult => _materialRoute(const TestResultScreen(), settings),
     Routes.adminHome => _materialRoute(const AdminHomeScreen(), settings),
-    _ => _resolveOnboardingOrHome(settings, localSource),
+    _ => _resolveOnboardingOrHome(settings, localSource, userRole),
   };
 }
 
@@ -52,9 +54,9 @@ MainTabsEnum _tabFromRoute(String? routeName) => switch (routeName) {
 MaterialPageRoute<dynamic> _materialRoute(Widget child, RouteSettings settings) =>
     MaterialPageRoute<dynamic>(settings: settings, builder: (_) => child);
 
-Route<dynamic> _resolveOnboardingOrHome(RouteSettings settings, LocalSource localSource) =>
+Route<dynamic> _resolveOnboardingOrHome(RouteSettings settings, LocalSource localSource, UserRole userRole) =>
     localSource.onboardingCompleted
-    ? _materialRoute(_homeScreenForRole(UserRole.user, Routes.home), settings)
+    ? _materialRoute(_homeScreenForRole(userRole, Routes.home), settings)
     : _materialRoute(const OnboardingScreen(), settings);
 
 Widget _homeScreenForRole(UserRole role, String? routeName) =>

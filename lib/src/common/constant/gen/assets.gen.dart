@@ -101,6 +101,9 @@ class $AssetsLottieGen {
   /// File path: assets/lottie/error2.json
   String get error2 => 'assets/lottie/error2.json';
 
+  /// File path: assets/lottie/filter.json
+  String get filter => 'assets/lottie/filter.json';
+
   /// File path: assets/lottie/hourglass.json
   String get hourglass => 'assets/lottie/hourglass.json';
 
@@ -141,6 +144,7 @@ class $AssetsLottieGen {
     diamond,
     error,
     error2,
+    filter,
     hourglass,
     incorrect,
     laptop,

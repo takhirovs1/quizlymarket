@@ -506,6 +506,16 @@ class GeneratedLocalization {
   String get time {
     return Intl.message('Время', name: 'time', desc: '', args: []);
   }
+
+  /// `Поиск`
+  String get search {
+    return Intl.message('Поиск', name: 'search', desc: '', args: []);
+  }
+
+  /// `Фильтр`
+  String get filter {
+    return Intl.message('Фильтр', name: 'filter', desc: '', args: []);
+  }
 }
 
 class AppLocalizationDelegate

@@ -185,4 +185,10 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get continueAction => 'Davom etish';
+
+  @override
+  String get search => 'Qidirish';
+
+  @override
+  String get filter => 'Filtrlash';
 }

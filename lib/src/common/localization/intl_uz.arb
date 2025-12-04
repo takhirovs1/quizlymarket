@@ -82,5 +82,7 @@
   "wrong": "Xato",
   "skipped": "Tashlab ketilgan",
   "time": "Vaqt",
-"continueAction": "Davom etish"
+  "continueAction": "Davom etish",
+  "search": "Qidirish",
+  "filter": "Filtrlash"
 }

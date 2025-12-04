@@ -55,6 +55,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "english": MessageLookupByLibrary.simpleMessage("Английский"),
     "enterTest": MessageLookupByLibrary.simpleMessage("Перейти к тесту"),
     "exit": MessageLookupByLibrary.simpleMessage("Выход"),
+    "filter": MessageLookupByLibrary.simpleMessage("Фильтр"),
     "finish": MessageLookupByLibrary.simpleMessage("Завершить"),
     "intToCount": m0,
     "language": MessageLookupByLibrary.simpleMessage("Изменить язык"),
@@ -83,6 +84,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "refresh": MessageLookupByLibrary.simpleMessage("Обновить"),
     "report": MessageLookupByLibrary.simpleMessage("Отчеты"),
     "russian": MessageLookupByLibrary.simpleMessage("Русский"),
+    "search": MessageLookupByLibrary.simpleMessage("Поиск"),
     "selectQuestionByRange": MessageLookupByLibrary.simpleMessage(
       "Выберите вопросы по диапазону:",
     ),
