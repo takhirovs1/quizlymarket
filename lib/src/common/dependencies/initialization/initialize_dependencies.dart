@@ -121,6 +121,7 @@ Map<String, _InitializationStep> get _initializationSteps => <String, _Initializ
     // TODO: Abror korsin
     dependencies.repository = RepositoryContainer(
       authRepository: SupabaseAuthRepository(service: supabaseService),
+      clientRepository: SupabaseClientRepository(service: supabaseService),
       // userRepository: SupabaseRepository(service: supabaseService),
     );
   },
