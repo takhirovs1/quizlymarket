@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../common/extension/context_extension.dart';
-import '../../../../../common/router/route_arguments.dart';
 import '../../../../../common/util/dimension.dart';
 import '../../../../../common/widget/custom_button.dart';
 import '../bloc/test_bloc.dart';
@@ -52,7 +51,10 @@ class _CustomModeScreenState extends CustomModeState {
                     padding: .all(Dimension.pH12V8),
                     overlayColor: .all(context.color.gray.withValues(alpha: 0.1)),
                   ),
-                  onPressed: () => context.goNamed(Routes.testResult),
+                  onPressed: () {
+                    unselectedCount = (bloc.state.tests.length - 1) - (correctCount + incorrectCount);
+                    onTimerEnd();
+                  },
                   child: Text(
                     context.l10n.finish,
                     style: context.textTheme.sfProW500s16.copyWith(color: context.color.gray),
@@ -83,8 +85,16 @@ class _CustomModeScreenState extends CustomModeState {
                       onTap: () {
                         if (!isSelected.value) {
                           testResult.value = i;
+                          if (test.answers[testResult.value - 1].isCorrect) {
+                            context.telegramWebApp.hapticFeedback.notificationOccurred(.success);
+                            correctCount++;
+                          } else {
+                            context.telegramWebApp.hapticFeedback.notificationOccurred(.error);
+                            incorrectCount++;
+                          }
                           context.read<TestBloc>().add(const TestAnswerEvent());
                           isSelected.value = true;
+                          remaining = const Duration(seconds: 3);
                         }
                       },
                       child: AnimatedContainer(
@@ -117,12 +127,9 @@ class _CustomModeScreenState extends CustomModeState {
               rightButtonType: value ? .active : .disabled,
               onRightPressed: () {
                 if (value) {
-                  testResult.value = 0;
-                  isSelected.value = false;
-                  startTimer();
-                  context.read<TestBloc>().add(const ClearTestEvent());
+                  context.telegramWebApp.hapticFeedback.impactOccurred(.light);
+                  onTimerEnd();
                 }
-                if (state.currentQuestionIndex == state.tests.length - 1) context.goReplacementNamed(Routes.testResult);
               },
               rightText: state.currentQuestionIndex == state.tests.length - 1 ? context.l10n.finish : context.l10n.next,
             ),

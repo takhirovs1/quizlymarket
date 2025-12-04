@@ -22,22 +22,15 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m0(count) => "${count} dona";
 
-  static String m1(count) => "${count} ta savoldan 25 tasi almashib tushadi.";
+  static String m1(count, solved) => "${count} ta savoldan ${solved} tasi almashib tushadi.";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-    "allOfTimeTest": MessageLookupByLibrary.simpleMessage(
-      "Testning umumiy vaqti:",
-    ),
-    "appConfiguration": MessageLookupByLibrary.simpleMessage(
-      "Ilova sozlamalari",
-    ),
-    "appConfigurationCancel": MessageLookupByLibrary.simpleMessage(
-      "Bekor qilish",
-    ),
-    "appConfigurationDescription": MessageLookupByLibrary.simpleMessage(
-      "Ilova sozlamalarini shu yerda sozlang.",
-    ),
+    "addToHomeScreenApp": MessageLookupByLibrary.simpleMessage("Ilovani bosh sahifaga qo‘shish"),
+    "allOfTimeTest": MessageLookupByLibrary.simpleMessage("Testning umumiy vaqti:"),
+    "appConfiguration": MessageLookupByLibrary.simpleMessage("Ilova sozlamalari"),
+    "appConfigurationCancel": MessageLookupByLibrary.simpleMessage("Bekor qilish"),
+    "appConfigurationDescription": MessageLookupByLibrary.simpleMessage("Ilova sozlamalarini shu yerda sozlang."),
     "appConfigurationReset": MessageLookupByLibrary.simpleMessage("Tiklash"),
     "appConfigurationResetDescription": MessageLookupByLibrary.simpleMessage(
       "Ilova sozlamalarini sukut bo‘yicha tiklang.",

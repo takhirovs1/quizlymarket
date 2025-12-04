@@ -12,7 +12,7 @@ class BankCardWidget extends StatelessWidget {
   const BankCardWidget({required this.fullName, required this.balance, required this.id, super.key});
 
   final String fullName;
-  final int balance;
+  final double balance;
   final String id;
 
   @override
@@ -39,7 +39,10 @@ class BankCardWidget extends StatelessWidget {
                 Text('Balance', style: context.textTheme.nunitoW500s14.copyWith(color: context.color.white)),
               ],
             ),
-            Text(balance.toUZSString(), style: context.textTheme.nunitoW600s30.copyWith(color: context.color.white)),
+            Text(
+              balance.toInt().toUZSString(),
+              style: context.textTheme.nunitoW600s30.copyWith(color: context.color.white),
+            ),
             Row(
               mainAxisAlignment: .spaceBetween,
               children: [

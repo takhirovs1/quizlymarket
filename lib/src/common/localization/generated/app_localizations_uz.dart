@@ -141,14 +141,17 @@ class AppLocalizationsUz extends AppLocalizations {
   String get allOfTimeTest => 'Testning umumiy vaqti:';
 
   @override
-  String questionRangeHint(int count) {
-    return '$count ta savoldan 25 tasi almashib tushadi.';
+  String questionRangeHint(int count, int solved) {
+    return '$count ta savoldan $solved tasi almashib tushadi.';
   }
 
   @override
   String intToCount(int count) {
     return '$count dona';
   }
+
+  @override
+  String get addToHomeScreenApp => 'Ilovani bosh sahifaga qo‘shish';
 
   @override
   String get testTotalTime30Min => '30 daqiqa';

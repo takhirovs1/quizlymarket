@@ -22,10 +22,11 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m0(count) => "${count} шт.";
 
-  static String m1(count) => "Из ${count} вопросов 25 будут перемешиваться.";
+  static String m1(count, solved) => "Из ${count} вопросов ${solved} будут перемешиваться.";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+    "addToHomeScreenApp": MessageLookupByLibrary.simpleMessage("Добавить в домашний экран"),
     "allOfTimeTest": MessageLookupByLibrary.simpleMessage("Общее время теста:"),
     "appConfiguration": MessageLookupByLibrary.simpleMessage(
       "Настройка приложения",

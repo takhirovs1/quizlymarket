@@ -22,10 +22,11 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m0(count) => "${count} pcs";
 
-  static String m1(count) => "25 questions will rotate out of ${count}.";
+  static String m1(count, solved) => "${solved} questions will rotate out of ${count}.";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+    "addToHomeScreenApp": MessageLookupByLibrary.simpleMessage("Add to home screen"),
     "allOfTimeTest": MessageLookupByLibrary.simpleMessage("Total test time:"),
     "appConfiguration": MessageLookupByLibrary.simpleMessage(
       "App Configuration",

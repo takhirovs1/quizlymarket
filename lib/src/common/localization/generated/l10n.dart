@@ -407,13 +407,13 @@ class GeneratedLocalization {
     );
   }
 
-  /// `Из {count} вопросов 25 будут перемешиваться.`
-  String questionRangeHint(int count) {
+  /// `Из {count} вопросов {solved} будут перемешиваться.`
+  String questionRangeHint(int count, int solved) {
     return Intl.message(
-      'Из $count вопросов 25 будут перемешиваться.',
+      'Из $count вопросов $solved будут перемешиваться.',
       name: 'questionRangeHint',
       desc: '',
-      args: [count],
+      args: [count, solved],
     );
   }
 
@@ -425,6 +425,11 @@ class GeneratedLocalization {
       desc: '',
       args: [count],
     );
+  }
+
+  /// `Добавить в домашний экран`
+  String get addToHomeScreenApp {
+    return Intl.message('Добавить в домашний экран', name: 'addToHomeScreenApp', desc: '', args: []);
   }
 
   /// `30 минут`

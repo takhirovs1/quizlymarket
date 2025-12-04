@@ -49,6 +49,8 @@ class QuestionModel {
   final String testId;
   final String question;
   final List<AnswerModel> answers;
+  QuestionModel copyWith({List<AnswerModel>? answers}) =>
+      QuestionModel(id: id, testId: testId, question: question, answers: answers ?? this.answers);
 }
 
 class AnswerModel {

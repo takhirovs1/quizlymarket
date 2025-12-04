@@ -17,21 +17,26 @@ import 'route_arguments.dart';
 
 final GlobalKey<NavigatorState> rootNavigatorKey = GlobalKey<NavigatorState>();
 
-RouteFactory buildRouteFactory(LocalSource localSource) =>
-    (settings) => _onGenerateRoute(settings, localSource);
+RouteFactory buildRouteFactory(LocalSource localSource, UserRole? role) =>
+    (settings) => _onGenerateRoute(settings, localSource, role);
 
-Route<dynamic> _onGenerateRoute(RouteSettings settings, LocalSource localSource) {
-  final role = MockUsers.activeRole;
-
+Route<dynamic> _onGenerateRoute(RouteSettings settings, LocalSource localSource, UserRole? role) {
+  // TODO: Shu joydan userga qarab page'ga ajratish kerak
+  final userRole = role ?? UserRole.user;
   return switch (settings.name) {
     Routes.onboarding => _resolveOnboardingOrHome(settings, localSource),
-    Routes.home || Routes.cart || Routes.profile => _materialRoute(_homeScreenForRole(role, settings.name), settings),
+    Routes.home ||
+    Routes.cart ||
+    Routes.profile => _materialRoute(_homeScreenForRole(userRole, settings.name), settings),
     Routes.testInit => _materialRoute(const TestInitScreen(), settings),
     Routes.customMode => _materialRoute(
       BlocProvider(create: (context) => TestBloc(), child: const CustomModeScreen()),
       settings,
     ),
-    Routes.universityMode => _materialRoute(const UniversityModeScreen(), settings),
+    Routes.universityMode => _materialRoute(
+      BlocProvider(create: (context) => TestBloc(), child: const UniversityModeScreen()),
+      settings,
+    ),
     Routes.testResult => _materialRoute(const TestResultScreen(), settings),
     Routes.adminHome => _materialRoute(const AdminHomeScreen(), settings),
     _ => _resolveOnboardingOrHome(settings, localSource),
@@ -49,7 +54,7 @@ MaterialPageRoute<dynamic> _materialRoute(Widget child, RouteSettings settings) 
 
 Route<dynamic> _resolveOnboardingOrHome(RouteSettings settings, LocalSource localSource) =>
     localSource.onboardingCompleted
-    ? _materialRoute(_homeScreenForRole(MockUsers.activeRole, Routes.home), settings)
+    ? _materialRoute(_homeScreenForRole(UserRole.user, Routes.home), settings)
     : _materialRoute(const OnboardingScreen(), settings);
 
 Widget _homeScreenForRole(UserRole role, String? routeName) =>

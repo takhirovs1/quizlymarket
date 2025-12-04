@@ -33,6 +33,9 @@ class $ConfigGen {
 class $AssetsIconsGen {
   const $AssetsIconsGen();
 
+  /// File path: assets/icons/add_home.svg
+  SvgGenImage get addHome => const SvgGenImage('assets/icons/add_home.svg');
+
   /// File path: assets/icons/cart.svg
   SvgGenImage get cart => const SvgGenImage('assets/icons/cart.svg');
 
@@ -46,7 +49,7 @@ class $AssetsIconsGen {
   SvgGenImage get upload => const SvgGenImage('assets/icons/upload.svg');
 
   /// List of all assets
-  List<SvgGenImage> get values => [cart, home, profile, upload];
+  List<SvgGenImage> get values => [addHome, cart, home, profile, upload];
 }
 
 class $AssetsImagesGen {
@@ -158,6 +161,9 @@ class $AssetsLottieGen {
 class $AssetsVectorsGen {
   const $AssetsVectorsGen();
 
+  /// File path: assets/vectors/add_home.vec
+  SvgGenImage get addHome => const SvgGenImage.vec('assets/vectors/add_home.vec');
+
   /// File path: assets/vectors/cart.vec
   SvgGenImage get cart => const SvgGenImage.vec('assets/vectors/cart.vec');
 
@@ -167,8 +173,11 @@ class $AssetsVectorsGen {
   /// File path: assets/vectors/profile.vec
   SvgGenImage get profile => const SvgGenImage.vec('assets/vectors/profile.vec');
 
+  /// File path: assets/vectors/upload.vec
+  SvgGenImage get upload => const SvgGenImage.vec('assets/vectors/upload.vec');
+
   /// List of all assets
-  List<SvgGenImage> get values => [cart, home, profile];
+  List<SvgGenImage> get values => [addHome, cart, home, profile, upload];
 }
 
 class Assets {

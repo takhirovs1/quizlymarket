@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../../../common/extension/context_extension.dart';
 import '../../../../../common/util/dimension.dart';
 import '../../data/model/test_init_enum.dart';
+import '../../data/model/test_init_model.dart';
 
 class UniversityModeContent extends StatefulWidget {
   const UniversityModeContent({required this.settings, super.key});
@@ -29,6 +30,7 @@ class _UniversityModeContentState extends State<UniversityModeContent> {
   }
 
   void _onTotalTimePressed(TotalTestTimeOption option) {
+    context.telegramWebApp.hapticFeedback.impactOccurred(.light);
     _selectedTotalTime.value = option;
     widget.settings.totalTestTime = option;
   }
@@ -39,51 +41,59 @@ class _UniversityModeContentState extends State<UniversityModeContent> {
   };
 
   @override
-  Widget build(BuildContext context) => Column(
-    crossAxisAlignment: .start,
-    children: [
-      Text(context.l10n.allOfTimeTest, style: context.textTheme.sfProW400s16.copyWith(color: context.color.gray)),
-      Dimension.hBox8,
-      ValueListenableBuilder<TotalTestTimeOption>(
-        valueListenable: _selectedTotalTime,
-        builder: (context, selected, _) => Row(
-          spacing: 8,
-          mainAxisSize: .min,
-          children: TotalTestTimeOption.values
-              .map(
-                (option) => GestureDetector(
-                  onTap: () => _onTotalTimePressed(option),
-                  child: AnimatedContainer(
-                    duration: const Duration(milliseconds: 180),
-                    height: 36,
-                    alignment: Alignment.center,
-                    decoration: BoxDecoration(
-                      color: option == selected ? context.color.primary : context.color.white,
-                      borderRadius: Dimension.rAll8,
-                      border: Border.all(
-                        color: option == selected ? context.color.primary : context.color.outline.withValues(alpha: .6),
+  Widget build(BuildContext context) => Padding(
+    padding: Dimension.pH16,
+    child: Column(
+      crossAxisAlignment: .start,
+      children: [
+        Text(context.l10n.allOfTimeTest, style: context.textTheme.sfProW400s16.copyWith(color: context.color.gray)),
+        Dimension.hBox8,
+        ValueListenableBuilder<TotalTestTimeOption>(
+          valueListenable: _selectedTotalTime,
+          builder: (context, selected, _) => Row(
+            spacing: 8,
+            mainAxisSize: .min,
+            children: TotalTestTimeOption.values
+                .map(
+                  (option) => GestureDetector(
+                    onTap: () => _onTotalTimePressed(option),
+                    child: AnimatedContainer(
+                      duration: const Duration(milliseconds: 180),
+                      height: 36,
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                        color: option == selected ? context.color.primary : context.color.white,
+                        borderRadius: Dimension.rAll8,
+                        border: Border.all(
+                          color: option == selected
+                              ? context.color.primary
+                              : context.color.outline.withValues(alpha: .6),
+                        ),
                       ),
-                    ),
-                    child: Padding(
-                      padding: Dimension.pH12V6,
-                      child: Text(
-                        _totalTimeLabel(context, option),
-                        style: context.textTheme.sfProW500s16.copyWith(
-                          color: option == selected ? context.color.white : context.color.gray,
+                      child: Padding(
+                        padding: Dimension.pH12V6,
+                        child: Text(
+                          _totalTimeLabel(context, option),
+                          style: context.textTheme.sfProW500s16.copyWith(
+                            color: option == selected ? context.color.white : context.color.gray,
+                          ),
                         ),
                       ),
                     ),
                   ),
-                ),
-              )
-              .toList(),
+                )
+                .toList(),
+          ),
         ),
-      ),
-      Dimension.hBox16,
-      Text(
-        context.l10n.questionRangeHint(100),
-        style: context.textTheme.sfProW400s16.copyWith(color: context.color.gray),
-      ),
-    ],
+        Dimension.hBox16,
+        Text(
+          context.l10n.questionRangeHint(
+            widget.settings.questionRange.end.toInt(),
+            widget.settings.questionRange.start.toInt(),
+          ),
+          style: context.textTheme.sfProW400s16.copyWith(color: context.color.gray),
+        ),
+      ],
+    ),
   );
 }

@@ -50,7 +50,7 @@ class _SplashScreenState extends SplashController {
                 child: SizedBox(
                   width: 24,
                   height: 24,
-                  child: CircularProgressIndicator.adaptive(strokeWidth: 2, backgroundColor: Colors.white,),
+                  child: CircularProgressIndicator.adaptive(strokeWidth: 2, backgroundColor: Colors.white),
                 ),
               ),
             ],

@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meta/meta.dart';
 
+import '../../../../../common/constant/gen/assets.gen.dart';
 import '../../../../../common/extension/context_extension.dart';
-import '../../../../../common/router/route_arguments.dart';
 import '../../../../../common/util/dimension.dart';
 import '../../../../../common/widget/custom_tile.dart';
 import '../state/profile_state.dart';
@@ -41,12 +41,16 @@ class _ProfileScreenState extends ProfileState {
                   Dimension.hBox64,
                   ProfileHeader(
                     photoUrl: '',
-                    fullName: profileData.fullName,
-                    id: profileData.id,
-                    username: profileData.username ?? '',
+                    fullName: context.user?.name ?? '',
+                    id: context.user?.telegramID.toString() ?? '',
+                    username: context.user?.telegramUsername ?? '',
                   ),
                   Dimension.hBox16,
-                  BankCardWidget(fullName: profileData.fullName, balance: profileData.balance, id: profileData.id),
+                  BankCardWidget(
+                    fullName: context.user?.name ?? '',
+                    balance: context.user?.balance ?? .0,
+                    id: context.user?.telegramID.toString() ?? '',
+                  ),
                   Dimension.hBox16,
                   Material(
                     color: context.color.white,
@@ -55,7 +59,9 @@ class _ProfileScreenState extends ProfileState {
                     child: CustomTile(
                       leading: Icon(CupertinoIcons.money_dollar, color: context.color.primary),
                       title: context.l10n.report,
-                      onTap: () {},
+                      onTap: () {
+                        context.telegramWebApp.hapticFeedback.impactOccurred(.light);
+                      },
                     ),
                   ),
                   Dimension.hBox12,
@@ -75,11 +81,11 @@ class _ProfileScreenState extends ProfileState {
                     shape: const RoundedRectangleBorder(borderRadius: Dimension.rAll10),
                     clipBehavior: Clip.antiAlias,
                     child: CustomTile(
-                      leading: Icon(Icons.logout, color: context.color.error),
-                      title: context.l10n.signOut,
-                      onTap: logOut,
-                      textColor: context.color.error,
-                      isLogout: true,
+                      leading: Assets.vectors.addHome.svg(
+                        colorFilter: ColorFilter.mode(context.color.primary, BlendMode.srcATop),
+                      ),
+                      title: context.l10n.addToHomeScreenApp,
+                      onTap: addToHomeScreen,
                     ),
                   ),
                   Dimension.hBox12,
@@ -88,9 +94,11 @@ class _ProfileScreenState extends ProfileState {
                     shape: const RoundedRectangleBorder(borderRadius: Dimension.rAll10),
                     clipBehavior: Clip.antiAlias,
                     child: CustomTile(
-                      leading: Icon(Icons.switch_account_sharp, color: context.color.error),
-                      title: 'Switch account',
-                      onTap: () => context.goReplacementNamed(Routes.adminHome),
+                      leading: Icon(Icons.logout, color: context.color.error),
+                      title: context.l10n.signOut,
+                      onTap: logOut,
+                      textColor: context.color.error,
+                      isLogout: true,
                     ),
                   ),
                 ],

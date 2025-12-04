@@ -1,26 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../common/extension/context_extension.dart';
 import '../../../../../common/model/language_option.dart';
 import '../../../../../common/util/dimension.dart';
 import '../../../../../common/widget/custom_bottom_sheet.dart';
 import '../../../../../common/widget/custom_tile.dart';
-import '../../../../../feature/auth/bloc/auth_bloc.dart';
-import '../../../../../feature/auth/model/user_model.dart';
-import '../../data/models/telegram_user_model.dart';
 import '../screen/profile_screen.dart';
 
 abstract class ProfileState extends State<ProfileScreen> {
-  late final ProfileUserData profileData;
   late String currentLocale;
-
-  @override
-  void initState() {
-    super.initState();
-    profileData = ProfileUserData.fromUserModel(_resolveUserModel());
-  }
 
   @override
   void didChangeDependencies() {
@@ -28,20 +17,16 @@ abstract class ProfileState extends State<ProfileScreen> {
     currentLocale = Localizations.localeOf(context).languageCode;
   }
 
-  UserModel _resolveUserModel() {
-    try {
-      final authBloc = context.read<AuthBloc>();
-      return authBloc.state.user ?? MockUsers.activeUser;
-    } on Object catch (_) {
-      return MockUsers.activeUser;
-    }
-  }
-
   String formatVersion() {
     final raw = context.appMetadata.appVersion;
     final parts = raw.split('+');
     if (parts.length == 2) return '${parts[0]}(+${parts[1]})';
     return raw;
+  }
+
+  void addToHomeScreen() {
+    context.telegramWebApp.hapticFeedback.impactOccurred(.light);
+    context.telegramWebApp.addToHomeScreen();
   }
 
   Future<void> logOut() async => await showCupertinoDialog<void>(
@@ -52,7 +37,10 @@ abstract class ProfileState extends State<ProfileScreen> {
       content: Padding(padding: Dimension.pTop8, child: Text(context.l10n.logoutConfirmMessage)),
       actions: [
         CupertinoDialogAction(
-          onPressed: () => Navigator.of(context).pop(),
+          onPressed: () {
+            context.telegramWebApp.hapticFeedback.notificationOccurred(.success);
+            context.pop();
+          },
           child: Text(
             context.l10n.logoutCancel,
             style: context.textTheme.nunitoW600s16.copyWith(color: context.color.primary),
@@ -61,8 +49,13 @@ abstract class ProfileState extends State<ProfileScreen> {
         CupertinoDialogAction(
           isDestructiveAction: true,
           onPressed: () {
-            context.localSource.clearAll().then((_) => context.telegramWebApp.close());
+            context.localSource.clearAll().then((_) {
+              if (mounted) context.telegramWebApp.close();
+            });
             Navigator.of(context).pop();
+            context.telegramWebApp.hapticFeedback.notificationOccurred(.error);
+            context.localSource.clearAll().then((_) => context.telegramWebApp.close());
+            context.pop();
           },
           child: Text(
             context.l10n.logoutConfirm,
@@ -74,6 +67,7 @@ abstract class ProfileState extends State<ProfileScreen> {
   );
 
   Future<void> onTapLanguageChange() async {
+    context.telegramWebApp.hapticFeedback.impactOccurred(.light);
     final languages = <LanguageOption>[
       LanguageOption(code: 'en', label: context.l10n.english),
       LanguageOption(code: 'ru', label: context.l10n.russian),
@@ -118,7 +112,7 @@ abstract class ProfileState extends State<ProfileScreen> {
       Navigator.of(context).pop();
       return;
     }
-
+    context.telegramWebApp.hapticFeedback.impactOccurred(.light);
     setState(() => currentLocale = code);
     context.setLocale(Locale(code));
     Navigator.of(context).pop();

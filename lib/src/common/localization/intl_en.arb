@@ -48,12 +48,16 @@
   "selectQuestionByRange": "Select questions by range:",
   "allOfTimeTest": "Total test time:",
 
-  "questionRangeHint": "25 questions will rotate out of {count}.",
+  "questionRangeHint": "{solved} questions will rotate out of {count}.",
   "@questionRangeHint": {
     "placeholders": {
       "count": {
         "type": "int",
         "example": "100"
+      },
+      "solved": {
+        "type": "int",
+        "example": "25"
       }
     }
   },
@@ -67,7 +71,7 @@
       }
     }
   },
-
+  "addToHomeScreenApp": "Add to home screen",
   "testTotalTime30Min": "30 min",
   "testTotalTime1Hour": "1 hour",
   "finish": "Finish",

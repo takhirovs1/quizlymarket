@@ -364,14 +364,20 @@ abstract class AppLocalizations {
   /// No description provided for @questionRangeHint.
   ///
   /// In en, this message translates to:
-  /// **'25 questions will rotate out of {count}.'**
-  String questionRangeHint(int count);
+  /// **'{solved} questions will rotate out of {count}.'**
+  String questionRangeHint(int count, int solved);
 
   /// No description provided for @intToCount.
   ///
   /// In en, this message translates to:
   /// **'{count} pcs'**
   String intToCount(int count);
+
+  /// No description provided for @addToHomeScreenApp.
+  ///
+  /// In en, this message translates to:
+  /// **'Add to home screen'**
+  String get addToHomeScreenApp;
 
   /// No description provided for @testTotalTime30Min.
   ///

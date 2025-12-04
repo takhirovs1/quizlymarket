@@ -141,14 +141,17 @@ class AppLocalizationsEn extends AppLocalizations {
   String get allOfTimeTest => 'Total test time:';
 
   @override
-  String questionRangeHint(int count) {
-    return '25 questions will rotate out of $count.';
+  String questionRangeHint(int count, int solved) {
+    return '$solved questions will rotate out of $count.';
   }
 
   @override
   String intToCount(int count) {
     return '$count pcs';
   }
+
+  @override
+  String get addToHomeScreenApp => 'Add to home screen';
 
   @override
   String get testTotalTime30Min => '30 min';

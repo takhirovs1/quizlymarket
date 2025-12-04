@@ -8,9 +8,9 @@ import '../../../../../common/router/route_arguments.dart';
 import '../../data/model/test_init_model.dart';
 import '../../data/model/test_result_model.dart';
 import '../bloc/test_bloc.dart';
-import '../screen/custom_mode_screen.dart';
+import '../screen/university_mode_screen.dart';
 
-abstract class CustomModeState extends State<CustomModeScreen> {
+abstract class UniversityModeState extends State<UniversityModeScreen> {
   CustomTestSettings? args;
   late final TestBloc bloc;
   late final ValueNotifier<int> testResult;
@@ -21,7 +21,6 @@ abstract class CustomModeState extends State<CustomModeScreen> {
   int correctCount = 0;
   int incorrectCount = 0;
   int unselectedCount = 0;
-  bool isInitialized = false;
 
   Color getColor(int i, TestState state, {bool? isBg, bool? isText}) {
     final isCorrect = state.tests[state.currentQuestionIndex].answers[i - 1].isCorrect;
@@ -38,7 +37,7 @@ abstract class CustomModeState extends State<CustomModeScreen> {
     if (!isSelected.value) unselectedCount++;
     testResult.value = 0;
     isSelected.value = false;
-    if (bloc.state.tests.length == (correctCount + incorrectCount + unselectedCount)) {
+    if (bloc.state.tests.length <= (correctCount + incorrectCount + unselectedCount)) {
       context.goNamed(
         Routes.testResult,
         arguments: TestResultModel(
@@ -52,26 +51,23 @@ abstract class CustomModeState extends State<CustomModeScreen> {
         ),
       );
       timer?.cancel();
-      totalTimer.stop();
       return;
     }
     context.read<TestBloc>().add(const ClearTestEvent());
-    startTimer();
   }
 
   void startTimer() {
     args = ModalRoute.of(context)?.settings.arguments as CustomTestSettings?;
-    if (!isInitialized) {
-      isInitialized = true;
-      context.read<TestBloc>().add(FilterTestsEvent(args: args));
-    }
-    setState(() => remaining = args?.questionTime.duration ?? const Duration(minutes: 30));
+    setState(() => remaining = args?.totalTestTime.duration ?? const Duration(minutes: 30));
     timer?.cancel();
     timer = null;
     if (remaining.inSeconds <= 0) return;
     timer = Timer.periodic(const Duration(seconds: 1), (timer) {
       if (!mounted) return;
-      if (remaining.inSeconds <= 1) onTimerEnd();
+      if (remaining.inSeconds <= 1) {
+        unselectedCount = bloc.state.tests.length - (correctCount + incorrectCount);
+        onTimerEnd();
+      }
       setState(() => remaining -= const Duration(seconds: 1));
     });
   }

@@ -6,10 +6,33 @@ import '../../../../../common/extension/context_extension.dart';
 import '../../../../../common/router/route_arguments.dart';
 import '../../../../../common/util/dimension.dart';
 import '../../../../../common/widget/custom_button.dart';
+import '../../data/model/test_result_model.dart';
 import '../widget/result_info_widget.dart';
 
-class TestResultScreen extends StatelessWidget {
+class TestResultScreen extends StatefulWidget {
   const TestResultScreen({super.key});
+
+  @override
+  State<TestResultScreen> createState() => _TestResultScreenState();
+}
+
+class _TestResultScreenState extends State<TestResultScreen> {
+  TestResultModel? args;
+
+  String format(Duration duration) {
+    final totalMinutes = duration.inMinutes;
+    final normalizedMinutes = totalMinutes < 0 ? 0 : totalMinutes;
+    final normalizedSeconds = duration.inSeconds.remainder(60).abs();
+    return context.l10n.totalTime(normalizedMinutes, normalizedSeconds);
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback(
+      (_) => setState(() => args = ModalRoute.of(context)?.settings.arguments as TestResultModel?),
+    );
+  }
 
   @override
   Widget build(BuildContext context) => Scaffold(
@@ -39,7 +62,7 @@ class TestResultScreen extends StatelessWidget {
           style: context.textTheme.sfProW400s16.copyWith(color: context.color.gray),
         ),
         Text(
-          context.l10n.questionRangeHint(100),
+          context.l10n.questionRangeHint(args?.totalQuestions ?? 0, args?.takenQuestions ?? 0),
           style: context.textTheme.sfProW400s16.copyWith(color: context.color.gray),
         ),
 
@@ -48,29 +71,35 @@ class TestResultScreen extends StatelessWidget {
         ResultInfoWidget(
           leadingIcon: Lottie.asset(Assets.lottie.correct, width: 24, height: 24),
           leadingTitle: context.l10n.correct,
-          trailingTitle: context.l10n.intToCount(10),
+          trailingTitle: context.l10n.intToCount(args?.correctCount ?? 0),
         ),
         ResultInfoWidget(
           leadingIcon: Lottie.asset(Assets.lottie.incorrect, width: 24, height: 24),
           leadingTitle: context.l10n.wrong,
-          trailingTitle: context.l10n.intToCount(20),
+          trailingTitle: context.l10n.intToCount(args?.incorrectCount ?? 0),
         ),
         ResultInfoWidget(
           leadingIcon: Lottie.asset(Assets.lottie.hourglass, width: 24, height: 24),
           leadingTitle: context.l10n.skipped,
-          trailingTitle: context.l10n.intToCount(30),
+          trailingTitle: context.l10n.intToCount(args?.unselectedCount ?? 0),
         ),
         ResultInfoWidget(
           leadingIcon: Lottie.asset(Assets.lottie.clock, width: 24, height: 24),
           leadingTitle: context.l10n.time,
-          trailingTitle: context.l10n.testTotalTime30Min,
+          trailingTitle: format(args?.totalTime ?? Duration.zero),
         ),
       ],
     ),
 
     bottomNavigationBar: Padding(
       padding: Dimension.pAll16,
-      child: CustomButton(onRightPressed: () => context.goReplacementNamed(Routes.home), rightText: context.l10n.exit),
+      child: CustomButton(
+        onRightPressed: () {
+          context.telegramWebApp.hapticFeedback.impactOccurred(.light);
+          context.goReplacementNamed(Routes.home);
+        },
+        rightText: context.l10n.exit,
+      ),
     ),
   );
 }

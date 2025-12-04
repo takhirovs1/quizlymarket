@@ -23,6 +23,7 @@ abstract class MainState extends State<MainScreen> {
 
   // Bottom navigation bar item tapped
   Future<void> onItemTapped(int index) async {
+    context.telegramWebApp.hapticFeedback.impactOccurred(.soft);
     bottomNavigationAnimated = false;
     if (mounted) setState(() {});
     final newTab = MainTabsEnum.values[index];
@@ -37,6 +38,13 @@ abstract class MainState extends State<MainScreen> {
   void _switchTab(MainTabsEnum newTab) {
     if (!mounted || currentTab == newTab) return;
     setState(() => currentTab = newTab);
+  }
+
+  void telegramSettingsButton() {
+    context.telegramWebApp.settingButton.onClick(() {
+      context.telegramWebApp.hapticFeedback.impactOccurred(.light);
+      unawaited(onItemTapped(MainTabsEnum.profile.index));
+    });
   }
 
   void onPopInvokedWithResult(bool didPop, Object? result) {
@@ -73,6 +81,7 @@ abstract class MainState extends State<MainScreen> {
   @override
   void initState() {
     super.initState();
+    telegramSettingsButton();
     currentTab = widget.initialTab;
   }
 

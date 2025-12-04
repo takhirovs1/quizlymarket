@@ -11,3 +11,8 @@ final class TestAnswerEvent extends TestEvent {
 final class ClearTestEvent extends TestEvent {
   const ClearTestEvent();
 }
+
+final class FilterTestsEvent extends TestEvent {
+  const FilterTestsEvent({this.args});
+  final CustomTestSettings? args;
+}

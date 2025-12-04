@@ -48,12 +48,16 @@
   "selectQuestionByRange": "Savollarni oraliq bo‘yicha tanlash:",
   "allOfTimeTest": "Testning umumiy vaqti:",
 
-  "questionRangeHint": "{count} ta savoldan 25 tasi almashib tushadi.",
+  "questionRangeHint": "{count} ta savoldan {solved} tasi almashib tushadi.",
   "@questionRangeHint": {
     "placeholders": {
       "count": {
         "type": "int",
         "example": "100"
+      },
+      "solved": {
+        "type": "int",
+        "example": "25"
       }
     }
   },
@@ -67,6 +71,7 @@
       }
     }
   },
+  "addToHomeScreenApp": "Ilovani bosh sahifaga qo‘shish",
   "testTotalTime30Min": "30 daqiqa",
   "testTotalTime1Hour": "1 soat",
   "finish": "Tugatish",
