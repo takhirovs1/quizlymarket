@@ -92,6 +92,7 @@
       is_premium: true,
       allows_write_to_pm: true,
       photo_url: "https://placehold.co/96x96",
+      role: "admin",
     };
 
   writeStorage('tgDebugUser', JSON.stringify(mockUser));
