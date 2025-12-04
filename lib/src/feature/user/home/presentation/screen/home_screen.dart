@@ -24,15 +24,16 @@ class _HomeScreenState extends HomeState {
         padding: Dimension.pAll16,
 
         children: [
-          Row(
-            children: [
-              Expanded(child: CustomTextFiled(hintText: context.l10n.search)),
-              IconButton(
-                hoverColor: context.color.transparent,
-                onPressed: onFilterButtonPressed,
-                icon: Lottie.asset(Assets.lottie.filter, width: 30, height: 30, fit: BoxFit.scaleDown, repeat: false),
-              ),
-            ],
+          CustomTextFiled(
+            hintText: context.l10n.search,
+
+            action: IconButton(
+              hoverColor: context.color.transparent,
+              onPressed: onFilterButtonPressed,
+              icon: Lottie.asset(Assets.lottie.filter, width: 24, height: 24, repeat: false),
+
+              // icon: Lottie.asset(Assets.lottie.filter, width: 30, height: 30, fit: BoxFit.scaleDown, repeat: false),
+            ),
           ),
 
           Dimension.hBox16,
