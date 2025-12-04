@@ -30,42 +30,45 @@ abstract class AdminProfileState extends State<AdminProfileScreen> {
     context.telegramWebApp.addToHomeScreen();
   }
 
-  Future<void> logOut() async => await showCupertinoDialog<void>(
-    context: context,
-    barrierDismissible: true,
-    builder: (ctx) => CupertinoAlertDialog(
-      title: Text(context.l10n.signOut),
-      content: Padding(padding: Dimension.pTop8, child: Text(context.l10n.logoutConfirmMessage)),
-      actions: [
-        CupertinoDialogAction(
-          onPressed: () {
-            context.telegramWebApp.hapticFeedback.notificationOccurred(.success);
-            context.pop();
-          },
-          child: Text(
-            context.l10n.logoutCancel,
-            style: context.textTheme.nunitoW600s16.copyWith(color: context.color.primary),
+  Future<void> logOut() async {
+    context.telegramWebApp.hapticFeedback.impactOccurred(.light);
+    await showCupertinoDialog<void>(
+      context: context,
+      barrierDismissible: true,
+      builder: (ctx) => CupertinoAlertDialog(
+        title: Text(context.l10n.signOut),
+        content: Padding(padding: Dimension.pTop8, child: Text(context.l10n.logoutConfirmMessage)),
+        actions: [
+          CupertinoDialogAction(
+            onPressed: () {
+              context.telegramWebApp.hapticFeedback.notificationOccurred(.success);
+              context.pop();
+            },
+            child: Text(
+              context.l10n.logoutCancel,
+              style: context.textTheme.nunitoW600s16.copyWith(color: context.color.primary),
+            ),
           ),
-        ),
-        CupertinoDialogAction(
-          isDestructiveAction: true,
-          onPressed: () {
-            context.localSource.clearAll().then((_) {
-              if (mounted) context.telegramWebApp.close();
-            });
-            Navigator.of(context).pop();
-            context.telegramWebApp.hapticFeedback.notificationOccurred(.error);
-            context.localSource.clearAll().then((_) => context.telegramWebApp.close());
-            context.pop();
-          },
-          child: Text(
-            context.l10n.logoutConfirm,
-            style: context.textTheme.nunitoW400s16.copyWith(color: context.color.error),
+          CupertinoDialogAction(
+            isDestructiveAction: true,
+            onPressed: () {
+              context.localSource.clearAll().then((_) {
+                if (mounted) context.telegramWebApp.close();
+              });
+              Navigator.of(context).pop();
+              context.telegramWebApp.hapticFeedback.notificationOccurred(.error);
+              context.localSource.clearAll().then((_) => context.telegramWebApp.close());
+              context.pop();
+            },
+            child: Text(
+              context.l10n.logoutConfirm,
+              style: context.textTheme.nunitoW400s16.copyWith(color: context.color.error),
+            ),
           ),
-        ),
-      ],
-    ),
-  );
+        ],
+      ),
+    );
+  }
 
   Future<void> onTapLanguageChange() async {
     context.telegramWebApp.hapticFeedback.impactOccurred(.light);

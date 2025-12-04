@@ -13,7 +13,7 @@ class TestModel {
   });
   factory TestModel.fromJson(Map<String, Object?> json) => TestModel(
     id: json['id'] as String? ?? '',
-    subjectId: json['subject_id'] as String? ?? '',
+    subjectId: json['subject_id'] as int? ?? 0,
     title: json['title'] as String? ?? '',
     price: (json['price'] as num?)?.toDouble() ?? 0,
     description: json['description'] as String? ?? '',
@@ -25,7 +25,7 @@ class TestModel {
         (json['questions'] as List?)?.map((e) => QuestionModel.fromJson(e as Map<String, dynamic>)).toList() ?? [],
   );
   final String id;
-  final String subjectId;
+  final int subjectId;
   final String title;
   final double price;
   final String description;

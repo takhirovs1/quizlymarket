@@ -7,6 +7,7 @@ import 'package:meta/meta.dart';
 
 import '../../../feature/admin/profile/data/repository/client_repository.dart';
 import '../../../feature/auth/repository/auth_repository.dart';
+import '../../../feature/tests/repository/tests_repository.dart';
 import '../../../feature/user/profile/presentation/bloc/settings_bloc.dart';
 import 'app_metadata.dart';
 
@@ -109,11 +110,12 @@ final class BlocContainer extends Equatable {
 
 /// [RepositoryContainer] is a container for [Repository] instances.
 final class RepositoryContainer extends Equatable {
-  const RepositoryContainer({required this.authRepository, required this.clientRepository});
+  const RepositoryContainer({required this.authRepository, required this.clientRepository, required this.testsRepository});
 
   final AuthRepository authRepository;
   final ClientRepository clientRepository;
+  final TestsRepository testsRepository;
 
   @override
-  List<Object> get props => [authRepository];
+  List<Object> get props => [authRepository, clientRepository, testsRepository];
 }
