@@ -63,8 +63,6 @@ class _DependenciesScopeState extends State<DependenciesScope> {
           _authStateSubscription?.cancel();
         }
       });
-    } else {
-      _dependenciesCompleter.complete(dependencies);
     }
 
     return _dependenciesCompleter.future;

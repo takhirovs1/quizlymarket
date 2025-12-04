@@ -118,7 +118,11 @@ Map<String, _InitializationStep> get _initializationSteps => <String, _Initializ
       url: Config.current.supabaseUrl,
       anonKey: Config.current.supabaseAnonKey,
     );
-    dependencies.repository = RepositoryContainer(authRepository: SupabaseRepository(service: supabaseService));
+    // TODO: Abror korsin
+    dependencies.repository = RepositoryContainer(
+      authRepository: SupabaseAuthRepository(service: supabaseService),
+      // userRepository: SupabaseRepository(service: supabaseService),
+    );
   },
   'Blocs': (dependencies) => dependencies.bloc = const BlocContainer(),
 };

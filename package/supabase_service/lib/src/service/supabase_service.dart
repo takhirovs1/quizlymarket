@@ -23,7 +23,12 @@ class SupabaseService with SupabaseHelpersMixin {
   Future<Map<String, Object?>> login({required String telegramID}) async {
     final response = await _supabase?.client.auth.signInWithPassword(email: getEmail(telegramID), password: telegramID);
     log('response id in login: ${response?.user?.id}');
-    final profile = await _supabase?.client.from(Tables.profiles).select().eq('telegram_id', int.parse(telegramID)).limit(1).single();
+    final profile = await _supabase?.client
+        .from(Tables.profiles)
+        .select()
+        .eq('telegram_id', int.parse(telegramID))
+        .limit(1)
+        .single();
     log('profile in login: $profile');
     return profile?.cast<String, Object?>() ?? {};
   }
@@ -44,6 +49,46 @@ class SupabaseService with SupabaseHelpersMixin {
     }).select();
     log('profile in signUp: $profile');
     return profile?.first.cast<String, Object?>() ?? {};
+  }
+
+  Future<List<Map<String, Object?>>> getAllUsers(Map<String, Object?> query) async {
+    final client = _supabase?.client;
+    if (client == null) {
+      return [];
+    }
+
+    try {
+      const reservedKeys = {'limit', 'order', 'ascending'};
+      dynamic builder = client.from(Tables.profiles).select();
+
+      query.forEach((key, value) {
+        if (value == null || reservedKeys.contains(key)) {
+          return;
+        }
+        builder = builder.eq(key, value);
+      });
+
+      final orderBy = query['order'];
+      if (orderBy is String && orderBy.isNotEmpty) {
+        final ascending = query['ascending'];
+        builder = builder.order(orderBy, ascending: ascending is bool ? ascending : true);
+      }
+
+      final limit = query['limit'];
+      if (limit is int && limit > 0) {
+        builder = builder.limit(limit);
+      }
+
+      final result = await builder;
+      if (result is! List) {
+        return [];
+      }
+
+      return result.whereType<Map<String, dynamic>>().map((row) => row.cast<String, Object?>()).toList();
+    } catch (error, stackTrace) {
+      log('Failed to fetch users', error: error, stackTrace: stackTrace);
+      return [];
+    }
   }
 
   Future<void> dispose() async => await _supabase?.dispose();
