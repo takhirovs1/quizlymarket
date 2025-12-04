@@ -26,8 +26,11 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+    "add": MessageLookupByLibrary.simpleMessage("Add"),
     "addToHomeScreenApp": MessageLookupByLibrary.simpleMessage("Add to home screen"),
+    "admin": MessageLookupByLibrary.simpleMessage("Admin"),
     "allOfTimeTest": MessageLookupByLibrary.simpleMessage("Total test time:"),
+    "amount": MessageLookupByLibrary.simpleMessage("Amount"),
     "appConfiguration": MessageLookupByLibrary.simpleMessage("App Configuration"),
     "appConfigurationCancel": MessageLookupByLibrary.simpleMessage("Cancel"),
     "appConfigurationDescription": MessageLookupByLibrary.simpleMessage("Configure your app settings here."),
@@ -37,6 +40,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "appName": MessageLookupByLibrary.simpleMessage("QuizlyMarket"),
     "buy": MessageLookupByLibrary.simpleMessage("Buy"),
     "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
+    "cardID": MessageLookupByLibrary.simpleMessage("Card ID"),
     "cart": MessageLookupByLibrary.simpleMessage("Cart"),
     "changeQuestionOrAnswer": MessageLookupByLibrary.simpleMessage(
       "Should the questions and answer variants be shuffled?",
@@ -44,6 +48,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "continueAction": MessageLookupByLibrary.simpleMessage("Continue"),
     "correct": MessageLookupByLibrary.simpleMessage("Correct"),
     "english": MessageLookupByLibrary.simpleMessage("English"),
+    "enterAmount": MessageLookupByLibrary.simpleMessage("Enter amount"),
     "enterTest": MessageLookupByLibrary.simpleMessage("Enter test"),
     "exit": MessageLookupByLibrary.simpleMessage("Exit"),
     "filter": MessageLookupByLibrary.simpleMessage("Filter"),
@@ -58,6 +63,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "noInternetConnectionDescription": MessageLookupByLibrary.simpleMessage(
       "Please check your internet connection and try again.",
     ),
+    "noUsersFound": MessageLookupByLibrary.simpleMessage("User not found"),
     "openTest": MessageLookupByLibrary.simpleMessage("Open test"),
     "parameters": MessageLookupByLibrary.simpleMessage("Parameters:"),
     "personalizedTestDescription": MessageLookupByLibrary.simpleMessage("You can start the test customized for you."),
@@ -67,6 +73,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "refresh": MessageLookupByLibrary.simpleMessage("Refresh"),
     "report": MessageLookupByLibrary.simpleMessage("Reports"),
     "russian": MessageLookupByLibrary.simpleMessage("Russian"),
+    "save": MessageLookupByLibrary.simpleMessage("Save"),
     "search": MessageLookupByLibrary.simpleMessage("Search"),
     "selectQuestionByRange": MessageLookupByLibrary.simpleMessage("Select questions by range:"),
     "shuffleAll": MessageLookupByLibrary.simpleMessage("Shuffle everything"),
@@ -92,8 +99,13 @@ class MessageLookup extends MessageLookupByLibrary {
     "time": MessageLookupByLibrary.simpleMessage("Time"),
     "title": MessageLookupByLibrary.simpleMessage("Quizly Market"),
     "topUp": MessageLookupByLibrary.simpleMessage("Top up user balance"),
+    "topUpUserBalance": MessageLookupByLibrary.simpleMessage("Top up"),
+    "unknownError": MessageLookupByLibrary.simpleMessage("Error"),
     "upload": MessageLookupByLibrary.simpleMessage("Upload"),
+    "user": MessageLookupByLibrary.simpleMessage("Student"),
     "userList": MessageLookupByLibrary.simpleMessage("User list"),
+    "userRole": MessageLookupByLibrary.simpleMessage("User role:"),
+    "users": MessageLookupByLibrary.simpleMessage("Users"),
     "uzbek": MessageLookupByLibrary.simpleMessage("Uzbek"),
     "withdraw": MessageLookupByLibrary.simpleMessage("Withdraw"),
     "wrong": MessageLookupByLibrary.simpleMessage("Wrong"),

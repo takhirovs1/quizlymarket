@@ -18,6 +18,7 @@ class CustomTile extends StatelessWidget {
   final Color? textColor;
   final VoidCallback? onTap;
   final bool isLogout;
+
   @override
   Widget build(BuildContext context) => ListTile(
     onTap: onTap,

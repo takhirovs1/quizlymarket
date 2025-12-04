@@ -1,3 +1,4 @@
+import 'package:bloc_concurrency/bloc_concurrency.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -21,6 +22,7 @@ class ClientBloc extends Bloc<ClientEvent, ClientState> {
         final UpdateClientRoleEvent e => _onUpdateClientRoleEvent(e, emit),
         _ => emit(state.copyWith(status: Status.error, error: 'Unknown event')),
       },
+      transformer: restartable(),
     );
   }
   final ClientRepository _repository;

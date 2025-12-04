@@ -160,10 +160,46 @@ class AppLocalizationsRu extends AppLocalizations {
   String get topUp => 'Пополнить баланс пользователя';
 
   @override
+  String get users => 'Пользователи';
+
+  @override
+  String get add => 'Добавить';
+
+  @override
+  String get amount => 'Сумма';
+
+  @override
+  String get cardID => 'ID карты';
+
+  @override
+  String get enterAmount => 'Сумму введите';
+
+  @override
   String get withdraw => 'Вывести баланс';
 
   @override
   String get userList => 'Список пользователей';
+
+  @override
+  String get noUsersFound => 'Пользователь не найден';
+
+  @override
+  String get unknownError => 'Ошибка';
+
+  @override
+  String get save => 'Сохранить';
+
+  @override
+  String get userRole => 'Роль пользователя:';
+
+  @override
+  String get admin => 'Admin';
+
+  @override
+  String get user => 'Студент';
+
+  @override
+  String get topUpUserBalance => 'Пополнить баланс';
 
   @override
   String get addToHomeScreenApp => 'Добавить в домашний экран';

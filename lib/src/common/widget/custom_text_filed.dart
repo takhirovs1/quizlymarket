@@ -28,12 +28,15 @@ class CustomTextFiled extends StatefulWidget {
     this.prefixIcon,
     this.suffixIcon,
     this.cursorColor,
+    this.action,
+    this.keyboardType,
   });
   final TextEditingController? controller;
-  final void Function(String value)? onChanged;
+  final void Function(String)? onChanged;
   final void Function(String)? onSubmitted;
   final VoidCallback? onTap;
   final FocusNode? focusNode;
+  final TextInputType? keyboardType;
   final Color? fillColor;
   final Color? borderColor;
   final double? height;
@@ -51,7 +54,7 @@ class CustomTextFiled extends StatefulWidget {
   final String? labelText;
   final TextStyle? labelStyle;
   final Color? cursorColor;
-
+  final Widget? action;
   @override
   State<CustomTextFiled> createState() => _CustomTextFiledState();
 }
@@ -59,51 +62,64 @@ class CustomTextFiled extends StatefulWidget {
 class _CustomTextFiledState extends State<CustomTextFiled> {
   ValueNotifier<bool> isFocused = ValueNotifier(false);
   @override
-  Widget build(BuildContext context) => SizedBox(
-    height: widget.height,
-    child: FocusScope(
-      onFocusChange: (value) {
-        isFocused.value = value;
-      },
-      child: ValueListenableBuilder(
-        valueListenable: isFocused,
-        builder: (context, value, child) => TextFormField(
-          controller: widget.controller,
-          onChanged: widget.onChanged,
-          onTap: widget.onTap,
-          onFieldSubmitted: widget.onSubmitted,
-          focusNode: widget.focusNode,
-          validator: widget.validator,
-          style: widget.style ?? context.textTheme.nunitoW400s16,
-          cursorColor: widget.cursorColor ?? context.color.primary,
-          decoration: InputDecoration(
-            filled: true,
-            fillColor: isFocused.value
-                ? (widget.focusColor ?? context.color.background)
-                : (widget.fillColor ?? context.color.cardBackground),
-            contentPadding: widget.contentPadding,
-            hoverColor: context.color.transparent,
-            suffixIcon: widget.suffixIcon,
-            prefixIcon: widget.prefixIcon,
-            hintText: widget.hintText,
-            hintStyle: widget.hintStyle ?? context.textTheme.nunitoW400s16,
-            labelText: widget.labelText,
-            labelStyle: widget.labelStyle ?? context.textTheme.nunitoW400s16,
+  Widget build(BuildContext context) => Row(
+    children: [
+      Expanded(
+        child: RepaintBoundary(
+          child: SizedBox(
+            height: widget.height,
+            child: FocusScope(
+              onFocusChange: (value) {
+                isFocused.value = value;
+              },
+              child: ValueListenableBuilder(
+                valueListenable: isFocused,
+                builder: (context, value, child) => TextFormField(
+                  controller: widget.controller,
+                  onChanged: widget.onChanged,
+                  onTap: widget.onTap,
+                  onFieldSubmitted: widget.onSubmitted,
+                  focusNode: widget.focusNode,
+                  validator: widget.validator,
+                  keyboardType: widget.keyboardType,
+                  style: widget.style ?? context.textTheme.nunitoW400s16,
+                  cursorColor: widget.cursorColor ?? context.color.primary,
+                  decoration: InputDecoration(
+                    filled: true,
+                    fillColor: isFocused.value
+                        ? (widget.focusColor ?? context.color.background)
+                        : (widget.fillColor ?? context.color.cardBackground),
+                    contentPadding: widget.contentPadding,
+                    hoverColor: context.color.transparent,
+                    suffixIcon: widget.suffixIcon,
+                    prefixIcon: widget.prefixIcon,
+                    hintText: widget.hintText,
+                    hintStyle: widget.hintStyle ?? context.textTheme.nunitoW400s16,
+                    labelText: widget.labelText,
+                    labelStyle: widget.labelStyle ?? context.textTheme.nunitoW400s16,
 
-            focusedBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: widget.borderColor ?? context.color.primary, width: widget.borderWidth),
-              borderRadius: widget.borderRadius,
-            ),
-            enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(
-                color: widget.enabledBorderColor ?? context.color.transparent,
-                width: widget.borderWidth,
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: widget.borderColor ?? context.color.primary,
+                        width: widget.borderWidth,
+                      ),
+                      borderRadius: widget.borderRadius,
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: widget.enabledBorderColor ?? context.color.transparent,
+                        width: widget.borderWidth,
+                      ),
+                      borderRadius: widget.borderRadius,
+                    ),
+                  ),
+                ),
               ),
-              borderRadius: widget.borderRadius,
             ),
           ),
         ),
       ),
-    ),
+      if (widget.action != null) ...[widget.action!],
+    ],
   );
 }

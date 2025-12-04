@@ -347,6 +347,66 @@ class GeneratedLocalization {
     return Intl.message('Список пользователей', name: 'userList', desc: '', args: []);
   }
 
+  /// `Пользователь не найден`
+  String get noUsersFound {
+    return Intl.message('Пользователь не найден', name: 'noUsersFound', desc: '', args: []);
+  }
+
+  /// `Ошибка`
+  String get unknownError {
+    return Intl.message('Ошибка', name: 'unknownError', desc: '', args: []);
+  }
+
+  /// `Пополнить баланс`
+  String get topUpUserBalance {
+    return Intl.message('Пополнить баланс', name: 'topUpUserBalance', desc: '', args: []);
+  }
+
+  /// `Пользователи`
+  String get users {
+    return Intl.message('Пользователи', name: 'users', desc: '', args: []);
+  }
+
+  /// `Добавить`
+  String get add {
+    return Intl.message('Добавить', name: 'add', desc: '', args: []);
+  }
+
+  /// `Сумма`
+  String get amount {
+    return Intl.message('Сумма', name: 'amount', desc: '', args: []);
+  }
+
+  /// `ID карты`
+  String get cardID {
+    return Intl.message('ID карты', name: 'cardID', desc: '', args: []);
+  }
+
+  /// `Сумму введите`
+  String get enterAmount {
+    return Intl.message('Сумму введите', name: 'enterAmount', desc: '', args: []);
+  }
+
+  /// `Сохранить`
+  String get save {
+    return Intl.message('Сохранить', name: 'save', desc: '', args: []);
+  }
+
+  /// `Роль пользователя:`
+  String get userRole {
+    return Intl.message('Роль пользователя:', name: 'userRole', desc: '', args: []);
+  }
+
+  /// `Admin`
+  String get admin {
+    return Intl.message('Admin', name: 'admin', desc: '', args: []);
+  }
+
+  /// `Студент`
+  String get user {
+    return Intl.message('Студент', name: 'user', desc: '', args: []);
+  }
+
   /// `Добавить в домашний экран`
   String get addToHomeScreenApp {
     return Intl.message('Добавить в домашний экран', name: 'addToHomeScreenApp', desc: '', args: []);
