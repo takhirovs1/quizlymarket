@@ -77,11 +77,11 @@ class _CustomCardWidgetState extends State<CustomCardWidget> with SingleTickerPr
                   ),
                 ),
               ),
-  
+
               Text(widget.university, style: context.textTheme.sfProW500s16.copyWith(color: context.color.gray)),
             ],
           ),
-  
+
           Text(
             widget.direction,
             style: context.textTheme.sfProW500s16.copyWith(color: context.color.gray),

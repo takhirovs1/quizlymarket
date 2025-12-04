@@ -36,6 +36,9 @@ class $AssetsIconsGen {
   /// File path: assets/icons/add_home.svg
   SvgGenImage get addHome => const SvgGenImage('assets/icons/add_home.svg');
 
+  /// File path: assets/icons/arrow_back.svg
+  SvgGenImage get arrowBack => const SvgGenImage('assets/icons/arrow_back.svg');
+
   /// File path: assets/icons/cart.svg
   SvgGenImage get cart => const SvgGenImage('assets/icons/cart.svg');
 
@@ -49,7 +52,7 @@ class $AssetsIconsGen {
   SvgGenImage get upload => const SvgGenImage('assets/icons/upload.svg');
 
   /// List of all assets
-  List<SvgGenImage> get values => [addHome, cart, home, profile, upload];
+  List<SvgGenImage> get values => [addHome, arrowBack, cart, home, profile, upload];
 }
 
 class $AssetsImagesGen {
