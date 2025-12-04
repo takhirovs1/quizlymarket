@@ -57,7 +57,7 @@ class _AppState extends State<App> {
             builder: (context, thunderEnabled, _) => Thunder(
               dio: context.dependencies.dio.all,
               color: context.color.success,
-              enabled: false,
+              enabled: true,
               child: child ?? const SizedBox.shrink(),
             ),
           ),
