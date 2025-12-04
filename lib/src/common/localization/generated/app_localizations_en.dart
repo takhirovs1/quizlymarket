@@ -163,6 +163,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get withdraw => 'Withdraw';
 
   @override
+  String get userList => 'User list';
+
+  @override
   String get addToHomeScreenApp => 'Add to home screen';
 
   @override

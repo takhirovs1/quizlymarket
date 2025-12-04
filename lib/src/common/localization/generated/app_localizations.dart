@@ -393,6 +393,12 @@ abstract class AppLocalizations {
   /// **'Withdraw'**
   String get withdraw;
 
+  /// No description provided for @userList.
+  ///
+  /// In en, this message translates to:
+  /// **'User list'**
+  String get userList;
+
   /// No description provided for @addToHomeScreenApp.
   ///
   /// In en, this message translates to:

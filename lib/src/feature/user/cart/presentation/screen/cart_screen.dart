@@ -19,7 +19,7 @@ class _CartScreenState extends CartState {
 
     body: SafeArea(
       child: ListView.separated(
-        padding: Dimension.pTop16,
+        padding: Dimension.pH16Top16,
         itemBuilder: (context, index) => CustomCardWidget(
           subject: 'Akademik ko\'nikmalar',
           university: 'Alfraganus',
