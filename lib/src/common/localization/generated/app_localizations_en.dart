@@ -151,6 +151,21 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
+  String get upload => 'Upload';
+
+  @override
+  String get statistics => 'Statistics';
+
+  @override
+  String get topUp => 'Top up user balance';
+
+  @override
+  String get withdraw => 'Withdraw';
+
+  @override
+  String get userList => 'User list';
+
+  @override
   String get addToHomeScreenApp => 'Add to home screen';
 
   @override

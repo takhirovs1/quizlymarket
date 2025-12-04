@@ -91,11 +91,7 @@ abstract class AppLocalizations {
   ];
 
   /// A list of this localizations delegate's supported locales.
-  static const List<Locale> supportedLocales = <Locale>[
-    Locale('en'),
-    Locale('ru'),
-    Locale('uz')
-  ];
+  static const List<Locale> supportedLocales = <Locale>[Locale('en'), Locale('ru'), Locale('uz')];
 
   /// No description provided for @noInternetConnection.
   ///
@@ -373,6 +369,36 @@ abstract class AppLocalizations {
   /// **'{count} pcs'**
   String intToCount(int count);
 
+  /// No description provided for @upload.
+  ///
+  /// In en, this message translates to:
+  /// **'Upload'**
+  String get upload;
+
+  /// No description provided for @statistics.
+  ///
+  /// In en, this message translates to:
+  /// **'Statistics'**
+  String get statistics;
+
+  /// No description provided for @topUp.
+  ///
+  /// In en, this message translates to:
+  /// **'Top up user balance'**
+  String get topUp;
+
+  /// No description provided for @withdraw.
+  ///
+  /// In en, this message translates to:
+  /// **'Withdraw'**
+  String get withdraw;
+
+  /// No description provided for @userList.
+  ///
+  /// In en, this message translates to:
+  /// **'User list'**
+  String get userList;
+
   /// No description provided for @addToHomeScreenApp.
   ///
   /// In en, this message translates to:
@@ -474,19 +500,20 @@ class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> 
 }
 
 AppLocalizations lookupAppLocalizations(Locale locale) {
-
-
   // Lookup logic when only language code is specified.
   switch (locale.languageCode) {
-    case 'en': return AppLocalizationsEn();
-    case 'ru': return AppLocalizationsRu();
-    case 'uz': return AppLocalizationsUz();
+    case 'en':
+      return AppLocalizationsEn();
+    case 'ru':
+      return AppLocalizationsRu();
+    case 'uz':
+      return AppLocalizationsUz();
   }
 
   throw FlutterError(
     'AppLocalizations.delegate failed to load unsupported locale "$locale". This is likely '
     'an issue with the localizations generation tool. Please file an issue '
     'on GitHub with a reproducible sample app and the gen-l10n configuration '
-    'that was used.'
+    'that was used.',
   );
 }

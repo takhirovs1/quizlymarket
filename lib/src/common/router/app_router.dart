@@ -4,7 +4,10 @@ import 'package:local_source/local_source.dart';
 
 import '../../feature/admin/home/presentation/screen/admin_home_screen.dart';
 import '../../feature/admin/main/presentation/screen/admin_main_screen.dart';
-import '../../feature/auth/model/user_model.dart';
+import '../../feature/admin/profile/presentation/bloc/client/client_bloc.dart';
+import '../../feature/admin/profile/presentation/screen/admin_profile_screen.dart';
+import '../../feature/admin/profile/presentation/screen/user_list_screen.dart';
+import '../../feature/admin/upload/presentation/screen/upload_screen.dart';
 import '../../feature/user/main/data/model/main_tabs_enum.dart';
 import '../../feature/user/main/presentation/screen/main_screen.dart';
 import '../../feature/user/onboarding/presentation/onboarding_screen.dart';
@@ -13,7 +16,8 @@ import '../../feature/user/test/presentation/screen/custom_mode_screen.dart';
 import '../../feature/user/test/presentation/screen/test_init_screen.dart';
 import '../../feature/user/test/presentation/screen/test_result_screen.dart';
 import '../../feature/user/test/presentation/screen/university_mode_screen.dart';
-import '../util/logger.dart';
+import '../enum/user_role_enum.dart';
+import '../extension/context_extension.dart';
 import 'route_arguments.dart';
 
 final GlobalKey<NavigatorState> rootNavigatorKey = GlobalKey<NavigatorState>();
@@ -22,9 +26,7 @@ RouteFactory buildRouteFactory(LocalSource localSource, UserRole? role) =>
     (settings) => _onGenerateRoute(settings, localSource, role);
 
 Route<dynamic> _onGenerateRoute(RouteSettings settings, LocalSource localSource, UserRole? role) {
-  // TODO: Shu joydan userga qarab page'ga ajratish kerak
-  final userRole = role ?? UserRole.admin;
-  info('userRole: $userRole');
+  final userRole = role ?? UserRole.user;
   return switch (settings.name) {
     Routes.onboarding => _resolveOnboardingOrHome(settings, localSource, userRole),
     Routes.home ||
@@ -41,6 +43,16 @@ Route<dynamic> _onGenerateRoute(RouteSettings settings, LocalSource localSource,
     ),
     Routes.testResult => _materialRoute(const TestResultScreen(), settings),
     Routes.adminHome => _materialRoute(const AdminHomeScreen(), settings),
+    Routes.adminUpload => _materialRoute(const UploadScreen(), settings),
+    Routes.adminUserList => _materialRoute(
+      BlocProvider(
+        create: (context) =>
+            ClientBloc(repository: context.dependencies.repository.clientRepository)..add(const GetClientsEvent()),
+        child: const UserListScreen(),
+      ),
+      settings,
+    ),
+    Routes.adminProfile => _materialRoute(const AdminProfileScreen(), settings),
     _ => _resolveOnboardingOrHome(settings, localSource, userRole),
   };
 }

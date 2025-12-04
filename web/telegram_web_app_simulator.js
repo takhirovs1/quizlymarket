@@ -84,7 +84,7 @@
 
   const mockUser = parseUser(params.get("tgUser")) ??
     parseUser(readStorage("tgDebugUser")) ?? {
-      id: 5651631418,
+      id: 1251798314,
       first_name: "Debug",
       last_name: "User",
       username: "debug_user",
@@ -92,8 +92,9 @@
       is_premium: true,
       allows_write_to_pm: true,
       photo_url: "https://placehold.co/96x96",
-      role: "admin",
     };
+
+  console.log('mockUser', mockUser);
 
   writeStorage('tgDebugUser', JSON.stringify(mockUser));
 

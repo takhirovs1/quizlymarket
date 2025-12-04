@@ -52,7 +52,9 @@ class _CustomModeScreenState extends CustomModeState {
                     overlayColor: .all(context.color.gray.withValues(alpha: 0.1)),
                   ),
                   onPressed: () {
-                    unselectedCount = (bloc.state.tests.length - 1) - (correctCount + incorrectCount);
+                    unselectedCount =
+                        ((args?.questionRange.end.toInt() ?? 0) - (args?.questionRange.start.toInt() ?? 0)) -
+                        (correctCount + incorrectCount);
                     onTimerEnd();
                   },
                   child: Text(
@@ -68,7 +70,7 @@ class _CustomModeScreenState extends CustomModeState {
               children: [
                 Text(context.l10n.question, style: context.textTheme.sfProW400s14.copyWith(color: context.color.gray)),
                 Text(
-                  '${state.currentQuestionIndex + 1}/${state.tests.length}',
+                  '${state.currentQuestionIndex + (args?.questionRange.start.toInt() ?? 0) + 1}/${args?.questionRange.end.toInt() ?? 0}',
                   style: context.textTheme.sfProW400s16.copyWith(color: context.color.gray),
                 ),
               ],

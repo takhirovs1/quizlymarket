@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -35,10 +36,17 @@ abstract class CustomModeState extends State<CustomModeScreen> {
   }
 
   void onTimerEnd() {
-    if (!isSelected.value) unselectedCount++;
+    if (!isSelected.value &&
+        unselectedCount + correctCount + incorrectCount <
+            (args?.questionRange.end.toInt() ?? 0) - (args?.questionRange.start.toInt() ?? 0))
+      unselectedCount++;
     testResult.value = 0;
     isSelected.value = false;
-    if (bloc.state.tests.length == (correctCount + incorrectCount + unselectedCount)) {
+    log(
+      '${(args?.questionRange.end.toInt() ?? 0) - (args?.questionRange.start.toInt() ?? 0)} == ${correctCount + incorrectCount + unselectedCount}',
+    );
+    if (((args?.questionRange.end.toInt() ?? 0) - (args?.questionRange.start.toInt() ?? 0)) ==
+        (correctCount + incorrectCount + unselectedCount)) {
       context.goNamed(
         Routes.testResult,
         arguments: TestResultModel(
@@ -47,7 +55,7 @@ abstract class CustomModeState extends State<CustomModeScreen> {
           unselectedCount: unselectedCount,
           totalTime: Duration(milliseconds: (totalTimer..stop()).elapsedMilliseconds),
           testCount: bloc.state.tests.length,
-          totalQuestions: args?.questionRange.end.toInt() ?? 0,
+          totalQuestions: (args?.questionRange.end.toInt() ?? 0) - (args?.questionRange.start.toInt() ?? 0),
           takenQuestions: bloc.state.tests.length,
         ),
       );
@@ -61,6 +69,7 @@ abstract class CustomModeState extends State<CustomModeScreen> {
 
   void startTimer() {
     args = ModalRoute.of(context)?.settings.arguments as CustomTestSettings?;
+    log('args: ${args?.questionRange.start.toInt()} ${args?.questionRange.end.toInt()}');
     if (!isInitialized) {
       isInitialized = true;
       context.read<TestBloc>().add(FilterTestsEvent(args: args));

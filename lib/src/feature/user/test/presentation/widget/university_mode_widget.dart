@@ -87,10 +87,7 @@ class _UniversityModeContentState extends State<UniversityModeContent> {
         ),
         Dimension.hBox16,
         Text(
-          context.l10n.questionRangeHint(
-            widget.settings.questionRange.end.toInt(),
-            widget.settings.questionRange.start.toInt(),
-          ),
+          context.l10n.questionRangeHint(widget.settings.questionRange.end.toInt(), 25),
           style: context.textTheme.sfProW400s16.copyWith(color: context.color.gray),
         ),
       ],

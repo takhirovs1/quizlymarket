@@ -190,7 +190,7 @@ class _CustomModeContentState extends State<CustomModeContent> {
                               final snapped = _snapRange(value);
                               if (snapped.end - snapped.start < _questionStep) return;
                               _questionRange.value = snapped;
-                              widget.settings.questionRange = RangeValues(0, snapped.end - snapped.start);
+                              widget.settings.questionRange = RangeValues(snapped.start, snapped.end);
                             },
                           ),
                         ),

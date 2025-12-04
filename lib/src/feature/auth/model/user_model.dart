@@ -1,6 +1,8 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/widgets.dart';
 
+import '../../../common/enum/user_role_enum.dart';
+
 class UserModel extends Equatable {
   const UserModel({
     required this.userID,
@@ -70,12 +72,4 @@ class UserModel extends Equatable {
 
   @override
   List<Object?> get props => [userID, telegramID, telegramUsername, name, createdAt, updatedAt, balance, role];
-}
-
-enum UserRole {
-  admin,
-  user;
-
-  bool get isAdmin => this == .admin;
-  bool get isUser => this == .user;
 }

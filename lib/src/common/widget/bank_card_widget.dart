@@ -1,19 +1,26 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../common/extension/context_extension.dart';
-import '../../../../../common/extension/int_extension.dart';
-import '../../../../../common/util/dimension.dart';
+import '../extension/context_extension.dart';
+import '../extension/int_extension.dart';
+import '../util/dimension.dart';
 
 /// {@template bank_card_widget}
 /// A widget that displays a bank card.
 /// {@endtemplate}
 
 class BankCardWidget extends StatelessWidget {
-  const BankCardWidget({required this.fullName, required this.balance, required this.id, super.key});
+  const BankCardWidget({
+    required this.fullName,
+    required this.balance,
+    required this.id,
+    required this.cardName,
+    super.key,
+  });
 
   final String fullName;
   final double balance;
   final String id;
+  final String cardName;
 
   @override
   Widget build(BuildContext context) => SizedBox(
@@ -46,7 +53,7 @@ class BankCardWidget extends StatelessWidget {
             Row(
               mainAxisAlignment: .spaceBetween,
               children: [
-                Text('QuizlyMarket Card', style: context.textTheme.nunitoW600s16.copyWith(color: context.color.white)),
+                Text(cardName, style: context.textTheme.nunitoW600s16.copyWith(color: context.color.white)),
                 Text(id, style: context.textTheme.nunitoW500s14.copyWith(color: context.color.white)),
               ],
             ),

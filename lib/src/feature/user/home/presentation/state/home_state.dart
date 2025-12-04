@@ -9,10 +9,10 @@ import '../../../../../common/extension/int_extension.dart';
 import '../../../../../common/router/route_arguments.dart';
 import '../../../../../common/util/dimension.dart';
 import '../../../../../common/util/logger.dart';
+import '../../../../../common/widget/bank_card_widget.dart';
 import '../../../../../common/widget/custom_bottom_sheet.dart';
 import '../../../../../common/widget/custom_button.dart';
 import '../../../../../common/widget/custom_primary_dialog.dart';
-import '../../../profile/presentation/widget/bank_card_widget.dart';
 import '../screen/home_screen.dart';
 import '../widget/filter_bottom_sheet.dart';
 
@@ -89,7 +89,7 @@ abstract class HomeState extends State<HomeScreen> {
       ),
       children: [
         Dimension.hBox12,
-        const BankCardWidget(fullName: 'John Doe', balance: 1000000, id: '1234567890'),
+        const BankCardWidget(fullName: 'John Doe', balance: 1000000, id: '1234567890', cardName: 'QuizlyMarket Card'),
         Dimension.hBox16,
 
         Column(
