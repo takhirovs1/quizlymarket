@@ -163,6 +163,9 @@ class AppLocalizationsUz extends AppLocalizations {
   String get withdraw => 'Pulni chiqarish';
 
   @override
+  String get userList => 'Foydalanuvchi ro‘yxati';
+
+  @override
   String get addToHomeScreenApp => 'Ilovani bosh sahifaga qo‘shish';
 
   @override

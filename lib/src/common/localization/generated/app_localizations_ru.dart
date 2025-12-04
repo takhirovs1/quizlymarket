@@ -163,6 +163,9 @@ class AppLocalizationsRu extends AppLocalizations {
   String get withdraw => 'Вывести баланс';
 
   @override
+  String get userList => 'Список пользователей';
+
+  @override
   String get addToHomeScreenApp => 'Добавить в домашний экран';
 
   @override

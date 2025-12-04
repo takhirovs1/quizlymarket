@@ -73,5 +73,3 @@ class ClientModel extends Equatable {
   @override
   List<Object?> get props => [userID, telegramID, telegramUsername, name, createdAt, updatedAt, balance, role];
 }
-
-
