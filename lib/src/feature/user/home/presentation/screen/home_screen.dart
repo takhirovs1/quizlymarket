@@ -30,7 +30,7 @@ class _HomeScreenState extends HomeState {
             action: IconButton(
               hoverColor: context.color.transparent,
               onPressed: onFilterButtonPressed,
-              icon: Lottie.asset(Assets.lottie.money, width: 24, height: 24, repeat: false),
+              icon: Lottie.asset(Assets.lottie.filter, width: 24, height: 24, repeat: false),
 
               // icon: Lottie.asset(Assets.lottie.filter, width: 30, height: 30, fit: BoxFit.scaleDown, repeat: false),
             ),
