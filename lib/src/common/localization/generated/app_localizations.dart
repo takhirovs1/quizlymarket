@@ -554,6 +554,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Filter'**
   String get filter;
+
+  /// No description provided for @noTestsFound.
+  ///
+  /// In en, this message translates to:
+  /// **'Testlar topilmadi'**
+  String get noTestsFound;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

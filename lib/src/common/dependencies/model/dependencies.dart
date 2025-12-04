@@ -110,7 +110,11 @@ final class BlocContainer extends Equatable {
 
 /// [RepositoryContainer] is a container for [Repository] instances.
 final class RepositoryContainer extends Equatable {
-  const RepositoryContainer({required this.authRepository, required this.clientRepository, required this.testsRepository});
+  const RepositoryContainer({
+    required this.authRepository,
+    required this.clientRepository,
+    required this.testsRepository,
+  });
 
   final AuthRepository authRepository;
   final ClientRepository clientRepository;

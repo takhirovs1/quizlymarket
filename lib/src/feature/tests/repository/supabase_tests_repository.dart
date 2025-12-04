@@ -7,5 +7,6 @@ class SupabaseTestsRepository implements TestsRepository {
   SupabaseTestsRepository({required SupabaseService service}) : _service = service;
   final SupabaseService _service;
   @override
-  Future<List<TestModel>> getTests({String? search}) async => (await _service.getTests(search: search)).map(TestModel.fromJson).toList();
+  Future<List<TestModel>> getTests({String? search}) async =>
+      (await _service.getTests(search: search)).map(TestModel.fromJson).toList();
 }
