@@ -16,6 +16,7 @@ import '../../feature/user/test/presentation/screen/custom_mode_screen.dart';
 import '../../feature/user/test/presentation/screen/test_init_screen.dart';
 import '../../feature/user/test/presentation/screen/test_result_screen.dart';
 import '../../feature/user/test/presentation/screen/university_mode_screen.dart';
+import '../enum/user_role_enum.dart';
 import 'route_arguments.dart';
 
 final GlobalKey<NavigatorState> rootNavigatorKey = GlobalKey<NavigatorState>();
