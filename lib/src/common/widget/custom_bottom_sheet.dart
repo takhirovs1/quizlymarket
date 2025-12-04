@@ -51,23 +51,23 @@ class CustomBottomSheet extends StatelessWidget {
           Expanded(
             child: DecoratedBox(
               decoration: BoxDecoration(color: context.color.background, borderRadius: Dimension.rTop16),
-              child: Padding(
-                padding: const EdgeInsets.fromLTRB(16, 8, 16, 16),
-                child: Column(
-                  crossAxisAlignment: .start,
-                  children: [
-                    if (title != null) ...[title!, Dimension.hBox16],
-                    Dimension.hBox16,
-                    Expanded(
-                      child: ListView(
-                        physics: isScrollable ? null : const NeverScrollableScrollPhysics(),
-                        controller: scrollController,
-
-                        children: children,
-                      ),
-                    ),
+              child: Column(
+                crossAxisAlignment: .start,
+                children: [
+                  if (null != title) ...[
+                    Padding(padding: const EdgeInsets.only(left: 16, top: 20, bottom: 16), child: title!),
                   ],
-                ),
+                  Expanded(
+                    child: ListView(
+                      padding: const EdgeInsets.fromLTRB(16, 8, 16, 16),
+
+                      physics: isScrollable ? null : const NeverScrollableScrollPhysics(),
+                      controller: scrollController,
+
+                      children: children,
+                    ),
+                  ),
+                ],
               ),
             ),
           ),
