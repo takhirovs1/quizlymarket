@@ -4,7 +4,6 @@ import 'package:lottie/lottie.dart';
 
 import '../../../../../common/constant/gen/assets.gen.dart';
 import '../../../../../common/extension/context_extension.dart';
-// import '../../../../../common/model/test_model.dart';
 import '../../../../../common/util/dimension.dart';
 import '../../../../../common/widget/custom_card_widget.dart';
 import '../../../../../common/widget/custom_text_filed.dart';
@@ -24,55 +23,66 @@ class _HomeScreenState extends HomeState {
   Widget build(BuildContext context) => Scaffold(
     backgroundColor: context.color.background,
     body: SafeArea(
-      child: Column(
-        children: [
-          Padding(
-            padding: Dimension.pAll16,
-            child: CustomTextFiled(
-              hintText: context.l10n.search,
-
-              action: IconButton(
-                hoverColor: context.color.transparent,
-                onPressed: onFilterButtonPressed,
-                icon: Lottie.asset(Assets.lottie.filter, width: 24, height: 24, repeat: false),
-
-                // icon: Lottie.asset(Assets.lottie.filter, width: 30, height: 30, fit: BoxFit.scaleDown, repeat: false),
-              ),
-            ),
-          ),
-
-          // TODO(Samandar): UI ni chiroyli qilib to'g'rilash kerak
-          Expanded(
-            child: BlocBuilder<TestsBloc, TestsState>(
-              builder: (context, state) => state.when(
-                initial: () => const Center(child: CircularProgressIndicator()),
-                loading: () => const Center(child: CircularProgressIndicator()),
-                empty: () => Center(child: Text(context.l10n.noTestsFound)),
-                success: (tests) => ListView.separated(
-                  padding: Dimension.pH16Bottom16,
-                  shrinkWrap: true,
-                  itemBuilder: (context, index) {
-                    final test = tests[0];
-                    return CustomCardWidget(
-                      subject: test.subject.name,
-                      university: test.subject.direction.course.faculty.university.name,
-                      direction: test.subject.direction.name,
-                      testCount: test.questionCount,
-                      studyYears: test.academicYearSemesterText,
-                      price: test.price,
-                      buttonText: context.l10n.buy,
-                      onPressed: onBuyButtonPressed,
-                    );
-                  },
-                  separatorBuilder: (context, index) => Dimension.hBox12,
-                  itemCount: 20,
-                ),
-                error: (error) => Text(error.toString()),
-              ),
-            ),
-          ),
-        ],
+      child: BlocBuilder<TestsBloc, TestsState>(
+        builder: (context, state) =>
+            CustomScrollView(slivers: [_buildSearchSliver(context), ..._buildStateSlivers(context, state)]),
       ),
+    ),
+  );
+
+  SliverPadding _buildSearchSliver(BuildContext context) => SliverPadding(
+    padding: Dimension.pAll16,
+    sliver: SliverToBoxAdapter(
+      child: CustomTextFiled(
+        hintText: context.l10n.search,
+        action: IconButton(
+          hoverColor: context.color.transparent,
+          onPressed: onFilterButtonPressed,
+          icon: Lottie.asset(Assets.lottie.filter, width: 24, height: 24, repeat: false),
+        ),
+      ),
+    ),
+  );
+
+  List<Widget> _buildStateSlivers(BuildContext context, TestsState state) => state.when(
+    initial: () => [_buildLoadingSliver()],
+    loading: () => [_buildLoadingSliver()],
+    empty: () => [_buildMessageSliver(context.l10n.noTestsFound)],
+    success: (tests) => [_buildTestsSliver(context, tests)],
+    error: (error) => [_buildMessageSliver(error?.toString() ?? 'Something went wrong')],
+  );
+
+  Widget _buildLoadingSliver() =>
+      const SliverFillRemaining(hasScrollBody: false, child: Center(child: CircularProgressIndicator()));
+
+  Widget _buildMessageSliver(String message) => SliverFillRemaining(
+    hasScrollBody: false,
+    child: Center(child: Text(message, textAlign: TextAlign.center)),
+  );
+
+  Widget _buildTestsSliver(BuildContext context, List<TestModel> tests) => SliverPadding(
+    padding: Dimension.pH16Bottom16,
+    sliver: SliverList(
+      delegate: SliverChildBuilderDelegate((context, index) {
+        final test = tests[index];
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            CustomCardWidget(
+              subject: test.subject.name,
+              university: test.subject.direction.course.faculty.university.name,
+              direction: test.subject.direction.name,
+              testCount: test.questionCount,
+              studyYears: test.academicYearSemesterText,
+              price: test.price,
+              buttonText: context.l10n.buy,
+              onPressed: onBuyButtonPressed,
+            ),
+            if (index != tests.length - 1) Dimension.hBox12,
+          ],
+        );
+      }, childCount: tests.length),
     ),
   );
 }
