@@ -77,7 +77,7 @@ class _HomeScreenState extends HomeState {
               studyYears: test.academicYearSemesterText,
               price: test.price,
               buttonText: context.l10n.buy,
-              onPressed: onBuyButtonPressed,
+              onPressed: () => onBuyButtonPressed(test),
             ),
             if (index != tests.length - 1) Dimension.hBox12,
           ],
