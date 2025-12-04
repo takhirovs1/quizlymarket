@@ -94,6 +94,7 @@ class _CustomCardWidgetState extends State<CustomCardWidget> with SingleTickerPr
             spacing: 10,
             children: [
               Text(
+                // TODO(Samandar): Translate this text
                 '${widget.testCount} ta savol',
                 style: context.textTheme.sfProW400s14.copyWith(color: context.color.gray),
                 maxLines: 1,
