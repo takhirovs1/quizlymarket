@@ -56,7 +56,7 @@ class CustomBottomSheet extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: .start,
                   children: [
-                    ?title,
+                    if (title != null) ...[title!, Dimension.hBox16],
                     Dimension.hBox16,
                     Expanded(
                       child: ListView(
