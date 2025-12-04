@@ -2,6 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 
 import '../../../../../../common/enum/bloc_status_enum.dart';
+import '../../../../../../common/enum/filter_step_enum.dart';
 import '../../../../../../common/util/error_handler.dart';
 import '../../../data/model/home_default_model.dart';
 import '../../../data/repository/home_repository.dart';
@@ -19,6 +20,7 @@ class FilterBloc extends Bloc<FilterEvent, FilterState> {
         final FilterFacultyEvent e => _onFilterFacultyEvent(e, emit),
         final FilterCourseEvent e => _onFilterCourseEvent(e, emit),
         final FilterDirectionEvent e => _onFilterDirectionEvent(e, emit),
+        final FilterBackEvent e => _onFilterBackEvent(e, emit),
       },
     );
   }
@@ -28,24 +30,43 @@ class FilterBloc extends Bloc<FilterEvent, FilterState> {
   void _onFilterUniversityEvent(FilterUniversityEvent event, Emitter<FilterState> emit) => handle(() async {
     emit(state.copyWith(filterStatus: Status.loading));
     final data = await _repository.getUniversities();
-    emit(state.copyWith(filterStatus: Status.success, university: data));
+    emit(state.copyWith(filterStatus: Status.success, university: data, filterStep: FilterStep.university));
   }, onError: (error, stackTrace) => emit(state.copyWith(filterStatus: Status.error, error: error.toString())));
 
   void _onFilterFacultyEvent(FilterFacultyEvent event, Emitter<FilterState> emit) => handle(() async {
     emit(state.copyWith(filterStatus: Status.loading));
     final data = await _repository.getFaculties(event.universityModel.id);
-    emit(state.copyWith(filterStatus: Status.success, faculty: data));
+    emit(state.copyWith(filterStatus: Status.success, faculty: data, filterStep: FilterStep.faculty));
   }, onError: (e, s) => emit(state.copyWith(filterStatus: Status.error, error: e.toString())));
 
   void _onFilterCourseEvent(FilterCourseEvent event, Emitter<FilterState> emit) => handle(() async {
     emit(state.copyWith(filterStatus: Status.loading));
     final data = await _repository.getCourses(event.facultyModel.id);
-    emit(state.copyWith(filterStatus: Status.success, course: data));
+    emit(state.copyWith(filterStatus: Status.success, course: data, filterStep: FilterStep.course));
   }, onError: (e, s) => emit(state.copyWith(filterStatus: Status.error, error: e.toString())));
 
   void _onFilterDirectionEvent(FilterDirectionEvent event, Emitter<FilterState> emit) => handle(() async {
     emit(state.copyWith(filterStatus: Status.loading));
     final data = await _repository.getDirections(event.courseModel.id);
-    emit(state.copyWith(filterStatus: Status.success, direction: data));
+    emit(state.copyWith(filterStatus: Status.success, direction: data, filterStep: FilterStep.direction));
   }, onError: (e, s) => emit(state.copyWith(filterStatus: Status.error, error: e.toString())));
+
+  void _onFilterBackEvent(FilterBackEvent event, Emitter<FilterState> emit) {
+    switch (state.filterStep) {
+      case FilterStep.direction:
+        emit(state.copyWith(filterStep: FilterStep.course));
+        break;
+
+      case FilterStep.course:
+        emit(state.copyWith(filterStep: FilterStep.faculty));
+        break;
+
+      case FilterStep.faculty:
+        emit(state.copyWith(filterStep: FilterStep.university));
+        break;
+
+      case FilterStep.university:
+        break;
+    }
+  }
 }

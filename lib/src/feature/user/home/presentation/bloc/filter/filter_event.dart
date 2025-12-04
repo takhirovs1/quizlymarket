@@ -18,3 +18,5 @@ final class FilterDirectionEvent extends FilterEvent {
   FilterDirectionEvent({required this.courseModel});
   final CourseModel courseModel;
 }
+
+final class FilterBackEvent extends FilterEvent {}

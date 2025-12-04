@@ -1,9 +1,11 @@
 import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lottie/lottie.dart';
 import 'package:telegram_web_app/telegram_web_app.dart';
 
 import '../../../../../common/constant/gen/assets.gen.dart';
+import '../../../../../common/dependencies/dio/dio.dart';
 import '../../../../../common/extension/context_extension.dart';
 import '../../../../../common/extension/int_extension.dart';
 import '../../../../../common/router/route_arguments.dart';
@@ -13,6 +15,8 @@ import '../../../../../common/widget/bank_card_widget.dart';
 import '../../../../../common/widget/custom_bottom_sheet.dart';
 import '../../../../../common/widget/custom_button.dart';
 import '../../../../../common/widget/custom_primary_dialog.dart';
+import '../../data/repository/home_repository.dart';
+import '../bloc/filter/filter_bloc.dart';
 import '../screen/home_screen.dart';
 import '../widget/filter_bottom_sheet.dart';
 
@@ -154,7 +158,10 @@ abstract class HomeState extends State<HomeScreen> {
       useRootNavigator: true,
       isScrollControlled: true,
       backgroundColor: context.color.transparent,
-      builder: (ctx) => const FilterBottomSheet(universities: []),
+      builder: (ctx) => BlocProvider(
+        create: (context) => FilterBloc(repository: HomeRepositoryImpl(dio: Dio()))..add(FilterUniversityEvent()),
+        child: const FilterBottomSheet(universities: []),
+      ),
     );
   }
 }

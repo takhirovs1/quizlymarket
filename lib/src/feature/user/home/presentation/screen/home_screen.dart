@@ -3,7 +3,6 @@ import 'package:lottie/lottie.dart';
 
 import '../../../../../common/constant/gen/assets.gen.dart';
 import '../../../../../common/extension/context_extension.dart';
-// import '../../../../../common/model/test_model.dart';
 import '../../../../../common/util/dimension.dart';
 import '../../../../../common/widget/custom_card_widget.dart';
 import '../../../../../common/widget/custom_text_filed.dart';
