@@ -14,16 +14,12 @@ class FilterBottomSheet extends StatefulWidget {
 
 class _FilterBottomSheetState extends State<FilterBottomSheet> {
   @override
-  Widget build(BuildContext context) => ListView.separated(
-    itemCount: 10,
-    separatorBuilder: (context, index) => Dimension.hBox10,
-    itemBuilder: (context, index) => CustomBottomSheet(
-      isScrollable: true,
-      maxChildSize: .5,
-      initialChildSize: .5,
+  Widget build(BuildContext context) => CustomBottomSheet(
+    isScrollable: true,
+    maxChildSize: .5,
+    initialChildSize: .5,
 
-      title: Text(context.l10n.addToHomeScreenApp),
-      children: [Text('')],
-    ),
+    title: Text(context.l10n.addToHomeScreenApp),
+    children: [Text('')],
   );
 }
