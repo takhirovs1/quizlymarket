@@ -65,7 +65,7 @@ class SupabaseService with SupabaseHelpersMixin {
         if (value == null || reservedKeys.contains(key)) {
           return;
         }
-        builder = builder.eq(key, value);
+        builder = builder.textSearch(key, value);
       });
 
       final orderBy = query['order'];
