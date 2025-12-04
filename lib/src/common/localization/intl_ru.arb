@@ -71,6 +71,8 @@
       }
     }
   },
+  "upload": "Загрузка",
+  "statistics": "Статистика",
   "addToHomeScreenApp": "Добавить в домашний экран",
   "testTotalTime30Min": "30 минут",
   "testTotalTime1Hour": "1 час",

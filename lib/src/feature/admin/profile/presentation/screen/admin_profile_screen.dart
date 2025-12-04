@@ -1,34 +1,24 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:meta/meta.dart';
 
 import '../../../../../common/constant/gen/assets.gen.dart';
 import '../../../../../common/extension/context_extension.dart';
 import '../../../../../common/util/dimension.dart';
-import '../../../../../common/widget/custom_tile.dart';
-import '../state/profile_state.dart';
 import '../../../../../common/widget/bank_card_widget.dart';
+import '../../../../../common/widget/custom_tile.dart';
 import '../../../../../common/widget/profile_header.dart';
+import '../state/admin_profile_state.dart';
 
-class ProfileScreen extends StatefulWidget {
-  const ProfileScreen({this.data, super.key});
-
-  final String? data;
-
-  @internal
-  // ignore: library_private_types_in_public_api
-  static _ProfileScreenState? maybeOf(BuildContext context) => context.findAncestorStateOfType<_ProfileScreenState>();
+class AdminProfileScreen extends StatefulWidget {
+  const AdminProfileScreen({super.key});
 
   @override
-  State<ProfileScreen> createState() => _ProfileScreenState();
+  State<AdminProfileScreen> createState() => _AdminProfileScreenState();
 }
 
-class _ProfileScreenState extends ProfileState {
+class _AdminProfileScreenState extends AdminProfileState {
   @override
-  Widget build(BuildContext context) => BlocProvider.value(
-    value: context.dependencies.settingsBloc,
-    child: Scaffold(
+  Widget build(BuildContext context) => Scaffold(
       backgroundColor: context.color.background,
       body: SafeArea(
         child: Column(
@@ -111,6 +101,5 @@ class _ProfileScreenState extends ProfileState {
           ],
         ),
       ),
-    ),
-  );
+    );
 }

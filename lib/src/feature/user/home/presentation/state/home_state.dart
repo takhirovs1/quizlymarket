@@ -12,7 +12,7 @@ import '../../../../../common/util/logger.dart';
 import '../../../../../common/widget/custom_bottom_sheet.dart';
 import '../../../../../common/widget/custom_button.dart';
 import '../../../../../common/widget/custom_primary_dialog.dart';
-import '../../../profile/presentation/widget/bank_card_widget.dart';
+import '../../../../../common/widget/bank_card_widget.dart';
 import '../screen/home_screen.dart';
 
 abstract class HomeState extends State<HomeScreen> {

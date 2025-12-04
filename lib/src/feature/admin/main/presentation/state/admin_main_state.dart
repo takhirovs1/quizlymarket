@@ -1,1 +1,95 @@
+import 'dart:async';
 
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+
+import '../../../../../common/extension/context_extension.dart';
+import '../../data/model/admin_main_tabs_enum.dart';
+import '../screen/admin_main_screen.dart';
+
+/// {@template main_controller}
+/// MainController helper class for [MainScreen].
+/// {@endtemplate}
+abstract class AdminMainState extends State<AdminMainScreen> {
+  /// {@macro main_controller}
+  AdminMainTabsEnum currentTab = AdminMainTabsEnum.home;
+  bool bottomNavBarEnabled = true;
+  Timer? _exitTimer;
+  bool _canExitApp = false;
+  bool bottomNavigationAnimated = true;
+
+  /// Whether the app can be popped (closed)
+  bool get canPop => _canExitApp;
+
+  // Bottom navigation bar item tapped
+  Future<void> onItemTapped(int index) async {
+    context.telegramWebApp.hapticFeedback.impactOccurred(.soft);
+    bottomNavigationAnimated = false;
+    if (mounted) setState(() {});
+    final newTab = AdminMainTabsEnum.values[index];
+
+    if (currentTab != newTab) _switchTab(newTab);
+    await Future<void>.delayed(const Duration(milliseconds: 50));
+    bottomNavigationAnimated = true;
+    if (mounted) setState(() {});
+  }
+
+  // Change tab
+  void _switchTab(AdminMainTabsEnum newTab) {
+    if (!mounted || currentTab == newTab) return;
+    setState(() => currentTab = newTab);
+  }
+
+  void telegramSettingsButton() {
+    context.telegramWebApp.settingButton.onClick(() {
+      context.telegramWebApp.hapticFeedback.impactOccurred(.light);
+      unawaited(onItemTapped(AdminMainTabsEnum.profile.index));
+    });
+  }
+
+  void onPopInvokedWithResult(bool didPop, Object? result) {
+    if (didPop) return;
+
+    if (currentTab != AdminMainTabsEnum.home) {
+      _switchTab(AdminMainTabsEnum.home);
+      return;
+    }
+
+    if (_canExitApp) {
+      final navigator = Navigator.of(context);
+      if (navigator.canPop()) {
+        navigator.pop();
+      } else {
+        SystemNavigator.pop();
+      }
+      return;
+    }
+
+    _canExitApp = true;
+
+    if (mounted && context.mounted) {
+      context.showNotification(message: context.l10n.pressBackAgainToExit, backgroundColor: context.color.success);
+    }
+
+    _exitTimer?.cancel();
+    _exitTimer = Timer(const Duration(seconds: 2), () {
+      if (mounted && context.mounted) _canExitApp = false;
+    });
+  }
+
+  /* #region Lifecycle */
+  @override
+  void initState() {
+    super.initState();
+    telegramSettingsButton();
+    currentTab = AdminMainTabsEnum.home;
+  }
+
+  @override
+  void dispose() {
+    _exitTimer?.cancel();
+    super.dispose();
+  }
+
+  /* #endregion */
+}

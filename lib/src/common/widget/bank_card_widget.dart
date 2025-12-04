@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../common/extension/context_extension.dart';
-import '../../../../../common/extension/int_extension.dart';
-import '../../../../../common/util/dimension.dart';
+import '../extension/context_extension.dart';
+import '../extension/int_extension.dart';
+import '../util/dimension.dart';
 
 /// {@template bank_card_widget}
 /// A widget that displays a bank card.
