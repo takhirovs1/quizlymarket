@@ -12,8 +12,8 @@ import '../../../../../common/util/logger.dart';
 import '../../../../../common/widget/custom_bottom_sheet.dart';
 import '../../../../../common/widget/custom_button.dart';
 import '../../../../../common/widget/custom_primary_dialog.dart';
-import '../../../profile/presentation/widget/bank_card_widget.dart';
 import '../../data/model/home_default_model.dart';
+import '../../../../../common/widget/bank_card_widget.dart';
 import '../screen/home_screen.dart';
 import '../widget/filter_bottom_sheet.dart';
 
