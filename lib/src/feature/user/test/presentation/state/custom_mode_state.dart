@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -16,13 +15,12 @@ abstract class CustomModeState extends State<CustomModeScreen> {
   late final TestBloc bloc;
   late final ValueNotifier<int> testResult;
   late final ValueNotifier<bool> isSelected;
-  Duration remaining = Duration.zero;
+  Duration remaining = .zero;
   Timer? timer;
   Stopwatch totalTimer = Stopwatch();
   int correctCount = 0;
   int incorrectCount = 0;
   int unselectedCount = 0;
-  bool isInitialized = false;
 
   Color getColor(int i, TestState state, {bool? isBg, bool? isText}) {
     final isCorrect = state.tests[state.currentQuestionIndex].answers[i - 1].isCorrect;
@@ -42,11 +40,8 @@ abstract class CustomModeState extends State<CustomModeScreen> {
       unselectedCount++;
     testResult.value = 0;
     isSelected.value = false;
-    log(
-      '${(args?.questionRange.end.toInt() ?? 0) - (args?.questionRange.start.toInt() ?? 0)} == ${correctCount + incorrectCount + unselectedCount}',
-    );
-    if (((args?.questionRange.end.toInt() ?? 0) - (args?.questionRange.start.toInt() ?? 0)) ==
-        (correctCount + incorrectCount + unselectedCount)) {
+    if ((args?.questionRange.end.toInt() ?? 0) - (args?.questionRange.start.toInt() ?? 0) ==
+        correctCount + incorrectCount + unselectedCount) {
       context.goNamed(
         Routes.testResult,
         arguments: TestResultModel(
@@ -60,6 +55,7 @@ abstract class CustomModeState extends State<CustomModeScreen> {
         ),
       );
       timer?.cancel();
+      timer = null;
       totalTimer.stop();
       return;
     }
@@ -69,16 +65,11 @@ abstract class CustomModeState extends State<CustomModeScreen> {
 
   void startTimer() {
     args = ModalRoute.of(context)?.settings.arguments as CustomTestSettings?;
-    log('args: ${args?.questionRange.start.toInt()} ${args?.questionRange.end.toInt()}');
-    if (!isInitialized) {
-      isInitialized = true;
-      context.read<TestBloc>().add(FilterTestsEvent(args: args));
-    }
     setState(() => remaining = args?.questionTime.duration ?? const Duration(minutes: 30));
     timer?.cancel();
     timer = null;
     if (remaining.inSeconds <= 0) return;
-    timer = Timer.periodic(const Duration(seconds: 1), (timer) {
+    timer = Timer.periodic(const Duration(seconds: 1), (_) {
       if (!mounted) return;
       if (remaining.inSeconds <= 1) onTimerEnd();
       setState(() => remaining -= const Duration(seconds: 1));
@@ -96,7 +87,7 @@ abstract class CustomModeState extends State<CustomModeScreen> {
   void initState() {
     super.initState();
     totalTimer.start();
-    bloc = TestBloc();
+    bloc = context.read<TestBloc>()..add(FilterTestsEvent(args: args));
     testResult = ValueNotifier(0);
     isSelected = ValueNotifier(false);
     WidgetsBinding.instance.addPostFrameCallback((_) => startTimer());
@@ -109,6 +100,7 @@ abstract class CustomModeState extends State<CustomModeScreen> {
     testResult.dispose();
     isSelected.dispose();
     timer?.cancel();
+    timer = null;
     super.dispose();
   }
 }
