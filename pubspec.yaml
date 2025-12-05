@@ -24,6 +24,8 @@ dependencies:
     path: package/database/
   supabase_service:
     path: package/supabase_service/
+  excel:
+    path: package/excel-main/
   # annotation
   meta: ^1.17.0
 
@@ -74,6 +76,7 @@ dependencies:
   dio: ^5.9.0
   vector_graphics: ^1.1.19
   bloc_concurrency: ^0.3.0
+  file_picker: ^6.1.1
 
 dev_dependencies:
   flutter_test:
