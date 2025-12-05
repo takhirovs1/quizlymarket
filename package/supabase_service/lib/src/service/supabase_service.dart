@@ -53,7 +53,7 @@ class SupabaseService with SupabaseHelpersMixin {
       return mappedProfile;
     } catch (error, stackTrace) {
       log('Failed to login user $telegramID', error: error, stackTrace: stackTrace);
-      return const <String, Object?>{};
+      rethrow;
     }
   }
 
