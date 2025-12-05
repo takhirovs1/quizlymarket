@@ -84,7 +84,7 @@
 
   const mockUser = parseUser(params.get("tgUser")) ??
     parseUser(readStorage("tgDebugUser")) ?? {
-      id: 5651631418,
+      id: 1100168676,
       first_name: "Debug",
       last_name: "User",
       username: "debug_user",
