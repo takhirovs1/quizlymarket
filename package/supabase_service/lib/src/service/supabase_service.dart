@@ -71,7 +71,11 @@ class SupabaseService with SupabaseHelpersMixin {
     }
 
     try {
-      final response = await _client.auth.signUp(email: email, password: telegramID);
+      final response = await _client.auth.signUp(
+        email: email,
+        password: telegramID,
+        data: {'display_name': name, 'telegram_username': telegramUsername, 'telegram_id': telegramNumericId},
+      );
       final userId = response.user?.id;
       log('signUp() userId=$userId');
 
