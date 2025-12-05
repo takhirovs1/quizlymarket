@@ -242,4 +242,7 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get filter => 'Filtrlash';
+
+  @override
+  String get noTestsFound => 'Testlar topilmadi';
 }

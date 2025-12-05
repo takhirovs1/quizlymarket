@@ -476,6 +476,11 @@ class GeneratedLocalization {
   String get filter {
     return Intl.message('Фильтр', name: 'filter', desc: '', args: []);
   }
+
+  /// `Testlar topilmadi`
+  String get noTestsFound {
+    return Intl.message('Testlar topilmadi', name: 'noTestsFound', desc: '', args: []);
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<GeneratedLocalization> {

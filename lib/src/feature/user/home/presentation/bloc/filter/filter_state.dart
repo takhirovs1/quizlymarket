@@ -8,6 +8,7 @@ class FilterState extends Equatable {
     this.faculty = const [],
     this.university = const [],
     this.error = '',
+    this.filterStep = FilterStep.university,
   });
 
   factory FilterState.initial() => const FilterState(
@@ -17,12 +18,14 @@ class FilterState extends Equatable {
     course: [],
     direction: [],
     error: '',
+    filterStep: FilterStep.university,
   );
   final Status filterStatus;
   final List<UniversityModel> university;
   final List<FacultyModel> faculty;
   final List<CourseModel> course;
   final List<DirectionModel> direction;
+  final FilterStep filterStep;
 
   final String error;
   FilterState copyWith({
@@ -32,6 +35,7 @@ class FilterState extends Equatable {
     List<CourseModel>? course,
     List<DirectionModel>? direction,
     String? error,
+    FilterStep? filterStep,
   }) => FilterState(
     filterStatus: filterStatus ?? this.filterStatus,
     university: university ?? this.university,
@@ -39,7 +43,8 @@ class FilterState extends Equatable {
     course: course ?? this.course,
     direction: direction ?? this.direction,
     error: error ?? this.error,
+    filterStep: filterStep ?? this.filterStep,
   );
   @override
-  List<Object?> get props => [filterStatus, university, faculty, course, direction, error];
+  List<Object?> get props => [filterStatus, university, faculty, course, direction, error, filterStep];
 }

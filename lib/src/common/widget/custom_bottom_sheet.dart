@@ -25,18 +25,17 @@ class CustomBottomSheet extends StatelessWidget {
     initialChildSize: initialChildSize,
     minChildSize: initialChildSize,
     maxChildSize: maxChildSize,
-    expand: false,
 
     builder: (ctx, scrollController) => Scaffold(
       backgroundColor: context.color.transparent,
       bottomNavigationBar: switch (bottomNavigationBar) {
-        null => null,
         Widget widget => ColoredBox(
           color: context.color.white,
           child: SafeArea(
             child: Padding(padding: Dimension.pAll16, child: widget),
           ),
         ),
+        _ => null,
       },
       body: Column(
         children: [

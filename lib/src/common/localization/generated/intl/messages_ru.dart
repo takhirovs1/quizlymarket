@@ -63,6 +63,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "noInternetConnectionDescription": MessageLookupByLibrary.simpleMessage(
       "Пожалуйста, проверьте ваше интернет соединение и попробуйте снова.",
     ),
+    "noTestsFound": MessageLookupByLibrary.simpleMessage("Testlar topilmadi"),
     "noUsersFound": MessageLookupByLibrary.simpleMessage("Пользователь не найден"),
     "openTest": MessageLookupByLibrary.simpleMessage("Открыть тест"),
     "parameters": MessageLookupByLibrary.simpleMessage("Параметры:"),

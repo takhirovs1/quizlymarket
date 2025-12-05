@@ -10,7 +10,6 @@
   "appConfigurationReset": "Сбросить",
   "appConfigurationResetDescription": "Сбросьте ваши настройки приложения на defaults.",
   "title": "Quizly Market",
-
   "pressBackAgainToExit": "Нажмите еще раз, чтобы выйти",
   "language": "Изменить язык",
   "english": "Английский",
@@ -24,14 +23,12 @@
   "buy": "Купить",
   "appName": "QuizlyMarket",
   "cart": "Корзина",
-
   "testPurchased": "Тест приобретен",
   "personalizedTestDescription": "Вы можете начать тест, настроенный под вас.",
   "enterTest": "Перейти к тесту",
   "cancel": "Отмена",
   "testPurchasedDescription": "Вы можете начать тест, настроенный под вас.",
   "testPurchasedTitle": "Тест приобретен!",
-
   "test": "Тест",
   "startTest": "Начать тест",
   "parameters": "Параметры:",
@@ -47,7 +44,6 @@
   "shuffleAnswers": "Только ответы",
   "selectQuestionByRange": "Выберите вопросы по диапазону:",
   "allOfTimeTest": "Общее время теста:",
-
   "questionRangeHint": "Из {count} вопросов {solved} будут перемешиваться.",
   "@questionRangeHint": {
     "placeholders": {
@@ -61,7 +57,6 @@
       }
     }
   },
-
   "intToCount": "{count} шт.",
   "@intToCount": {
     "placeholders": {
@@ -101,5 +96,6 @@
   "skipped": "Пропущено",
   "time": "Время",
   "search": "Поиск",
-  "filter": "Фильтр"
+  "filter": "Фильтр",
+  "noTestsFound": "Testlar topilmadi"
 }

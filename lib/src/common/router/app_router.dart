@@ -6,7 +6,6 @@ import '../../feature/admin/home/presentation/screen/admin_home_screen.dart';
 import '../../feature/admin/main/presentation/screen/admin_main_screen.dart';
 import '../../feature/admin/profile/presentation/bloc/client/client_bloc.dart';
 import '../../feature/admin/profile/presentation/screen/admin_profile_screen.dart';
-import '../../feature/admin/profile/presentation/screen/top_up_user_balance_screen.dart';
 import '../../feature/admin/profile/presentation/screen/user_list_screen.dart';
 import '../../feature/admin/upload/presentation/screen/upload_screen.dart';
 import '../../feature/user/main/data/model/main_tabs_enum.dart';
@@ -54,7 +53,6 @@ Route<dynamic> _onGenerateRoute(RouteSettings settings, LocalSource localSource,
       settings,
     ),
     Routes.adminProfile => _materialRoute(const AdminProfileScreen(), settings),
-    Routes.adminTopUpUserBalance => _materialRoute(const TopUpUserBalanceScreen(), settings),
     _ => _resolveOnboardingOrHome(settings, localSource, userRole),
   };
 }

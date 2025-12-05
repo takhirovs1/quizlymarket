@@ -14,7 +14,7 @@ final class HomeRepositoryImpl implements HomeRepository {
 
   @override
   Future<List<UniversityModel>> getUniversities() async {
-    await _dio.get<List<UniversityModel>>('Urls.universities');
+    // await _dio.get<List<UniversityModel>>('Urls.universities');
     final defData = <UniversityModel>[
       const UniversityModel(id: 'u1', name: 'Alfraganus'),
       const UniversityModel(id: 'u2', name: 'Toshkent davlat Iqtisodiyot University'),
@@ -26,7 +26,7 @@ final class HomeRepositoryImpl implements HomeRepository {
 
   @override
   Future<List<FacultyModel>> getFaculties(String universityId) async {
-    await _dio.get<List<FacultyModel>>('Urls.faculties');
+    // await _dio.get<List<FacultyModel>>('Urls.faculties');
 
     final defData = <FacultyModel>[
       const FacultyModel(id: 'f_all', name: 'Barcha Fakultetlar'),
@@ -40,7 +40,7 @@ final class HomeRepositoryImpl implements HomeRepository {
 
   @override
   Future<List<CourseModel>> getCourses(String facultyId) async {
-    await _dio.get<List<CourseModel>>('Urls.courses');
+    // await _dio.get<List<CourseModel>>('Urls.courses');
 
     final defData = <CourseModel>[
       const CourseModel(id: 'c_all', name: 'Barcha kurslar'),
@@ -54,7 +54,7 @@ final class HomeRepositoryImpl implements HomeRepository {
 
   @override
   Future<List<DirectionModel>> getDirections(String courseId) async {
-    await _dio.get<List<DirectionModel>>('Urls.directions');
+    // await _dio.get<List<DirectionModel>>('Urls.directions');
 
     final defData = <DirectionModel>[
       DirectionModel(id: 'd_all', name: 'Barcha yo’nalishlar'),
