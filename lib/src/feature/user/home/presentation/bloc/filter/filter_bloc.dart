@@ -52,21 +52,13 @@ class FilterBloc extends Bloc<FilterEvent, FilterState> {
   }, onError: (e, s) => emit(state.copyWith(filterStatus: Status.error, error: e.toString())));
 
   void _onFilterBackEvent(FilterBackEvent event, Emitter<FilterState> emit) {
-    switch (state.filterStep) {
-      case FilterStep.direction:
-        emit(state.copyWith(filterStep: FilterStep.course));
-        break;
+    final nextStep = switch (state.filterStep) {
+      FilterStep.direction => FilterStep.course,
+      FilterStep.course => FilterStep.faculty,
+      FilterStep.faculty => FilterStep.university,
+      FilterStep.university => FilterStep.university,
+    };
 
-      case FilterStep.course:
-        emit(state.copyWith(filterStep: FilterStep.faculty));
-        break;
-
-      case FilterStep.faculty:
-        emit(state.copyWith(filterStep: FilterStep.university));
-        break;
-
-      case FilterStep.university:
-        break;
-    }
+    emit(state.copyWith(filterStep: nextStep));
   }
 }
