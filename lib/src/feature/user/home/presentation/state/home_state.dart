@@ -5,7 +5,6 @@ import 'package:lottie/lottie.dart';
 import 'package:telegram_web_app/telegram_web_app.dart';
 
 import '../../../../../common/constant/gen/assets.gen.dart';
-import '../../../../../common/dependencies/dio/dio.dart';
 import '../../../../../common/extension/context_extension.dart';
 import '../../../../../common/extension/int_extension.dart';
 import '../../../../../common/router/route_arguments.dart';
@@ -17,7 +16,6 @@ import '../../../../../common/widget/custom_button.dart';
 import '../../../../../common/widget/custom_primary_dialog.dart';
 import '../../../../auth/bloc/auth_bloc.dart';
 import '../../../../tests/model/test_model.dart';
-import '../../data/repository/home_repository.dart';
 import '../bloc/filter/filter_bloc.dart';
 import '../screen/home_screen.dart';
 import '../widget/filter_bottom_sheet.dart';
@@ -167,8 +165,9 @@ abstract class HomeState extends State<HomeScreen> {
       isScrollControlled: true,
       backgroundColor: context.color.transparent,
       builder: (ctx) => BlocProvider(
-        create: (context) => FilterBloc(repository: HomeRepositoryImpl(dio: Dio()))..add(FilterUniversityEvent()),
-        child: const FilterBottomSheet(universities: []),
+        create: (context) =>
+            FilterBloc(repository: context.dependencies.repository.homeRepository)..add(FilterUniversityEvent()),
+        child: const FilterBottomSheet(),
       ),
     );
   }

@@ -97,7 +97,7 @@ class _CustomTextFiledState extends State<CustomTextFiled> {
                     hintStyle: widget.hintStyle ?? context.textTheme.nunitoW400s16,
                     labelText: widget.labelText,
                     labelStyle: widget.labelStyle ?? context.textTheme.nunitoW400s16,
-
+                    border: _getBorder(context),
                     focusedBorder: OutlineInputBorder(
                       borderSide: BorderSide(
                         color: widget.borderColor ?? context.color.primary,
@@ -105,13 +105,7 @@ class _CustomTextFiledState extends State<CustomTextFiled> {
                       ),
                       borderRadius: widget.borderRadius,
                     ),
-                    enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                        color: widget.enabledBorderColor ?? context.color.transparent,
-                        width: widget.borderWidth,
-                      ),
-                      borderRadius: widget.borderRadius,
-                    ),
+                    enabledBorder: _getBorder(context),
                   ),
                 ),
               ),
@@ -121,5 +115,10 @@ class _CustomTextFiledState extends State<CustomTextFiled> {
       ),
       if (widget.action != null) ...[widget.action!],
     ],
+  );
+
+  OutlineInputBorder _getBorder(BuildContext context) => OutlineInputBorder(
+    borderSide: BorderSide(color: widget.enabledBorderColor ?? context.color.transparent, width: widget.borderWidth),
+    borderRadius: widget.borderRadius,
   );
 }

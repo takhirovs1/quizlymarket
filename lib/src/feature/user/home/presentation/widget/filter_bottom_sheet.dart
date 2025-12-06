@@ -8,19 +8,17 @@ import '../../../../../common/extension/context_extension.dart';
 import '../../../../../common/util/dimension.dart';
 import '../../../../../common/widget/custom_bottom_sheet.dart';
 import '../../../../../common/widget/custom_button.dart';
-import '../../data/model/home_default_model.dart';
 import '../bloc/filter/filter_bloc.dart';
 
 class FilterBottomSheet extends StatefulWidget {
-  const FilterBottomSheet({required this.universities, super.key});
-  final List<UniversityModel> universities;
+  const FilterBottomSheet({super.key});
 
   @override
   State<FilterBottomSheet> createState() => _FilterBottomSheetState();
 }
 
 class _FilterBottomSheetState extends State<FilterBottomSheet> {
-  List<Widget> getListByStep(BuildContext context, FilterState state) => switch (state.filterStep) {
+  Widget getListByStep(BuildContext context, FilterState state) => switch (state.filterStep) {
     FilterStep.university => buildList(
       state.university,
       (u, index) => Text(u.name, style: context.textTheme.nunitoW400s16),
@@ -44,57 +42,70 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
   };
 
   // ignore: inference_failure_on_function_return_type
-  List<Widget> buildList<T>(List<T> list, Widget Function(T, int) itemBuilder, Function(T) onTap) => [
-    ListView.separated(
-      shrinkWrap: true,
-      physics: const ClampingScrollPhysics(),
-      itemCount: list.length,
-      separatorBuilder: (context, index) => Dimension.hBox10,
-      itemBuilder: (context, index) {
-        final item = list[index];
-        return Material(
-          color: context.color.transparent,
-          child: InkWell(
-            hoverColor: context.color.transparent,
-            borderRadius: Dimension.rAll6,
-            onTap: () => onTap(item),
-            child: DecoratedBox(
-              decoration: BoxDecoration(borderRadius: Dimension.rAll6, color: context.color.cardBackground),
-              child: Padding(padding: Dimension.pAll14, child: itemBuilder(item, index)),
-            ),
+  Widget buildList<T>(List<T> list, Widget Function(T, int) itemBuilder, Function(T) onTap) => ListView.separated(
+    shrinkWrap: true,
+    physics: const ClampingScrollPhysics(),
+    itemCount: list.length,
+    separatorBuilder: (context, index) => Dimension.hBox10,
+    itemBuilder: (context, index) {
+      final item = list[index];
+      return Material(
+        color: context.color.transparent,
+        child: InkWell(
+          hoverColor: context.color.transparent,
+          borderRadius: Dimension.rAll6,
+          onTap: () => onTap(item),
+          child: DecoratedBox(
+            decoration: BoxDecoration(borderRadius: Dimension.rAll6, color: context.color.cardBackground),
+            child: Padding(padding: Dimension.pAll14, child: itemBuilder(item, index)),
           ),
-        );
-      },
-    ),
-  ];
-
-  @override
-  Widget build(BuildContext context) => BlocBuilder<FilterBloc, FilterState>(
-    builder: (context, state) => switch (state.filterStatus) {
-      Status.loading => const Center(child: CircularProgressIndicator()),
-      Status.success => CustomBottomSheet(
-        isScrollable: true,
-        maxChildSize: .9,
-        initialChildSize: .9,
-        bottomNavigationBar: CustomButton(onRightPressed: context.pop, rightText: context.l10n.filter),
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            if (state.filterStep != FilterStep.university)
-              GestureDetector(
-                onTap: () => context.read<FilterBloc>().add(FilterBackEvent()),
-                child: Assets.vectors.arrowBack.svg(),
-              ),
-            Text('Default', style: context.textTheme.nunitoW600s18),
-          ],
         ),
-        children: getListByStep(context, state),
-      ),
-      Status.error => Center(
-        child: Text(state.error, style: context.textTheme.nunitoW400s16.copyWith(color: context.color.onSurface)),
-      ),
-      _ => const SizedBox.shrink(),
+      );
     },
   );
+
+  @override
+  Widget build(BuildContext context) => CustomBottomSheet(
+    isScrollable: true,
+    maxChildSize: .9,
+    initialChildSize: .9,
+    bottomNavigationBar: CustomButton(onRightPressed: context.pop, rightText: context.l10n.filter),
+    title: BlocBuilder<FilterBloc, FilterState>(
+      builder: (context, state) => Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          if (state.filterStep != FilterStep.university)
+            GestureDetector(
+              onTap: () => context.read<FilterBloc>().add(FilterBackEvent()),
+              child: Assets.vectors.arrowBack.svg(),
+            ),
+          Text('Default', style: context.textTheme.nunitoW600s18),
+        ],
+      ),
+    ),
+    children: [
+      BlocBuilder<FilterBloc, FilterState>(
+        builder: (context, state) => switch (state.filterStatus) {
+          Status.loading => const Center(child: CircularProgressIndicator()),
+          Status.success => getListByStep(context, state),
+          Status.error => Center(
+            child: Text(state.error, style: context.textTheme.nunitoW400s16.copyWith(color: context.color.onSurface)),
+          ),
+          _ => const SizedBox.shrink(),
+        },
+      ),
+    ],
+  );
+
+  //  BlocBuilder<FilterBloc, FilterState>(
+  //   builder: (context, state) => switch (state.filterStatus) {
+  //     Status.loading => const Center(child: CircularProgressIndicator()),
+  //     Status.success => ,
+  //     Status.error => Center(
+  //       child: Text(state.error, style: context.textTheme.nunitoW400s16.copyWith(color: context.color.onSurface)),
+  //     ),
+  //     _ => const SizedBox.shrink(),
+  //   },
+  // );
 }

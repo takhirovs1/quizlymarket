@@ -8,6 +8,7 @@ import 'package:meta/meta.dart';
 import '../../../feature/admin/profile/data/repository/client_repository.dart';
 import '../../../feature/auth/repository/auth_repository.dart';
 import '../../../feature/tests/repository/tests_repository.dart';
+import '../../../feature/user/home/data/repository/home_repository.dart';
 import '../../../feature/user/profile/presentation/bloc/settings_bloc.dart';
 import 'app_metadata.dart';
 
@@ -114,12 +115,14 @@ final class RepositoryContainer extends Equatable {
     required this.authRepository,
     required this.clientRepository,
     required this.testsRepository,
+    required this.homeRepository,
   });
 
   final AuthRepository authRepository;
   final ClientRepository clientRepository;
   final TestsRepository testsRepository;
-
+  final HomeRepository homeRepository;
+  
   @override
-  List<Object> get props => [authRepository, clientRepository, testsRepository];
+  List<Object> get props => [authRepository, clientRepository, testsRepository, homeRepository];
 }

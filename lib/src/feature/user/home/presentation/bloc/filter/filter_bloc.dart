@@ -35,7 +35,7 @@ class FilterBloc extends Bloc<FilterEvent, FilterState> {
 
   void _onFilterFacultyEvent(FilterFacultyEvent event, Emitter<FilterState> emit) => handle(() async {
     emit(state.copyWith(filterStatus: Status.loading));
-    final data = await _repository.getFaculties(event.universityModel.id);
+    final data = await _repository.getFaculties(event.universityModel.id.toString());
     emit(state.copyWith(filterStatus: Status.success, faculty: data, filterStep: FilterStep.faculty));
   }, onError: (e, s) => emit(state.copyWith(filterStatus: Status.error, error: e.toString())));
 

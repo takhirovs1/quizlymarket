@@ -3,6 +3,8 @@ import 'dart:developer';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:supabase_service/src/constants/tables.dart';
 
+import 'supabase_helper_mixin.dart';
+
 /// High-level facade around the Supabase Flutter client tailored to the Quizly
 /// profile workflows.
 class SupabaseService with SupabaseHelpersMixin {
@@ -48,11 +50,12 @@ class SupabaseService with SupabaseHelpersMixin {
           .limit(1)
           .single();
 
-      final mappedProfile = _castSingleRow(profile);
+      final mappedProfile = castSingleRow(profile);
       log('login() profileId=${mappedProfile['id']}');
       return mappedProfile;
     } catch (error, stackTrace) {
       log('Failed to login user $telegramID', error: error, stackTrace: stackTrace);
+
       /// if the user is not found, sign out and throw the error
       if (error is AuthApiException && error.statusCode == '400') {
         await _client.auth.signOut();
@@ -95,7 +98,7 @@ class SupabaseService with SupabaseHelpersMixin {
         'full_name': name.trim(),
       }).select();
 
-      final mappedProfile = _castSingleRow(profile);
+      final mappedProfile = castSingleRow(profile);
       log('signUp() profileId=${mappedProfile['id']}');
       return mappedProfile;
     } catch (error, stackTrace) {
@@ -128,7 +131,7 @@ class SupabaseService with SupabaseHelpersMixin {
       }
 
       final result = await builder;
-      return _castRows(result);
+      return castRows(result);
     } catch (error, stackTrace) {
       log('Failed to fetch users', error: error, stackTrace: stackTrace);
       return const <Map<String, Object?>>[];
@@ -171,18 +174,23 @@ class SupabaseService with SupabaseHelpersMixin {
           .eq('is_active', true);
       if (search != null && search.isNotEmpty) {
         builder = builder.ilike('title', '%$search%');
-        // .ilike('subject.name', '%$search%')
-        // .ilike('subject.direction.name', '%$search%');
-        // .ilike('subject.direction.course.name', '%$search%')
-        // .ilike('subject.direction.course.faculty.name', '%$search%')
-        // .ilike('subject.direction.course.faculty.university.name', '%$search%');
       }
       final res = await builder;
       log('getTests() res=$res');
 
-      return _castRows(res);
+      return castRows(res);
     } catch (error, stackTrace) {
       log('Failed to fetch tests', error: error, stackTrace: stackTrace);
+      return const <Map<String, Object?>>[];
+    }
+  }
+
+  Future<List<Map<String, Object?>>> getUniversities() async {
+    try {
+      final res = await _client.from(Tables.universities).select();
+      return castRows(res);
+    } catch (error, stackTrace) {
+      log('Failed to fetch universities', error: error, stackTrace: stackTrace);
       return const <Map<String, Object?>>[];
     }
   }
@@ -194,26 +202,4 @@ class SupabaseService with SupabaseHelpersMixin {
       _instance = null;
     }
   }
-
-  Map<String, Object?> _castSingleRow(dynamic result) {
-    if (result is Map<String, dynamic>) {
-      return result.cast<String, Object?>();
-    }
-    final rows = _castRows(result);
-    return rows.isEmpty ? const <String, Object?>{} : rows.first;
-  }
-
-  List<Map<String, Object?>> _castRows(dynamic result) {
-    if (result is List) {
-      return result.whereType<Map<String, dynamic>>().map((row) => row.cast<String, Object?>()).toList(growable: false);
-    }
-    return const <Map<String, Object?>>[];
-  }
-}
-
-mixin SupabaseHelpersMixin {
-  static const String _emailDomain = 'quizlymarket.fake';
-
-  /// Builds a deterministic fake email that Supabase auth can work with.
-  String getEmail(String telegramID) => '$telegramID@$_emailDomain';
 }

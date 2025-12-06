@@ -122,6 +122,7 @@ Map<String, _InitializationStep> get _initializationSteps => <String, _Initializ
       authRepository: SupabaseAuthRepository(service: supabaseService),
       clientRepository: SupabaseClientRepository(service: supabaseService),
       testsRepository: SupabaseTestsRepository(service: supabaseService),
+      homeRepository: SupabaseHomeRepository(service: supabaseService),
     );
   },
   'Blocs': (dependencies) => dependencies.bloc = const BlocContainer(),
