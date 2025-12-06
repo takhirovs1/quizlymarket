@@ -53,6 +53,9 @@ class SupabaseService with SupabaseHelpersMixin {
       return mappedProfile;
     } catch (error, stackTrace) {
       log('Failed to login user $telegramID', error: error, stackTrace: stackTrace);
+      if (error is AuthApiException && error.statusCode == '400') {
+        await _client.auth.signOut();
+      }
       rethrow;
     }
   }

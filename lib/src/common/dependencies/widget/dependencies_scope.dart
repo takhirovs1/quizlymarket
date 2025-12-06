@@ -67,6 +67,10 @@ class _DependenciesScopeState extends State<DependenciesScope> {
       _authStateSubscription = null;
     }
 
+    final telegramUser = TelegramWebApp.instance.initDataUnsafe?.user;
+    final telegramId = telegramUser?.id;
+    final telegramID = telegramId?.toString();
+
     _authStateSubscription = bloc.stream.listen((state) {
       if (state.isUserExist == false && !_signUpRequested) {
         _signUpRequested = true;
@@ -80,9 +84,6 @@ class _DependenciesScopeState extends State<DependenciesScope> {
       }
     });
 
-    final telegramUser = TelegramWebApp.instance.initDataUnsafe?.user;
-    final telegramId = telegramUser?.id;
-    final telegramID = telegramId?.toString();
     if (telegramID == null || telegramID.isEmpty) {
       _completeWithError(completer, 'Missing Telegram user identifier');
     } else {
